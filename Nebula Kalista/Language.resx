@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Main_Combo_E" xml:space="preserve">
+    <value>[ E ] Use</value>
+  <comment>[ E ] 사용</comment></data>
+  <data name="Main_Combo_Q" xml:space="preserve">
+    <value>[ Q ] Use</value>
+  <comment>[ Q ] 사용</comment></data>
+  <data name="Main_Combo_Str" xml:space="preserve">
+    <value>Combo Setting</value>
+  <comment>콤보 설정</comment></data>
+  <data name="Main_Harass_Str" xml:space="preserve">
+    <value>Harass Setting</value>
+  <comment>견제 설정</comment></data>
+  <data name="Main_Harass_Q" xml:space="preserve">
+    <value>[ Q ] Use</value>
+  <comment>[ Q ] 사용</comment></data>
+  <data name="Main_Harass_E" xml:space="preserve">
+    <value>[ E ] Use</value>
+  <comment>[ E ] 사용</comment></data>
+  <data name="Main_Harass_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ Q E ] used </value>
+  <comment>보유 마나가 [ n% ] 이상일 때 [ Q E ] 사용</comment></data>
+  <data name="Main_Harass_Exp_1" xml:space="preserve">
+    <value></value>
+  <comment>견제 조건 1 : 하나이상의 미니언 킬이 가능할 때 + 적 챔피언 E 스텍이 한개 이상일 때 + 나와의 거리가 900 이상일 때</comment></data>
+  <data name="Main_Harass_Exp_2" xml:space="preserve">
+    <value></value>
+  <comment>견제 조건 2 : 적 챔피언 E 스텍이 세개 이상일 때 + 나와의 거리가 900 이상일 때</comment></data>
+  <data name="Farm_Lane_E" xml:space="preserve">
+    <value>[ E ] Use - [ All type minions ]</value>
+  <comment>[ E ] 사용 - [ 모든 미니언 ]</comment></data>
+  <data name="Farm_Lane_Q" xml:space="preserve">
+    <value>[ Q ] Use</value>
+  <comment>[ Q ] 사용</comment></data>
+  <data name="Farm_Lane_E_Big" xml:space="preserve">
+    <value>[ E ] Use - [ Siege, Super minions ]</value>
+  <comment>[ E ] 사용 - [ 대포, 슈퍼 미니언 ]</comment></data>
+  <data name="Farm_Lane_E_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ E ] used </value>
+  <comment>보유 마나가 [ n% ] 이상일 때 [ E ] 사용</comment></data>
+  <data name="Farm_Lane_E_Num" xml:space="preserve">
+    <value>Minions killable count &gt; [ n ], [ E ] used</value>
+  <comment>[ E ]를 사용하여 죽일 미니언의 개수</comment></data>
+  <data name="Farm_Lane_Q_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ Q ] used </value>
+  <comment>보유 마나가 [ n% ] 이상일 때 [ Q ] 사용</comment></data>
+  <data name="Farm_Lane_Q_Num" xml:space="preserve">
+    <value>Minions killable count &gt; [ n ], [ Q ] used</value>
+  <comment>[ Q ]를 사용하여 죽일 미니언의 개수</comment></data>
+  <data name="Farm_Jungle_Str" xml:space="preserve">
+    <value>Jungle clear Setting</value>
+  <comment>정글 설정</comment></data>
+  <data name="Farm_Lane_Str" xml:space="preserve">
+    <value>Lane clear Setting</value>
+  <comment>라인 설정</comment></data>
+  <data name="Farm_Jungle_E" xml:space="preserve">
+    <value>[ E ] Use - [ Big + Mini ]</value>
+  <comment>[ E ] 사용 - [ 대형 + 미니 ]</comment></data>
+  <data name="Farm_Jungle_E_Big" xml:space="preserve">
+    <value>[ E ] Use - [ Big ]</value>
+  <comment>[ E ] 사용 - [ 대형 ]</comment></data>
+  <data name="Farm_Jungle_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ Q E ] used </value>
+  <comment>보유 마나가 [ n% ] 이상일 때 [ Q E ] 사용</comment></data>
+  <data name="Farm_Jungle_Q" xml:space="preserve">
+    <value>[ Q ] Use - [ Big + Mini ]</value>
+  <comment>[ Q ] 사용 - [ 대형 + 미니 ]</comment></data>
+  <data name="Farm_Jungle_Q_Big" xml:space="preserve">
+    <value>[ Q ] Use - [ Big ]</value>
+  <comment>[ Q ] 사용 - [ 대형 ]</comment></data>
+  <data name="Misc_E_Str" xml:space="preserve">
+    <value>[ E ] Setting</value>
+  <comment>[ E ] 설정</comment></data>
+  <data name="Misc_E_Death" xml:space="preserve">
+    <value>Before death used</value>
+  <comment>죽기전에 [ E ] 사용</comment></data>
+  <data name="Misc_E_Death_Hp" xml:space="preserve">
+    <value>If player hp is lower [ n% ] Rend used</value>
+  <comment>사용자의 체력이 [ n% ] 이하일 때 [ E ] 사용</comment></data>
+  <data name="Misc_E_Dmg" xml:space="preserve">
+    <value>Rend damage adjust</value>
+  <comment>[ E ] 공격력 설정</comment></data>
+  <data name="Misc_E_Dmg_Value" xml:space="preserve">
+    <value>Rend damage calculation reduce [ n ]</value>
+  <comment>[ E ] 공격력을 [ n ] 만큼 줄여서 계산</comment></data>
+  <data name="Misc_E_Steal_H" xml:space="preserve">
+    <value>Kill steal</value>
+  <comment>킬 스틸</comment></data>
+  <data name="Misc_E_Steal_J" xml:space="preserve">
+    <value>Jungle steal</value>
+  <comment>정글 스틸</comment></data>
+  <data name="Misc_R_Str" xml:space="preserve">
+    <value>[ R ] Setting</value>
+  <comment>[ R ] 설정</comment></data>
+  <data name="Misc_R_Save" xml:space="preserve">
+    <value>Save partner</value>
+  <comment>계약자 보호</comment></data>
+  <data name="Misc_R_Save_Hp" xml:space="preserve">
+    <value>If partner hp is lower [ n% ], used</value>
+  <comment>계약자의 체력이 [ n% ] 이하일 때 [ R ] 사용</comment></data>
+  <data name="Misc_Skin" xml:space="preserve">
+    <value>Skin Setting</value>
+  <comment>스킨 설정</comment></data>
+  <data name="Misc_Skin_Id" xml:space="preserve">
+    <value>[ 0 = Default Kalista ] [ 1 = Blood moon Kalista ] [ 2 = Championship Kalista ]</value>
+  <comment>[ 0 = 기본 칼리스타 ] [ 1 = 불의 축체 칼리스타 ] [ 2 = 챔피언십 칼리스타 ]</comment></data>
+  <data name="Misc_Skin_State" xml:space="preserve">
+    <value>Skin used</value>
+  <comment>스킨 사용</comment></data>
+  <data name="Item_A_Blade" xml:space="preserve">
+    <value>Blade of the Ruined King</value>
+  <comment>몰락한 왕의 검</comment></data>
+  <data name="Item_A_Blade_Hp" xml:space="preserve">
+    <value>If player hp is lower [ n% ], [ Blade of the Ruined King ] used</value>
+  <comment>사용자의 체력이 [ n% ] 이하일 때 사용</comment></data>
+  <data name="Item_A_Blige" xml:space="preserve">
+    <value>Bilgewater Cutlass</value>
+  <comment>빌지워터 해적검</comment></data>
+  <data name="Item_D_QuickSilver" xml:space="preserve">
+    <value>Quicksilver Sash</value>
+  <comment>수은 장식띠</comment></data>
+  <data name="Item_D_Mercurial" xml:space="preserve">
+    <value>Mercurial Scimitar</value>
+  <comment>헤르메스의 시미터</comment></data>
+  <data name="Item_Buff_Poisons" xml:space="preserve">
+    <value>Poisons</value>
+  <comment>독</comment></data>
+  <data name="Item_Buff_Supression" xml:space="preserve">
+    <value>Supression</value>
+  <comment>제압</comment></data>
+  <data name="Item_Buff_Blind" xml:space="preserve">
+    <value>Blind</value>
+  <comment>실명</comment></data>
+  <data name="Item_Buff_Charm" xml:space="preserve">
+    <value>Charm</value>
+  <comment>매혹</comment></data>
+  <data name="Item_Buff_Fear" xml:space="preserve">
+    <value>Fear</value>
+  <comment>공포</comment></data>
+  <data name="Item_Buff_Ploymorph" xml:space="preserve">
+    <value>Polymorph</value>
+  <comment>변형</comment></data>
+  <data name="Item_Buff_Silence" xml:space="preserve">
+    <value>Silence</value>
+  <comment>침묵</comment></data>
+  <data name="Item_Buff_Slow" xml:space="preserve">
+    <value>Slow</value>
+  <comment>느려짐</comment></data>
+  <data name="Item_Buff_Stun" xml:space="preserve">
+    <value>Stun</value>
+  <comment>기절</comment></data>
+  <data name="Item_Buff_Knockup" xml:space="preserve">
+    <value>Knockup</value>
+  <comment>에어본</comment></data>
+  <data name="Item_Buff_Taunt" xml:space="preserve">
+    <value>Taunt</value>
+  <comment>도발</comment></data>
+  <data name="Item_A_Youmu" xml:space="preserve">
+    <value>Youmuu's Ghostblade</value>
+  <comment>요우무의 유령검</comment></data>
+  <data name="Draw_Range_Q" xml:space="preserve">
+    <value>[ Q ] Range</value>
+  <comment>[ Q ] 범위</comment></data>
+  <data name="Draw_Range_E" xml:space="preserve">
+    <value>[ E ] Range</value>
+  <comment>[ E ] 범위</comment></data>
+  <data name="Draw_Range_R" xml:space="preserve">
+    <value>[ R ] Range</value>
+  <comment>[ R ] 범위</comment></data>
+  <data name="Draw_E_Dmg" xml:space="preserve">
+    <value>[ E ] Damage Indicator - Hp bar</value>
+  <comment>[ E ] 공력력을 체력바에 표시</comment></data>
+  <data name="Draw_E_Percent" xml:space="preserve">
+    <value>[ 0 = Off ] [ 1 = Near Hp bar ] [ 2 = On the Hp bar ] [ 3 = On the Hero name ] [ 4 = Sidebar ]</value>
+  <comment>[ 0 = 사용안함 ] [ 1 = 체력바 옆에 ] [ 2 = 체력바 위에 ] [ 3 = 챔피언 이름 위에 ] [ 4 = 사이드바 ]</comment></data>
+  <data name="Draw_E_Sidebar_X" xml:space="preserve">
+    <value>Sidebar [ X ] postion</value>
+  <comment>사이드바 [ X ] 위치</comment></data>
+  <data name="Draw_E_Sidebar_Y" xml:space="preserve">
+    <value>Sidebar [ Y ] postion</value>
+  <comment>사이드바 [ Y ] 위치</comment></data>
+  <data name="Draw_E_Percent_Str" xml:space="preserve">
+    <value>[ E ] Damage Indicator - %</value>
+  <comment>[ E ] 공격력을 [ value ] 위치에 표시 %로 표시</comment></data>
+  <data name="Item_D_CastDelay" xml:space="preserve">
+    <value>Quicksilver Sash, Mercurial Scimitar cast speed - [ /ms ]</value>
+  <comment>[ 수은 장식띠, 헤르메스의 시미터 ]의 시전 속도 - [ /ms ]</comment></data>
+  <data name="Item_D_Str" xml:space="preserve">
+    <value>Select to remove the debuff</value>
+  <comment>스운 + 시미터로 해제할 효과</comment></data>
+  <data name="Intro_Str_0" xml:space="preserve">
+    <value>[ Nebula ] Kalista - 6.13.0.0 beta</value>
+  <comment>[ Nebula ] Kalista - 6.13.0.1 beta</comment></data>
+  <data name="Intro_Str_1" xml:space="preserve">
+    <value>Thank you for 'vlrtm12'</value>
+  <comment>챔피언을 제공해주신 'vlrtm12'님 감사합니다.</comment></data>
+  <data name="Intro_Str_2" xml:space="preserve">
+    <value />
+  </data>
+</root>
