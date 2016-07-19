@@ -151,7 +151,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   If mana is higher than [ n% ], [ Q E ] used 과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If mana is higher than [ n% ], [ Q E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Farm_Jungle_Mana {
             get {
@@ -205,7 +205,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   If mana is higher than [ n% ], [ E ] used 과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If mana is higher than [ n% ], [ E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Farm_Lane_E_Mana {
             get {
@@ -214,7 +214,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   Number of killable Minions &gt;= [ n ], [ E ] used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Number of killable Minions &gt;= [ n ], [ E ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Farm_Lane_E_Num {
             get {
@@ -232,7 +232,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   If mana is higher than [ n% ], [ Q ] used 과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If mana is higher than [ n% ], [ Q ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Farm_Lane_Q_Mana {
             get {
@@ -241,7 +241,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   Number of killable Minions &gt; [ n ], [ Q ] used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Number of killable Minions &gt; [ n ], [ Q ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Farm_Lane_Q_Num {
             get {
@@ -313,7 +313,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   If player hp is lower [ n% ], [ Blade of the Ruined King ] used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If player hp is lower than [ n% ], [ Blade of the Ruined King ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Item_A_Blade_Hp {
             get {
@@ -538,7 +538,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   If mana is higher than [ n% ], [ Q E ] used 과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If mana is higher than [ n% ], [ Q E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Harass_Mana {
             get {
@@ -565,7 +565,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   Before death used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Before death Rend is used과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Misc_E_Death {
             get {
@@ -574,7 +574,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   If player hp is lower [ n% ] Rend used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If player hp is lower than [ n% ] Rend is used과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Misc_E_Death_Hp {
             get {
@@ -637,7 +637,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   If partner hp is lower [ n% ], used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If partner hp is lower than [ n% ], used과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Misc_R_Save_Hp {
             get {

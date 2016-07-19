@@ -142,7 +142,7 @@
     <comment>[ E ] 사용</comment>
   </data>
   <data name="Main_Harass_Mana" xml:space="preserve">
-    <value>If mana is higher than [ n% ], [ Q E ] used </value>
+    <value>If mana is higher than [ n% ], [ Q E ] is used </value>
     <comment>보유 마나가 [ n% ] 이상일 때 [ Q E ] 사용</comment>
   </data>
   <data name="Main_Harass_Exp_1" xml:space="preserve">
@@ -166,19 +166,19 @@
     <comment>[ E ] 사용 - [ 대포, 슈퍼 미니언 ]</comment>
   </data>
   <data name="Farm_Lane_E_Mana" xml:space="preserve">
-    <value>If mana is higher than [ n% ], [ E ] used </value>
+    <value>If mana is higher than [ n% ], [ E ] is used </value>
     <comment>보유 마나가 [ n% ] 이상일 때 [ E ] 사용</comment>
   </data>
   <data name="Farm_Lane_E_Num" xml:space="preserve">
-    <value>Number of killable Minions &gt;= [ n ], [ E ] used</value>
+    <value>Number of killable Minions &gt;= [ n ], [ E ] is used</value>
     <comment>[ E ]를 사용하여 죽일 미니언의 개수</comment>
   </data>
   <data name="Farm_Lane_Q_Mana" xml:space="preserve">
-    <value>If mana is higher than [ n% ], [ Q ] used </value>
+    <value>If mana is higher than [ n% ], [ Q ] is used </value>
     <comment>보유 마나가 [ n% ] 이상일 때 [ Q ] 사용</comment>
   </data>
   <data name="Farm_Lane_Q_Num" xml:space="preserve">
-    <value>Number of killable Minions &gt; [ n ], [ Q ] used</value>
+    <value>Number of killable Minions &gt; [ n ], [ Q ] is used</value>
     <comment>[ Q ]를 사용하여 죽일 미니언의 개수</comment>
   </data>
   <data name="Farm_Jungle_Str" xml:space="preserve">
@@ -198,7 +198,7 @@
     <comment>[ E ] 사용 - [ 대형 ]</comment>
   </data>
   <data name="Farm_Jungle_Mana" xml:space="preserve">
-    <value>If mana is higher than [ n% ], [ Q E ] used </value>
+    <value>If mana is higher than [ n% ], [ Q E ] is used </value>
     <comment>보유 마나가 [ n% ] 이상일 때 [ Q E ] 사용</comment>
   </data>
   <data name="Farm_Jungle_Q_All" xml:space="preserve">
@@ -214,11 +214,11 @@
     <comment>[ E ] 설정</comment>
   </data>
   <data name="Misc_E_Death" xml:space="preserve">
-    <value>Before death used</value>
+    <value>Before death Rend is used</value>
     <comment>죽기전에 [ E ] 사용</comment>
   </data>
   <data name="Misc_E_Death_Hp" xml:space="preserve">
-    <value>If player hp is lower [ n% ] Rend used</value>
+    <value>If player hp is lower than [ n% ] Rend is used</value>
     <comment>사용자의 체력이 [ n% ] 이하일 때 [ E ] 사용</comment>
   </data>
   <data name="Misc_E_Dmg" xml:space="preserve">
@@ -246,7 +246,7 @@
     <comment>계약자 보호</comment>
   </data>
   <data name="Misc_R_Save_Hp" xml:space="preserve">
-    <value>If partner hp is lower [ n% ], used</value>
+    <value>If partner hp is lower than [ n% ], used</value>
     <comment>계약자의 체력이 [ n% ] 이하일 때 [ R ] 사용</comment>
   </data>
   <data name="Misc_Skin" xml:space="preserve">
@@ -266,7 +266,7 @@
     <comment>몰락한 왕의 검</comment>
   </data>
   <data name="Item_A_Blade_Hp" xml:space="preserve">
-    <value>If player hp is lower [ n% ], [ Blade of the Ruined King ] used</value>
+    <value>If player hp is lower than [ n% ], [ Blade of the Ruined King ] is used</value>
     <comment>사용자의 체력이 [ n% ] 이하일 때 사용</comment>
   </data>
   <data name="Item_A_Blige" xml:space="preserve">
