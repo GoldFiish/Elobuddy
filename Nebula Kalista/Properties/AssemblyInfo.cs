@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 // 어셈블리와 관련된 정보를 수정하려면
 // 이 특성 값을 변경하십시오.
 [assembly: AssemblyTitle("[Nebula] Kalista")]
-[assembly: AssemblyDescription("Last update 2016-07-12 Beta")]
+[assembly: AssemblyDescription("Last update 2016-07-19")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Nebula")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("[Nebula] Kalista")]
 [assembly: AssemblyCopyright("Copyright©2016 Natrium")]
 [assembly: AssemblyTrademark("Nebula")]
@@ -30,7 +30,6 @@ using System.Runtime.InteropServices;
 //      빌드 번호
 //      수정 버전
 //
-[assembly: AssemblyVersion("6.13.0.0")]
-[assembly: AssemblyFileVersion("6.13.0.0")]
-[assembly: NeutralResourcesLanguage("en-US")]
+[assembly: AssemblyVersion("6.13.0.2")]
+[assembly: AssemblyFileVersion("6.13.0.2")]
 

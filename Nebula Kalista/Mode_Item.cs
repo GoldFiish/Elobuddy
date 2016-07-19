@@ -1,78 +1,119 @@
-﻿using System.Linq;
-using EloBuddy;
+﻿using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
 
 namespace NebulaKalista
 {
-    public class Mode_Item
+    internal class Mode_Item : Kalista
     {
-        static readonly Item Botrk = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
+        static readonly Item BladeKing = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
         static readonly Item Bilgewater = new Item((int)ItemId.Bilgewater_Cutlass, 550f);
         static readonly Item Youmuu = new Item((int)ItemId.Youmuus_Ghostblade);
         static readonly Item Quicksilver = new Item((int)ItemId.Quicksilver_Sash);
         static readonly Item Mercurial = new Item((int)ItemId.Mercurial_Scimitar);
-       
+
         public static void Items_Use()
         {
-            var Botrk_Target = TargetSelector.GetTarget(ObjectManager.Player.AttackRange + ObjectManager.Player.BoundingRadius + 65, DamageType.Physical);
-            if (Botrk_Target.IsValidTarget() && Botrk_Target.Distance(ObjectManager.Player) < 550)
-            {
-                if (Bilgewater.Slots.Any() && Bilgewater.IsReady()) { Bilgewater.Cast(Botrk_Target); }
-                
-                if (Botrk.Slots.Any() && Botrk.IsReady() &&ObjectManager.Player.HealthPercent <= Kalista.MenuItem["BladeKing.Use"].Cast<Slider>().CurrentValue) { Botrk.Cast(Botrk_Target); }
-            }
+            if (Player.Instance.CountEnemiesInRange(1500) == 0) return;
             
-            if (Youmuu.Slots.Any() && Youmuu.IsReady() && ObjectManager.Player.CountEnemiesInRange(1500) == 1)
+            if (Bilgewater.IsOwned() || BladeKing.IsOwned())
+            {
+                var Botrk_Target = TargetSelector.GetTarget(Player.Instance.AttackRange + Player.Instance.BoundingRadius + 65, DamageType.Physical);
+
+                if(Bilgewater.IsReady())
+                {
+                    Bilgewater.Cast(Botrk_Target);
+                }
+
+                if (BladeKing.IsReady() && Player.Instance.HealthPercent <= MenuItem["BladeKing.Use"].Cast<Slider>().CurrentValue)
+                {
+                    BladeKing.Cast(Botrk_Target);
+                }
+            }        
+
+            if (Youmuu.IsOwned() && Youmuu.IsReady() && Player.Instance.CountEnemiesInRange(1500) == 1)
             {
                 Youmuu.Cast();
             }
-                       
-            if (Kalista.MenuItem["Poisons"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Poison))
-            { Activ_Item(); }
 
-            if (Kalista.MenuItem["Supression"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Suppression))
-            { Activ_Item(); }
-
-            if (Kalista.MenuItem["Blind"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Blind))
-            { Activ_Item(); }
-
-            if (Kalista.MenuItem["Charm"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Charm))
-            { Activ_Item(); }
-
-            if(Kalista.MenuItem["Fear"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Fear))
-            { Activ_Item(); }
-
-            if(Kalista.MenuItem["Polymorph"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Polymorph))
-            { Activ_Item(); }
-
-            if(Kalista.MenuItem["Silence"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Silence))
-            { Activ_Item(); }
-
-            if(Kalista.MenuItem["Slow"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Slow))
-            { Activ_Item(); }
-
-            if(Kalista.MenuItem["Stun"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Stun))
-            { Activ_Item(); }
-
-            if(Kalista.MenuItem["Knockup"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Knockup))
-            { Activ_Item(); }
-
-            if(Kalista.MenuItem["Taunt"].Cast<CheckBox>().CurrentValue && ObjectManager.Player.HasBuffOfType(BuffType.Taunt))
-            { Activ_Item(); }
+            Active_Item();
         }
 
-        private static void Activ_Item()
+        private static void Active_Item()
         {
-            if (Quicksilver.IsOwned() && Quicksilver.IsReady() && ObjectManager.Player.CountEnemiesInRange(1500) > 0)
-            {
-                Core.DelayAction(() => Quicksilver.Cast(), Kalista.MenuItem["Cast.Delay"].Cast<Slider>().CurrentValue);
-            }
+            var Delay_Time = MenuItem["Cast.Delay"].Cast<Slider>().CurrentValue;
 
-            if (Mercurial.IsOwned() && Mercurial.IsReady() && ObjectManager.Player.CountEnemiesInRange(1500) > 0)
+            if (Quicksilver.IsOwned() && Quicksilver.IsReady() && MenuItem["Quicksilver"].Cast<CheckBox>().CurrentValue)
             {
-                Core.DelayAction(() => Mercurial.Cast(), Kalista.MenuItem["Cast.Delay"].Cast<Slider>().CurrentValue);
+                if (MenuItem["Poisons"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Poison))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Supression"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Suppression))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Blind"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Blind))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Charm"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Charm))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Fear"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Fear))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Polymorph"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Polymorph))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Silence"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Silence))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Slow"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Slow))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Stun"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Stun))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Knockup"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Knockup))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }
+
+                if (MenuItem["Taunt"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Taunt))
+                { Core.DelayAction(() => Quicksilver.Cast(), Delay_Time); }              
             }
-        }
+          
+            if (Mercurial.IsOwned() && Mercurial.IsReady() && MenuItem["Scimitar"].Cast<CheckBox>().CurrentValue)
+            {
+                if (MenuItem["Poisons"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Poison))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Supression"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Suppression))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Blind"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Blind))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Charm"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Charm))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Fear"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Fear))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Polymorph"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Polymorph))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Silence"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Silence))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Slow"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Slow))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Stun"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Stun))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Knockup"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Knockup))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+
+                if (MenuItem["Taunt"].Cast<CheckBox>().CurrentValue && Player.Instance.HasBuffOfType(BuffType.Taunt))
+                { Core.DelayAction(() => Mercurial.Cast(), Delay_Time); }
+            }
+        }   //End Active_Item
     }
 }
