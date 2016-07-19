@@ -53,8 +53,7 @@ namespace NebulaKalista
 
             MenuFarm = Menu.AddSubMenu("- Farm", "SubMenu1");
             MenuFarm.AddLabel(Res_Language.GetString("Farm_Lane_Str"));
-            MenuFarm.Add("Lane.Q",          new CheckBox(Res_Language.GetString("Farm_Lane_Q")));
-            MenuFarm.Add("Lane.Q1",         new CheckBox("Out of AutoAttact range"));
+            MenuFarm.Add("Lane.Q",          new CheckBox(Res_Language.GetString("Farm_Lane_Q")));            
             MenuFarm.Add("Lane.Q.Num",      new Slider(Res_Language.GetString("Farm_Lane_Q_Num"), 2, 1, 5));
             MenuFarm.Add("Lane.Q.Mana",     new Slider(Res_Language.GetString("Farm_Lane_Q_Mana"), 80, 0, 100));
             MenuFarm.AddSeparator();
