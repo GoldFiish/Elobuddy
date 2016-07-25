@@ -493,11 +493,29 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
+        ///   보유 마나가 [ n% ] 이상일 때 [ E ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Combo_E_Mana {
+            get {
+                return ResourceManager.GetString("Main_Combo_E_Mana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   [ Q ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Combo_Q {
             get {
                 return ResourceManager.GetString("Main_Combo_Q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   보유 마나가 [ n% ] 이상일 때 [ Q ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Combo_Q_Mana {
+            get {
+                return ResourceManager.GetString("Main_Combo_Q_Mana", resourceCulture);
             }
         }
         

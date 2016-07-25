@@ -44,7 +44,10 @@ namespace NebulaKalista
             MenuMain = Menu.AddSubMenu("- Main", "SubMenu0");
             MenuMain.AddLabel(Res_Language.GetString("Main_Combo_Str"));
             MenuMain.Add("Combo.Q",         new CheckBox(Res_Language.GetString("Main_Combo_Q")));
+            MenuMain.Add("Combo.Q.Mana",    new Slider(Res_Language.GetString("Main_Combo_Q_Mana"), 15, 0, 100));
+            MenuMain.AddSeparator();
             MenuMain.Add("Combo.E",         new CheckBox(Res_Language.GetString("Main_Combo_E")));
+            //MenuMain.Add("Combo.E.Mana",    new Slider(Res_Language.GetString("Main_Combo_E_Mana"), 15, 0, 100));
             MenuMain.AddSeparator();
             MenuMain.AddLabel(Res_Language.GetString("Main_Harass_Str"));
             MenuMain.Add("Harass.Q",        new CheckBox(Res_Language.GetString("Main_Harass_Q")));
@@ -62,9 +65,9 @@ namespace NebulaKalista
             MenuFarm.Add("Lane.E.Mana",     new Slider(Res_Language.GetString("Farm_Lane_E_Mana"), 70, 0, 100));
             MenuFarm.AddSeparator();
             MenuFarm.AddLabel(Res_Language.GetString("Farm_Jungle_Str"));
-            MenuFarm.Add("Jungle.Q.All",    new CheckBox(Res_Language.GetString("Farm_Jungle_Q_All")));
+            MenuFarm.Add("Jungle.Q.All",    new CheckBox(Res_Language.GetString("Farm_Jungle_Q_All"), false));
             MenuFarm.Add("Jungle.Q.Big",    new CheckBox(Res_Language.GetString("Farm_Jungle_Q_Big")));
-            MenuFarm.Add("Jungle.E.All",    new CheckBox(Res_Language.GetString("Farm_Jungle_E_All")));
+            MenuFarm.Add("Jungle.E.All",    new CheckBox(Res_Language.GetString("Farm_Jungle_E_All"), false));
             MenuFarm.Add("Jungle.E.Big",    new CheckBox(Res_Language.GetString("Farm_Jungle_E_Big")));
             MenuFarm.Add("Jungle.Mana",     new Slider(Res_Language.GetString("Farm_Jungle_Mana"), 60, 0, 100));
             MenuFarm.AddSeparator();

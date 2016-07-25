@@ -15,7 +15,7 @@ namespace NebulaKalista
 
             if (Qtarget == null) return;            
 
-            if (MenuMain["Combo.Q"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady())
+            if (MenuMain["Combo.Q"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > MenuMain["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
             {
                 if(!Player.Instance.IsDashing() && Qtarget.IsValidTarget(SpellManager.Q.Range) && SpellManager.Q.GetPrediction(Qtarget).HitChance >= HitChance.High)
                 {

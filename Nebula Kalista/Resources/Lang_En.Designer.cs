@@ -493,11 +493,29 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
+        ///   If mana is higher than [ n% ], [ E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Combo_E_Mana {
+            get {
+                return ResourceManager.GetString("Main_Combo_E_Mana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   [ Q ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Combo_Q {
             get {
                 return ResourceManager.GetString("Main_Combo_Q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   If mana is higher than [ n% ], [ Q ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Combo_Q_Mana {
+            get {
+                return ResourceManager.GetString("Main_Combo_Q_Mana", resourceCulture);
             }
         }
         
@@ -516,24 +534,6 @@ namespace NebulaKalista.Resources {
         internal static string Main_Harass_E {
             get {
                 return ResourceManager.GetString("Main_Harass_E", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Harass_Exp_1 {
-            get {
-                return ResourceManager.GetString("Main_Harass_Exp_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Harass_Exp_2 {
-            get {
-                return ResourceManager.GetString("Main_Harass_Exp_2", resourceCulture);
             }
         }
         

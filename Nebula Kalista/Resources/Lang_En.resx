@@ -145,12 +145,12 @@
     <value>If mana is higher than [ n% ], [ Q E ] is used </value>
     <comment>보유 마나가 [ n% ] 이상일 때 [ Q E ] 사용</comment>
   </data>
-  <data name="Main_Harass_Exp_1" xml:space="preserve">
-    <value />
+  <data name="Main_Combo_Q_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ Q ] is used</value>
     <comment>견제 조건 1 : 하나이상의 미니언 킬이 가능할 때 + 적 챔피언 E 스텍이 한개 이상일 때 + 나와의 거리가 900 이상일 때</comment>
   </data>
-  <data name="Main_Harass_Exp_2" xml:space="preserve">
-    <value />
+  <data name="Main_Combo_E_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ E ] is used </value>
     <comment>견제 조건 2 : 적 챔피언 E 스텍이 세개 이상일 때 + 나와의 거리가 900 이상일 때</comment>
   </data>
   <data name="Farm_Lane_E_All" xml:space="preserve">

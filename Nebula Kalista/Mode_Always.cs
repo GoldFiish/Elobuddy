@@ -44,11 +44,11 @@ namespace NebulaKalista
 
             if (MenuMisc["R.Save"].Cast<CheckBox>().CurrentValue && SpellManager.R.IsReady())
             {                
-                var ppp = EntityManager.Heroes.Allies.LastOrDefault(x => !x.IsMe && !x.IsDead && x.Distance(ObjectManager.Player.Position) < 1500 && x.HasBuff("kalistacoopstrikeally"));
+                var Partner = EntityManager.Heroes.Allies.LastOrDefault(x => !x.IsMe && !x.IsDead && x.Distance(ObjectManager.Player.Position) < 1500 && x.HasBuff("kalistacoopstrikeally"));
 
-                if (ppp == null) return;
+                if (Partner == null) return;
 
-                if (ppp.HealthPercent < MenuMisc["R.Save.Hp"].Cast<Slider>().CurrentValue && ppp.CountEnemiesInRange(1500) > 0)
+                if (Partner.HealthPercent < MenuMisc["R.Save.Hp"].Cast<Slider>().CurrentValue && Partner.CountEnemiesInRange(1500) > 0)
                 {
                     SpellManager.R.Cast();
                 }        

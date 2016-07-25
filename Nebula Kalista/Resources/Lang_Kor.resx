@@ -318,4 +318,10 @@
   <data name="Intro_Language_Select" xml:space="preserve">
     <value>언어 ( Language )</value>
   </data>
+  <data name="Main_Combo_Q_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ Q ] 사용</value>
+  </data>
+  <data name="Main_Combo_E_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ E ] 사용</value>
+  </data>
 </root>
