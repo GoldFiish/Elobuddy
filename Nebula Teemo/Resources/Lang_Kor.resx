@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Main_Text_1" xml:space="preserve">
+    <value>이 애드온이 마음에 드신다면, 추천 또는 기부 부탁드립니다.</value>
+  </data>
+  <data name="Main_Text_0" xml:space="preserve">
+    <value>[ Nebula ] Teemo - 6.13.0.0</value>
+  </data>
+  <data name="Main_Language_Exp" xml:space="preserve">
+    <value>언어 선택 후 F5를 눌러 적용합니다.</value>
+  </data>
+  <data name="Main_Text_2" xml:space="preserve">
+    <value>기부하신 금액은 더 나은 애드온 개발을 위해 사용됩니다. 감사합니다.</value>
+  </data>
+  <data name="Main_Language_Select" xml:space="preserve">
+    <value>언어 ( Language )</value>
+  </data>
+  <data name="Combo_W_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ W ]를 사용합니다.</value>
+  </data>
+  <data name="Combo_Q_Text" xml:space="preserve">
+    <value>[ Q ] 사용</value>
+  </data>
+  <data name="Combo_W_Range" xml:space="preserve">
+    <value>적이 [ n ] ~ [ 720 ]사이에 있으면 [ W ]를 사용합니다.</value>
+  </data>
+  <data name="Harass_Q_Text" xml:space="preserve">
+    <value>[ Q ] 사용</value>
+  </data>
+  <data name="Combo_Q_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Combo_R_Text" xml:space="preserve">
+    <value>[ R ] 사용</value>
+  </data>
+  <data name="Combo_W_Text" xml:space="preserve">
+    <value>[ W ] 사용</value>
+  </data>
+  <data name="Combo_R_Count" xml:space="preserve">
+    <value>보유한 [ 버섯 ] 개수가 [ n ]개 보다 많으면 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Misc_Draw_Q" xml:space="preserve">
+    <value>[ Q ] 범위</value>
+  </data>
+  <data name="Misc_Draw_R" xml:space="preserve">
+    <value>[ R ] 범위</value>
+  </data>
+  <data name="Misc_Draw_Text" xml:space="preserve">
+    <value>범위 표시</value>
+  </data>
+  <data name="Misc_Draw_ComboQ" xml:space="preserve">
+    <value>[ Q ] 범위 - [ 시즈 미니언 킬 ]</value>
+  </data>
+  <data name="Harass_Q_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ Q ]를 사용합니다.</value>
+  </data>
+  <data name="Harass_Q_Range" xml:space="preserve">
+    <value>적이 [ n ]범위 안에 있으면 [ Q ]을 사용합니다.</value>
+  </data>
+  <data name="Harass_R_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Harass_R_Range" xml:space="preserve">
+    <value>적이 [ n ]범위 안에 있으면 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Harass_R_Count" xml:space="preserve">
+    <value>보유한 [ 버섯 ] 개수가 [ n ]개 보다 많으면 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Harass_R_Text" xml:space="preserve">
+    <value>[ R ] 사용</value>
+  </data>
+  <data name="Harass_W_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ W ]를 사용합니다.</value>
+  </data>
+  <data name="Harass_W_Range" xml:space="preserve">
+    <value>적이 [ n ]범위 안에 있으면 [ W ]를 사용합니다.</value>
+  </data>
+  <data name="Harass_W_Text" xml:space="preserve">
+    <value>[ W ] 사용</value>
+  </data>
+  <data name="Attack_Range_Exp" xml:space="preserve">
+    <value>티모 사거리 - [ 평타 : 500 ] [ Q : 680 ] [ R : 400 / 650 / 900 ]</value>
+  </data>
+  <data name="Item_A_BK" xml:space="preserve">
+    <value>몰락한 왕의 검</value>
+  </data>
+  <data name="Item_A_BK_Hp" xml:space="preserve">
+    <value>사용자의 체력이 [ n% ] 이하일 때 [ 몰락한 왕의 검 ] 사용</value>
+  </data>
+  <data name="Item_A_BW" xml:space="preserve">
+    <value>빌지워터 해적검</value>
+  </data>
+  <data name="Item_A_Hex" xml:space="preserve">
+    <value>마법공학 총검</value>
+  </data>
+  <data name="Item_Buff_Blind" xml:space="preserve">
+    <value>실명</value>
+  </data>
+  <data name="Item_Buff_Charm" xml:space="preserve">
+    <value>매혹</value>
+  </data>
+  <data name="Item_Buff_Fear" xml:space="preserve">
+    <value>공포</value>
+  </data>
+  <data name="Item_Buff_Ploymorph" xml:space="preserve">
+    <value>변형</value>
+  </data>
+  <data name="Item_Buff_Poisons" xml:space="preserve">
+    <value>독</value>
+  </data>
+  <data name="Item_Buff_Silence" xml:space="preserve">
+    <value>침묵</value>
+  </data>
+  <data name="Item_Buff_Slow" xml:space="preserve">
+    <value>느려짐</value>
+  </data>
+  <data name="Item_Buff_Snare" xml:space="preserve">
+    <value>속박</value>
+  </data>
+  <data name="Item_Buff_Stun" xml:space="preserve">
+    <value>기절</value>
+  </data>
+  <data name="Item_Buff_Supression" xml:space="preserve">
+    <value>제압</value>
+  </data>
+  <data name="Item_Buff_Taunt" xml:space="preserve">
+    <value>도발</value>
+  </data>
+  <data name="Item_CastDelay" xml:space="preserve">
+    <value>[ 수은장식띠 / 헤르메스의 시미터 ]의 시전 속도 - [ /ms ]</value>
+  </data>
+  <data name="Item_D_QSS" xml:space="preserve">
+    <value>수은장식띠</value>
+  </data>
+  <data name="Item_D_Scimitar" xml:space="preserve">
+    <value>헤르메스의 시미터</value>
+  </data>
+  <data name="Item_Exp_0" xml:space="preserve">
+    <value>※ 콤보모드에서만 작동합니다.</value>
+  </data>
+  <data name="Item_Debuff_Text" xml:space="preserve">
+    <value>[ 수은 장식띠, 헤르메스의 시미터 ]로 해제할 효과</value>
+  </data>
+  <data name="Item_Item_Text" xml:space="preserve">
+    <value>메뉴 (x) 사용 (o) - [ 빌지워터 해적검 ] [ 요우무의 유령검 ] [ 마법공학 총검 ]</value>
+  </data>
+  <data name="Item_Potion_0" xml:space="preserve">
+    <value>사용자의 체력이 [ n% ] 이하일 때 [ 부패 물약 ]을 사용합니다.</value>
+    <comment>Corrupting Potion</comment>
+  </data>
+  <data name="Item_S_Ignite" xml:space="preserve">
+    <value>점화</value>
+  </data>
+  <data name="Jungle_Style_Exp_1" xml:space="preserve">
+    <value>0 : 대형부터 잡기</value>
+  </data>
+  <data name="Jungle_Style_Exp_2" xml:space="preserve">
+    <value>1 : 대형에 [ Q ] 사용 후, 소형 잡기</value>
+  </data>
+  <data name="Jungle_Q_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ Q ]를 사용합니다.</value>
+  </data>
+  <data name="Jungle_Style" xml:space="preserve">
+    <value>정글 스타일</value>
+  </data>
+  <data name="Jungle_Q_Text" xml:space="preserve">
+    <value>[ Q ] 사용</value>
+  </data>
+  <data name="Jungle_R_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Jungle_R_Count" xml:space="preserve">
+    <value>보유한 [ 버섯 ] 개수가 [ n ]개 보다 많으면 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Jungle_R_Text" xml:space="preserve">
+    <value>[ R ] 사용</value>
+  </data>
+  <data name="Misc_KillSteal" xml:space="preserve">
+    <value>킬 스틸 - [ Q / E  /R ]</value>
+  </data>
+  <data name="Misc_KillSteal_Text" xml:space="preserve">
+    <value>스틸 설정</value>
+  </data>
+  <data name="Lane_R_KillableCount" xml:space="preserve">
+    <value>[ R ]을 사용하여 죽일 수 있는 미니언의 개수</value>
+  </data>
+  <data name="Lane_R_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Lane_R_PoisonCount" xml:space="preserve">
+    <value>[ R ]을 사용하여 중독시킬 미니언의 개수</value>
+  </data>
+  <data name="Lane_R_Count" xml:space="preserve">
+    <value>보유한 [ 버섯 ] 개수가 [ n ]개 보다 많으면 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Lane_R_Text" xml:space="preserve">
+    <value>[ R ] 사용</value>
+  </data>
+  <data name="Misc_Skin_Id_0" xml:space="preserve">
+    <value>클래식 티모</value>
+    <comment>Classic Teemo</comment>
+  </data>
+  <data name="Misc_Skin_Id_1" xml:space="preserve">
+    <value>행복한 엘프 티모</value>
+    <comment>Happy Elf Teemo</comment>
+  </data>
+  <data name="Misc_Skin_Id_2" xml:space="preserve">
+    <value>정찰부대 티모</value>
+    <comment>Recon Teemo</comment>
+  </data>
+  <data name="Misc_Skin_Id_3" xml:space="preserve">
+    <value>오소리 티모</value>
+    <comment>Badger Teemo</comment>
+  </data>
+  <data name="Misc_Skin_Id_4" xml:space="preserve">
+    <value>우주비행사 티모</value>
+    <comment>Astronaut Teemo</comment>
+  </data>
+  <data name="Misc_Skin_Id_5" xml:space="preserve">
+    <value>복실복실 티모</value>
+    <comment>Cottontail Teemo</comment>
+  </data>
+  <data name="Misc_Skin_Id_6" xml:space="preserve">
+    <value>슈퍼 티모</value>
+    <comment>Super Teemo</comment>
+  </data>
+  <data name="Misc_Skin_Id_7" xml:space="preserve">
+    <value>판다 티모</value>
+    <comment>Panda Teemo</comment>
+  </data>
+  <data name="Misc_Skin_Id_8" xml:space="preserve">
+    <value>오메가 분대 티모</value>
+    <comment>Omega Squad Teemo</comment>
+  </data>
+  <data name="Misc_Skin_Text" xml:space="preserve">
+    <value>스킨 설정</value>
+  </data>
+  <data name="Misc_Skin_Select" xml:space="preserve">
+    <value>스킨</value>
+  </data>
+  <data name="Item_D_Zhonyas_Hp" xml:space="preserve">
+    <value>사용자의 체력이 [ n% ] 이하일 때 [ 존야의 모래시계 ] 사용</value>
+  </data>
+  <data name="Item_Potion_1" xml:space="preserve">
+    <value>사용자의 체력이 [ n% ] 이하일 때 [ 사냥꾼의 물약 ]을 사용합니다.</value>
+    <comment>Hunter's Potion</comment>
+  </data>
+  <data name="Item_Potion_2" xml:space="preserve">
+    <value>사용자의 체력이 [ n% ] 이하일 때 [ 비스킷 / 체력 물약 / 충전형 물약 ]을 사용합니다.</value>
+    <comment>Biscuit / Health Potion / Refillable Potion</comment>
+  </data>
+  <data name="Main_Attack_Style" xml:space="preserve">
+    <value>공격 스타일</value>
+  </data>
+  <data name="Item_Zhonyas_Azir" xml:space="preserve">
+    <value>아지르 [ R ]</value>
+  </data>
+  <data name="Item_Zhonyas_Bitz" xml:space="preserve">
+    <value>블리츠 [ Q ]</value>
+  </data>
+  <data name="Item_Zhonyas_Caitlyn" xml:space="preserve">
+    <value>케이틀린 [ R ]</value>
+  </data>
+  <data name="Item_Zhonyas_Darius" xml:space="preserve">
+    <value>다리우스 [ R ]</value>
+  </data>
+  <data name="Item_D_Zhonyas_Dmg" xml:space="preserve">
+    <value>순간 데미지가 [ n% ] 이상 들어오면  [ 존야의 모래시계 ]를 사용합니다.</value>
+  </data>
+  <data name="Item_Zhonyas_Fizz" xml:space="preserve">
+    <value>피즈 [ R ]</value>
+  </data>
+  <data name="Item_Zhonyas_Garen" xml:space="preserve">
+    <value>가렌 [ R ]</value>
+  </data>
+  <data name="Item_Zhonyas_Jin" xml:space="preserve">
+    <value>진 [ R ]</value>
+  </data>
+  <data name="Item_Zhonyas_Leeshin" xml:space="preserve">
+    <value>리신 [ R ]</value>
+  </data>
+  <data name="Item_Zhonyas_Lissandra" xml:space="preserve">
+    <value>리산드라 [ R ]</value>
+  </data>
+  <data name="Item_Zhonyas_Riven" xml:space="preserve">
+    <value>리븐 [ R ]</value>
+  </data>
+  <data name="Item_Zhonyas_Zed" xml:space="preserve">
+    <value>제드 [ R ]</value>
+  </data>
+  <data name="Lane_Q_Big" xml:space="preserve">
+    <value>[ Q ] 사용 - 대포 미니언</value>
+  </data>
+  <data name="Misc_Ignite" xml:space="preserve">
+    <value>킬 스틸 - [ 점화 ]</value>
+  </data>
+  <data name="Misc_JungleSteal" xml:space="preserve">
+    <value>정글 스틸 - [ Q / E / R ] [ 에픽 몬스터 ]</value>
+  </data>
+  <data name="Misc_AutoR" xml:space="preserve">
+    <value>자동 [ R ]</value>
+  </data>
+  <data name="Misc_AutoR_Exp" xml:space="preserve">
+    <value>적 챔피언이 [ 존야의 모래시계 / 귀환 / 에어본 / 스턴 / 제압 / 속박 / 매혹 / 도발 ] 상태일 때 [ R ]을 사용합니다.</value>
+  </data>
+  <data name="Item_D_Zhonyas_Text" xml:space="preserve">
+    <value>존야의 모래시계</value>
+  </data>
+  <data name="Item_Exp_1" xml:space="preserve">
+    <value>※ 항상 작동합니다.</value>
+  </data>
+  <data name="Main_Attack_Style_Exp_0" xml:space="preserve">
+    <value>0 : Q → 평 → 평</value>
+  </data>
+  <data name="Main_Attack_Style_Exp_1" xml:space="preserve">
+    <value>1 : 평 → Q → 평</value>
+  </data>
+  <data name="Item_A_Youmuu" xml:space="preserve">
+    <value>요우무의 유령검</value>
+  </data>
+  <data name="Combo_Ignite" xml:space="preserve">
+    <value>[ 점화 ] 사용</value>
+  </data>
+  <data name="Misc_Draw_Virtual" xml:space="preserve">
+    <value>범위 확인 - 거리를 확인하고 싶을 때 사용합니다.</value>
+  </data>
+  <data name="Misc_Draw_Virtual_Min" xml:space="preserve">
+    <value>범위 1</value>
+  </data>
+  <data name="Misc_Draw_Virtual_Max" xml:space="preserve">
+    <value>범위 2</value>
+  </data>
+</root>

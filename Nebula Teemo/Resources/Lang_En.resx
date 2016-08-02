@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Item_Buff_Blind" xml:space="preserve">
+    <value>Blind</value>
+  </data>
+  <data name="Item_Buff_Charm" xml:space="preserve">
+    <value>Charm</value>
+  </data>
+  <data name="Item_Buff_Fear" xml:space="preserve">
+    <value>Fear</value>
+  </data>
+  <data name="Item_Buff_Ploymorph" xml:space="preserve">
+    <value>Ploymorph</value>
+  </data>
+  <data name="Item_Buff_Poisons" xml:space="preserve">
+    <value>Poisons</value>
+  </data>
+  <data name="Item_Buff_Silence" xml:space="preserve">
+    <value>Silence</value>
+  </data>
+  <data name="Item_Buff_Slow" xml:space="preserve">
+    <value>Slow</value>
+  </data>
+  <data name="Item_Buff_Snare" xml:space="preserve">
+    <value>Snare</value>
+  </data>
+  <data name="Item_Buff_Stun" xml:space="preserve">
+    <value>Stun</value>
+  </data>
+  <data name="Item_Buff_Supression" xml:space="preserve">
+    <value>Supression</value>
+  </data>
+  <data name="Item_Buff_Taunt" xml:space="preserve">
+    <value>Taunt</value>
+  </data>
+  <data name="Item_D_QSS" xml:space="preserve">
+    <value>Quicksilver Sash</value>
+  </data>
+  <data name="Item_D_Scimitar" xml:space="preserve">
+    <value>Mercurial Scimitar</value>
+  </data>
+  <data name="Item_S_Ignite" xml:space="preserve">
+    <value>Ignite</value>
+  </data>
+  <data name="Misc_Skin_Id_0" xml:space="preserve">
+    <value>Classic Teemo</value>
+  </data>
+  <data name="Misc_Skin_Id_1" xml:space="preserve">
+    <value>Happy Elf Teemo</value>
+  </data>
+  <data name="Misc_Skin_Id_2" xml:space="preserve">
+    <value>Recon Teemo</value>
+  </data>
+  <data name="Misc_Skin_Id_3" xml:space="preserve">
+    <value>Badger Teemo</value>
+  </data>
+  <data name="Misc_Skin_Id_4" xml:space="preserve">
+    <value>Astronaut Teemo</value>
+  </data>
+  <data name="Misc_Skin_Id_5" xml:space="preserve">
+    <value>Cottontail Teemo</value>
+  </data>
+  <data name="Misc_Skin_Id_6" xml:space="preserve">
+    <value>Super Teemo</value>
+  </data>
+  <data name="Misc_Skin_Id_7" xml:space="preserve">
+    <value>Panda Teemo</value>
+  </data>
+  <data name="Misc_Skin_Id_8" xml:space="preserve">
+    <value>Omega Squad Teemo</value>
+  </data>
+  <data name="Misc_Skin_Text" xml:space="preserve">
+    <value>Skin Setting</value>
+  </data>
+  <data name="Misc_Skin_Select" xml:space="preserve">
+    <value>Skin</value>
+  </data>
+  <data name="Item_D_Zhonyas_Text" xml:space="preserve">
+    <value>Zhonya's Hourglass</value>
+  </data>
+  <data name="Item_A_Youmuu" xml:space="preserve">
+    <value>Youmuu's Ghostblade</value>
+  </data>
+  <data name="Item_A_Hex" xml:space="preserve">
+    <value>Hextech Gunblade</value>
+  </data>
+  <data name="Item_A_BW" xml:space="preserve">
+    <value>Bilgewater Cutlass</value>
+  </data>
+  <data name="Item_A_BK" xml:space="preserve">
+    <value>Blade of the Ruined King</value>
+  </data>
+  <data name="Combo_Q_Text" xml:space="preserve">
+    <value>[ Q ] Use</value>
+  </data>
+  <data name="Harass_Q_Text" xml:space="preserve">
+    <value>[ Q ] Use</value>
+  </data>
+  <data name="Jungle_Q_Text" xml:space="preserve">
+    <value>[ Q ] Use</value>
+  </data>
+  <data name="Misc_Draw_R" xml:space="preserve">
+    <value>[ R ] Range</value>
+  </data>
+  <data name="Combo_R_Text" xml:space="preserve">
+    <value>[ R ] Use</value>
+  </data>
+  <data name="Harass_R_Text" xml:space="preserve">
+    <value>[ R ] Use</value>
+  </data>
+  <data name="Jungle_R_Text" xml:space="preserve">
+    <value>[ R ] Use</value>
+  </data>
+  <data name="Lane_R_Text" xml:space="preserve">
+    <value>[ R ] Use</value>
+  </data>
+  <data name="Misc_Draw_Q" xml:space="preserve">
+    <value>[ Q ] Range</value>
+  </data>
+  <data name="Misc_Draw_ComboQ" xml:space="preserve">
+    <value>[ Q ] Range - [ Siege minion ]</value>
+  </data>
+  <data name="Misc_Draw_Text" xml:space="preserve">
+    <value>Draw Setting</value>
+  </data>
+  <data name="Misc_Ignite" xml:space="preserve">
+    <value>Kill steal - [ Ignite]</value>
+  </data>
+  <data name="Misc_JungleSteal" xml:space="preserve">
+    <value>Jungle steal - [ Q / E / R ] [ Epic Monster ]</value>
+  </data>
+  <data name="Misc_KillSteal" xml:space="preserve">
+    <value>Kill steal - [ Q / E / R ]</value>
+  </data>
+  <data name="Misc_KillSteal_Text" xml:space="preserve">
+    <value>Steal Setting</value>
+  </data>
+  <data name="Misc_AutoR" xml:space="preserve">
+    <value>Auto [ R ]</value>
+  </data>
+  <data name="Main_Text_0" xml:space="preserve">
+    <value>[ Nebula ] Teemo - 6.13.0.0</value>
+  </data>
+  <data name="Main_Language_Select" xml:space="preserve">
+    <value>Language ( 언어 )</value>
+  </data>
+  <data name="Combo_W_Text" xml:space="preserve">
+    <value>[ W ] Use</value>
+  </data>
+  <data name="Attack_Range_Exp" xml:space="preserve">
+    <value>Teemo range - [ AA : 500 ] [ Q : 680 ] [ R : 400 / 650 / 900 ]</value>
+  </data>
+  <data name="Harass_W_Text" xml:space="preserve">
+    <value>[ W ] Use</value>
+  </data>
+  <data name="Lane_Q_Big" xml:space="preserve">
+    <value>[ Q ] Use - Siege minion</value>
+  </data>
+  <data name="Item_A_BK_Hp" xml:space="preserve">
+    <value>If player hp is lower than [ n% ], [ Blade of the Ruined King ] is used</value>
+  </data>
+  <data name="Item_D_Zhonyas_Hp" xml:space="preserve">
+    <value>If player hp is lower than [ n% ], [ Zhonya's Hourglass ] is used</value>
+  </data>
+  <data name="Item_CastDelay" xml:space="preserve">
+    <value>Quicksilver Sash, Mercurial Scimitar cast speed - [ /ms ]</value>
+  </data>
+  <data name="Combo_Q_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ R ] is used </value>
+  </data>
+  <data name="Harass_Q_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ Q ] is used </value>
+  </data>
+  <data name="Combo_W_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ W ] is used </value>
+  </data>
+  <data name="Harass_R_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ R ] is used </value>
+  </data>
+  <data name="Harass_W_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ W ] is used </value>
+  </data>
+  <data name="Jungle_Q_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ Q ] is used </value>
+  </data>
+  <data name="Jungle_R_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ R ] is used </value>
+  </data>
+  <data name="Lane_R_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ R ] is used </value>
+  </data>
+  <data name="Main_Attack_Style" xml:space="preserve">
+    <value>Attact style</value>
+  </data>
+  <data name="Main_Language_Exp" xml:space="preserve">
+    <value>Select Language -&gt; Press [ F5 ] key</value>
+  </data>
+  <data name="Jungle_Style" xml:space="preserve">
+    <value>Jungle style</value>
+  </data>
+  <data name="Item_Debuff_Text" xml:space="preserve">
+    <value>Select to remove the buff</value>
+  </data>
+  <data name="Item_Exp_0" xml:space="preserve">
+    <value>※ Only!! It works in combo mode.</value>
+  </data>
+  <data name="Item_Exp_1" xml:space="preserve">
+    <value>※ Allways activate.</value>
+  </data>
+  <data name="Item_Item_Text" xml:space="preserve">
+    <value>Just no menu - [ Bilgewater Cutlass ] [ Youmuu's Ghostblade ] [ Hextech Gunblade ]</value>
+  </data>
+  <data name="Jungle_R_Count" xml:space="preserve">
+    <value>If [ Noxious Trap ] is higher than [ n% ], [ R ] is used </value>
+  </data>
+  <data name="Lane_R_Count" xml:space="preserve">
+    <value>If [ Noxious Trap ] is higher than [ n% ], [ R ] is used </value>
+  </data>
+  <data name="Combo_R_Count" xml:space="preserve">
+    <value>If [ Noxious Trap ] is higher than [ n% ], [ R ] is used </value>
+  </data>
+  <data name="Harass_R_Count" xml:space="preserve">
+    <value>If [ Noxious Trap ] is higher than [ n% ], [ R ] is used </value>
+  </data>
+  <data name="Main_Attack_Style_Exp_0" xml:space="preserve">
+    <value>0 : [ Q ] → AA → AA</value>
+  </data>
+  <data name="Main_Attack_Style_Exp_1" xml:space="preserve">
+    <value>1 : AA → [ Q ] → AA ( Jungle Teemo )</value>
+  </data>
+  <data name="Jungle_Style_Exp_1" xml:space="preserve">
+    <value>0 : Starting Big Monster</value>
+  </data>
+  <data name="Jungle_Style_Exp_2" xml:space="preserve">
+    <value>1 : Starting Mini Monster kill after [ Q ] use to Big Monster</value>
+  </data>
+  <data name="Harass_Q_Range" xml:space="preserve">
+    <value>If enemy is in [ n ] range, [ Q ] is used</value>
+  </data>
+  <data name="Combo_W_Range" xml:space="preserve">
+    <value>If enemy is [ n ] ~ [720 ] range, [ W ] is used</value>
+  </data>
+  <data name="Harass_R_Range" xml:space="preserve">
+    <value>If enemy is in [ n ] range, [ R ] is used</value>
+  </data>
+  <data name="Harass_W_Range" xml:space="preserve">
+    <value>If enemy is in [ n ] range, [ W ] is used</value>
+  </data>
+  <data name="Lane_R_KillableCount" xml:space="preserve">
+    <value>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</value>
+  </data>
+  <data name="Lane_R_PoisonCount" xml:space="preserve">
+    <value>Number of poisoning Minions &gt;= [ n ], [ R ] is used</value>
+  </data>
+  <data name="Main_Text_1" xml:space="preserve">
+    <value>If you like this addon, hope Upvote click or donation. </value>
+  </data>
+  <data name="Main_Text_2" xml:space="preserve">
+    <value>Donated amount will be used for the development of better addon. Thank you.</value>
+  </data>
+  <data name="Misc_AutoR_Exp" xml:space="preserve">
+    <value>Enemy state : [ Zhonya's / Recall / Konck up / Stun / Supression / Snare / Charm / Taunt ]</value>
+  </data>
+  <data name="Combo_Ignite" xml:space="preserve">
+    <value>[ Ignite ] Use</value>
+  </data>
+  <data name="Misc_Draw_Virtual" xml:space="preserve">
+    <value>[ Virtual Range ] Use - Use when you want to know the distance.</value>
+  </data>
+  <data name="Misc_Draw_Virtual_Max" xml:space="preserve">
+    <value>Line 2</value>
+  </data>
+  <data name="Misc_Draw_Virtual_Min" xml:space="preserve">
+    <value>Line 1</value>
+  </data>
+</root>
