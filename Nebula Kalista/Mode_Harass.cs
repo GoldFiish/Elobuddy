@@ -17,9 +17,14 @@ namespace NebulaKalista
             
             if (SpellManager.Q.IsReady() && MenuMain["Harass.Q"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuMain["Harass.Mana"].Cast<Slider>().CurrentValue)
             {
-                if (!Player.Instance.IsDashing() && Qtarget.IsValidTarget(SpellManager.Q.Range) && SpellManager.Q.GetPrediction(Qtarget).HitChance >= HitChance.High)
+                if (!Player.Instance.IsDashing() && Qtarget.IsValidTarget(SpellManager.Q.Range))
                 {
-                        SpellManager.Q.Cast(Qtarget);
+                    var QPrediction = SpellManager.Q.GetPrediction(Qtarget);
+
+                    if (QPrediction.HitChance >= HitChance.High)
+                    {
+                        SpellManager.Q.Cast(QPrediction.CastPosition);
+                    }
                 }
             }
 

@@ -341,12 +341,12 @@
     <value>[ R ] Range</value>
     <comment>[ R ] 범위</comment>
   </data>
-  <data name="Draw_E_Dmg" xml:space="preserve">
-    <value>[ E ] Damage Indicator - Hp bar</value>
+  <data name="Draw_E_Dmg_Champ" xml:space="preserve">
+    <value>[ E ] Damage Indicator - Enemy Hp bar</value>
     <comment>[ E ] 공력력을 체력바에 표시</comment>
   </data>
-  <data name="Draw_E_Percent" xml:space="preserve">
-    <value>[ 0 = Off ] [ 1 = Near Hp bar ] [ 2 = On the Hp bar ] [ 3 = On the Hero name ] [ 4 = Sidebar ]</value>
+  <data name="Draw_E_Percent0" xml:space="preserve">
+    <value>Off</value>
     <comment>[ 0 = 사용안함 ] [ 1 = 체력바 옆에 ] [ 2 = 체력바 위에 ] [ 3 = 챔피언 이름 위에 ] [ 4 = 사이드바 ]</comment>
   </data>
   <data name="Draw_E_Sidebar_X" xml:space="preserve">
@@ -358,7 +358,7 @@
     <comment>사이드바 [ Y ] 위치</comment>
   </data>
   <data name="Draw_E_Percent_Str" xml:space="preserve">
-    <value>[ E ] Damage Indicator - %</value>
+    <value>[ E ] Damage % position</value>
     <comment>[ E ] 공격력을 [ value ] 위치에 표시 %로 표시</comment>
   </data>
   <data name="Item_D_CastDelay" xml:space="preserve">
@@ -366,19 +366,19 @@
     <comment>[ 수은 장식띠, 헤르메스의 시미터 ]의 시전 속도 - [ /ms ]</comment>
   </data>
   <data name="Item_D_Str" xml:space="preserve">
-    <value>Select to remove the debuff</value>
+    <value>Select to remove the buff</value>
     <comment>스운 + 시미터로 해제할 효과</comment>
   </data>
   <data name="Intro_Str_0" xml:space="preserve">
-    <value>[ Nebula ] Kalista - 6.13.0.2</value>
+    <value>[ Nebula ] Kalista - 6.15.0.0</value>
     <comment>[ Nebula ] Kalista - 6.13.0.2</comment>
   </data>
   <data name="Intro_Str_1" xml:space="preserve">
-    <value>If you have trouble or need other language, please send me PM.</value>
+    <value>If you like this addon, hope Upvote click or donation.</value>
     <comment>챔피언을 제공해주신 'vlrtm12'님 감사합니다.</comment>
   </data>
   <data name="Intro_Str_2" xml:space="preserve">
-    <value>Enjoy Kalista</value>
+    <value>Donated amount will be used for the development of better addon. Thank you.</value>
   </data>
   <data name="Intro_Language_Str" xml:space="preserve">
     <value>Select Language -&gt; Press [ F5 ] key</value>
@@ -388,5 +388,26 @@
   </data>
   <data name="Intro_Language_Select" xml:space="preserve">
     <value>Language ( 언어 )</value>
+  </data>
+  <data name="Main_Combo_W" xml:space="preserve">
+    <value>[ W ] Passive used</value>
+  </data>
+  <data name="Misc_WallJump" xml:space="preserve">
+    <value>Wall Jump Use</value>
+  </data>
+  <data name="Draw_E_Dmg_Monster" xml:space="preserve">
+    <value>[ E ] Damage Indicator - Monster Hp bar</value>
+  </data>
+  <data name="Draw_E_Percent2" xml:space="preserve">
+    <value>On the Hp bar</value>
+  </data>
+  <data name="Draw_E_Percent1" xml:space="preserve">
+    <value>Near Hp bar</value>
+  </data>
+  <data name="Draw_E_Percent3" xml:space="preserve">
+    <value>On the Hero name</value>
+  </data>
+  <data name="Draw_E_Percent4" xml:space="preserve">
+    <value>Sidebar</value>
   </data>
 </root>

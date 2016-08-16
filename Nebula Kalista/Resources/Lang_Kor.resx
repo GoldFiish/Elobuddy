@@ -235,10 +235,10 @@
     <value>몰락한 왕의 검</value>
   </data>
   <data name="Intro_Str_1" xml:space="preserve">
-    <value>고인이 된 칼리스타의 명복을 빕니다 :(</value>
+    <value>이 Addon이 마음에 든다면, 추천 또는 기부를 부탁드립니다.</value>
   </data>
   <data name="Intro_Str_0" xml:space="preserve">
-    <value>[ Nebula ] Kalista - 6.13.0.2</value>
+    <value>[ Nebula ] Kalista - 6.15.0.0</value>
   </data>
   <data name="Farm_Lane_Str" xml:space="preserve">
     <value>라인 설정</value>
@@ -298,19 +298,19 @@
     <value>사이드바 [ X ] 위치</value>
   </data>
   <data name="Draw_E_Percent_Str" xml:space="preserve">
-    <value>[ E ] 공격력을 [ value ] 위치에 표시 %로 표시</value>
+    <value>[ E ] 공격력% 위치</value>
   </data>
-  <data name="Draw_E_Percent" xml:space="preserve">
-    <value>[ 0 = 사용안함 ] [ 1 = 체력바 옆에 ] [ 2 = 체력바 위에 ] [ 3 = 챔피언 이름 위에 ] [ 4 = 사이드바 ]</value>
+  <data name="Draw_E_Percent0" xml:space="preserve">
+    <value>사용안함</value>
   </data>
-  <data name="Draw_E_Dmg" xml:space="preserve">
-    <value>[ E ] 공력력을 체력바에 표시</value>
+  <data name="Draw_E_Dmg_Champ" xml:space="preserve">
+    <value>[ E ] 공격력을 [ 적 ] 체력바에 표시</value>
   </data>
   <data name="Intro_Language_Str" xml:space="preserve">
     <value>언어 선택 후 F5를 눌러 적용합니다.</value>
   </data>
   <data name="Intro_Str_2" xml:space="preserve">
-    <value>챔피언을 제공해주신 'vlrtm12' 감사합니다.</value>
+    <value>기부를 해주신다면 저는 치킨을 먹을수 있습니다. 도와주세요...ㅠ</value>
   </data>
   <data name="Item_Srt" xml:space="preserve">
     <value>※ 콤보모드에서만 작동합니다.</value>
@@ -323,5 +323,26 @@
   </data>
   <data name="Main_Combo_E_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ E ] 사용</value>
+  </data>
+  <data name="Main_Combo_W" xml:space="preserve">
+    <value>[ W ] 패시브 사용</value>
+  </data>
+  <data name="Misc_WallJump" xml:space="preserve">
+    <value>벽점프 사용</value>
+  </data>
+  <data name="Draw_E_Dmg_Monster" xml:space="preserve">
+    <value>[ E ] 공격력을 [ 몬스터 ] 체력바에 표시</value>
+  </data>
+  <data name="Draw_E_Percent1" xml:space="preserve">
+    <value>체력바 옆에</value>
+  </data>
+  <data name="Draw_E_Percent2" xml:space="preserve">
+    <value>체력바 위에</value>
+  </data>
+  <data name="Draw_E_Percent3" xml:space="preserve">
+    <value>챔피언 이름 위에</value>
+  </data>
+  <data name="Draw_E_Percent4" xml:space="preserve">
+    <value>사이드바</value>
   </data>
 </root>

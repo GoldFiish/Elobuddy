@@ -55,10 +55,12 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
+    <Compile Include="VectorHelper.cs" />
     <None Include="App.config" />
     <Compile Include="Mode_Always.cs" />
     <Compile Include="Mode_Combo.cs" />
     <Compile Include="Mode_Harass.cs" />
+    <Compile Include="Mode_Flee.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -112,7 +114,10 @@
       <HintPath>..\..\..\..\..\Program Files (x86)\EloBuddy\System\SharpDX.Direct3D9.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Lang_Kor.resx">

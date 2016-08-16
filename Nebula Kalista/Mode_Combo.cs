@@ -17,9 +17,22 @@ namespace NebulaKalista
 
             if (MenuMain["Combo.Q"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > MenuMain["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
             {
-                if(!Player.Instance.IsDashing() && Qtarget.IsValidTarget(SpellManager.Q.Range) && SpellManager.Q.GetPrediction(Qtarget).HitChance >= HitChance.High)
+                if (!Player.Instance.IsDashing() && Qtarget.IsValidTarget(SpellManager.Q.Range))
                 {
-                    SpellManager.Q.Cast(Qtarget);
+                    var QPrediction = SpellManager.Q.GetPrediction(Qtarget);
+
+                    if (QPrediction.HitChance >= HitChance.High)
+                    {
+                        SpellManager.Q.Cast(QPrediction.CastPosition);
+                    }
+                }
+            }           
+
+            if (MenuMain["Combo.W"].Cast<CheckBox>().CurrentValue && Player.Instance.CountEnemiesInRange(Player.Instance.AttackRange) >= 1)
+            {               
+                foreach (var target in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(Player.Instance.AttackRange) && x.HasBuff("kalistacoopstrikemarkally")))
+                {
+                    Player.IssueOrder(GameObjectOrder.AttackTo, target);                       
                 }
             }
 

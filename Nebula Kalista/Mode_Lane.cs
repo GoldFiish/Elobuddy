@@ -43,7 +43,7 @@ namespace NebulaKalista
 
                     if (Qtarget_num >= MenuFarm["Lane.Q.Num"].Cast<Slider>().CurrentValue)
                     {
-                        SpellManager.Q.Cast(Qminions.ServerPosition);
+                        SpellManager.Q.Cast(Qtarget.CastPosition);
                         //SpellManager.Q.CastOnBestFarmPosition(Qtarget_num);
                     }
                 }

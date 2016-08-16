@@ -61,29 +61,74 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   [ E ] Damage Indicator - Hp bar과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ E ] Damage Indicator - Enemy Hp bar과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Draw_E_Dmg {
+        internal static string Draw_E_Dmg_Champ {
             get {
-                return ResourceManager.GetString("Draw_E_Dmg", resourceCulture);
+                return ResourceManager.GetString("Draw_E_Dmg_Champ", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   [ 0 = Off ] [ 1 = Near Hp bar ] [ 2 = On the Hp bar ] [ 3 = On the Hero name ] [ 4 = Sidebar ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ E ] Damage Indicator - Monster Hp bar과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Draw_E_Percent {
+        internal static string Draw_E_Dmg_Monster {
             get {
-                return ResourceManager.GetString("Draw_E_Percent", resourceCulture);
+                return ResourceManager.GetString("Draw_E_Dmg_Monster", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   [ E ] Damage Indicator - %과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ E ] Damage % position과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Draw_E_Percent_Str {
             get {
                 return ResourceManager.GetString("Draw_E_Percent_Str", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Off과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_E_Percent0 {
+            get {
+                return ResourceManager.GetString("Draw_E_Percent0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Near Hp bar과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_E_Percent1 {
+            get {
+                return ResourceManager.GetString("Draw_E_Percent1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   On the Hp bar과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_E_Percent2 {
+            get {
+                return ResourceManager.GetString("Draw_E_Percent2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   On the Hero name과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_E_Percent3 {
+            get {
+                return ResourceManager.GetString("Draw_E_Percent3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sidebar과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_E_Percent4 {
+            get {
+                return ResourceManager.GetString("Draw_E_Percent4", resourceCulture);
             }
         }
         
@@ -277,7 +322,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   [ Nebula ] Kalista - 6.13.0.2과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ Nebula ] Kalista - 6.15.0.0과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Intro_Str_0 {
             get {
@@ -286,7 +331,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   If you have trouble or need other language, please send me PM.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If you like this addon, hope Upvote click or donation.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Intro_Str_1 {
             get {
@@ -295,7 +340,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   Enjoy Kalista과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Donated amount will be used for the development of better addon. Thank you.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Intro_Str_2 {
             get {
@@ -466,7 +511,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   Select to remove the debuff과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Select to remove the buff과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Item_D_Str {
             get {
@@ -525,6 +570,15 @@ namespace NebulaKalista.Resources {
         internal static string Main_Combo_Str {
             get {
                 return ResourceManager.GetString("Main_Combo_Str", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ W ] Passive used과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Combo_W {
+            get {
+                return ResourceManager.GetString("Main_Combo_W", resourceCulture);
             }
         }
         
@@ -678,6 +732,15 @@ namespace NebulaKalista.Resources {
         internal static string Misc_Skin_State {
             get {
                 return ResourceManager.GetString("Misc_Skin_State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wall Jump Use과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_WallJump {
+            get {
+                return ResourceManager.GetString("Misc_WallJump", resourceCulture);
             }
         }
     }

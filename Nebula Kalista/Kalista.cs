@@ -46,8 +46,8 @@ namespace NebulaKalista
             MenuMain.Add("Combo.Q",         new CheckBox(Res_Language.GetString("Main_Combo_Q")));
             MenuMain.Add("Combo.Q.Mana",    new Slider(Res_Language.GetString("Main_Combo_Q_Mana"), 15, 0, 100));
             MenuMain.AddSeparator();
+            MenuMain.Add("Combo.W",         new CheckBox(Res_Language.GetString("Main_Combo_W")));
             MenuMain.Add("Combo.E",         new CheckBox(Res_Language.GetString("Main_Combo_E")));
-            //MenuMain.Add("Combo.E.Mana",    new Slider(Res_Language.GetString("Main_Combo_E_Mana"), 15, 0, 100));
             MenuMain.AddSeparator();
             MenuMain.AddLabel(Res_Language.GetString("Main_Harass_Str"));
             MenuMain.Add("Harass.Q",        new CheckBox(Res_Language.GetString("Main_Harass_Q")));
@@ -73,11 +73,13 @@ namespace NebulaKalista
             MenuFarm.AddSeparator();
 
             MenuMisc = Menu.AddSubMenu("- Misc", "SubMenu2");
+            //MenuMisc.Add("WallJump",        new CheckBox(Res_Language.GetString("Misc_WallJump")));
+            MenuMisc.AddSeparator();
             MenuMisc.AddLabel(Res_Language.GetString("Misc_E_Str"));
             MenuMisc.Add("E.KillSteal",     new CheckBox(Res_Language.GetString("Misc_E_Steal_H")));
             MenuMisc.Add("E.MonsterSteal",  new CheckBox(Res_Language.GetString("Misc_E_Steal_J")));
             MenuMisc.Add("E.Dmage",         new CheckBox(Res_Language.GetString("Misc_E_Dmg")));
-            MenuMisc.Add("E.Dmage.Value",   new Slider(Res_Language.GetString("Misc_E_Dmg_Value"), -2, -100, 0));
+            MenuMisc.Add("E.Dmage.Value",   new Slider(Res_Language.GetString("Misc_E_Dmg_Value"), -1, -100, 0));
             MenuMisc.AddSeparator();
             MenuMisc.Add("E.Death",         new CheckBox(Res_Language.GetString("Misc_E_Death")));
             MenuMisc.Add("E.Death.Hp",      new Slider(Res_Language.GetString("Misc_E_Death_Hp"), 10, 0, 30));
@@ -85,9 +87,9 @@ namespace NebulaKalista
             MenuMisc.AddLabel(Res_Language.GetString("Misc_R_Str"));
             MenuMisc.Add("R.Save",          new CheckBox(Res_Language.GetString("Misc_R_Save")));
             MenuMisc.Add("R.Save.Hp",       new Slider(Res_Language.GetString("Misc_R_Save_Hp"), 30, 0, 30));
-            MenuMisc.AddSeparator();
+            MenuMisc.AddSeparator(); 
             MenuMisc.AddLabel(Res_Language.GetString("Misc_Skin"));           
-            MenuMisc.Add("Skin.ID",         new Slider(Res_Language.GetString("Misc_Skin_Id"), 0, 0, 2));
+            MenuMisc.Add("Skin.ID",         new Slider(Res_Language.GetString("Misc_Skin_Id"), 1, 0, 2));
 
             MenuItem = Menu.AddSubMenu("- Item", "SubMenu3");
             MenuItem.AddLabel(Res_Language.GetString("Item_Srt"));
@@ -118,10 +120,13 @@ namespace NebulaKalista
             MenuDraw.Add("Draw.Q",          new CheckBox(Res_Language.GetString("Draw_Range_Q")));
             MenuDraw.Add("Draw.E",          new CheckBox(Res_Language.GetString("Draw_Range_E")));
             MenuDraw.Add("Draw.R",          new CheckBox(Res_Language.GetString("Draw_Range_R"), false));
-            MenuDraw.Add("Draw.E.Damage",   new CheckBox(Res_Language.GetString("Draw_E_Dmg")));  //DamageIndicator by Monstertje
             MenuDraw.AddSeparator();
-            MenuDraw.AddLabel(Res_Language.GetString("Draw_E_Percent_Str"));
-            MenuDraw.Add("Draw.E.Percent",  new Slider(Res_Language.GetString("Draw_E_Percent"), 1, 0, 4));
+            MenuDraw.Add("Draw.E.Damage.C", new CheckBox(Res_Language.GetString("Draw_E_Dmg_Champ")));
+            MenuDraw.Add("Draw.E.Damage.M", new CheckBox(Res_Language.GetString("Draw_E_Dmg_Monster")));        //pos.x :(
+            MenuDraw.AddSeparator();
+            MenuDraw.Add("Draw.E.Percent", new ComboBox(Res_Language.GetString("Draw_E_Percent_Str"), 1, Res_Language.GetString("Draw_E_Percent0"),Res_Language.GetString("Draw_E_Percent1"),
+                                                                                                         Res_Language.GetString("Draw_E_Percent2"),Res_Language.GetString("Draw_E_Percent3"),
+                                                                                                         Res_Language.GetString("Draw_E_Percent4")));
             MenuDraw.Add("Draw.Percent.X",  new Slider(Res_Language.GetString("Draw_E_Sidebar_X"), 160, 160, Drawing.Width - 10));
             MenuDraw.Add("Draw.Percent.Y",  new Slider(Res_Language.GetString("Draw_E_Sidebar_Y"), 60, 0, 900));
                       
@@ -189,6 +194,11 @@ namespace NebulaKalista
                 Mode_Jungle.JungleClear();
             }
 
+            //if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee))
+            //{
+            //    Mode_Flee.Flee;
+            //}
+
             Mode_Always.Always();
 
         }
@@ -206,9 +216,9 @@ namespace NebulaKalista
             if (MenuDraw["Draw.R"].Cast<CheckBox>().CurrentValue)
                 Circle.Draw(SpellManager.R.IsReady() ? Color.YellowGreen : Color.IndianRed, SpellManager.R.Range, Player.Instance.Position);
 
-            if (MenuDraw["Draw.E.Percent"].Cast<Slider>().CurrentValue != 0 )
+            if (MenuDraw["Draw.E.Percent"].Cast<ComboBox>().SelectedIndex != 0 )
             {
-                var Num = MenuDraw["Draw.E.Percent"].Cast<Slider>().CurrentValue;
+                var Num = MenuDraw["Draw.E.Percent"].Cast<ComboBox>().SelectedIndex;
                 int i = 0;
 
                 foreach (var hero in EntityManager.Heroes.Enemies.Where(hero => hero.IsEnemy && hero.IsValidTarget(1200)))
