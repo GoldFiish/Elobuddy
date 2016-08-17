@@ -322,7 +322,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   [ Nebula ] Kalista - 6.15.0.0과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ Nebula ] Kalista - 6.16.0.0과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Intro_Str_0 {
             get {
@@ -340,7 +340,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   기부를 해주신다면 저는 치킨을 먹을수 있습니다. 도와주세요...ㅠ과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   치킨을 먹을수 있게 도와주세요...ㅠ과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Intro_Str_2 {
             get {

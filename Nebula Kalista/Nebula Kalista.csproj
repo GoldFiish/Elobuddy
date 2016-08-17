@@ -55,12 +55,11 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
-    <Compile Include="VectorHelper.cs" />
+    <Compile Include="SpellManager.cs" />
     <None Include="App.config" />
     <Compile Include="Mode_Always.cs" />
     <Compile Include="Mode_Combo.cs" />
     <Compile Include="Mode_Harass.cs" />
-    <Compile Include="Mode_Flee.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -91,7 +90,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang_Kor.resx</DependentUpon>
     </Compile>
-    <Compile Include="SpellManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EloBuddy">

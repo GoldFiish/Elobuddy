@@ -1,0 +1,15 @@
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\obj\Debug\NebulaKalista.Resources.Lang_Kor.resources
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\obj\Debug\NebulaKalista.Resources.Lang_En.resources
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\obj\Debug\NebulaKalista.Properties.Resources.resources
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\obj\Debug\Nebula Kalista.csproj.GenerateResource.Cache
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\bin\Debug\Nebula Kalista.exe.config
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\bin\Debug\Nebula Kalista.exe
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\bin\Debug\Nebula Kalista.pdb
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\bin\Debug\EloBuddy.dll
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\bin\Debug\EloBuddy.SDK.dll
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\bin\Debug\Newtonsoft.Json.dll
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\bin\Debug\SharpDX.dll
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\obj\Debug\Nebula Kalista.exe
+C:\Users\NK\Documents\GitHub\Elobuddy\Nebula Kalista\obj\Debug\Nebula Kalista.pdb

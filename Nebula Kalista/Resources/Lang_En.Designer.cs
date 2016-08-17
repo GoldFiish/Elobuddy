@@ -322,7 +322,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   [ Nebula ] Kalista - 6.15.0.0과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ Nebula ] Kalista - 6.16.0.0과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Intro_Str_0 {
             get {
