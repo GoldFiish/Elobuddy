@@ -91,8 +91,11 @@ namespace NebulaKalista
             MenuMisc.Add("R.Save",          new CheckBox(Res_Language.GetString("Misc_R_Save")));
             MenuMisc.Add("R.Save.Hp",       new Slider(Res_Language.GetString("Misc_R_Save_Hp"), 30, 0, 30));
             MenuMisc.AddSeparator(); 
-            MenuMisc.AddLabel(Res_Language.GetString("Misc_Skin"));           
-            MenuMisc.Add("Skin.ID",         new Slider(Res_Language.GetString("Misc_Skin_Id"), 1, 0, 2));
+            MenuMisc.AddLabel(Res_Language.GetString("Misc_Skin"));
+            MenuMisc.Add("Skin.ID",         new ComboBox(Res_Language.GetString("Misc_Skin_Text"), 1, Res_Language.GetString("Misc_Skin_0"), 
+                                                                                                      Res_Language.GetString("Misc_Skin_1"), 
+                                                                                                      Res_Language.GetString("Misc_Skin_2"), 
+                                                                                                      Res_Language.GetString("Misc_Skin_3")));
 
             MenuItem = Menu.AddSubMenu("- Item", "SubMenu3");
             MenuItem.AddLabel(Res_Language.GetString("Item_Srt"));
@@ -132,10 +135,10 @@ namespace NebulaKalista
                                                                                                          Res_Language.GetString("Draw_E_Percent4")));
             MenuDraw.Add("Draw.Percent.X",  new Slider(Res_Language.GetString("Draw_E_Sidebar_X"), 160, 160, Drawing.Width - 10));
             MenuDraw.Add("Draw.Percent.Y",  new Slider(Res_Language.GetString("Draw_E_Sidebar_Y"), 60, 0, 900));
-                      
-            Player.SetSkinId(MenuMisc["Skin.ID"].Cast<Slider>().CurrentValue);
-            MenuMisc["Skin.ID"].Cast<Slider>().OnValueChange += (sender, vargs) => { Player.SetSkinId(vargs.NewValue); };
-                        
+          
+            Player.SetSkinId(MenuMisc["Skin.Id"].Cast<ComboBox>().CurrentValue);
+            MenuMisc["Skin.Id"].Cast<ComboBox>().OnValueChange += (sender, vargs) => { Player.SetSkinId(vargs.NewValue); };
+
             Menu["Language.Select"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
             {
                 var index = vargs.NewValue;             

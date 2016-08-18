@@ -763,20 +763,47 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   [ 0 = 사용안함 ] [ 1 = 불의 축체 칼리스타 ] [ 2 = 챔피언십 칼리스타 ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   사용안함과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Misc_Skin_Id {
+        internal static string Misc_Skin_0 {
             get {
-                return ResourceManager.GetString("Misc_Skin_Id", resourceCulture);
+                return ResourceManager.GetString("Misc_Skin_0", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   스킨 사용과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   불의 축체 칼리스타과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Misc_Skin_State {
+        internal static string Misc_Skin_1 {
             get {
-                return ResourceManager.GetString("Misc_Skin_State", resourceCulture);
+                return ResourceManager.GetString("Misc_Skin_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   챔피언십 칼리스타과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_Skin_2 {
+            get {
+                return ResourceManager.GetString("Misc_Skin_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SKT T1 칼리스타과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_Skin_3 {
+            get {
+                return ResourceManager.GetString("Misc_Skin_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   스킨과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_Skin_Text {
+            get {
+                return ResourceManager.GetString("Misc_Skin_Text", resourceCulture);
             }
         }
         

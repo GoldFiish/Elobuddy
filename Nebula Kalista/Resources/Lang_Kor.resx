@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Misc_Skin_State" xml:space="preserve">
-    <value>스킨 사용</value>
+  <data name="Misc_Skin_0" xml:space="preserve">
+    <value>사용안함</value>
   </data>
-  <data name="Misc_Skin_Id" xml:space="preserve">
-    <value>[ 0 = 사용안함 ] [ 1 = 불의 축체 칼리스타 ] [ 2 = 챔피언십 칼리스타 ]</value>
+  <data name="Misc_Skin_Text" xml:space="preserve">
+    <value>스킨</value>
   </data>
   <data name="Misc_Skin" xml:space="preserve">
     <value>스킨 설정</value>
@@ -359,5 +359,14 @@
   </data>
   <data name="Main_Harass_E_Stack" xml:space="preserve">
     <value>[ E ] 스택 개수 </value>
+  </data>
+  <data name="Misc_Skin_1" xml:space="preserve">
+    <value>불의 축체 칼리스타</value>
+  </data>
+  <data name="Misc_Skin_2" xml:space="preserve">
+    <value>챔피언십 칼리스타</value>
+  </data>
+  <data name="Misc_Skin_3" xml:space="preserve">
+    <value>SKT T1 칼리스타</value>
   </data>
 </root>
