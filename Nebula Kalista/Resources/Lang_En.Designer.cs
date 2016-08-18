@@ -763,20 +763,47 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   [ 0 = Off ] [ 1 = Blood moon Kalista ] [ 2 = Championship Kalista ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Off과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Misc_Skin_Id {
+        internal static string Misc_Skin_0 {
             get {
-                return ResourceManager.GetString("Misc_Skin_Id", resourceCulture);
+                return ResourceManager.GetString("Misc_Skin_0", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Skin used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Blood moon Kalista과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Misc_Skin_State {
+        internal static string Misc_Skin_1 {
             get {
-                return ResourceManager.GetString("Misc_Skin_State", resourceCulture);
+                return ResourceManager.GetString("Misc_Skin_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Championship Kalista과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_Skin_2 {
+            get {
+                return ResourceManager.GetString("Misc_Skin_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SKT T1 Kalista과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_Skin_3 {
+            get {
+                return ResourceManager.GetString("Misc_Skin_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Skin과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_Skin_Text {
+            get {
+                return ResourceManager.GetString("Misc_Skin_Text", resourceCulture);
             }
         }
         

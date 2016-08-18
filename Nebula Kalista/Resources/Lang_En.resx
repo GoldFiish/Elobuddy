@@ -253,12 +253,12 @@
     <value>Skin Setting</value>
     <comment>스킨 설정</comment>
   </data>
-  <data name="Misc_Skin_Id" xml:space="preserve">
-    <value>[ 0 = Off ] [ 1 = Blood moon Kalista ] [ 2 = Championship Kalista ]</value>
+  <data name="Misc_Skin_Text" xml:space="preserve">
+    <value>Skin</value>
     <comment>[ 0 = 기본 칼리스타 ] [ 1 = 불의 축체 칼리스타 ] [ 2 = 챔피언십 칼리스타 ]</comment>
   </data>
-  <data name="Misc_Skin_State" xml:space="preserve">
-    <value>Skin used</value>
+  <data name="Misc_Skin_0" xml:space="preserve">
+    <value>Off</value>
     <comment>스킨 사용</comment>
   </data>
   <data name="Item_A_Blade" xml:space="preserve">
@@ -424,5 +424,14 @@
   </data>
   <data name="Main_Harass_E_Stack" xml:space="preserve">
     <value>[ E ] Stack count</value>
+  </data>
+  <data name="Misc_Skin_1" xml:space="preserve">
+    <value>Blood moon Kalista</value>
+  </data>
+  <data name="Misc_Skin_2" xml:space="preserve">
+    <value>Championship Kalista</value>
+  </data>
+  <data name="Misc_Skin_3" xml:space="preserve">
+    <value>SKT T1 Kalista</value>
   </data>
 </root>

@@ -136,8 +136,8 @@ namespace NebulaKalista
             MenuDraw.Add("Draw.Percent.X",  new Slider(Res_Language.GetString("Draw_E_Sidebar_X"), 160, 160, Drawing.Width - 10));
             MenuDraw.Add("Draw.Percent.Y",  new Slider(Res_Language.GetString("Draw_E_Sidebar_Y"), 60, 0, 900));
           
-            Player.SetSkinId(MenuMisc["Skin.Id"].Cast<ComboBox>().CurrentValue);
-            MenuMisc["Skin.Id"].Cast<ComboBox>().OnValueChange += (sender, vargs) => { Player.SetSkinId(vargs.NewValue); };
+            Player.SetSkinId(MenuMisc["Skin.ID"].Cast<ComboBox>().CurrentValue);
+            MenuMisc["Skin.ID"].Cast<ComboBox>().OnValueChange += (sender, vargs) => { Player.SetSkinId(vargs.NewValue); };
 
             Menu["Language.Select"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
             {

@@ -65,10 +65,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Lang_Kor.en.Designer.cs">
+    <Compile Include="Resources\Lang_En.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Lang_Kor.en.resx</DependentUpon>
+      <DependentUpon>Lang_En.resx</DependentUpon>
     </Compile>
     <Compile Include="Mode_Jungle.cs" />
   </ItemGroup>
@@ -122,9 +122,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang_Kor.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Lang_Kor.en.resx">
+    <EmbeddedResource Include="Resources\Lang_En.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lang_Kor.en.Designer.cs</LastGenOutput>
+      <LastGenOutput>Lang_En.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
