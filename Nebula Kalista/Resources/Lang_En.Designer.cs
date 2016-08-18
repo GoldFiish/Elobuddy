@@ -583,6 +583,33 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
+        ///   [ Q ] Style과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Como_QStyle {
+            get {
+                return ResourceManager.GetString("Main_Como_QStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   First [ Q ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Como_QStyle0 {
+            get {
+                return ResourceManager.GetString("Main_Como_QStyle0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   AA ⇒ [ Q ] ⇒ [ E ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Como_QStyle1 {
+            get {
+                return ResourceManager.GetString("Main_Como_QStyle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   [ E ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Harass_E {
@@ -592,11 +619,20 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   If mana is higher than [ n% ], [ Q E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If mana is higher than [ n% ], [ E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Harass_Mana {
+        internal static string Main_Harass_E_Mana {
             get {
-                return ResourceManager.GetString("Main_Harass_Mana", resourceCulture);
+                return ResourceManager.GetString("Main_Harass_E_Mana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ E ] Stack count과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Harass_E_Stack {
+            get {
+                return ResourceManager.GetString("Main_Harass_E_Stack", resourceCulture);
             }
         }
         
@@ -606,6 +642,15 @@ namespace NebulaKalista.Resources {
         internal static string Main_Harass_Q {
             get {
                 return ResourceManager.GetString("Main_Harass_Q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   If mana is higher than [ n% ], [ Q ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Harass_Q_Mana {
+            get {
+                return ResourceManager.GetString("Main_Harass_Q_Mana", resourceCulture);
             }
         }
         

@@ -44,6 +44,7 @@ namespace NebulaKalista
             MenuMain = Menu.AddSubMenu("- Main", "SubMenu0");
             MenuMain.AddLabel(Res_Language.GetString("Main_Combo_Str"));
             MenuMain.Add("Combo.Q",         new CheckBox(Res_Language.GetString("Main_Combo_Q")));
+            MenuMain.Add("Combo.Q.Style",   new ComboBox(Res_Language.GetString("Main_Como_QStyle"), 1, Res_Language.GetString("Main_Como_QStyle0"), Res_Language.GetString("Main_Como_QStyle1")));
             MenuMain.Add("Combo.Q.Mana",    new Slider(Res_Language.GetString("Main_Combo_Q_Mana"), 15, 0, 100));
             MenuMain.AddSeparator();
             MenuMain.Add("Combo.W",         new CheckBox(Res_Language.GetString("Main_Combo_W")));
@@ -51,8 +52,10 @@ namespace NebulaKalista
             MenuMain.AddSeparator();
             MenuMain.AddLabel(Res_Language.GetString("Main_Harass_Str"));
             MenuMain.Add("Harass.Q",        new CheckBox(Res_Language.GetString("Main_Harass_Q")));
+            MenuMain.Add("Harass.Q.Mana",   new Slider(Res_Language.GetString("Main_Harass_Q_Mana"), 80, 0, 100));
             MenuMain.Add("Harass.E",        new CheckBox(Res_Language.GetString("Main_Harass_E")));
-            MenuMain.Add("Harass.Mana",     new Slider(Res_Language.GetString("Main_Harass_Mana"), 70, 0, 100));
+            MenuMain.Add("Harass.E.Mana",   new Slider(Res_Language.GetString("Main_Harass_E_Mana"), 70, 0, 100));
+            MenuMain.Add("Harass.E.Stack",  new Slider(Res_Language.GetString("Main_Harass_E_Stack"), 3, 1, 5));
 
             MenuFarm = Menu.AddSubMenu("- Farm", "SubMenu1");
             MenuFarm.AddLabel(Res_Language.GetString("Farm_Lane_Str"));
@@ -74,12 +77,12 @@ namespace NebulaKalista
 
             MenuMisc = Menu.AddSubMenu("- Misc", "SubMenu2");
             //MenuMisc.Add("WallJump",        new CheckBox(Res_Language.GetString("Misc_WallJump")));
-            MenuMisc.AddSeparator();
+            //MenuMisc.AddSeparator();
             MenuMisc.AddLabel(Res_Language.GetString("Misc_E_Str"));
             MenuMisc.Add("E.KillSteal",     new CheckBox(Res_Language.GetString("Misc_E_Steal_H")));
             MenuMisc.Add("E.MonsterSteal",  new CheckBox(Res_Language.GetString("Misc_E_Steal_J")));
             MenuMisc.Add("E.Dmage",         new CheckBox(Res_Language.GetString("Misc_E_Dmg")));
-            MenuMisc.Add("E.Dmage.Value",   new Slider(Res_Language.GetString("Misc_E_Dmg_Value"), -1, -100, 0));
+            MenuMisc.Add("E.Dmage.Value",   new Slider(Res_Language.GetString("Misc_E_Dmg_Value"), 0, -100, 0));
             MenuMisc.AddSeparator();
             MenuMisc.Add("E.Death",         new CheckBox(Res_Language.GetString("Misc_E_Death")));
             MenuMisc.Add("E.Death.Hp",      new Slider(Res_Language.GetString("Misc_E_Death_Hp"), 10, 0, 30));
@@ -139,7 +142,7 @@ namespace NebulaKalista
                 File.WriteAllText(Language_Path, Language_List[index], Encoding.Default);
             };
 
-            DamageIndicator.DamageToUnit = Extensions.IsRendKillable_f;
+            DamageIndicator.DamageToUnit = Extensions.Get_E_Damage_Float; //Extensions.IsRendKillable_f;
             Game.OnUpdate += Game_OnUpdate;
             Drawing.OnDraw += Draw_Range;
         }
@@ -172,7 +175,9 @@ namespace NebulaKalista
         private static void Game_OnUpdate(EventArgs args)
         {
             if (Player.Instance.IsDead) { return; }
-         
+
+            Mode_Always.Always();
+
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo))
             {
                 Mode_Item.Items_Use();
@@ -193,14 +198,6 @@ namespace NebulaKalista
             {
                 Mode_Jungle.JungleClear();
             }
-
-            //if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee))
-            //{
-            //    Mode_Flee.Flee;
-            //}
-
-            Mode_Always.Always();
-
         }
 
         private static void Draw_Range(EventArgs args)
@@ -225,7 +222,7 @@ namespace NebulaKalista
                 {
                     if (hero == null) return;
 
-                    var E_Damage = ((int)((Extensions.IsRendKillable_f(hero) / hero.Health) * 100));
+                    var E_Damage = ((int)((Extensions.Get_E_Damage_Float/*IsRendKillable_f*/(hero) / hero.Health) * 100));
 
                     if (E_Damage > 0)
                     {
@@ -279,7 +276,7 @@ namespace NebulaKalista
                 {
                     if (jungle == null) return;
 
-                    var E_Damage = ((int)((Extensions.IsRendKillable_f(jungle) / jungle.Health) * 100));
+                    var E_Damage = ((int)((Extensions.Get_E_Damage_Float/*IsRendKillable_f*/(jungle) / jungle.Health) * 100));
 
                     if(E_Damage > 0)
                     {

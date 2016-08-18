@@ -141,8 +141,8 @@
     <value>[ E ] Use</value>
     <comment>[ E ] 사용</comment>
   </data>
-  <data name="Main_Harass_Mana" xml:space="preserve">
-    <value>If mana is higher than [ n% ], [ Q E ] is used </value>
+  <data name="Main_Harass_Q_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ Q ] is used </value>
     <comment>보유 마나가 [ n% ] 이상일 때 [ Q E ] 사용</comment>
   </data>
   <data name="Main_Combo_Q_Mana" xml:space="preserve">
@@ -409,5 +409,20 @@
   </data>
   <data name="Draw_E_Percent4" xml:space="preserve">
     <value>Sidebar</value>
+  </data>
+  <data name="Main_Harass_E_Mana" xml:space="preserve">
+    <value>If mana is higher than [ n% ], [ E ] is used </value>
+  </data>
+  <data name="Main_Como_QStyle" xml:space="preserve">
+    <value>[ Q ] Style</value>
+  </data>
+  <data name="Main_Como_QStyle1" xml:space="preserve">
+    <value>AA ⇒ [ Q ] ⇒ [ E ]</value>
+  </data>
+  <data name="Main_Como_QStyle0" xml:space="preserve">
+    <value>First [ Q ]</value>
+  </data>
+  <data name="Main_Harass_E_Stack" xml:space="preserve">
+    <value>[ E ] Stack count</value>
   </data>
 </root>

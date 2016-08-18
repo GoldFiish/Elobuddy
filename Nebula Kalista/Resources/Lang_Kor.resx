@@ -162,8 +162,8 @@
   <data name="Main_Harass_Q" xml:space="preserve">
     <value>[ Q ] 사용</value>
   </data>
-  <data name="Main_Harass_Mana" xml:space="preserve">
-    <value>보유 마나가 [ n% ] 이상일 때 [ Q E ] 사용</value>
+  <data name="Main_Harass_Q_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ Q ] 사용</value>
   </data>
   <data name="Main_Harass_E" xml:space="preserve">
     <value>[ E ] 사용</value>
@@ -310,7 +310,7 @@
     <value>언어 선택 후 F5를 눌러 적용합니다.</value>
   </data>
   <data name="Intro_Str_2" xml:space="preserve">
-    <value>치킨을 먹을수 있게 도와주세요...ㅠ</value>
+    <value>치킨을 먹을 수 있게 도와주세요...ㅠ</value>
   </data>
   <data name="Item_Srt" xml:space="preserve">
     <value>※ 콤보모드에서만 작동합니다.</value>
@@ -344,5 +344,20 @@
   </data>
   <data name="Draw_E_Percent4" xml:space="preserve">
     <value>사이드바</value>
+  </data>
+  <data name="Main_Harass_E_Mana" xml:space="preserve">
+    <value>보유 마나가 [ n% ] 이상일 때 [ E ] 사용</value>
+  </data>
+  <data name="Main_Como_QStyle" xml:space="preserve">
+    <value>[ Q ] 스타일</value>
+  </data>
+  <data name="Main_Como_QStyle0" xml:space="preserve">
+    <value>선 [ Q ]</value>
+  </data>
+  <data name="Main_Como_QStyle1" xml:space="preserve">
+    <value>평 ⇒ [ Q ] ⇒ [ E ]</value>
+  </data>
+  <data name="Main_Harass_E_Stack" xml:space="preserve">
+    <value>[ E ] 스택 개수 </value>
   </data>
 </root>

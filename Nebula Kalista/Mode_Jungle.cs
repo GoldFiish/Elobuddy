@@ -22,7 +22,6 @@ namespace NebulaKalista
                     {
                         SpellManager.E.Cast();
                     }
-
                 }
 
                 if (MenuFarm["Jungle.E.Big"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuFarm["Jungle.Mana"].Cast<Slider>().CurrentValue)

@@ -2,6 +2,7 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
+using EloBuddy.SDK.Events;
 
 namespace NebulaKalista
 {
@@ -16,11 +17,13 @@ namespace NebulaKalista
                     SpellManager.E.Cast();
                 }
 
-                foreach (var target in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200) && x.Health <= x.Get_Q_Damage_Float() && !x.IsDead))
+                foreach (var target in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200) && x.Health <= Extensions.Get_Q_Damage_Float(x)))
                 {
-                    if (SpellManager.Q.IsReady())
+                    var QPrediction = SpellManager.Q.GetPrediction(target);
+
+                    if (SpellManager.Q.IsReady() && QPrediction.HitChancePercent >= 50)
                     {
-                        SpellManager.Q.Cast(target);
+                        SpellManager.Q.Cast(QPrediction.CastPosition);
                     }
                 }
             }

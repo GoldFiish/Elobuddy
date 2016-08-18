@@ -15,7 +15,7 @@ namespace NebulaKalista
 
             if (Qtarget == null) return;
             
-            if (SpellManager.Q.IsReady() && MenuMain["Harass.Q"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuMain["Harass.Mana"].Cast<Slider>().CurrentValue)
+            if (SpellManager.Q.IsReady() && MenuMain["Harass.Q"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuMain["Harass.Q.Mana"].Cast<Slider>().CurrentValue)
             {
                 if (!Player.Instance.IsDashing() && Qtarget.IsValidTarget(SpellManager.Q.Range))
                 {
@@ -28,17 +28,21 @@ namespace NebulaKalista
                 }
             }
 
-            if (SpellManager.E.IsReady() && MenuMain["Harass.E"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuMain["Harass.Mana"].Cast<Slider>().CurrentValue)
+            if (SpellManager.E.IsReady() && MenuMain["Harass.E"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuMain["Harass.E.Mana"].Cast<Slider>().CurrentValue)
             {
-                if (EntityManager.MinionsAndMonsters.Minions.Any(x => x.IsValidTarget(1200) && x.Health <= x.Get_E_Damage_Double()))
+                var target = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200));
+
+                if (target.FirstOrDefault(x => x.HasRendBuff()) == null) return;
+               
+                if (EntityManager.MinionsAndMonsters.Minions.Where(x => x.IsValidTarget(1200)).FirstOrDefault(x => x.Health <= x.Get_E_Damage_Float()) != null)
                 {
-                    if (EntityManager.Heroes.Enemies.Any(x => x.IsValidTarget(SpellManager.E.Range) && x.Distance(Player.Instance.ServerPosition) > 900 && x.GetRendBuff().Count >= 1))
+                    if (target.FirstOrDefault(x => x.HasRendBuff()) != null)
                     {
                         SpellManager.E.Cast();
                     }
-                }                
-
-                if (EntityManager.Heroes.Enemies.Any(x => x.IsValidTarget(SpellManager.E.Range) && x.Distance(Player.Instance.ServerPosition) > 900 && x.GetRendBuff().Count >= 3))
+                }
+                
+                if (target.Where(x => x.Distance(Player.Instance.ServerPosition) > 700).FirstOrDefault(x => x.GetBuffCount("kalistaexpungemarker") >= MenuMain["Harass.E.Stack"].Cast<Slider>().CurrentValue) != null)
                 {
                     SpellManager.E.Cast();
                 }

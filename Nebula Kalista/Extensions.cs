@@ -16,7 +16,7 @@ namespace NebulaKalista
         public static float Get_Q_Damage_Float(this Obj_AI_Base target)
         {
             return Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical,
-                new float[] { 10, 70, 130, 190, 250 }[SpellManager.Q.Level - 1] + 1f * Player.Instance.TotalAttackDamage);
+                new float[] {10, 70, 130, 190, 250 }[SpellManager.Q.Level - 1] + Player.Instance.TotalAttackDamage);
         }
         
         public static List<string> UndyingBuffs = new List<string>
@@ -76,7 +76,7 @@ namespace NebulaKalista
        
             var totalHealth = GetTotalHealthWithShieldsApplied(target);
 
-            var dmg = Get_E_Damage_Double(target) + (Kalista.MenuMisc["E.Dmage"].Cast<CheckBox>().CurrentValue ? Kalista.MenuMisc["E.Dmage.Value"].Cast<Slider>().CurrentValue : 0);
+            var dmg = Get_E_Damage_Double(target);
 
             if (ObjectManager.Player.HasBuff("summonerexhaust"))
                 dmg *= 0.6f;
@@ -93,15 +93,15 @@ namespace NebulaKalista
             {
                 dmg *= (1f - (0.075f * ObjectManager.Player.GetBuffCount("s5test_dragonslayerbuff")));
             }
-            //return dmg > totalHealth;
-            return IsRendKillable_f(target) > totalHealth;
+            return dmg > totalHealth;
+            //return IsRendKillable_f(target) > totalHealth;         
         }
-        
-        public static float IsRendKillable_f(this Obj_AI_Base target)
-        {
-            var dmg = Get_E_Damage_Double(target) + (Kalista.MenuMisc["E.Dmage"].Cast<CheckBox>().CurrentValue ? Kalista.MenuMisc["E.Dmage.Value"].Cast<Slider>().CurrentValue : 0);
-            return (float)dmg;
-        }
+
+        //public static float IsRendKillable_f(this Obj_AI_Base target)
+        //{
+        //    //var dmg = Get_E_Damage_Double(target) + (Kalista.MenuMisc["E.Dmage"].Cast<CheckBox>().CurrentValue ? Kalista.MenuMisc["E.Dmage.Value"].Cast<Slider>().CurrentValue : 0);
+        //    //return (float)dmg;
+        //}
 
         public static float Get_E_Damage_Float(this Obj_AI_Base target)
         {
@@ -109,7 +109,8 @@ namespace NebulaKalista
         }
         public static double Get_E_Damage_Double(this Obj_AI_Base target)
         {
-            return Get_E_Damage(target, -1);
+            //return Get_E_Damage(target, -1);
+            return Get_E_Damage(target, -1) + (Kalista.MenuMisc["E.Dmage"].Cast<CheckBox>().CurrentValue ? Kalista.MenuMisc["E.Dmage.Value"].Cast<Slider>().CurrentValue : 0);
         }
              
         public static double Get_E_Damage(this Obj_AI_Base target, int customStacks = -1, BuffInstance rendBuff = null)

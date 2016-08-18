@@ -340,7 +340,7 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   치킨을 먹을수 있게 도와주세요...ㅠ과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   치킨을 먹을 수 있게 도와주세요...ㅠ과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Intro_Str_2 {
             get {
@@ -583,6 +583,33 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
+        ///   [ Q ] 스타일과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Como_QStyle {
+            get {
+                return ResourceManager.GetString("Main_Como_QStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   선 [ Q ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Como_QStyle0 {
+            get {
+                return ResourceManager.GetString("Main_Como_QStyle0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   평 ⇒ [ Q ] ⇒ [ E ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Como_QStyle1 {
+            get {
+                return ResourceManager.GetString("Main_Como_QStyle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   [ E ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Harass_E {
@@ -592,11 +619,20 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   보유 마나가 [ n% ] 이상일 때 [ Q E ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   보유 마나가 [ n% ] 이상일 때 [ E ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Harass_Mana {
+        internal static string Main_Harass_E_Mana {
             get {
-                return ResourceManager.GetString("Main_Harass_Mana", resourceCulture);
+                return ResourceManager.GetString("Main_Harass_E_Mana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ E ] 스택 개수 과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Harass_E_Stack {
+            get {
+                return ResourceManager.GetString("Main_Harass_E_Stack", resourceCulture);
             }
         }
         
@@ -606,6 +642,15 @@ namespace NebulaKalista.Resources {
         internal static string Main_Harass_Q {
             get {
                 return ResourceManager.GetString("Main_Harass_Q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   보유 마나가 [ n% ] 이상일 때 [ Q ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Harass_Q_Mana {
+            get {
+                return ResourceManager.GetString("Main_Harass_Q_Mana", resourceCulture);
             }
         }
         

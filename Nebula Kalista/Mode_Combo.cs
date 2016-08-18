@@ -13,7 +13,15 @@ namespace NebulaKalista
         {
             var Qtarget = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Physical);
 
-            if (Qtarget == null) return;            
+            if (Qtarget == null) return;
+
+            if (MenuMain["Combo.W"].Cast<CheckBox>().CurrentValue && Player.Instance.CountEnemiesInRange(Player.Instance.AttackRange) >= 1)
+            {
+                foreach (var target in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(Player.Instance.AttackRange) && x.HasBuff("kalistacoopstrikemarkally")))
+                {
+                    Player.IssueOrder(GameObjectOrder.AttackTo, target);
+                }
+            }
 
             if (MenuMain["Combo.Q"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > MenuMain["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
             {
@@ -21,18 +29,28 @@ namespace NebulaKalista
                 {
                     var QPrediction = SpellManager.Q.GetPrediction(Qtarget);
 
-                    if (QPrediction.HitChance >= HitChance.High)
+                    if (QPrediction.HitChance < HitChance.High)
                     {
-                        SpellManager.Q.Cast(QPrediction.CastPosition);
+                        if (MenuMain["Combo.Q.Style"].Cast<ComboBox>().SelectedIndex == 0)
+                        {
+                            SpellManager.Q.Cast(QPrediction.CastPosition);
+                        }
+                        else
+                        {
+                            if (Qtarget.Health <= Extensions.Get_Q_Damage_Float(Qtarget) + Extensions.Get_E_Damage_Double(Qtarget) && !Qtarget.HasBuffOfType(BuffType.SpellShield))
+                            {
+                                SpellManager.Q.Cast(QPrediction.CastPosition);
+                            }
+                        }
                     }
-                }
-            }           
 
-            if (MenuMain["Combo.W"].Cast<CheckBox>().CurrentValue && Player.Instance.CountEnemiesInRange(Player.Instance.AttackRange) >= 1)
-            {               
-                foreach (var target in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(Player.Instance.AttackRange) && x.HasBuff("kalistacoopstrikemarkally")))
-                {
-                    Player.IssueOrder(GameObjectOrder.AttackTo, target);                       
+                    if (Qtarget.IsValidTarget(SpellManager.Q.Range) && Qtarget.Distance(Player.Instance.ServerPosition) > SpellManager.E.Range && !Qtarget.HasBuffOfType(BuffType.SpellShield))
+                    {
+                        if (QPrediction.HitChancePercent >= 70)
+                        {
+                            SpellManager.Q.Cast(QPrediction.CastPosition);
+                        }
+                    }
                 }
             }
 
@@ -42,7 +60,7 @@ namespace NebulaKalista
                 {
                     SpellManager.E.Cast();
                 }
-            }
+            }           
         }   //End Combo
     }
 }
