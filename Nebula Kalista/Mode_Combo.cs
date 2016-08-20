@@ -37,14 +37,15 @@ namespace NebulaKalista
                         }
                         else
                         {
-                            if (Qtarget.Health <= Extensions.Get_Q_Damage_Float(Qtarget) + Extensions.Get_E_Damage_Double(Qtarget) && !Qtarget.HasBuffOfType(BuffType.SpellShield))
+                            if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget.Position) <= 1300 && Extensions.IsKillable_Style1(Qtarget))
                             {
                                 SpellManager.Q.Cast(QPrediction.CastPosition);
-                            }
+                            }                            
                         }
                     }
 
-                    if (Qtarget.IsValidTarget(SpellManager.Q.Range) && Qtarget.Distance(Player.Instance.ServerPosition) > SpellManager.E.Range && !Qtarget.HasBuffOfType(BuffType.SpellShield))
+                    if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget.Position) <= 1300 && Player.Instance.Distance(Qtarget.Position) >= SpellManager.E.Range &&
+                         !Qtarget.HasBuffOfType(BuffType.SpellShield))
                     {
                         if (QPrediction.HitChancePercent >= 70)
                         {

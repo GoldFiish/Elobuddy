@@ -65,6 +65,11 @@ namespace NebulaKalista
             return target.Health + target.AllShield;
         }
 
+        public static double GetHealth_Style1(this Obj_AI_Base target)
+        {
+            return target.TotalShieldHealth() - Get_Q_Damage_Float(target);
+        }
+
         public static bool IsRendKillable(this Obj_AI_Base target)
         {
             if (target == null) { return false; }
@@ -93,23 +98,42 @@ namespace NebulaKalista
             {
                 dmg *= (1f - (0.075f * ObjectManager.Player.GetBuffCount("s5test_dragonslayerbuff")));
             }
-            return dmg > totalHealth;
-            //return IsRendKillable_f(target) > totalHealth;         
+            return dmg > totalHealth;    
         }
 
-        //public static float IsRendKillable_f(this Obj_AI_Base target)
-        //{
-        //    //var dmg = Get_E_Damage_Double(target) + (Kalista.MenuMisc["E.Dmage"].Cast<CheckBox>().CurrentValue ? Kalista.MenuMisc["E.Dmage.Value"].Cast<Slider>().CurrentValue : 0);
-        //    //return (float)dmg;
-        //}
+        public static bool IsKillable_Style1(this Obj_AI_Base target)
+        {
+            if (target == null) { return false; }
+            if (!HasRendBuff(target)) { return false; }
+            if (target is AIHeroClient && target.Health > 1)
+            {
+                if (ShouldntRend((AIHeroClient)target)) return false;
+            }
+
+            var totalHealth = GetHealth_Style1(target);
+            var dmg = Get_E_Damage_Style1(target);
+
+            if (ObjectManager.Player.HasBuff("summonerexhaust"))
+                dmg *= 0.6f;
+
+            if (target.HasBuff("FerociousHowl"))
+                dmg *= 0.3f;
+
+            return (float)dmg > totalHealth;
+        }
 
         public static float Get_E_Damage_Float(this Obj_AI_Base target)
         {
             return (float)Get_E_Damage(target, -1);
         }
+
+        public static double Get_E_Damage_Style1(this Obj_AI_Base target)
+        {
+            return Get_E_Damage(target, +1) + (Kalista.MenuMisc["E.Dmage"].Cast<CheckBox>().CurrentValue ? Kalista.MenuMisc["E.Dmage.Value"].Cast<Slider>().CurrentValue : 0);
+        }
+
         public static double Get_E_Damage_Double(this Obj_AI_Base target)
         {
-            //return Get_E_Damage(target, -1);
             return Get_E_Damage(target, -1) + (Kalista.MenuMisc["E.Dmage"].Cast<CheckBox>().CurrentValue ? Kalista.MenuMisc["E.Dmage.Value"].Cast<Slider>().CurrentValue : 0);
         }
              

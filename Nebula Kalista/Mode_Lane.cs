@@ -3,7 +3,6 @@ using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.SDK.Events;
-using EloBuddy.SDK.Enumerations;
 
 namespace NebulaKalista
 {
@@ -34,7 +33,7 @@ namespace NebulaKalista
             if (SpellManager.E.IsReady() && minion.Any(x => x.IsValidTarget(SpellManager.E.Range) && (x.BaseSkinName.ToLower().Contains("siege") || x.BaseSkinName.ToLower().Contains("super")) &&
             x.Health <= x.Get_E_Damage_Double()))
             {
-                SpellManager.E.Cast(); 
+                SpellManager.E.Cast();
             }
 
             if (MenuFarm["Lane.E.All"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuFarm["Lane.E.Mana"].Cast<Slider>().CurrentValue && SpellManager.E.IsReady())
