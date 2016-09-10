@@ -12,23 +12,17 @@ namespace NebulaTeemo
         {
             if (Player.Instance.IsDead) return;
 
-            var minion = EntityManager.MinionsAndMonsters.Get(EntityManager.MinionsAndMonsters.EntityType.Minion, EntityManager.UnitTeam.Enemy, Player.Instance.ServerPosition, 900);
+            var minion = EntityManager.MinionsAndMonsters.Get(EntityManager.MinionsAndMonsters.EntityType.Minion, EntityManager.UnitTeam.Enemy, Player.Instance.ServerPosition, 1200);
            
             if (minion == null) return;
 
             if (SpellManager.Q.IsReady() && MenuLane["Lane.Minions.Big"].Cast<CheckBox>().CurrentValue)
             {
-                foreach (var Qtarget in EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => (x.BaseSkinName.ToLower().Contains("siege") || x.BaseSkinName.ToLower().Contains("super"))))
-                {
-                    if (Qtarget.Distance(Player.Instance.ServerPosition) > 450 && Qtarget.IsValidTarget(680) && Qtarget.Health <= Damage.DmgQ(Qtarget))
-                    {                       
-                        SpellManager.Q.Cast(Qtarget);
-                    }
+                var target = minion.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) < 1200 && (x.BaseSkinName.ToLower().Contains("siege") || x.BaseSkinName.ToLower().Contains("super"))).FirstOrDefault();
 
-                    if (Qtarget.IsValidTarget(550) && Qtarget.Health <= Damage.DmgE(Qtarget))
-                    {
-                        Player.IssueOrder(GameObjectOrder.AttackTo, Qtarget);
-                    }
+                if (target.Distance(Player.Instance.Position) > 450 && target.Distance(Player.Instance.Position) <= 680 && target.Health <= Damage.DmgQ(target) && Player.Instance.CountEnemiesInRange(850) >= 1)
+                {
+                    SpellManager.Q.Cast(target);
                 }
             }
 
@@ -36,10 +30,10 @@ namespace NebulaTeemo
             {
                 if (Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo > MenuLane["Lane.R.RCount"].Cast<Slider>().CurrentValue)
                 {
-                    foreach (var m in minion.Where(x => x.HealthPercent >= 90))
+                    foreach (var m in minion.Where(x => x.HealthPercent >= 25))
                     {
-                        var RPrediction = Prediction.Position.PredictCircularMissile(m, SpellManager.R.Range, 135, 0, 1000);
-                        var PoisonCount = RPrediction.GetCollisionObjects<Obj_AI_Minion>().Count(x => x.HealthPercent >= 70);
+                        var RPrediction = Prediction.Position.PredictCircularMissile(m, SpellManager.R.Range, 135, 1000, 1000);
+                        var PoisonCount = RPrediction.GetCollisionObjects<Obj_AI_Minion>().Count(x => x.HealthPercent >= 35);
 
                         if (PoisonCount >= MenuLane["Lane.R.PCount"].Cast<Slider>().CurrentValue && RPrediction.HitChance >= HitChance.High)
                         {   

@@ -121,7 +121,7 @@
     <value>이 애드온이 마음에 드신다면, 추천 또는 기부 부탁드립니다.</value>
   </data>
   <data name="Main_Text_0" xml:space="preserve">
-    <value>[ Nebula ] Teemo - 6.13.0.0</value>
+    <value>[ Nebula ] Teemo - 6.17.0.0 리뉴얼</value>
   </data>
   <data name="Main_Language_Exp" xml:space="preserve">
     <value>언어 선택 후 F5를 눌러 적용합니다.</value>
@@ -139,13 +139,13 @@
     <value>[ Q ] 사용</value>
   </data>
   <data name="Combo_W_Range" xml:space="preserve">
-    <value>적이 [ n ] ~ [ 720 ]사이에 있으면 [ W ]를 사용합니다.</value>
+    <value>적이 [ n ] ~ [ 800 ]사이에 있으면 [ W ]를 사용합니다.</value>
   </data>
   <data name="Harass_Q_Text" xml:space="preserve">
     <value>[ Q ] 사용</value>
   </data>
   <data name="Combo_Q_Mana" xml:space="preserve">
-    <value>보유 마나가 [ n% ] 이상일 때 [ R ]을 사용합니다.</value>
+    <value>보유 마나가 [ n% ] 이상일 때 [ Q ]을 사용합니다.</value>
   </data>
   <data name="Combo_R_Text" xml:space="preserve">
     <value>[ R ] 사용</value>
@@ -156,16 +156,13 @@
   <data name="Combo_R_Count" xml:space="preserve">
     <value>보유한 [ 버섯 ] 개수가 [ n ]개 보다 많으면 [ R ]을 사용합니다.</value>
   </data>
-  <data name="Misc_Draw_Q" xml:space="preserve">
+  <data name="Draw_Q" xml:space="preserve">
     <value>[ Q ] 범위</value>
   </data>
-  <data name="Misc_Draw_R" xml:space="preserve">
+  <data name="Draw_R" xml:space="preserve">
     <value>[ R ] 범위</value>
   </data>
-  <data name="Misc_Draw_Text" xml:space="preserve">
-    <value>범위 표시</value>
-  </data>
-  <data name="Misc_Draw_ComboQ" xml:space="preserve">
+  <data name="Draw_LaneQ" xml:space="preserve">
     <value>[ Q ] 범위 - [ 시즈 미니언 킬 ]</value>
   </data>
   <data name="Harass_Q_Mana" xml:space="preserve">
@@ -177,9 +174,6 @@
   <data name="Harass_R_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ R ]을 사용합니다.</value>
   </data>
-  <data name="Harass_R_Range" xml:space="preserve">
-    <value>적이 [ n ]범위 안에 있으면 [ R ]을 사용합니다.</value>
-  </data>
   <data name="Harass_R_Count" xml:space="preserve">
     <value>보유한 [ 버섯 ] 개수가 [ n ]개 보다 많으면 [ R ]을 사용합니다.</value>
   </data>
@@ -190,7 +184,7 @@
     <value>보유 마나가 [ n% ] 이상일 때 [ W ]를 사용합니다.</value>
   </data>
   <data name="Harass_W_Range" xml:space="preserve">
-    <value>적이 [ n ]범위 안에 있으면 [ W ]를 사용합니다.</value>
+    <value>적이 [ n ] ~ [ 800 ]사이에 있으면 [ W ]를 사용합니다.</value>
   </data>
   <data name="Harass_W_Text" xml:space="preserve">
     <value>[ W ] 사용</value>
@@ -259,26 +253,13 @@
     <value>[ 수은 장식띠, 헤르메스의 시미터 ]로 해제할 효과</value>
   </data>
   <data name="Item_Item_Text" xml:space="preserve">
-    <value>메뉴 (x) 사용 (o) - [ 빌지워터 해적검 ] [ 요우무의 유령검 ] [ 마법공학 총검 ]</value>
-  </data>
-  <data name="Item_Potion_0" xml:space="preserve">
-    <value>사용자의 체력이 [ n% ] 이하일 때 [ 부패 물약 ]을 사용합니다.</value>
-    <comment>Corrupting Potion</comment>
+    <value>메뉴 [ x ] 사용 [ o ] - [ 빌지워터 해적검 ] [ 요우무의 유령검 ] [ 마법공학 총검 ]</value>
   </data>
   <data name="Item_S_Ignite" xml:space="preserve">
     <value>점화</value>
   </data>
-  <data name="Jungle_Style_Exp_1" xml:space="preserve">
-    <value>0 : 대형부터 잡기</value>
-  </data>
-  <data name="Jungle_Style_Exp_2" xml:space="preserve">
-    <value>1 : 대형에 [ Q ] 사용 후, 소형 잡기</value>
-  </data>
   <data name="Jungle_Q_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ Q ]를 사용합니다.</value>
-  </data>
-  <data name="Jungle_Style" xml:space="preserve">
-    <value>정글 스타일</value>
   </data>
   <data name="Jungle_Q_Text" xml:space="preserve">
     <value>[ Q ] 사용</value>
@@ -293,13 +274,10 @@
     <value>[ R ] 사용</value>
   </data>
   <data name="Misc_KillSteal" xml:space="preserve">
-    <value>킬 스틸 - [ Q / E  /R ]</value>
+    <value>킬 스틸</value>
   </data>
   <data name="Misc_KillSteal_Text" xml:space="preserve">
-    <value>스틸 설정</value>
-  </data>
-  <data name="Lane_R_KillableCount" xml:space="preserve">
-    <value>[ R ]을 사용하여 죽일 수 있는 미니언의 개수</value>
+    <value>킬 스틸</value>
   </data>
   <data name="Lane_R_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ R ]을 사용합니다.</value>
@@ -358,67 +336,23 @@
   <data name="Item_D_Zhonyas_Hp" xml:space="preserve">
     <value>사용자의 체력이 [ n% ] 이하일 때 [ 존야의 모래시계 ] 사용</value>
   </data>
-  <data name="Item_Potion_1" xml:space="preserve">
-    <value>사용자의 체력이 [ n% ] 이하일 때 [ 사냥꾼의 물약 ]을 사용합니다.</value>
-    <comment>Hunter's Potion</comment>
-  </data>
-  <data name="Item_Potion_2" xml:space="preserve">
-    <value>사용자의 체력이 [ n% ] 이하일 때 [ 비스킷 / 체력 물약 / 충전형 물약 ]을 사용합니다.</value>
-    <comment>Biscuit / Health Potion / Refillable Potion</comment>
-  </data>
-  <data name="Main_Attack_Style" xml:space="preserve">
-    <value>공격 스타일</value>
-  </data>
-  <data name="Item_Zhonyas_Azir" xml:space="preserve">
-    <value>아지르 [ R ]</value>
-  </data>
-  <data name="Item_Zhonyas_Bitz" xml:space="preserve">
-    <value>블리츠 [ Q ]</value>
-  </data>
-  <data name="Item_Zhonyas_Caitlyn" xml:space="preserve">
-    <value>케이틀린 [ R ]</value>
-  </data>
-  <data name="Item_Zhonyas_Darius" xml:space="preserve">
-    <value>다리우스 [ R ]</value>
-  </data>
   <data name="Item_D_Zhonyas_Dmg" xml:space="preserve">
     <value>순간 데미지가 [ n% ] 이상 들어오면  [ 존야의 모래시계 ]를 사용합니다.</value>
-  </data>
-  <data name="Item_Zhonyas_Fizz" xml:space="preserve">
-    <value>피즈 [ R ]</value>
-  </data>
-  <data name="Item_Zhonyas_Garen" xml:space="preserve">
-    <value>가렌 [ R ]</value>
-  </data>
-  <data name="Item_Zhonyas_Jin" xml:space="preserve">
-    <value>진 [ R ]</value>
-  </data>
-  <data name="Item_Zhonyas_Leeshin" xml:space="preserve">
-    <value>리신 [ R ]</value>
-  </data>
-  <data name="Item_Zhonyas_Lissandra" xml:space="preserve">
-    <value>리산드라 [ R ]</value>
-  </data>
-  <data name="Item_Zhonyas_Riven" xml:space="preserve">
-    <value>리븐 [ R ]</value>
-  </data>
-  <data name="Item_Zhonyas_Zed" xml:space="preserve">
-    <value>제드 [ R ]</value>
   </data>
   <data name="Lane_Q_Big" xml:space="preserve">
     <value>[ Q ] 사용 - 대포 미니언</value>
   </data>
-  <data name="Misc_Ignite" xml:space="preserve">
-    <value>킬 스틸 - [ 점화 ]</value>
+  <data name="Misc_KillSteal_0" xml:space="preserve">
+    <value>[ 점화 ]</value>
   </data>
   <data name="Misc_JungleSteal" xml:space="preserve">
-    <value>정글 스틸 - [ Q / E / R ] [ 에픽 몬스터 ]</value>
+    <value>정글 스틸 - [ 에픽 몬스터 ]</value>
   </data>
   <data name="Misc_AutoR" xml:space="preserve">
-    <value>자동 [ R ]</value>
+    <value>자동 [ R ] 사용</value>
   </data>
   <data name="Misc_AutoR_Exp" xml:space="preserve">
-    <value>적 챔피언이 [ 존야의 모래시계 / 귀환 / 에어본 / 스턴 / 제압 / 속박 / 매혹 / 도발 ] 상태일 때 [ R ]을 사용합니다.</value>
+    <value>적 챔피언이 [ 존야 / 귀환 / 에어본 / 스턴 / 속박 ] 상태일 때 [ R ]을 사용합니다.</value>
   </data>
   <data name="Item_D_Zhonyas_Text" xml:space="preserve">
     <value>존야의 모래시계</value>
@@ -426,25 +360,55 @@
   <data name="Item_Exp_1" xml:space="preserve">
     <value>※ 항상 작동합니다.</value>
   </data>
-  <data name="Main_Attack_Style_Exp_0" xml:space="preserve">
-    <value>0 : Q → 평 → 평</value>
-  </data>
-  <data name="Main_Attack_Style_Exp_1" xml:space="preserve">
-    <value>1 : 평 → Q → 평</value>
-  </data>
   <data name="Item_A_Youmuu" xml:space="preserve">
     <value>요우무의 유령검</value>
   </data>
   <data name="Combo_Ignite" xml:space="preserve">
     <value>[ 점화 ] 사용</value>
   </data>
-  <data name="Misc_Draw_Virtual" xml:space="preserve">
+  <data name="Draw_Virtual" xml:space="preserve">
     <value>범위 확인 - 거리를 확인하고 싶을 때 사용합니다.</value>
   </data>
-  <data name="Misc_Draw_Virtual_Min" xml:space="preserve">
+  <data name="Draw_Virtual_Min" xml:space="preserve">
     <value>범위 1</value>
   </data>
-  <data name="Misc_Draw_Virtual_Max" xml:space="preserve">
+  <data name="Draw_Virtual_Max" xml:space="preserve">
     <value>범위 2</value>
+  </data>
+  <data name="Item_D_Zhonyas_R" xml:space="preserve">
+    <value>위험한 궁극기[ R ]를 선택하세요.</value>
+  </data>
+  <data name="Misc_KillSteal_1" xml:space="preserve">
+    <value>[ 점화 ] + [ Q ]</value>
+  </data>
+  <data name="Misc_KillSteal_2" xml:space="preserve">
+    <value>[ 점화 ] + [ Q ] + [ 총검 ]</value>
+  </data>
+  <data name="Misc_KillSteal_3" xml:space="preserve">
+    <value>[ Q ]</value>
+  </data>
+  <data name="Misc_KillSteal_4" xml:space="preserve">
+    <value>[ Q ] + [ E ]</value>
+  </data>
+  <data name="Misc_JungleSteal_0" xml:space="preserve">
+    <value>[ Q ]</value>
+  </data>
+  <data name="Misc_JungleSteal_1" xml:space="preserve">
+    <value>[ Q ] + [ E ]</value>
+  </data>
+  <data name="Misc_KillSteal_5" xml:space="preserve">
+    <value>[ Q ] + [ E ] + [ 총검 ]</value>
+  </data>
+  <data name="Misc_KillSteal_6" xml:space="preserve">
+    <value>[ E ]</value>
+  </data>
+  <data name="Misc_KillSteal_7" xml:space="preserve">
+    <value>[ E ] + [ 총검 ]</value>
+  </data>
+  <data name="Misc_AutoR_Text" xml:space="preserve">
+    <value>자동 [ R ]</value>
+  </data>
+  <data name="Harass_SuppotMode" xml:space="preserve">
+    <value>서포트 모드</value>
   </data>
 </root>

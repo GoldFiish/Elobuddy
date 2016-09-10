@@ -216,7 +216,7 @@
   <data name="Jungle_Q_Text" xml:space="preserve">
     <value>[ Q ] Use</value>
   </data>
-  <data name="Misc_Draw_R" xml:space="preserve">
+  <data name="Draw_R" xml:space="preserve">
     <value>[ R ] Range</value>
   </data>
   <data name="Combo_R_Text" xml:space="preserve">
@@ -231,32 +231,29 @@
   <data name="Lane_R_Text" xml:space="preserve">
     <value>[ R ] Use</value>
   </data>
-  <data name="Misc_Draw_Q" xml:space="preserve">
+  <data name="Draw_Q" xml:space="preserve">
     <value>[ Q ] Range</value>
   </data>
-  <data name="Misc_Draw_ComboQ" xml:space="preserve">
+  <data name="Draw_LaneQ" xml:space="preserve">
     <value>[ Q ] Range - [ Siege minion ]</value>
   </data>
-  <data name="Misc_Draw_Text" xml:space="preserve">
-    <value>Draw Setting</value>
-  </data>
-  <data name="Misc_Ignite" xml:space="preserve">
-    <value>Kill steal - [ Ignite]</value>
+  <data name="Misc_KillSteal_0" xml:space="preserve">
+    <value>[ Ignite ]</value>
   </data>
   <data name="Misc_JungleSteal" xml:space="preserve">
     <value>Jungle steal - [ Q / E / R ] [ Epic Monster ]</value>
   </data>
   <data name="Misc_KillSteal" xml:space="preserve">
-    <value>Kill steal - [ Q / E / R ]</value>
+    <value>Kill steal</value>
   </data>
   <data name="Misc_KillSteal_Text" xml:space="preserve">
     <value>Steal Setting</value>
   </data>
   <data name="Misc_AutoR" xml:space="preserve">
-    <value>Auto [ R ]</value>
+    <value>Auto [ R ] Use</value>
   </data>
   <data name="Main_Text_0" xml:space="preserve">
-    <value>[ Nebula ] Teemo - 6.13.0.0</value>
+    <value>[ Nebula ] Teemo - 6.17.0.0 Reborn</value>
   </data>
   <data name="Main_Language_Select" xml:space="preserve">
     <value>Language ( 언어 )</value>
@@ -283,7 +280,7 @@
     <value>Quicksilver Sash, Mercurial Scimitar cast speed - [ /ms ]</value>
   </data>
   <data name="Combo_Q_Mana" xml:space="preserve">
-    <value>If mana is higher than [ n% ], [ R ] is used </value>
+    <value>If mana is higher than [ n% ], [ Q ] is used </value>
   </data>
   <data name="Harass_Q_Mana" xml:space="preserve">
     <value>If mana is higher than [ n% ], [ Q ] is used </value>
@@ -306,14 +303,8 @@
   <data name="Lane_R_Mana" xml:space="preserve">
     <value>If mana is higher than [ n% ], [ R ] is used </value>
   </data>
-  <data name="Main_Attack_Style" xml:space="preserve">
-    <value>Attact style</value>
-  </data>
   <data name="Main_Language_Exp" xml:space="preserve">
     <value>Select Language -&gt; Press [ F5 ] key</value>
-  </data>
-  <data name="Jungle_Style" xml:space="preserve">
-    <value>Jungle style</value>
   </data>
   <data name="Item_Debuff_Text" xml:space="preserve">
     <value>Select to remove the buff</value>
@@ -334,37 +325,19 @@
     <value>If [ Noxious Trap ] is higher than [ n% ], [ R ] is used </value>
   </data>
   <data name="Combo_R_Count" xml:space="preserve">
-    <value>If [ Noxious Trap ] is higher than [ n% ], [ R ] is used </value>
+    <value>If [ Noxious Trap ] is higher than [ n ], [ R ] is used </value>
   </data>
   <data name="Harass_R_Count" xml:space="preserve">
     <value>If [ Noxious Trap ] is higher than [ n% ], [ R ] is used </value>
-  </data>
-  <data name="Main_Attack_Style_Exp_0" xml:space="preserve">
-    <value>0 : [ Q ] → AA → AA</value>
-  </data>
-  <data name="Main_Attack_Style_Exp_1" xml:space="preserve">
-    <value>1 : AA → [ Q ] → AA ( Jungle Teemo )</value>
-  </data>
-  <data name="Jungle_Style_Exp_1" xml:space="preserve">
-    <value>0 : Starting Big Monster</value>
-  </data>
-  <data name="Jungle_Style_Exp_2" xml:space="preserve">
-    <value>1 : Starting Mini Monster kill after [ Q ] use to Big Monster</value>
   </data>
   <data name="Harass_Q_Range" xml:space="preserve">
     <value>If enemy is in [ n ] range, [ Q ] is used</value>
   </data>
   <data name="Combo_W_Range" xml:space="preserve">
-    <value>If enemy is [ n ] ~ [720 ] range, [ W ] is used</value>
-  </data>
-  <data name="Harass_R_Range" xml:space="preserve">
-    <value>If enemy is in [ n ] range, [ R ] is used</value>
+    <value>If enemy is [ n ] ~ [800 ] range, [ W ] is used</value>
   </data>
   <data name="Harass_W_Range" xml:space="preserve">
-    <value>If enemy is in [ n ] range, [ W ] is used</value>
-  </data>
-  <data name="Lane_R_KillableCount" xml:space="preserve">
-    <value>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</value>
+    <value>If enemy is [ n ] ~ [800 ] range, [ W ] is used</value>
   </data>
   <data name="Lane_R_PoisonCount" xml:space="preserve">
     <value>Number of poisoning Minions &gt;= [ n ], [ R ] is used</value>
@@ -376,18 +349,57 @@
     <value>Donated amount will be used for the development of better addon. Thank you.</value>
   </data>
   <data name="Misc_AutoR_Exp" xml:space="preserve">
-    <value>Enemy state : [ Zhonya's / Recall / Konck up / Stun / Supression / Snare / Charm / Taunt ]</value>
+    <value>Enemy state : [ Zhonya's / Recall / Konck up / Stun / Snare / ... ]</value>
   </data>
   <data name="Combo_Ignite" xml:space="preserve">
     <value>[ Ignite ] Use</value>
   </data>
-  <data name="Misc_Draw_Virtual" xml:space="preserve">
-    <value>[ Virtual Range ] Use - Use when you want to know the distance.</value>
+  <data name="Draw_Virtual" xml:space="preserve">
+    <value>[ Virtual Range ] - Use when you want to know the distance.</value>
   </data>
-  <data name="Misc_Draw_Virtual_Max" xml:space="preserve">
+  <data name="Draw_Virtual_Max" xml:space="preserve">
     <value>Line 2</value>
   </data>
-  <data name="Misc_Draw_Virtual_Min" xml:space="preserve">
+  <data name="Draw_Virtual_Min" xml:space="preserve">
     <value>Line 1</value>
+  </data>
+  <data name="Item_D_Zhonyas_R" xml:space="preserve">
+    <value>Choose a dangerous [ R ]</value>
+  </data>
+  <data name="Item_D_Zhonyas_Dmg" xml:space="preserve">
+    <value>Instantaneous damage &gt; [ n%], [ Zhonya's Hourglass ] is used</value>
+  </data>
+  <data name="Misc_KillSteal_1" xml:space="preserve">
+    <value>[ Ignite ] + [ Q ]</value>
+  </data>
+  <data name="Misc_KillSteal_2" xml:space="preserve">
+    <value>[ Ignite ] + [ Q ] + [ Hextech ]</value>
+  </data>
+  <data name="Misc_KillSteal_3" xml:space="preserve">
+    <value>[ Q ]</value>
+  </data>
+  <data name="Misc_KillSteal_4" xml:space="preserve">
+    <value>[ Q ] + [ E ]</value>
+  </data>
+  <data name="Misc_JungleSteal_0" xml:space="preserve">
+    <value>[ Q ]</value>
+  </data>
+  <data name="Misc_JungleSteal_1" xml:space="preserve">
+    <value>[ Q ] + [ E ]</value>
+  </data>
+  <data name="Misc_KillSteal_7" xml:space="preserve">
+    <value>[ E ] + [ Hextech ]</value>
+  </data>
+  <data name="Misc_KillSteal_6" xml:space="preserve">
+    <value>[ E ]</value>
+  </data>
+  <data name="Misc_KillSteal_5" xml:space="preserve">
+    <value>[ Q ] + [ E ] + [ Hextech ]</value>
+  </data>
+  <data name="Misc_AutoR_Text" xml:space="preserve">
+    <value>Auto [ R ]</value>
+  </data>
+  <data name="Harass_SuppotMode" xml:space="preserve">
+    <value>Suppor Mode</value>
   </data>
 </root>

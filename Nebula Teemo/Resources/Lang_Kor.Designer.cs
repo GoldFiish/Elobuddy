@@ -79,7 +79,7 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   보유 마나가 [ n% ] 이상일 때 [ R ]을 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   보유 마나가 [ n% ] 이상일 때 [ Q ]을 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Combo_Q_Mana {
             get {
@@ -124,7 +124,7 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   적이 [ n ] ~ [ 720 ]사이에 있으면 [ W ]를 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   적이 [ n ] ~ [ 800 ]사이에 있으면 [ W ]를 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Combo_W_Range {
             get {
@@ -138,6 +138,60 @@ namespace NebulaTeemo.Resources {
         internal static string Combo_W_Text {
             get {
                 return ResourceManager.GetString("Combo_W_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] 범위 - [ 시즈 미니언 킬 ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_LaneQ {
+            get {
+                return ResourceManager.GetString("Draw_LaneQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] 범위과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_Q {
+            get {
+                return ResourceManager.GetString("Draw_Q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ R ] 범위과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_R {
+            get {
+                return ResourceManager.GetString("Draw_R", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   범위 확인 - 거리를 확인하고 싶을 때 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_Virtual {
+            get {
+                return ResourceManager.GetString("Draw_Virtual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   범위 2과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_Virtual_Max {
+            get {
+                return ResourceManager.GetString("Draw_Virtual_Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   범위 1과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_Virtual_Min {
+            get {
+                return ResourceManager.GetString("Draw_Virtual_Min", resourceCulture);
             }
         }
         
@@ -187,20 +241,20 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   적이 [ n ]범위 안에 있으면 [ R ]을 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Harass_R_Range {
-            get {
-                return ResourceManager.GetString("Harass_R_Range", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   [ R ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Harass_R_Text {
             get {
                 return ResourceManager.GetString("Harass_R_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   서포트 모드과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Harass_SuppotMode {
+            get {
+                return ResourceManager.GetString("Harass_SuppotMode", resourceCulture);
             }
         }
         
@@ -214,7 +268,7 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   적이 [ n ]범위 안에 있으면 [ W ]를 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   적이 [ n ] ~ [ 800 ]사이에 있으면 [ W ]를 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Harass_W_Range {
             get {
@@ -421,6 +475,15 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
+        ///   위험한 궁극기[ R ]를 선택하세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Item_D_Zhonyas_R {
+            get {
+                return ResourceManager.GetString("Item_D_Zhonyas_R", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   존야의 모래시계과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Item_D_Zhonyas_Text {
@@ -457,38 +520,11 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   메뉴 (x) 사용 (o) - [ 빌지워터 해적검 ] [ 요우무의 유령검 ] [ 마법공학 총검 ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   메뉴 [ x ] 사용 [ o ] - [ 빌지워터 해적검 ] [ 요우무의 유령검 ] [ 마법공학 총검 ]과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Item_Item_Text {
             get {
                 return ResourceManager.GetString("Item_Item_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   사용자의 체력이 [ n% ] 이하일 때 [ 부패 물약 ]을 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Potion_0 {
-            get {
-                return ResourceManager.GetString("Item_Potion_0", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   사용자의 체력이 [ n% ] 이하일 때 [ 사냥꾼의 물약 ]을 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Potion_1 {
-            get {
-                return ResourceManager.GetString("Item_Potion_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   사용자의 체력이 [ n% ] 이하일 때 [ 비스킷 / 체력 물약 / 충전형 물약 ]을 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Potion_2 {
-            get {
-                return ResourceManager.GetString("Item_Potion_2", resourceCulture);
             }
         }
         
@@ -498,105 +534,6 @@ namespace NebulaTeemo.Resources {
         internal static string Item_S_Ignite {
             get {
                 return ResourceManager.GetString("Item_S_Ignite", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   아지르 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Azir {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Azir", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   블리츠 [ Q ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Bitz {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Bitz", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   케이틀린 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Caitlyn {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Caitlyn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   다리우스 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Darius {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Darius", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   피즈 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Fizz {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Fizz", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   가렌 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Garen {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Garen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   진 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Jin {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Jin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   리신 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Leeshin {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Leeshin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   리산드라 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Lissandra {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Lissandra", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   리븐 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Riven {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Riven", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   제드 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Item_Zhonyas_Zed {
-            get {
-                return ResourceManager.GetString("Item_Zhonyas_Zed", resourceCulture);
             }
         }
         
@@ -646,33 +583,6 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   정글 스타일과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Jungle_Style {
-            get {
-                return ResourceManager.GetString("Jungle_Style", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   0 : 대형부터 잡기과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Jungle_Style_Exp_1 {
-            get {
-                return ResourceManager.GetString("Jungle_Style_Exp_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   1 : 대형에 [ Q ] 사용 후, 소형 잡기과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Jungle_Style_Exp_2 {
-            get {
-                return ResourceManager.GetString("Jungle_Style_Exp_2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   [ Q ] 사용 - 대포 미니언과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Lane_Q_Big {
@@ -687,15 +597,6 @@ namespace NebulaTeemo.Resources {
         internal static string Lane_R_Count {
             get {
                 return ResourceManager.GetString("Lane_R_Count", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ R ]을 사용하여 죽일 수 있는 미니언의 개수과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Lane_R_KillableCount {
-            get {
-                return ResourceManager.GetString("Lane_R_KillableCount", resourceCulture);
             }
         }
         
@@ -727,33 +628,6 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   공격 스타일과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Attack_Style {
-            get {
-                return ResourceManager.GetString("Main_Attack_Style", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   0 : Q → 평 → 평과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Attack_Style_Exp_0 {
-            get {
-                return ResourceManager.GetString("Main_Attack_Style_Exp_0", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   1 : 평 → Q → 평과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Attack_Style_Exp_1 {
-            get {
-                return ResourceManager.GetString("Main_Attack_Style_Exp_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   언어 선택 후 F5를 눌러 적용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Language_Exp {
@@ -772,7 +646,7 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   [ Nebula ] Teemo - 6.13.0.0과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ Nebula ] Teemo - 6.17.0.0 리뉴얼과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Text_0 {
             get {
@@ -799,7 +673,7 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   자동 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   자동 [ R ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Misc_AutoR {
             get {
@@ -808,7 +682,7 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   적 챔피언이 [ 존야의 모래시계 / 귀환 / 에어본 / 스턴 / 제압 / 속박 / 매혹 / 도발 ] 상태일 때 [ R ]을 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   적 챔피언이 [ 존야 / 귀환 / 에어본 / 스턴 / 속박 ] 상태일 때 [ R ]을 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Misc_AutoR_Exp {
             get {
@@ -817,79 +691,16 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   [ Q ] 범위 - [ 시즈 미니언 킬 ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   자동 [ R ]과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Misc_Draw_ComboQ {
+        internal static string Misc_AutoR_Text {
             get {
-                return ResourceManager.GetString("Misc_Draw_ComboQ", resourceCulture);
+                return ResourceManager.GetString("Misc_AutoR_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   [ Q ] 범위과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Draw_Q {
-            get {
-                return ResourceManager.GetString("Misc_Draw_Q", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ R ] 범위과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Draw_R {
-            get {
-                return ResourceManager.GetString("Misc_Draw_R", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   범위 표시과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Draw_Text {
-            get {
-                return ResourceManager.GetString("Misc_Draw_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   범위 확인 - 거리를 확인하고 싶을 때 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Draw_Virtual {
-            get {
-                return ResourceManager.GetString("Misc_Draw_Virtual", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   범위 2과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Draw_Virtual_Max {
-            get {
-                return ResourceManager.GetString("Misc_Draw_Virtual_Max", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   범위 1과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Draw_Virtual_Min {
-            get {
-                return ResourceManager.GetString("Misc_Draw_Virtual_Min", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   킬 스틸 - [ 점화 ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Ignite {
-            get {
-                return ResourceManager.GetString("Misc_Ignite", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   정글 스틸 - [ Q / E / R ] [ 에픽 몬스터 ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   정글 스틸 - [ 에픽 몬스터 ]과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Misc_JungleSteal {
             get {
@@ -898,7 +709,25 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   킬 스틸 - [ Q / E  /R ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ Q ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_JungleSteal_0 {
+            get {
+                return ResourceManager.GetString("Misc_JungleSteal_0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] + [ E ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_JungleSteal_1 {
+            get {
+                return ResourceManager.GetString("Misc_JungleSteal_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   킬 스틸과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Misc_KillSteal {
             get {
@@ -907,7 +736,79 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   스틸 설정과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ 점화 ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_KillSteal_0 {
+            get {
+                return ResourceManager.GetString("Misc_KillSteal_0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ 점화 ] + [ Q ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_KillSteal_1 {
+            get {
+                return ResourceManager.GetString("Misc_KillSteal_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ 점화 ] + [ Q ] + [ 총검 ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_KillSteal_2 {
+            get {
+                return ResourceManager.GetString("Misc_KillSteal_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_KillSteal_3 {
+            get {
+                return ResourceManager.GetString("Misc_KillSteal_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] + [ E ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_KillSteal_4 {
+            get {
+                return ResourceManager.GetString("Misc_KillSteal_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] + [ E ] + [ 총검 ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_KillSteal_5 {
+            get {
+                return ResourceManager.GetString("Misc_KillSteal_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ E ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_KillSteal_6 {
+            get {
+                return ResourceManager.GetString("Misc_KillSteal_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ E ] + [ 총검 ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_KillSteal_7 {
+            get {
+                return ResourceManager.GetString("Misc_KillSteal_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   킬 스틸과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Misc_KillSteal_Text {
             get {
