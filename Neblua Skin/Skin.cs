@@ -90,7 +90,7 @@ namespace NebulaSkin
             }
             else
             {
-                string[] WordList = { "[", ",", "{", "}", ":", "\"", "id", "num", "name", "chromas", "true", "false" };
+                string[] WordList = { "[", ",", "{", "}", ":", "\"", "<br>", "id", "num", "name", "chromas", "true", "false" };
                 string[] SkinList = Server_String.Split(WordList, StringSplitOptions.RemoveEmptyEntries);
                 Menu.Add("Skin", new ComboBox(Res_Language.GetString("Main_Skin"), 0, SkinList));
             }
