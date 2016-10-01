@@ -146,7 +146,7 @@
     <value>와드 자동 변경</value>
   </data>
   <data name="Lable_Ward_Error_0" xml:space="preserve">
-    <value>※ 경  고</value>
+    <value>※ 경  고 : 자동변경 옵션</value>
   </data>
   <data name="Lable_Ward_Error_1" xml:space="preserve">
     <value>자동 변경 옵션은 크래쉬 방지를 위해 약 2초뒤에 적용되지만. 때때로 크래쉬가 일어납니다.</value>

@@ -88,7 +88,7 @@ namespace NebulaSkin.Resources {
         }
         
         /// <summary>
-        ///   ※ Warning과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   ※ Warning :  Auto change option과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Lable_Ward_Error_0 {
             get {
