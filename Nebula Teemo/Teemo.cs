@@ -10,6 +10,7 @@ using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.Sandbox;
 using SharpDX;
+using EloBuddy.SDK.Enumerations;
 using System.Collections.Generic;
 
 namespace NebulaTeemo
@@ -269,7 +270,33 @@ namespace NebulaTeemo
                 {
                     Mode_Lane.Lane();
                 }
+                if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee))
+                {
+                    var Rtarget = TargetSelector.GetTarget(SpellManager.R.Range, DamageType.Magical);
 
+                    if (Rtarget == null) return;
+
+                    if (SpellManager.R.IsReady())
+                    {
+                        if (Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo > 1)
+                        {
+                            if (Rtarget.IsValidTarget() && Player.Instance.Distance(Rtarget) <= SpellManager.R.Range)
+                            {
+                                var RPrediction = SpellManager.R.GetPrediction(Rtarget);
+
+                                if (RPrediction.HitChance >= HitChance.High)
+                                {
+                                    SpellManager.R.Cast(RPrediction.CastPosition);
+                                }
+                            }
+                        }
+                    }
+
+                    if(SpellManager.W.IsReady())
+                    {
+                        SpellManager.W.Cast();
+                    }
+                }
                 Mode_Allways.AutoR();
             }
             catch (Exception)

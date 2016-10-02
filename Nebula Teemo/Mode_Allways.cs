@@ -17,9 +17,10 @@ namespace NebulaTeemo
             if (MenuMisc["Auto.R"].Cast<CheckBox>().CurrentValue && Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo > 0)
                 {
                     var Rtarget = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= SpellManager.R.Range).FirstOrDefault();
-
-                    if (Rtarget.HasBuff("zhonyasringshield") || Rtarget.HasBuff("Recall") || Rtarget.HasBuffOfType(BuffType.Stun) || Rtarget.HasBuffOfType(BuffType.Snare) || 
-                        Rtarget.HasBuffOfType(BuffType.Taunt) || Rtarget.HasBuffOfType(BuffType.Charm) || Rtarget.HasBuffOfType(BuffType.Suppression) || Rtarget.HasBuffOfType(BuffType.Knockup))
+                   
+                    if (Rtarget.HasBuff("zhonyasringshield") || Rtarget.HasBuff("Recall") || Rtarget.HasBuff("teleport") || Rtarget.HasBuff("Pantheon_GrandSkyfall_Jump") || Rtarget.HasBuff("teleport_target") ||
+                        Rtarget.HasBuff("BardRStasis") || Rtarget.HasBuffOfType(BuffType.Stun) || Rtarget.HasBuffOfType(BuffType.Snare) || Rtarget.HasBuffOfType(BuffType.Taunt) || Rtarget.HasBuffOfType(BuffType.Charm) ||
+                        Rtarget.HasBuffOfType(BuffType.Suppression) || Rtarget.HasBuffOfType(BuffType.Knockup))
                     {
                         SpellManager.R.Cast(Rtarget.Position);
                     }
