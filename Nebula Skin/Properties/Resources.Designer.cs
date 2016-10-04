@@ -59,5 +59,49 @@ namespace NebulaSkin.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap WardList {
+            get {
+                object obj = ResourceManager.GetObject("WardList", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   {
+        ///    &quot;WardSprite&quot;:
+        ///    {
+        ///        &quot;Width&quot;: 71,
+        ///        &quot;Height&quot;: 82,
+        ///        &quot;SkinName&quot;:
+        ///        {
+        ///            &quot;Classic&quot;:
+        ///            {
+        ///                &quot;X&quot;: 0,
+        ///                &quot;Y&quot;: 0
+        ///            },
+        ///            &quot;BatOLantern&quot;:
+        ///            {
+        ///                &quot;X&quot;: 71,
+        ///                &quot;Y&quot;: 0
+        ///            },
+        ///            &quot;Haunting&quot;:
+        ///            {
+        ///                &quot;X&quot;: 142,
+        ///                &quot;Y&quot;: 0
+        ///            },
+        ///            &quot;Widow&quot;:
+        ///            {
+        ///                &quot;X&quot;: 213,
+        ///                &quot;Y&quot;: 0[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string WardPosition {
+            get {
+                return ResourceManager.GetString("WardPosition", resourceCulture);
+            }
+        }
     }
 }

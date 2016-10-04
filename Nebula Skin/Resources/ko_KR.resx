@@ -121,7 +121,7 @@
     <value>이 애드온이 마음에 드신다면, 추천 또는 기부 부탁드립니다.</value>
   </data>
   <data name="Main_Text_0" xml:space="preserve">
-    <value>[ Nebula ] Skin - 6.19.0.0</value>
+    <value>[ Nebula ] Skin - 6.19.0.2</value>
   </data>
   <data name="Main_Language_Exp" xml:space="preserve">
     <value>언어 선택 후 F5를 눌러 적용합니다.</value>
@@ -146,7 +146,7 @@
     <value>와드 자동 변경</value>
   </data>
   <data name="Lable_Ward_Error_0" xml:space="preserve">
-    <value>※ 경  고 : 자동변경 옵션</value>
+    <value>와드</value>
   </data>
   <data name="Lable_Ward_Error_1" xml:space="preserve">
     <value>자동 변경 옵션은 크래쉬 방지를 위해 약 2초뒤에 적용되지만. 때때로 크래쉬가 일어납니다.</value>

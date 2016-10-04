@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // 어셈블리와 관련된 정보를 수정하려면
 // 이 특성 값을 변경하십시오.
 [assembly: AssemblyTitle("Nebula Skin")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Universal Skin changer")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nebula")]
 [assembly: AssemblyProduct("[ Nebula ] Skin")]
@@ -30,6 +30,6 @@ using System.Runtime.InteropServices;
 //      빌드 번호
 //      수정 버전
 //
-[assembly: AssemblyVersion("6.19.0.1")]
-[assembly: AssemblyFileVersion("6.19.0.1")]
+[assembly: AssemblyVersion("6.19.0.2")]
+[assembly: AssemblyFileVersion("6.19.0.2")]
 

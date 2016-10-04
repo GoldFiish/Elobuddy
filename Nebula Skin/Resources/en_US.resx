@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Main_Text_0" xml:space="preserve">
-    <value>[ Nebula ] Skin - 6.19.0.0</value>
+    <value>[ Nebula ] Skin - 6.19.0.2</value>
   </data>
   <data name="Main_Language_Select" xml:space="preserve">
     <value>Language ( 언어 )</value>
@@ -143,10 +143,10 @@
     <value>Chromas</value>
   </data>
   <data name="Lable_Ward_Auto" xml:space="preserve">
-    <value>Ward auto change</value>
+    <value>All ward change</value>
   </data>
   <data name="Lable_Ward_Error_0" xml:space="preserve">
-    <value>※ Warning :  Auto change option</value>
+    <value>Ward</value>
   </data>
   <data name="Lable_Ward_Error_1" xml:space="preserve">
     <value>Ward auto change option is have 2sec apply time( crash protect ). But sometimes LoL crash.</value>

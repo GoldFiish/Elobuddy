@@ -121,7 +121,7 @@
     <value>If you like this addon, hope Upvote click or donation. </value>
   </data>
   <data name="Main_Text_0" xml:space="preserve">
-    <value>[ Nebula ] Skin - 6.19.0.0</value>
+    <value>[ Nebula ] Skin - 6.19.0.2</value>
   </data>
   <data name="Main_Language_Exp" xml:space="preserve">
     <value>Select Language -&gt; Press [ F5 ] key</value>
@@ -146,7 +146,7 @@
     <value>Ward auto change</value>
   </data>
   <data name="Lable_Ward_Error_0" xml:space="preserve">
-    <value>※ Warning :  Auto change option</value>
+    <value>Ward</value>
   </data>
   <data name="Lable_Ward_Error_1" xml:space="preserve">
     <value>Ward auto change option is have 2sec apply time( crash protect ). But sometimes LoL crash.</value>

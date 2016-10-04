@@ -17,7 +17,7 @@ namespace NebulaSkin
     internal class Skin
     {  
         static string Server_StrVer;
-        static string Server_String;
+        public static string Server_String;
         static string Server_C_Name;
         static string Cpoy_Server_String;
 
@@ -34,8 +34,7 @@ namespace NebulaSkin
         public static void Load()
         {            
             Language_Set();
-
-            Chat.Print(Player.Instance.ChampionName);
+            
             Chat.Print("<font color = '#94cdfc'>Welcome to </font><font color = '#ffffff'>[ Nebula ] Skin</font><font color = '#94cdfc'>. Addon is ready.</font>");
 
             Menu = MainMenu.AddMenu("[ Neblua ] Skin", "By.Natrium");
@@ -53,10 +52,9 @@ namespace NebulaSkin
 
             Menu.AddSeparator();
             Menu.AddLabel(Res_Language.GetString("Lable_Ward_Error_0"));
-            Menu.AddLabel(Res_Language.GetString("Lable_Ward_Error_1"));
-            Menu.AddLabel(Res_Language.GetString("Lable_Ward_Error_2"));
             Menu.Add("Ward.Auto", new CheckBox(Res_Language.GetString("Lable_Ward_Auto"), false));
-            Menu.Add("Ward.Skin", new Slider(Res_Language.GetString("Lable_Ward_Skin"), 0, 0, 70));
+            Menu.AddVisualFrame(new WardPreview("Ward.Preview", System.Drawing.Color.Purple));
+            Menu.Add("Ward.Skin", new Slider(Res_Language.GetString("Lable_Ward_Skin"), 0, 0, 62));
 
             Player.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
             Menu["Skin.Nomal"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
@@ -94,12 +92,13 @@ namespace NebulaSkin
                 };
             }
 
-            Menu["Ward.Skin"].Cast<Slider>().OnValueChange += (sender, vargs) =>
+            Menu["Ward.Auto"].Cast<CheckBox>().OnValueChange += (sender, vargs) =>
             {
-                if(Menu["Ward.Auto"].Cast<CheckBox>().CurrentValue)
+                if (sender.CurrentValue == true)
                 {
-                    Core.DelayAction(() => { Model.ChangedSkin = new List<Obj_AI_Minion>(); }, 2000);
-                }
+                    Model.ChangedSkin = new List<Obj_AI_Minion>();
+                    Core.DelayAction(() => { sender.CurrentValue = false; }, 100);
+                }                
             };
           
             Menu["Language.Select"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>

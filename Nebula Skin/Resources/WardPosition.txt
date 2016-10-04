@@ -1,0 +1,325 @@
+{
+    "WardSprite":
+    {
+        "Width": 71,
+        "Height": 82,
+        "SkinName":
+        {
+            "Classic":
+            {
+                "X": 0,
+                "Y": 0
+            },
+            "BatOLantern":
+            {
+                "X": 71,
+                "Y": 0
+            },
+            "Haunting":
+            {
+                "X": 142,
+                "Y": 0
+            },
+            "Widow":
+            {
+                "X": 213,
+                "Y": 0
+            },
+            "Deadfall":
+            {
+                "X": 284,
+                "Y": 0
+            },
+            "TombAngel":
+            {
+                "X": 355,
+                "Y": 0
+            },
+            "Snowman":
+            {
+                "X": 426,
+                "Y": 0
+            },
+            "Gingerbread":
+            {
+                "X": 497,
+                "Y": 0
+            },
+            "LanternoftheSerpent":
+            {
+                "X": 568,
+                "Y": 0
+            },
+            "BanneroftheSerpent":
+            {
+                "X": 639,
+                "Y": 0
+            },
+            "Starcall":
+            {
+                "X": 0,
+                "Y": 82
+            },
+            "Draven":
+            {
+                "X": 71,
+                "Y": 82
+            },
+            "Luminosity":
+            {
+                "X": 142,
+                "Y": 82
+            },
+            "Season3Victorious":
+            {
+                "X": 213,
+                "Y": 82
+            },
+            "Season3Championship":
+            {
+                "X": 284,
+                "Y": 82
+            },
+            "Candycane":
+            {
+                "X": 355,
+                "Y": 82
+            },
+            "BanneroftheHorse":
+            {
+                "X": 426,
+                "Y": 82
+            },
+            "Gong":
+            {
+                "X": 497,
+                "Y": 82
+            },
+			"Bouquet":
+            {
+                "X": 568,
+                "Y": 82
+            },
+            "Riot":
+            {
+                "X": 639,
+                "Y": 82
+            },
+            "Wardskin20":
+            {
+                "X": 0,
+                "Y": 164
+            },
+            "Dragonslayer":
+            {
+                "X": 71,
+                "Y": 164
+            },
+            "All-Stars":
+            {
+                "X": 142,
+                "Y": 164
+            },
+            "GoldenGoal":
+            {
+                "X": 213,
+                "Y": 164
+            },
+            "Mecha":
+            {
+                "X": 284,
+                "Y": 164
+            },
+            "Rammus":
+            {
+                "X": 355,
+                "Y": 164
+            },
+            "Amumu":
+            {
+                "X": 426,
+                "Y": 164
+            },
+            "Ascension":
+            {
+                "X": 497,
+                "Y": 164
+            },
+            "2014Championship":
+            {
+                "X": 568,
+                "Y": 164
+            },
+            "Conquering":
+            {
+                "X": 639,
+                "Y": 164
+            },
+            "Triumphant":
+            {
+                "X": 0,
+                "Y": 246
+            },
+            "NVictorious":
+            {
+                "X": 71,
+                "Y": 246
+            },
+            "Battlecast":
+            {
+                "X": 142,
+                "Y": 246
+            },
+            "NomalPoro":
+            {
+                "X": 213,
+                "Y": 246
+            },
+            "AstroPoro":
+            {
+                "X": 284,
+                "Y": 246
+            },
+            "GentlemanPoro":
+            {
+                "X": 355,
+                "Y": 246
+            },
+            "BattlecastPoro":
+            {
+                "X": 426,
+                "Y": 246
+            },
+            "DragonSlayerPoro":
+            {
+                "X": 497,
+                "Y": 246
+            },
+            "UnderworldPoro":
+            {
+                "X": 568,
+                "Y": 246
+            },
+            "LunarDragon":
+            {
+                "X": 639,
+                "Y": 246
+            },
+            "Heartseeker":
+            {
+                "X": 0,
+                "Y": 328
+            },
+            "UrfTriumphant":
+            {
+                "X": 71,
+                "Y": 328
+            },
+            "MotherSerpent":
+            {
+                "X": 142,
+                "Y": 328
+            },
+            "SlaughterFleet":
+            {
+                "X": 213,
+                "Y": 328
+            },
+            "OpticEnhancer":
+            {
+                "X": 284,
+                "Y": 328
+            },
+            "Championship2015":
+            {
+                "X": 355,
+                "Y": 328
+            },
+            "2015Conquering":
+            {
+                "X": 426,
+                "Y": 328
+            },
+            "2015Triumphant":
+            {
+                "X": 497,
+                "Y": 328
+            },
+            "2015Victorious":
+            {
+                "X": 568,
+                "Y": 328
+            },
+            "Riggle":
+            {
+                "X": 639,
+                "Y": 328
+            },
+            "TeamFire":
+            {
+                "X": 0,
+                "Y": 410
+            },
+            "TeamIce":
+            {
+                "X": 71,
+                "Y": 410
+            },
+            "PenguinSkier":
+            {
+                "X": 142,
+                "Y": 410
+            },
+            "RisingDawn":
+            {
+                "X": 213,
+                "Y": 410
+            },
+            "Harpseeker":
+            {
+                "X": 284,
+                "Y": 410
+            },
+            "Hextech":
+            {
+                "X": 355,
+                "Y": 410
+            },
+            "DefinitelyNotAWard":
+            {
+                "X": 426,
+                "Y": 410
+            },
+            "MechaZero":
+            {
+                "X": 497,
+                "Y": 410
+            },
+            "ElPoroWard":
+            {
+                "X": 568,
+                "Y": 410
+            },
+            "DarkStar":
+            {
+                "X": 639,
+                "Y": 410
+            },
+            "HisRoyalCrabness":
+            {
+                "X": 0,
+                "Y": 492
+            },
+            "PROJECT":
+            {
+                "X": 71,
+                "Y": 492
+            },
+            "GAMEON":
+            {
+                "X": 142,
+                "Y": 492
+            }
+        }
+    }
+}

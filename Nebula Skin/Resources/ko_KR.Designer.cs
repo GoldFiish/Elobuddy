@@ -88,7 +88,7 @@ namespace NebulaSkin.Resources {
         }
         
         /// <summary>
-        ///   ※ 경  고 : 자동변경 옵션과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   와드과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Lable_Ward_Error_0 {
             get {
@@ -151,7 +151,7 @@ namespace NebulaSkin.Resources {
         }
         
         /// <summary>
-        ///   [ Nebula ] Skin - 6.19.0.0과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ Nebula ] Skin - 6.19.0.2과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Text_0 {
             get {
