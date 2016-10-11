@@ -1,1 +1,6 @@
-6.19.0.2
+6.19.0.2,
+[ 1 ] Add Update Notice,
+[ 2 ] Fix Ward change crash,
+[ 3 ] Fix Ward Image,
+[ 4 ] Support real-time ward change,
+Now testing,
