@@ -95,7 +95,7 @@
                 "X": 497,
                 "Y": 82
             },
-			"Bouquet":
+            "Bouquet":
             {
                 "X": 568,
                 "Y": 82
@@ -150,17 +150,17 @@
                 "X": 568,
                 "Y": 164
             },
-            "Conquering":
+            "S4Conquering":
             {
                 "X": 639,
                 "Y": 164
             },
-            "Triumphant":
+            "S4Triumphant":
             {
                 "X": 0,
                 "Y": 246
             },
-            "NVictorious":
+            "S4Victorious":
             {
                 "X": 71,
                 "Y": 246
@@ -318,6 +318,21 @@
             "GAMEON":
             {
                 "X": 142,
+                "Y": 492
+            },
+            "StarGuardian":
+            {
+                "X": 213,
+                "Y": 492
+            },
+            "2016Championship":
+            {
+                "X": 284,
+                "Y": 492
+            },
+            "MechsvsMinions":
+            {
+                "X": 355,
                 "Y": 492
             }
         }

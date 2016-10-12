@@ -1,32 +1,27 @@
 ﻿using System;
 using System.Linq;
 using EloBuddy;
+using EloBuddy.SDK;
+using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using System.Collections.Generic;
 
 namespace NebulaSkin
 {
     class Model : Skin
-    {      
-        public static List<Obj_AI_Minion> ChangedSkin = new List<Obj_AI_Minion>();
-        public static Obj_AI_Minion WardGet;
-      
-        public static void OnTick(EventArgs args)
+    {
+        public static void OnCreate(GameObject sender, EventArgs args)
         {
-            WardGet = ObjectManager.Get<Obj_AI_Minion>().Where(x => x.Name.Contains("Ward") && !ChangedSkin.Contains(x) && x.Buffs.FirstOrDefault(b => b.IsValid && b.Caster.IsMe) != null).LastOrDefault();
-            if (WardGet != null)
+            var Unit = sender as Obj_AI_Minion;
+
+            if (Unit != null)
             {
-                var WardCount = ObjectManager.Get<Obj_AI_Minion>().Where(x => x.Name.Contains("Ward") && x.Buffs.FirstOrDefault(b => b.IsValid && b.Caster.IsMe) != null).Count();
-                                
-                if (WardCount > 6)
+                if (Unit.Name.Contains("Ward") && !Unit.BaseSkinName.Contains("WardCorpse") && Unit.Buffs.Where(x =>x.IsValid &&  x.Caster.IsMe) != null )
                 {
-                    ChangedSkin = new List<Obj_AI_Minion>();
-                    //return;                   
-                }
-                else
-                {
-                    ChangedSkin.Add(WardGet);
-                    WardGet.SetSkin("SightWard", Menu["Ward.Skin"].Cast<Slider>().CurrentValue);
+                    Core.DelayAction(() =>
+                    {
+                        Unit.SetSkinId(Menu["Ward.Skin"].Cast<Slider>().CurrentValue);
+                    }, 0);
                 }
             }
         }

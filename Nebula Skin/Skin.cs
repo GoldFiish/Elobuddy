@@ -12,6 +12,7 @@ using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.Sandbox;
 
+
 namespace NebulaSkin
 { 
     internal class Skin
@@ -21,40 +22,66 @@ namespace NebulaSkin
         static string Server_C_Name;
         static string Cpoy_Server_String;
 
-        public static Menu Menu;
+        public static Menu Menu, MenuVer, MenuNVer;
 
-        static System.Resources.ResourceManager Res_Language;
+        static ResourceManager Res_Language;
 
-        static String[] Language_List = new String[] { "en_US", "ko_KR", "ja_JP", "es_ES", "fr_FR", "de_DE", "it_IT", "pl_PL", "el_GR", "hu_HU", "cs_CZ", "ro_RO", "pt_BR", "id_ID", "ru_RU", "tr_TR", "th_TH"};
+        static String[] Language_List = new String[] { "en_US", "ko_KR", "ja_JP", "es_ES", "fr_FR", "de_DE", "it_IT", "pl_PL", "el_GR", "hu_HU", "cs_CZ", "ro_RO", "pt_BR", "id_ID", "ru_RU", "tr_TR"};
         static string Language_Path = SandboxConfig.DataDirectory + "\\MenuSaveData\\Nebula Skin_Culture_Set.txt";
 
         static List<int> SkinNumList = new List<int>();
         static List<int> ChromaNumlist = new List<int>();
-        
+                
         public static void Load()
-        {            
+        {
+            var Map = EntityManager.Turrets.Allies.FirstOrDefault();
+
             Language_Set();
-            
+
             Chat.Print("<font color = '#94cdfc'>Welcome to </font><font color = '#ffffff'>[ Nebula ] Skin</font><font color = '#94cdfc'>. Addon is ready.</font>");
 
             Menu = MainMenu.AddMenu("[ Neblua ] Skin", "By.Natrium");
-            Menu.AddLabel(Res_Language.GetString("Main_Text_0"));
             Menu.AddLabel(Res_Language.GetString("Main_Text_1"));
             Menu.AddLabel(Res_Language.GetString("Main_Text_2"));
             Menu.AddSeparator();
-            
-            Menu.AddLabel(Res_Language.GetString("Main_Language_Exp"));
+          
             Menu.Add("Language.Select", new ComboBox(Res_Language.GetString("Main_Language_Select"), 0, 
-                "English", "한국어", "Japanese", "Spanish", "French", "German", "Italian", "Polish", "Greek", "Hungarian", "Czech", "Romanian", "Portuguese (Brazil)", "Indonesia", "Russian", "Turkish", "Thai"));
+                "English", "한국어", "Japanese", "Spanish", "French", "German", "Italian", "Polish", "Greek", "Hungarian", "Czech", "Romanian", "Portuguese (Brazil)", "Indonesia", "Russian", "Turkish"));
             Menu.AddSeparator();
 
             Get_SkinInfo();
+            
+            Menu.AddSeparator();
+            if (Map.BaseSkinName.Contains("SRUAP"))
+            {
+                Menu.AddLabel(Res_Language.GetString("Label_Minions") + Res_Language.GetString("Label_NotYet"));
+
+                Menu.Add("Minions.Team", new ComboBox(Res_Language.GetString("Label_TeamColor"), 0, Res_Language.GetString("Label_NotYet")));
+                Menu.Add("Minions.Skin", new ComboBox(Res_Language.GetString("Label_Skin"), 0, Res_Language.GetString("Label_NotYet")));
+            }
+            else
+            {
+                if (Map.Name.Contains("HA"))
+                {
+                    Menu.AddLabel(Res_Language.GetString("Label_Minions") + Res_Language.GetString("Label_Map_HA"));
+                }
+                else
+                {
+                    Menu.AddLabel(Res_Language.GetString("Label_Minions") + Res_Language.GetString("Label_Map_TT"));
+                }
+                Menu.Add("Minions.Skin", new ComboBox(Res_Language.GetString("Label_Skin"), 0, Res_Language.GetString("Label_NotYet")));
+            }
 
             Menu.AddSeparator();
-            Menu.AddLabel(Res_Language.GetString("Lable_Ward_Error_0"));
-            Menu.Add("Ward.Auto", new CheckBox(Res_Language.GetString("Lable_Ward_Auto"), false));
+            Menu.AddLabel(Res_Language.GetString("Label_Ward"));            
             Menu.AddVisualFrame(new WardPreview("Ward.Preview", System.Drawing.Color.Purple));
-            Menu.Add("Ward.Skin", new Slider(Res_Language.GetString("Lable_Ward_Skin"), 0, 0, 62));
+            Menu.Add("Ward.Skin", new Slider(Res_Language.GetString("Label_Skin"), 0, 0, 65));
+
+            MenuVer = Menu.AddSubMenu("Local " + CheckVersion.LocalVersion, "Sub0");
+            MenuVer.AddGroupLabel(Res_Language.GetString("Label_By"));
+            MenuVer.AddLabel(Res_Language.GetString("Label_NoticeThx"));
+                       
+            CheckVersion.CheckUpdate();
 
             Player.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
             Menu["Skin.Nomal"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
@@ -74,7 +101,6 @@ namespace NebulaSkin
                         Player.SetSkinId(vargs.NewValue + ChromaNumlist.Count);
                     }
                 }
-
             };
             
             if (Server_String.Contains("true"))
@@ -92,24 +118,26 @@ namespace NebulaSkin
                 };
             }
 
-            Menu["Ward.Auto"].Cast<CheckBox>().OnValueChange += (sender, vargs) =>
+            Menu["Ward.Skin"].Cast<Slider>().OnValueChange += (sender, vargs) =>
             {
-                if (sender.CurrentValue == true)
+                foreach (var DyWard in EntityManager.MinionsAndMonsters.OtherAllyMinions.Where(x => x.Name.Contains("Ward") && !x.BaseSkinName.Contains("WardCorpse") && x.Buffs.FirstOrDefault(b => b.IsValid && b.Caster.IsMe) != null))
                 {
-                    Model.ChangedSkin = new List<Obj_AI_Minion>();
-                    Core.DelayAction(() => { sender.CurrentValue = false; }, 100);
-                }                
+                    if (DyWard.SkinId != Menu["Ward.Skin"].Cast<Slider>().CurrentValue)
+                    {
+                        DyWard.SetSkinId(Menu["Ward.Skin"].Cast<Slider>().CurrentValue);
+                    }
+                }
             };
-          
+
             Menu["Language.Select"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
             {
                 var index = vargs.NewValue;
                 File.WriteAllText(Language_Path, Language_List[index], Encoding.Default);
             };
 
-            Game.OnTick += Model.OnTick;
+            GameObject.OnCreate += Model.OnCreate;           
         }
-      
+
         private static void Get_SkinInfo()
         {
             WebRequest Request_Ver = WebRequest.Create("http://ddragon.leagueoflegends.com/realms/na.json");
@@ -123,7 +151,7 @@ namespace NebulaSkin
             Response_Ver.Close();
 
             Server_StrVer = Regex.Split(Regex.Split(Server_StrVer, "v\":")[1], ",\"l\":\"en_US")[0].Replace("\"", "");
-            Console.WriteLine("Version : " + Server_StrVer);
+            Console.WriteLine("LoL Version : " + Server_StrVer);
 
             WebRequest Request_List = WebRequest.Create("http://ddragon.leagueoflegends.com/cdn/" + Server_StrVer + "/data/" + File.ReadLines(Language_Path).First() + "/champion/" + Player.Instance.ChampionName + ".json");
             Request_List.Credentials = CredentialCache.DefaultCredentials;
@@ -144,8 +172,8 @@ namespace NebulaSkin
             string[] WordList = { "[", "{", "}", "\"", "name", "chromas", "true", "false" };
             string[] SkinList = Cpoy_Server_String.Split(WordList, StringSplitOptions.RemoveEmptyEntries);
 
-            Menu.AddLabel(Res_Language.GetString("Lable_Cham_Name") + Server_C_Name);
-            Menu.Add("Skin.Nomal", new ComboBox(Res_Language.GetString("Main_Skin"), 0, SkinList));
+            Menu.AddLabel(Res_Language.GetString("Label_Cham_Name") + Server_C_Name);
+            Menu.Add("Skin.Nomal", new ComboBox(Res_Language.GetString("Label_Skin"), 0, SkinList));
 
             MatchCollection matches = Regex.Matches(Server_String, @"\d{1,10}");
 
@@ -156,6 +184,7 @@ namespace NebulaSkin
                     SkinNumList.Add(Convert.ToInt32(match.Value));
                 }
             }
+
             if (Server_String.Contains("true"))
             {
                 Console.WriteLine("Chromas : OK");
@@ -176,27 +205,27 @@ namespace NebulaSkin
                 {
                     if (Player.Instance.ChampionName == "Cassiopeia" || Player.Instance.ChampionName == "Fizz" || Player.Instance.ChampionName == "Karthus" || Player.Instance.ChampionName == "Nasus" || Player.Instance.ChampionName == "Zac")
                     {
-                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Lable_Chor_Name"), 0, "1", "2", "3"));
+                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3"));
                     }
 
                     if (Player.Instance.ChampionName == "MissFortune" || Player.Instance.ChampionName == "Teemo" || Player.Instance.ChampionName == "Yasuo")
                     {
-                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Lable_Chor_Name"), 0, "1", "2", "3", "4", "5"));
+                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5"));
                     }
                     
                     if (Player.Instance.ChampionName == "XinZhao")
                     {
-                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Lable_Chor_Name"), 0, "1", "2", "3", "4", "5", "6"));
+                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5", "6"));
                     }
                     
                     if (Player.Instance.ChampionName == "Diana")
                     {
-                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Lable_Chor_Name"), 0, "1", "2", "3", "4", "5", "6", "7"));
+                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5", "6", "7"));
                     }
  
                     if (Player.Instance.ChampionName == "Ezreal" || Player.Instance.ChampionName == "Malphite" || Player.Instance.ChampionName == "Riven")
                     {
-                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Lable_Chor_Name"), 0, "1", "2", "3", "4", "5", "6", "7", "8"));
+                        Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5", "6", "7", "8"));
                     }
                 }
                 else
@@ -211,7 +240,7 @@ namespace NebulaSkin
                         OP++;                                                
                     }
 
-                    Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Lable_Chor_Name"), 0, LIST_C));
+                    Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, LIST_C));
                 }
             }
         }
@@ -242,4 +271,3 @@ namespace NebulaSkin
         }
     }   //End Class
 }
-

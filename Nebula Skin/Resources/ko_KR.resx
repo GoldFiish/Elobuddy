@@ -120,41 +120,71 @@
   <data name="Main_Text_1" xml:space="preserve">
     <value>이 애드온이 마음에 드신다면, 추천 또는 기부 부탁드립니다.</value>
   </data>
-  <data name="Main_Text_0" xml:space="preserve">
-    <value>[ Nebula ] Skin - 6.19.0.2</value>
-  </data>
-  <data name="Main_Language_Exp" xml:space="preserve">
-    <value>언어 선택 후 F5를 눌러 적용합니다.</value>
-  </data>
   <data name="Main_Text_2" xml:space="preserve">
     <value>기부하신 금액은 더 나은 애드온 개발과 치킨을 위해 사용됩니다. 감사합니다.</value>
   </data>
   <data name="Main_Language_Select" xml:space="preserve">
-    <value>언어 ( Language )</value>
+    <value>언어 ( Language )  /  적용 : F5</value>
     <comment>대한민국</comment>
   </data>
-  <data name="Main_Skin" xml:space="preserve">
-    <value>스킨</value>
-  </data>
-  <data name="Lable_Cham_Name" xml:space="preserve">
+  <data name="Label_Cham_Name" xml:space="preserve">
     <value>챔피언 : </value>
   </data>
-  <data name="Lable_Chor_Name" xml:space="preserve">
+  <data name="Label_Chor_Name" xml:space="preserve">
     <value>크로마</value>
   </data>
-  <data name="Lable_Ward_Auto" xml:space="preserve">
-    <value>와드 자동 변경</value>
-  </data>
-  <data name="Lable_Ward_Error_0" xml:space="preserve">
+  <data name="Label_Ward" xml:space="preserve">
     <value>와드</value>
   </data>
-  <data name="Lable_Ward_Error_1" xml:space="preserve">
-    <value>자동 변경 옵션은 크래쉬 방지를 위해 약 2초뒤에 적용되지만. 때때로 크래쉬가 일어납니다.</value>
+  <data name="Label_Skin" xml:space="preserve">
+    <value>스킨</value>
   </data>
-  <data name="Lable_Ward_Error_2" xml:space="preserve">
-    <value>스킨이 완벽하게 적용된 후, 다음 스킨값을 바꿔주세요.</value>
+  <data name="Label_Minions" xml:space="preserve">
+    <value>미니언 : </value>
   </data>
-  <data name="Lable_Ward_Skin" xml:space="preserve">
-    <value>와드</value>
+  <data name="Label_TeamColor" xml:space="preserve">
+    <value>팀 색상</value>
+  </data>
+  <data name="Label_TeamColor_0" xml:space="preserve">
+    <value>윗팀 : 빨강  /   아랫팀 : 파랑</value>
+  </data>
+  <data name="Label_TeamColor_1" xml:space="preserve">
+    <value>윗팀 : 파랑  /   아랫팀 : 빨강</value>
+  </data>
+  <data name="Label_Minions_0" xml:space="preserve">
+    <value>클래식 미니언</value>
+  </data>
+  <data name="Label_Minions_1" xml:space="preserve">
+    <value>수영장 파티 미니언</value>
+  </data>
+  <data name="Label_Minions_2" xml:space="preserve">
+    <value>프로젝트 미니언</value>
+  </data>
+  <data name="Label_Minions_3" xml:space="preserve">
+    <value>스키광 미니언</value>
+  </data>
+  <data name="Label_Minions_4" xml:space="preserve">
+    <value>드레이븐 미니언</value>
+  </data>
+  <data name="Label_Minions_5" xml:space="preserve">
+    <value>별 수호자 미니언</value>
+  </data>
+  <data name="Label_Map_SRU" xml:space="preserve">
+    <value>소환사의 협곡</value>
+  </data>
+  <data name="Label_Map_HA" xml:space="preserve">
+    <value>칼바람 나락</value>
+  </data>
+  <data name="Label_Map_TT" xml:space="preserve">
+    <value>뒤틀린 숲</value>
+  </data>
+  <data name="Label_NoticeThx" xml:space="preserve">
+    <value>도움을 주신 분 : test, Definitely not kappa, stefsot, Hellsing, coman3</value>
+  </data>
+  <data name="Label_By" xml:space="preserve">
+    <value>제작자 : goldfinsh</value>
+  </data>
+  <data name="Label_NotYet" xml:space="preserve">
+    <value>준 비 중</value>
   </data>
 </root>

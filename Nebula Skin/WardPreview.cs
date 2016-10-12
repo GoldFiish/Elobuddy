@@ -29,18 +29,17 @@ namespace NebulaSkin
         public static String[] Ward_Name = new String[]
         {
             "Classic", "BatOLantern ", "Haunting", "Widow", "Deadfall", "TombAngel", "Snowman", "Gingerbread", "LanternoftheSerpent", "BanneroftheSerpent",
-            "Starcall", "Draven", "Luminosity", "Season3Victorious", "Season3Championship", "Candycane", "BanneroftheHorse ", "Gong", "Bouquet", "Riot",
-            "Wardskin20", "Dragonslayer", "All-Stars", "GoldenGoal", "Mecha", "Rammus", "Amumu", "Ascension", "2014Championship", "Conquering",
-            "Triumphant", "NVictorious", "Battlecast", "NomalPoro", "AstroPoro", "GentlemanPoro", "BattlecastPoro", "DragonSlayerPoro ", "UnderworldPoro", "LunarDragon",
+            "Starcall", "Draven", "Luminosity", "Season3Victorious", "Season3Championship", "Candycane", "BanneroftheHorse", "Gong", "Bouquet", "Riot",
+            "Wardskin20", "Dragonslayer", "All-Stars", "GoldenGoal", "Mecha", "Rammus", "Amumu", "Ascension", "2014Championship", "S4Conquering",
+            "S4Triumphant", "S4Victorious", "Battlecast", "NomalPoro", "AstroPoro", "GentlemanPoro", "BattlecastPoro", "DragonSlayerPoro ", "UnderworldPoro", "LunarDragon",
             "Heartseeker", "UrfTriumphant", "MotherSerpent", "SlaughterFleet", "OpticEnhancer", "Championship2015", "2015Conquering", "2015Triumphant", "2015Victorious", "Riggle",
             "TeamFire", "TeamIce", "PenguinSkier", "RisingDawn", "Harpseeker", "Hextech", "DefinitelyNotAWard", "MechaZero", "ElPoroWard", "DarkStar",
-            "HisRoyalCrabness", "PROJECT", "GAMEON"
+            "HisRoyalCrabness", "PROJECT", "GAMEON", "StarGuardian", "2016Championship", "MechsvsMinions"
         };
 
         private static WardAtlass WardAtlas { get; set; }
         private static Sprite ImageSprite { get; set; }
-
-        // 메뉴에 그리기
+        
         private readonly string _name;
         private Vector2 _offset;
 
@@ -70,14 +69,7 @@ namespace NebulaSkin
 
                     var Preview = WardAtlas[Ward_Name[Skin.Menu["Ward.Skin"].Cast<Slider>().CurrentValue]];
 
-                    if (Skin.Server_String.Contains("true"))
-                    {
-                        ImageSprite.Draw(new Vector2(MainMenu.Position.X + 615, MainMenu.Position.Y + 395), Preview.Rectangle);
-                    }
-                    else
-                    {
-                        ImageSprite.Draw(new Vector2(MainMenu.Position.X + 615, MainMenu.Position.Y + 365), Preview.Rectangle);
-                    }
+                    ImageSprite.Draw(new Vector2(MainMenu.Position.X + 615, Skin.Menu["Ward.Skin"].Position.Y - 50), Preview.Rectangle);
                 }
                 catch
                 {

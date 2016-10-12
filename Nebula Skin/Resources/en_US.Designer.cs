@@ -61,101 +61,191 @@ namespace NebulaSkin.Resources {
         }
         
         /// <summary>
+        ///   Created by goldfinsh과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Label_By {
+            get {
+                return ResourceManager.GetString("Label_By", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Champion : 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Lable_Cham_Name {
+        internal static string Label_Cham_Name {
             get {
-                return ResourceManager.GetString("Lable_Cham_Name", resourceCulture);
+                return ResourceManager.GetString("Label_Cham_Name", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Chromas과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Lable_Chor_Name {
+        internal static string Label_Chor_Name {
             get {
-                return ResourceManager.GetString("Lable_Chor_Name", resourceCulture);
+                return ResourceManager.GetString("Label_Chor_Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   All ward change과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Howling Abyss과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Lable_Ward_Auto {
+        internal static string Label_Map_HA {
             get {
-                return ResourceManager.GetString("Lable_Ward_Auto", resourceCulture);
+                return ResourceManager.GetString("Label_Map_HA", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ward과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Summoner&apos;s Rift과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Lable_Ward_Error_0 {
+        internal static string Label_Map_SRU {
             get {
-                return ResourceManager.GetString("Lable_Ward_Error_0", resourceCulture);
+                return ResourceManager.GetString("Label_Map_SRU", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ward auto change option is have 2sec apply time( crash protect ). But sometimes LoL crash.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Twisted Treeline과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Lable_Ward_Error_1 {
+        internal static string Label_Map_TT {
             get {
-                return ResourceManager.GetString("Lable_Ward_Error_1", resourceCulture);
+                return ResourceManager.GetString("Label_Map_TT", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Plz, try change next value after check completely changed skin.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Minions : 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Lable_Ward_Error_2 {
+        internal static string Label_Minions {
             get {
-                return ResourceManager.GetString("Lable_Ward_Error_2", resourceCulture);
+                return ResourceManager.GetString("Label_Minions", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ward과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Classic Minions과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Lable_Ward_Skin {
+        internal static string Label_Minions_0 {
             get {
-                return ResourceManager.GetString("Lable_Ward_Skin", resourceCulture);
+                return ResourceManager.GetString("Label_Minions_0", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Select Language -&gt; Press [ F5 ] key과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Pool Party Minions과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Language_Exp {
+        internal static string Label_Minions_1 {
             get {
-                return ResourceManager.GetString("Main_Language_Exp", resourceCulture);
+                return ResourceManager.GetString("Label_Minions_1", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Language ( 언어 )과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Project Minions과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Language_Select {
+        internal static string Label_Minions_2 {
             get {
-                return ResourceManager.GetString("Main_Language_Select", resourceCulture);
+                return ResourceManager.GetString("Label_Minions_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Skier Minions과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Label_Minions_3 {
+            get {
+                return ResourceManager.GetString("Label_Minions_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Draven Minions과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Label_Minions_4 {
+            get {
+                return ResourceManager.GetString("Label_Minions_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Star Guardian Minions과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Label_Minions_5 {
+            get {
+                return ResourceManager.GetString("Label_Minions_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Thx : test, Definitely not kappa, stefsot, Hellsing, coman3과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Label_NoticeThx {
+            get {
+                return ResourceManager.GetString("Label_NoticeThx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Coming soon 과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Label_NotYet {
+            get {
+                return ResourceManager.GetString("Label_NotYet", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Skin과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Skin {
+        internal static string Label_Skin {
             get {
-                return ResourceManager.GetString("Main_Skin", resourceCulture);
+                return ResourceManager.GetString("Label_Skin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   [ Nebula ] Skin - 6.19.0.2과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Team Color과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Text_0 {
+        internal static string Label_TeamColor {
             get {
-                return ResourceManager.GetString("Main_Text_0", resourceCulture);
+                return ResourceManager.GetString("Label_TeamColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Up : Red  /  Down : Blue과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Label_TeamColor_0 {
+            get {
+                return ResourceManager.GetString("Label_TeamColor_0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Up : Blue  /  Down : Red과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Label_TeamColor_1 {
+            get {
+                return ResourceManager.GetString("Label_TeamColor_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ward과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Label_Ward {
+            get {
+                return ResourceManager.GetString("Label_Ward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Language ( 언어 )  /  Apply : F5과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_Language_Select {
+            get {
+                return ResourceManager.GetString("Main_Language_Select", resourceCulture);
             }
         }
         
