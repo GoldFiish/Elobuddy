@@ -15,7 +15,7 @@ namespace NebulaSkin
 
         public static void CheckUpdate()
         {
-            WebRequest Request_Ver = WebRequest.Create("https://github.com/GoldFiish/Elobuddy/blob/master/Nebula%20Skin/CheckVersion.txt");
+            WebRequest Request_Ver = WebRequest.Create("https://github.com/GoldFiish/Elobuddy/blob/master/CheckVersion/SkinVersion.txt");
             Request_Ver.Credentials = CredentialCache.DefaultCredentials;
             WebResponse Response_Ver = Request_Ver.GetResponse();
             Stream Stream_Ver = Response_Ver.GetResponseStream();
@@ -40,7 +40,7 @@ namespace NebulaSkin
                 Chat.Print("<font color = '#ffffff'>[ Notice ] </font><font color = '#94cdfc'>Nebula Skin has been Update </font><font color = '#ffffff'>" + NoticeList[0] + "</font>");
 
                 MenuNVer = Menu.AddSubMenu("GitHub " + NoticeList[0], "Sub1");
-                MenuNVer.AddGroupLabel("업데이트  /  Update");
+                MenuNVer.AddGroupLabel("Update");
                 for (int n = 1; n < NoticeList.Count(x => x.Contains("[")) + 1; n++)
                 {
                     MenuNVer.AddLabel(NoticeList[n]);
