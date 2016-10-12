@@ -37,7 +37,7 @@ namespace NebulaSkin
 
             if (GitHubVersion != LocalVersion)
             {
-                Chat.Print("<font color = '#ffffff'>[ Notice ] </font><font color = '#94cdfc'>Nebula Skin has been Update </font><font color = '#ffffff'>" + NoticeList[0] + "</font>");
+                //Chat.Print("<font color = '#ffffff'>[ Notice ] </font><font color = '#94cdfc'>Nebula Skin has been Update </font><font color = '#ffffff'>" + NoticeList[0] + "</font>");
 
                 MenuNVer = Menu.AddSubMenu("GitHub " + NoticeList[0], "Sub1");
                 MenuNVer.AddGroupLabel("Update");
