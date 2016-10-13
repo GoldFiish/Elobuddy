@@ -23,7 +23,7 @@ namespace NebulaSkin
         static string Cpoy_Server_String;
 
         public static Menu Menu, MenuVer, MenuNVer;
-
+        public static string Map;
         static ResourceManager Res_Language;
 
         static String[] Language_List = new String[] { "en_US", "ko_KR", "ja_JP", "es_ES", "fr_FR", "de_DE", "it_IT", "pl_PL", "el_GR", "hu_HU", "cs_CZ", "ro_RO", "pt_BR", "id_ID", "ru_RU", "tr_TR"};
@@ -31,16 +31,16 @@ namespace NebulaSkin
 
         static List<int> SkinNumList = new List<int>();
         static List<int> ChromaNumlist = new List<int>();
-                
+               
         public static void Load()
         {
-            var Map = EntityManager.Turrets.Allies.FirstOrDefault();
-
+            Map = EntityManager.Turrets.Allies.FirstOrDefault().BaseSkinName;
+             
             Language_Set();
 
             Chat.Print("<font color = '#94cdfc'>Welcome to </font><font color = '#ffffff'>[ Nebula ] Skin</font><font color = '#94cdfc'>. Addon is ready.</font>");
 
-            Menu = MainMenu.AddMenu("[ Neblua ] Skin", "By.Natrium");
+            Menu = MainMenu.AddMenu("[ Nebula ] Skin", "By.Natrium");
             Menu.AddLabel(Res_Language.GetString("Main_Text_1"));
             Menu.AddLabel(Res_Language.GetString("Main_Text_2"));
             Menu.AddSeparator();
@@ -52,16 +52,19 @@ namespace NebulaSkin
             Get_SkinInfo();
             
             Menu.AddSeparator();
-            if (Map.BaseSkinName.Contains("SRUAP"))
+            if (Map.Contains("SRUAP"))
             {
-                Menu.AddLabel(Res_Language.GetString("Label_Minions") + Res_Language.GetString("Label_NotYet"));
+                Menu.AddLabel(Res_Language.GetString("Label_Minions") + Res_Language.GetString("Label_Map_SRU"));
 
-                Menu.Add("Minions.Team", new ComboBox(Res_Language.GetString("Label_TeamColor"), 0, Res_Language.GetString("Label_NotYet")));
-                Menu.Add("Minions.Skin", new ComboBox(Res_Language.GetString("Label_Skin"), 0, Res_Language.GetString("Label_NotYet")));
+                Menu.Add("Minions.Team", new ComboBox(Res_Language.GetString("Label_TeamColor"), 0,
+                    Res_Language.GetString("Label_TeamColor_0"), Res_Language.GetString("Label_TeamColor_1")));
+                Menu.Add("Minions.Skin", new ComboBox(Res_Language.GetString("Label_Skin"), 0, 
+                    Res_Language.GetString("Label_Minions_0"), Res_Language.GetString("Label_Minions_1"), Res_Language.GetString("Label_Minions_2"),
+                    Res_Language.GetString("Label_Minions_3"), Res_Language.GetString("Label_Minions_4"), Res_Language.GetString("Label_Minions_5")));                
             }
             else
             {
-                if (Map.Name.Contains("HA"))
+                if (Map.Contains("HA"))
                 {
                     Menu.AddLabel(Res_Language.GetString("Label_Minions") + Res_Language.GetString("Label_Map_HA"));
                 }
@@ -69,7 +72,9 @@ namespace NebulaSkin
                 {
                     Menu.AddLabel(Res_Language.GetString("Label_Minions") + Res_Language.GetString("Label_Map_TT"));
                 }
-                Menu.Add("Minions.Skin", new ComboBox(Res_Language.GetString("Label_Skin"), 0, Res_Language.GetString("Label_NotYet")));
+                Menu.Add("Minions.Skin", new ComboBox(Res_Language.GetString("Label_Skin"), 0,
+                    Res_Language.GetString("Label_Minions_0"), Res_Language.GetString("Label_Minions_3"), Res_Language.GetString("Label_Minions_4"),
+                    Res_Language.GetString("Label_Minions_5")));
             }
 
             Menu.AddSeparator();
@@ -117,7 +122,7 @@ namespace NebulaSkin
                     }
                 };
             }
-
+                        
             Menu["Ward.Skin"].Cast<Slider>().OnValueChange += (sender, vargs) =>
             {
                 foreach (var DyWard in EntityManager.MinionsAndMonsters.OtherAllyMinions.Where(x => x.Name.Contains("Ward") && !x.BaseSkinName.Contains("WardCorpse") && x.Buffs.FirstOrDefault(b => b.IsValid && b.Caster.IsMe) != null))
@@ -126,6 +131,71 @@ namespace NebulaSkin
                     {
                         DyWard.SetSkinId(Menu["Ward.Skin"].Cast<Slider>().CurrentValue);
                     }
+                }
+            };
+
+            if (Map.Contains("SRUAP"))
+            {
+                Menu["Minions.Team"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
+                {
+                    if (vargs.NewValue == 0)
+                    {
+                        foreach (var DyMinions in EntityManager.MinionsAndMonsters.Minions.Where(x => x.Name.Contains("Minion")))
+                        {
+                            if (DyMinions.SkinId != (Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2))
+                            {
+                                DyMinions.SetSkinId(DyMinions.SkinId);
+                                DyMinions.SetSkinId((Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var DyMinions in EntityManager.MinionsAndMonsters.Minions.Where(x => x.Name.Contains("Minion")))
+                        {
+                            if (DyMinions.SkinId != (Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2) + 1)
+                            {
+                                DyMinions.SetSkinId(DyMinions.SkinId);
+                                DyMinions.SetSkinId((Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2) + 1);
+                            }
+                        }
+                    }
+                };
+            }
+
+            Menu["Minions.Skin"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
+            {
+                foreach (var DyMinions in EntityManager.MinionsAndMonsters.Minions.Where(x => x.Name.Contains("Minion")))
+                {
+                    if (Map.Contains("SRUAP"))
+                    {
+                        if(Menu["Minions.Team"].Cast<ComboBox>().CurrentValue == 0)
+                        {
+                            if (DyMinions.SkinId != (Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2))
+                            {
+                                DyMinions.SetSkinId(DyMinions.SkinId);
+                                DyMinions.SetSkinId((Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2));
+                            }
+                        }
+                        else
+                        {
+                            if (DyMinions.SkinId != (Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2) + 1)
+                            {
+                                DyMinions.SetSkinId(DyMinions.SkinId);
+                                DyMinions.SetSkinId((Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2) + 1);
+                            }
+                        }
+                        
+                    }
+                    else
+                    {
+                        if (DyMinions.SkinId != Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue)
+                        {
+                            DyMinions.SetSkinId(DyMinions.SkinId);
+                            DyMinions.SetSkinId(Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue);
+                        }
+                    }
+                    
                 }
             };
 

@@ -23,6 +23,43 @@ namespace NebulaSkin
                         Unit.SetSkinId(Menu["Ward.Skin"].Cast<Slider>().CurrentValue);
                     }, 0);
                 }
+
+                if (Unit.Name.Contains("Minion") && !Unit.IsDead)
+                {
+                    if (Map.Contains("SRUAP"))
+                    {
+                        if (Menu["Minions.Team"].Cast<ComboBox>().CurrentValue == 0)
+                        {
+                            if (Unit.SkinId != (Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2))
+                            {
+                                Core.DelayAction(() =>
+                                {
+                                    Unit.SetSkinId((Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2));
+                                }, 0);
+                            }
+                        }
+                        else
+                        {
+                            if (Unit.SkinId != (Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2) + 1)
+                            {
+                                Core.DelayAction(() =>
+                                {
+                                    Unit.SetSkinId((Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2) + 1);
+                                }, 0);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Unit.SkinId != Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue)
+                        {
+                            Core.DelayAction(() =>
+                            {
+                                Unit.SetSkinId(Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue);
+                            }, 0);
+                        }
+                    }
+                }
             }
         }
     }
