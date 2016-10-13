@@ -1,7 +1,3 @@
 6.20.0.2,
-[ 1 ] Support Minions Skin,
-Summoners Rift,
-Classic / Pool Party / Project / Skier / Draven / Star Guardian Minions,
-Howling Abyss / Twisted Treeline,
-Classic / Skier / Draven / Star Guardian Minions,
+[ 1 ] Support Minions Skin ( Map : Summoners Rift / Howling Abyss / Twisted Treeline ),
 [ Next Update ] Maybe Some Champion Model Update,
