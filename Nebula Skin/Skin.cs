@@ -21,6 +21,8 @@ namespace NebulaSkin
         public static string Server_String;
         static string Server_C_Name;
         static string Cpoy_Server_String;
+        static string ChromaNumString;
+        public static int ChromaNum;
 
         public static Menu Menu, MenuVer, MenuNVer;
         public static string Map;
@@ -29,8 +31,8 @@ namespace NebulaSkin
         static String[] Language_List = new String[] { "en_US", "ko_KR", "ja_JP", "es_ES", "fr_FR", "de_DE", "it_IT", "pl_PL", "el_GR", "hu_HU", "cs_CZ", "ro_RO", "pt_BR", "id_ID", "ru_RU", "tr_TR"};
         static string Language_Path = SandboxConfig.DataDirectory + "\\MenuSaveData\\Nebula Skin_Culture_Set.txt";
 
-        static List<int> SkinNumList = new List<int>();
-        static List<int> ChromaNumlist = new List<int>();
+        public static List<int> SkinNumList = new List<int>();
+        public static List<int> ChromaNumlist = new List<int>();
                
         public static void Load()
         {
@@ -235,8 +237,12 @@ namespace NebulaSkin
 
             Server_C_Name = Regex.Split(Regex.Split(Regex.Split(Server_String, "data\":{\"")[1], "\"name\":\"")[1], "\",\"title\"")[0];          
             Server_String = Regex.Split(Regex.Split(Server_String, "skins")[1], "}],\"lore")[0];
+
+            ChromaNumString = Regex.Split(Server_String, "true")[0];
+            ChromaNum = int.Parse(Regex.Matches(ChromaNumString, "num").Count.ToString());
+            //Console.WriteLine("Chromas Num : " + ChromaNum);
+
             Cpoy_Server_String = Server_String;
-       
             Cpoy_Server_String = Regex.Replace(Cpoy_Server_String, @"\d", "").Replace("\"id\"", "").Replace("\"num\"", "").Replace(":", "").Replace(",", "").Replace("<br>", " ");
 
             string[] WordList = { "[", "{", "}", "\"", "name", "chromas", "true", "false" };

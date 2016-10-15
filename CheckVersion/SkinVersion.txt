@@ -1,3 +1,3 @@
-6.20.0.2,
-[ 1 ] Support Minions Skin ( Map : Summoners Rift / Howling Abyss / Twisted Treeline ),
-[ Next Update ] Maybe Some Champion Model Update,
+6.20.0.4,
+[ 1 ] Support some champion model skin,
+[ For more information(Model list) please check from the thread],
