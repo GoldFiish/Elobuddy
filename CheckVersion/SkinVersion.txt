@@ -1,3 +1,2 @@
-6.20.0.4,
-[ 1 ] Support some champion model skin,
-[ For more information(Model list) please check from the thread],
+6.21.0.0,
+[ 1 ] Check Fiora chroma,

@@ -11,6 +11,7 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.Sandbox;
+using Newtonsoft.Json;
 
 
 namespace NebulaSkin
@@ -212,18 +213,18 @@ namespace NebulaSkin
 
         private static void Get_SkinInfo()
         {
-            WebRequest Request_Ver = WebRequest.Create("http://ddragon.leagueoflegends.com/realms/na.json");
-            Request_Ver.Credentials = CredentialCache.DefaultCredentials;
-            WebResponse Response_Ver = Request_Ver.GetResponse();
-            Console.WriteLine("Response Version : " + ((HttpWebResponse)Response_Ver).StatusDescription);
-            Stream Stream_Ver = Response_Ver.GetResponseStream();
-            StreamReader Reader_Ver = new StreamReader(Stream_Ver);
-            Server_StrVer = Reader_Ver.ReadToEnd();
-            Reader_Ver.Close();
-            Response_Ver.Close();
+            WebRequest Request_Ver = WebRequest.Create("https://ddragon.leagueoflegends.com/api/versions.json");
+            using (var Version_Response = (HttpWebResponse)Request_Ver.GetResponse())
+            {
+                Console.WriteLine("DragonVersion Response : " + (Version_Response).StatusDescription);
+                Stream Version_Stream = Version_Response.GetResponseStream();
+                StreamReader Version_Reader = new StreamReader(Version_Stream);
+                Server_StrVer = Version_Reader.ReadToEnd();
+                Version_Response.Close();
+                Version_Reader.Close();
 
-            Server_StrVer = Regex.Split(Regex.Split(Server_StrVer, "v\":")[1], ",\"l\":\"en_US")[0].Replace("\"", "");
-            Console.WriteLine("LoL Version : " + Server_StrVer);
+                Server_StrVer = JsonConvert.DeserializeObject<string[]>(Server_StrVer)[0];
+            }
 
             WebRequest Request_List = WebRequest.Create("http://ddragon.leagueoflegends.com/cdn/" + Server_StrVer + "/data/" + File.ReadLines(Language_Path).First() + "/champion/" + Player.Instance.ChampionName + ".json");
             Request_List.Credentials = CredentialCache.DefaultCredentials;
@@ -284,7 +285,7 @@ namespace NebulaSkin
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3"));
                     }
 
-                    if (Player.Instance.ChampionName == "MissFortune" || Player.Instance.ChampionName == "Teemo" || Player.Instance.ChampionName == "Yasuo")
+                    if (Player.Instance.ChampionName == "MissFortune" || Player.Instance.ChampionName == "Yasuo")
                     {
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5"));
                     }
@@ -299,7 +300,7 @@ namespace NebulaSkin
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5", "6", "7"));
                     }
  
-                    if (Player.Instance.ChampionName == "Ezreal" || Player.Instance.ChampionName == "Malphite" || Player.Instance.ChampionName == "Riven")
+                    if (Player.Instance.ChampionName == "Ezreal" || Player.Instance.ChampionName == "Malphite" || Player.Instance.ChampionName == "Riven" || Player.Instance.ChampionName == "Fiora")
                     {
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5", "6", "7", "8"));
                     }
