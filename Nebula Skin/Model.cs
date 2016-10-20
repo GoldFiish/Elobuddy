@@ -2,9 +2,7 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
-using System.Collections.Generic;
 
 namespace NebulaSkin
 {
@@ -35,6 +33,31 @@ namespace NebulaSkin
             "ThreshLantern",
             "ZacRebirthBloblet",
             "ZedShadow",
+            //need more test :(
+            "AniviaEgg", "AniviaIceblock",
+            "AzirSoldier", "AzirSunDisc", "AzirTowerClicker", "AzirUltSoldier",
+            "CaitlynTrap",
+            "Cassiopeia_Death",
+            "CorkiBomb", "CorkiBombAlly",
+            "FizzBait", "FizzShark",
+            "MonkeyKingFlying",
+            "NasusUlt",
+            "NidaleeCougar", "NidaleeSpear",
+            "SyndraOrbs", "SyndraSphere",
+            "TaliyahWallChunk",
+            "YorickBigGhoul", "YorickGhoulMelee", "YorickWGhoul",
+            "ZyraGraspingPlant", "ZyraPassive", "ZyraSeed", "ZyraThornPlant",
+            "IvernMinion", "IvernTotem",
+            "JarvanIVStandard", "JarvanIVWall",
+            "MalzaharVoidling",
+            "OlafAxe",
+            "OriannaBall", "OriannaNoBall",
+            "RammusDBC", "RammusPB",
+            "ShenSpirit",
+            "SkarnerPassiveCrystal",
+            "TaricGem",
+            "TrundleWall",
+            "UdyrPhoenix", "UdyrPhoenixUlt", "UdyrTiger", "UdyrTigerUlt", "UdyrTurtle", "UdyrTurtleUlt", "UdyrUlt"
         };
 
         public static void OnCreate(GameObject sender, EventArgs args)
@@ -87,13 +110,13 @@ namespace NebulaSkin
                         }
                     }
                 }
-            }          
+            }
 
             var model = EntityManager.MinionsAndMonsters.OtherAllyMinions.Where(x => x.Buffs.FirstOrDefault(b => b.IsValid && b.Caster.IsMe) != null).LastOrDefault();
 
             if (model != null && SubModel.Contains(model.BaseSkinName))
             {
-                if(Player.Instance.SkinId == Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
+                if (Player.Instance.SkinId == Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
                 {
                     if (model.SkinId != Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
                     {
@@ -101,15 +124,13 @@ namespace NebulaSkin
                     }
                 }
 
-                if (Server_String.Contains("true"))
+                if (ChromaIndex != -1 && model.SkinId != ChromaIndex )
                 {
-                    if (model.SkinId != ChromaNum - 1)
+                    if(Player.Instance.SkinId == ChromaIndex || 
+                        Player.Instance.SkinId == Menu["Skin.Chroma"].Cast<ComboBox>().CurrentValue + ChromaStartNum ||
+                        Player.Instance.SkinId == Menu["Skin.Chroma"].Cast<ComboBox>().CurrentValue + GetSkinInfo.Last().num + 1)
                     {
-                        if (Player.Instance.SkinId == Menu["Skin.Chroma"].Cast<ComboBox>().CurrentValue + SkinNumList.LastOrDefault() + 1 ||
-                        Player.Instance.SkinId == Menu["Skin.Chroma"].Cast<ComboBox>().CurrentValue + ChromaNumlist.FirstOrDefault() || Player.Instance.SkinId == ChromaNum - 1)
-                        {
-                            model.SetSkinId(ChromaNum - 1);
-                        }
+                        model.SetSkinId(ChromaIndex);
                     }
                 }
             }

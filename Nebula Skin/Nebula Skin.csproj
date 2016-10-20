@@ -59,6 +59,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CheckVersion.cs" />
+    <Compile Include="DragonJson.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Resources\cs_CZ.Designer.cs">
       <AutoGen>True</AutoGen>

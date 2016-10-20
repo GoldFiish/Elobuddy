@@ -1,2 +1,3 @@
-6.21.0.0,
-[ 1 ] Check Fiora chroma,
+6.21.0.1,
+[ 1 ] Add more model,
+[ For more information(Model list) please check from the thread ],

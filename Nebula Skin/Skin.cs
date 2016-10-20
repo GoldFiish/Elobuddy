@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Resources;
 using EloBuddy;
 using EloBuddy.SDK;
@@ -13,17 +12,16 @@ using EloBuddy.SDK.Menu.Values;
 using EloBuddy.Sandbox;
 using Newtonsoft.Json;
 
-
 namespace NebulaSkin
 { 
     internal class Skin
     {  
-        static string Server_StrVer;
-        public static string Server_String;
-        static string Server_C_Name;
-        static string Cpoy_Server_String;
-        static string ChromaNumString;
-        public static int ChromaNum;
+        static string DragonVersion;
+        static string DragonSkin;
+        public static List<DragonJson.Skin> GetSkinInfo;
+        public static int ChromaIndex;
+        public static int ChromaCount;
+        public static int ChromaStartNum;
 
         public static Menu Menu, MenuVer, MenuNVer;
         public static string Map;
@@ -32,9 +30,6 @@ namespace NebulaSkin
         static String[] Language_List = new String[] { "en_US", "ko_KR", "ja_JP", "es_ES", "fr_FR", "de_DE", "it_IT", "pl_PL", "el_GR", "hu_HU", "cs_CZ", "ro_RO", "pt_BR", "id_ID", "ru_RU", "tr_TR"};
         static string Language_Path = SandboxConfig.DataDirectory + "\\MenuSaveData\\Nebula Skin_Culture_Set.txt";
 
-        public static List<int> SkinNumList = new List<int>();
-        public static List<int> ChromaNumlist = new List<int>();
-               
         public static void Load()
         {
             Map = EntityManager.Turrets.Allies.FirstOrDefault().BaseSkinName;
@@ -94,38 +89,45 @@ namespace NebulaSkin
             Player.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
             Menu["Skin.Nomal"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
             {
-                if (ChromaNumlist.Count < 1)
+                if (ChromaIndex == -1)
                 {
                     Player.SetSkinId(vargs.NewValue);
                 }
                 else
                 {
-                    if (Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue < ChromaNumlist.FirstOrDefault())
+                    if (ChromaCount == 0)
                     {
                         Player.SetSkinId(vargs.NewValue);
                     }
                     else
                     {
-                        Player.SetSkinId(vargs.NewValue + ChromaNumlist.Count);
+                        if(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue == ChromaStartNum)
+                        {
+                            Player.SetSkinId(vargs.NewValue + ChromaIndex);
+                        }
+                        else
+                        {
+                            Player.SetSkinId(vargs.NewValue);
+                        }
                     }
                 }
             };
-            
-            if (Server_String.Contains("true"))
+
+            if (ChromaIndex != -1 && Menu["Skin.Chroma"].Cast<ComboBox>().IsVisible)
             {
                 Menu["Skin.Chroma"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
                 {
-                    if (ChromaNumlist.Count < 1) 
+                    if (ChromaCount == 0)
                     {
-                          Player.SetSkinId(vargs.NewValue + SkinNumList.LastOrDefault() + 1);
+                        Player.SetSkinId(vargs.NewValue + GetSkinInfo.Last().num + 1);
                     }
                     else
-                    {   
-                          Player.SetSkinId(vargs.NewValue + ChromaNumlist.FirstOrDefault());
+                    {
+                        Player.SetSkinId(vargs.NewValue + ChromaStartNum);
                     }
                 };
             }
-                        
+
             Menu["Ward.Skin"].Cast<Slider>().OnValueChange += (sender, vargs) =>
             {
                 foreach (var DyWard in EntityManager.MinionsAndMonsters.OtherAllyMinions.Where(x => x.Name.Contains("Ward") && !x.BaseSkinName.Contains("WardCorpse") && x.Buffs.FirstOrDefault(b => b.IsValid && b.Caster.IsMe) != null))
@@ -188,7 +190,6 @@ namespace NebulaSkin
                                 DyMinions.SetSkinId((Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2) + 1);
                             }
                         }
-                        
                     }
                     else
                     {
@@ -198,7 +199,6 @@ namespace NebulaSkin
                             DyMinions.SetSkinId(Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue);
                         }
                     }
-                    
                 }
             };
 
@@ -208,7 +208,7 @@ namespace NebulaSkin
                 File.WriteAllText(Language_Path, Language_List[index], Encoding.Default);
             };
 
-            GameObject.OnCreate += Model.OnCreate;           
+            GameObject.OnCreate += Model.OnCreate;
         }
 
         private static void Get_SkinInfo()
@@ -216,69 +216,55 @@ namespace NebulaSkin
             WebRequest Request_Ver = WebRequest.Create("https://ddragon.leagueoflegends.com/api/versions.json");
             using (var Version_Response = (HttpWebResponse)Request_Ver.GetResponse())
             {
-                Console.WriteLine("DragonVersion Response : " + (Version_Response).StatusDescription);
                 Stream Version_Stream = Version_Response.GetResponseStream();
                 StreamReader Version_Reader = new StreamReader(Version_Stream);
-                Server_StrVer = Version_Reader.ReadToEnd();
+                DragonVersion = Version_Reader.ReadToEnd();
                 Version_Response.Close();
                 Version_Reader.Close();
 
-                Server_StrVer = JsonConvert.DeserializeObject<string[]>(Server_StrVer)[0];
+                DragonVersion = JsonConvert.DeserializeObject<string[]>(DragonVersion)[0];
+                Console.WriteLine("DDragon Version : " + DragonVersion);
             }
 
-            WebRequest Request_List = WebRequest.Create("http://ddragon.leagueoflegends.com/cdn/" + Server_StrVer + "/data/" + File.ReadLines(Language_Path).First() + "/champion/" + Player.Instance.ChampionName + ".json");
-            Request_List.Credentials = CredentialCache.DefaultCredentials;
-            WebResponse Response_List = Request_List.GetResponse();
-            Console.WriteLine("Response SkinList : " + ((HttpWebResponse)Response_List).StatusDescription);
-            Stream Stream_List = Response_List.GetResponseStream();
-            StreamReader Reader_List = new StreamReader(Stream_List);
-            Server_String = Reader_List.ReadToEnd();
-            Reader_List.Close();
-            Response_List.Close();
-
-            Server_C_Name = Regex.Split(Regex.Split(Regex.Split(Server_String, "data\":{\"")[1], "\"name\":\"")[1], "\",\"title\"")[0];          
-            Server_String = Regex.Split(Regex.Split(Server_String, "skins")[1], "}],\"lore")[0];
-
-            ChromaNumString = Regex.Split(Server_String, "true")[0];
-            ChromaNum = int.Parse(Regex.Matches(ChromaNumString, "num").Count.ToString());
-            //Console.WriteLine("Chromas Num : " + ChromaNum);
-
-            Cpoy_Server_String = Server_String;
-            Cpoy_Server_String = Regex.Replace(Cpoy_Server_String, @"\d", "").Replace("\"id\"", "").Replace("\"num\"", "").Replace(":", "").Replace(",", "").Replace("<br>", " ");
-
-            string[] WordList = { "[", "{", "}", "\"", "name", "chromas", "true", "false" };
-            string[] SkinList = Cpoy_Server_String.Split(WordList, StringSplitOptions.RemoveEmptyEntries);
-
-            Menu.AddLabel(Res_Language.GetString("Label_Cham_Name") + Server_C_Name);
-            Menu.Add("Skin.Nomal", new ComboBox(Res_Language.GetString("Label_Skin"), 0, SkinList));
-
-            MatchCollection matches = Regex.Matches(Server_String, @"\d{1,10}");
-
-            foreach (Match match in matches)
+            WebRequest DragonSkinList = (HttpWebRequest)WebRequest.Create("http://ddragon.leagueoflegends.com/cdn/" + DragonVersion + "/data/" + File.ReadLines(Language_Path).First() + "/champion/" + Player.Instance.ChampionName + ".json");
+            using (var Skin_Response = (HttpWebResponse)DragonSkinList.GetResponse())
             {
-                if (match.Length < 3)
+                Stream Skin_Stream = Skin_Response.GetResponseStream();
+                StreamReader Skin_Reader = new StreamReader(Skin_Stream);
+                DragonSkin = Skin_Reader.ReadToEnd();
+                Skin_Response.Close();
+                Skin_Reader.Close();
+
+                Console.WriteLine("DDragon Skin Response : " + (Skin_Response).StatusDescription);
+            }
+
+            var DataConvert = JsonConvert.DeserializeObject<DragonJson>(DragonSkin);
+            var GetBaseName = DataConvert.data[DataConvert.data.Keys.First().ToString()].name;
+            GetSkinInfo = DataConvert.data[DataConvert.data.Keys.First().ToString()].skins;
+            ChromaIndex = GetSkinInfo.FindIndex(x => x.chromas == true); //fail value -1
+          
+            string[] _SkinNomal = new string[GetSkinInfo.Count];
+            for (int n = 0; n < GetSkinInfo.Count; n++)
+            {
+                _SkinNomal[n] = GetSkinInfo[n].name;
+                ChromaStartNum = GetSkinInfo[n].num.CompareTo(n);
+
+                if(ChromaStartNum == 1)
                 {
-                    SkinNumList.Add(Convert.ToInt32(match.Value));
+                    ChromaStartNum = n;
                 }
             }
 
-            if (Server_String.Contains("true"))
+            Menu.AddLabel(Res_Language.GetString("Label_Cham_Name") + GetBaseName);
+            Menu.Add("Skin.Nomal", new ComboBox(Res_Language.GetString("Label_Skin"), 0, _SkinNomal));
+
+            if(ChromaIndex > -1)
             {
-                Console.WriteLine("Chromas : OK");
+                Console.WriteLine(GetBaseName + " have chroma skin");
 
-                int j = 0;
-               
-                for (j = 0; j < SkinNumList.LastOrDefault() + 1; j++)
-                {
-                    var aa = SkinNumList.FirstOrDefault(x => x.Equals(j));
+                ChromaCount = (GetSkinInfo.Last().num + 1) - GetSkinInfo.Count;
 
-                    if (j > 0 && aa == 0)
-                    {
-                        ChromaNumlist.Add(j); 
-                    }
-                }
-                            
-                if (ChromaNumlist.Count < 1)
+                if (ChromaCount < 1)
                 {
                     if (Player.Instance.ChampionName == "Cassiopeia" || Player.Instance.ChampionName == "Fizz" || Player.Instance.ChampionName == "Karthus" || Player.Instance.ChampionName == "Nasus" || Player.Instance.ChampionName == "Zac")
                     {
@@ -289,17 +275,17 @@ namespace NebulaSkin
                     {
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5"));
                     }
-                    
+
                     if (Player.Instance.ChampionName == "XinZhao")
                     {
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5", "6"));
                     }
-                    
+
                     if (Player.Instance.ChampionName == "Diana")
                     {
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5", "6", "7"));
                     }
- 
+
                     if (Player.Instance.ChampionName == "Ezreal" || Player.Instance.ChampionName == "Malphite" || Player.Instance.ChampionName == "Riven" || Player.Instance.ChampionName == "Fiora")
                     {
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5", "6", "7", "8"));
@@ -307,14 +293,14 @@ namespace NebulaSkin
                 }
                 else
                 {
-                    string[] LIST_C = new string[ChromaNumlist.Count];
+                    string[] LIST_C = new string[ChromaCount];
 
                     int k = 0;
                     int OP = 0;
-                    for (k = 0; k < ChromaNumlist.Count; k++)
+                    for (k = 0; k < ChromaCount; k++)
                     {
-                        LIST_C[OP] = Convert.ToString (OP + 1);
-                        OP++;                                                
+                        LIST_C[OP] = Convert.ToString(OP + 1);
+                        OP++;
                     }
 
                     Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, LIST_C));
