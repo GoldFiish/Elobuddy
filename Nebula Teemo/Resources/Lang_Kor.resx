@@ -411,4 +411,19 @@
   <data name="Harass_SuppotMode" xml:space="preserve">
     <value>서포트 모드</value>
   </data>
+  <data name="Flee_Q_Text" xml:space="preserve">
+    <value>[ Q ] 사용</value>
+  </data>
+  <data name="Flee_Q_Range" xml:space="preserve">
+    <value>적이 [ n ]범위 안에 있으면 [ Q ]을 사용합니다.</value>
+  </data>
+  <data name="Flee_W_Text" xml:space="preserve">
+    <value>[ W ] 사용</value>
+  </data>
+  <data name="Flee_R_Text" xml:space="preserve">
+    <value>[ R ] 사용</value>
+  </data>
+  <data name="Draw_Enemy" xml:space="preserve">
+    <value>적 스펠 범위</value>
+  </data>
 </root>

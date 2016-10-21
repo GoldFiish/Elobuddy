@@ -27,14 +27,17 @@ namespace NebulaTeemo
             {
                 var Botrk_Target = TargetSelector.GetTarget(550, DamageType.Physical);
 
-                if (Bilgewater.IsReady())
+                if (Botrk_Target != null)
                 {
-                    Bilgewater.Cast(Botrk_Target);
-                }
+                    if (Bilgewater.IsReady())
+                    {
+                        Bilgewater.Cast(Botrk_Target);
+                    }
 
-                if (BladeKing.IsReady() && Player.Instance.HealthPercent <= MenuItem["BladeKing.Use"].Cast<Slider>().CurrentValue)
-                {
-                    BladeKing.Cast(Botrk_Target);
+                    if (BladeKing.IsReady() && Player.Instance.HealthPercent <= MenuItem["BladeKing.Use"].Cast<Slider>().CurrentValue)
+                    {
+                        BladeKing.Cast(Botrk_Target);
+                    }
                 }
             }
 
@@ -42,7 +45,10 @@ namespace NebulaTeemo
             {
                 var Hextech_Target = TargetSelector.GetTarget(700, DamageType.Magical);
 
-                Hextech.Cast(Hextech_Target);
+                if (Hextech_Target != null)
+                {
+                    Hextech.Cast(Hextech_Target);
+                }
             }
 
             if (Youmuu.IsOwned() && Youmuu.IsReady() && Player.Instance.CountEnemiesInRange(1000) >= 1)
@@ -52,12 +58,12 @@ namespace NebulaTeemo
 
             if (Ignite.Slot != SpellSlot.Unknown && Ignite.IsReady())
             {
-                var Ignite_Target = TargetSelector.GetTarget(600, DamageType.True);
+                var Ignite_Target = TargetSelector.GetTarget(580, DamageType.True);
                 //var Ignite_Damage = Player.Instance.GetSummonerSpellDamage(Ignite_Target, DamageLibrary.SummonerSpells.Ignite);
 
-               if(MenuCombo["Combo.Ignite"].Cast<CheckBox>().CurrentValue)
+               if (Ignite_Target != null && MenuCombo["Combo.Ignite"].Cast<CheckBox>().CurrentValue)
                 {
-                    if (Ignite_Target.TotalShieldHealth() <= Damage.DmgIgnite + (Damage.DmgIgnite * 0.15))
+                    if (Ignite_Target.TotalShieldHealth() <= Damage.DmgIgnite + (Damage.DmgE(Ignite_Target)))
                     {
                         Ignite.Cast(Ignite_Target);
                     }

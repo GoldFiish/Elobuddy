@@ -142,6 +142,15 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
+        ///   적 스펠 범위과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_Enemy {
+            get {
+                return ResourceManager.GetString("Draw_Enemy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   [ Q ] 범위 - [ 시즈 미니언 킬 ]과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Draw_LaneQ {
@@ -192,6 +201,42 @@ namespace NebulaTeemo.Resources {
         internal static string Draw_Virtual_Min {
             get {
                 return ResourceManager.GetString("Draw_Virtual_Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   적이 [ n ]범위 안에 있으면 [ Q ]을 사용합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Flee_Q_Range {
+            get {
+                return ResourceManager.GetString("Flee_Q_Range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Flee_Q_Text {
+            get {
+                return ResourceManager.GetString("Flee_Q_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ R ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Flee_R_Text {
+            get {
+                return ResourceManager.GetString("Flee_R_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ W ] 사용과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Flee_W_Text {
+            get {
+                return ResourceManager.GetString("Flee_W_Text", resourceCulture);
             }
         }
         

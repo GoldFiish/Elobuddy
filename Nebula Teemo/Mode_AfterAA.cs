@@ -16,7 +16,7 @@ namespace NebulaTeemo
             var ItsEnemy = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200)).FirstOrDefault();
             var ItsMe = EntityManager.Heroes.AllHeroes.Where(x => x.IsMe).FirstOrDefault();
 
-            if (SpellManager.Q.IsReady())
+            if (ItsEnemy != null && SpellManager.Q.IsReady())
             {
                 if (MenuCombo["Combo.Q.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuCombo["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
@@ -27,7 +27,7 @@ namespace NebulaTeemo
                             if (Player.Instance.Distance(ItsEnemy) <= 500)
                             {
                                 SpellManager.Q.Cast(ItsEnemy);
-                                Orbwalker.ResetAutoAttack();
+                                //Orbwalker.ResetAutoAttack();
                             }
                         }
                     }
@@ -43,7 +43,7 @@ namespace NebulaTeemo
             var ItsEnemy = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200)).FirstOrDefault();
             var ItsMe = EntityManager.Heroes.AllHeroes.Where(x => x.IsMe).FirstOrDefault();
 
-            if (SpellManager.Q.IsReady())
+            if (ItsEnemy != null && SpellManager.Q.IsReady())
             {
                 if (MenuHarass["Harass.Q.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuHarass["Harass.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
@@ -54,7 +54,7 @@ namespace NebulaTeemo
                             if (Player.Instance.Distance(ItsEnemy) <= 500)
                             {
                                 SpellManager.Q.Cast(ItsEnemy);
-                                Orbwalker.ResetAutoAttack();
+                                //Orbwalker.ResetAutoAttack();
                             }
                         }
                     }                    
@@ -88,7 +88,7 @@ namespace NebulaTeemo
                             if (BigMonster.HealthPercent >= 35)
                             {
                                 SpellManager.Q.Cast(BigMonster);
-                                Orbwalker.ResetAutoAttack();
+                                //Orbwalker.ResetAutoAttack();
                             }                    
                         }
 
@@ -97,7 +97,7 @@ namespace NebulaTeemo
                             if (EpicMonster.HealthPercent >= 25)
                             {
                                 SpellManager.Q.Cast(EpicMonster);
-                                Orbwalker.ResetAutoAttack();
+                                //Orbwalker.ResetAutoAttack();
                             }              
                         }
                     }
@@ -109,13 +109,13 @@ namespace NebulaTeemo
                             if (BigMonster.Health <= Damage.DmgQ(BigMonster))
                             {
                                 SpellManager.Q.Cast(BigMonster);
-                                Orbwalker.ResetAutoAttack();
+                                //Orbwalker.ResetAutoAttack();
                             }
 
                             if (BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster))
                             {
                                 SpellManager.Q.Cast(BigMonster);
-                                Orbwalker.ResetAutoAttack();
+                                //Orbwalker.ResetAutoAttack();
                             }
                         }
 
@@ -124,20 +124,20 @@ namespace NebulaTeemo
                             if (EpicMonster.Health <= Damage.DmgQ(BigMonster))
                             {
                                 SpellManager.Q.Cast(EpicMonster);
-                                Orbwalker.ResetAutoAttack();
+                                //Orbwalker.ResetAutoAttack();
                             }
 
                             if (EpicMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(EpicMonster))
                             {
                                 SpellManager.Q.Cast(EpicMonster);
-                                Orbwalker.ResetAutoAttack();
+                                //Orbwalker.ResetAutoAttack();
                             }
                         }
                     }
                 }
             }
 
-            if (MiniMonster.FirstOrDefault(m => m.Distance(Player.Instance.Position) <= Player.Instance.AttackRange) != null)
+            if (MiniMonster != null && MiniMonster.FirstOrDefault(m => m.Distance(Player.Instance.Position) <= Player.Instance.AttackRange) != null)
             {
                 Orbwalker.ForcedTarget = MiniMonster.FirstOrDefault();
                 JungleMonster = MiniMonster;

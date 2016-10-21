@@ -16,7 +16,7 @@ namespace NebulaTeemo
             Q = new Spell.Targeted(SpellSlot.Q, 680);
             W = new Spell.Active(SpellSlot.W);
             E = new Spell.Active(SpellSlot.E, (uint)Player.Instance.AttackRange);
-            R = new Spell.Skillshot(SpellSlot.R, 0, SkillShotType.Circular, 1000, 1000, 135);
+            R = new Spell.Skillshot(SpellSlot.R, 0, SkillShotType.Circular, 1000, 1000, 135);            
         }
     }   //End SpellManager
 }

@@ -59,6 +59,7 @@
     <Compile Include="Mode_AfterAA.cs" />
     <Compile Include="Mode_Allways.cs" />
     <Compile Include="Mode_Combo.cs" />
+    <Compile Include="Mode_Flee.cs" />
     <Compile Include="Mode_Harass.cs" />
     <Compile Include="Mode_Item.cs" />
     <Compile Include="Mode_Lane.cs" />

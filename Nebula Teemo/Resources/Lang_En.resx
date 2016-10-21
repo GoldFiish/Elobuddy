@@ -402,4 +402,19 @@
   <data name="Harass_SuppotMode" xml:space="preserve">
     <value>Suppor Mode</value>
   </data>
+  <data name="Flee_Q_Range" xml:space="preserve">
+    <value>If enemy is in [ n ] range, [ Q ] is used</value>
+  </data>
+  <data name="Flee_Q_Text" xml:space="preserve">
+    <value>[ Q ] Use</value>
+  </data>
+  <data name="Flee_W_Text" xml:space="preserve">
+    <value>[ W ] Use</value>
+  </data>
+  <data name="Flee_R_Text" xml:space="preserve">
+    <value>[ R ] Use</value>
+  </data>
+  <data name="Draw_Enemy" xml:space="preserve">
+    <value>Enemy Spell range</value>
+  </data>
 </root>

@@ -20,9 +20,12 @@ namespace NebulaTeemo
             {
                 var target = minion.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) < 1200 && (x.BaseSkinName.ToLower().Contains("siege") || x.BaseSkinName.ToLower().Contains("super"))).FirstOrDefault();
 
-                if (target.Distance(Player.Instance.Position) > 450 && target.Distance(Player.Instance.Position) <= 680 && target.Health <= Damage.DmgQ(target) && Player.Instance.CountEnemiesInRange(850) >= 1)
+                if(target != null)
                 {
-                    SpellManager.Q.Cast(target);
+                    if (target.Distance(Player.Instance.Position) > 450 && target.Distance(Player.Instance.Position) <= 680 && target.Health <= Damage.DmgQ(target) && Player.Instance.CountEnemiesInRange(850) >= 1)
+                    {
+                        SpellManager.Q.Cast(target);
+                    }
                 }
             }
 

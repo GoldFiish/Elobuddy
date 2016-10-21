@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Enumerations;
-using EloBuddy.SDK.Events;
-using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
-using SharpDX;
 
 namespace NebulaTeemo
 {
@@ -20,7 +14,7 @@ namespace NebulaTeemo
 
             var target_enemy = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= 1200).FirstOrDefault();
             
-            if (target_enemy.IsValidTarget() && Player.Instance.Distance(target_enemy) <= 680)
+            if (target_enemy != null && target_enemy.IsValidTarget() && Player.Instance.Distance(target_enemy) <= 680)
             {
                 if (MenuMisc["Steal.K.5"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady() && Mode_Item.Hextech.IsOwned() && Mode_Item.Hextech.IsReady())
                 {
@@ -30,7 +24,7 @@ namespace NebulaTeemo
                         Orbwalker.ForcedTarget = target_enemy;
                         Player.IssueOrder(GameObjectOrder.AttackUnit, target_enemy);
                         SpellManager.Q.Cast(target_enemy);
-                        Orbwalker.ResetAutoAttack();
+                        //Orbwalker.ResetAutoAttack();
                     }
                 }
 
@@ -40,7 +34,7 @@ namespace NebulaTeemo
                     Orbwalker.ForcedTarget = target_enemy;
                     Player.IssueOrder(GameObjectOrder.AttackUnit, target_enemy);
                     SpellManager.Q.Cast(target_enemy);
-                    Orbwalker.ResetAutoAttack();
+                    //Orbwalker.ResetAutoAttack();
                 }
 
                 if (MenuMisc["Steal.K.3"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady() && target_enemy.Health <= Damage.DmgQ(target_enemy))
@@ -49,7 +43,7 @@ namespace NebulaTeemo
                 }
             }
             
-            if (target_enemy.IsValidTarget() && Player.Instance.Distance(target_enemy) <= 600)
+            if (target_enemy != null && target_enemy.IsValidTarget() && Player.Instance.Distance(target_enemy) <= 600)
             {
                 if (MenuMisc["Steal.K.2"].Cast<CheckBox>().CurrentValue && Mode_Item.Ignite.IsReady() && SpellManager.Q.IsReady() && Mode_Item.Hextech.IsOwned() && Mode_Item.Hextech.IsReady())
                 {
@@ -74,7 +68,7 @@ namespace NebulaTeemo
                 }
             }
 
-            if (target_enemy.IsValidTarget() && Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
+            if (target_enemy != null && target_enemy.IsValidTarget() && Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
             {
                 if (MenuMisc["Steal.K.7"].Cast<CheckBox>().CurrentValue && Mode_Item.Hextech.IsOwned() && Mode_Item.Hextech.IsReady())
                 {
@@ -83,7 +77,7 @@ namespace NebulaTeemo
                         Mode_Item.Hextech.Cast(target_enemy);
                         Orbwalker.ForcedTarget = target_enemy;
                         Player.IssueOrder(GameObjectOrder.AttackUnit, target_enemy);
-                        Orbwalker.ResetAutoAttack();
+                        //Orbwalker.ResetAutoAttack();
                     }
                 }
 
@@ -91,10 +85,8 @@ namespace NebulaTeemo
                 {
                     Orbwalker.ForcedTarget = target_enemy;
                     Player.IssueOrder(GameObjectOrder.AttackUnit, target_enemy);
-                    Orbwalker.ResetAutoAttack();
+                    //Orbwalker.ResetAutoAttack();
                 }
-
-                
             }
         }   //End KillSteal
 
@@ -106,7 +98,7 @@ namespace NebulaTeemo
             var target_monster = EntityManager.MinionsAndMonsters.Monsters.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= 800 && !x.Name.Contains("Mini") &&
                (x.BaseSkinName.ToLower().Contains("dragon") || x.BaseSkinName.ToLower().Contains("herald") || x.BaseSkinName.ToLower().Contains("baron"))).FirstOrDefault();
 
-            if (target_monster.IsValidTarget() && Player.Instance.Distance(target_monster) <= SpellManager.Q.Range)
+            if (target_monster != null && target_monster.IsValidTarget() && Player.Instance.Distance(target_monster) <= SpellManager.Q.Range)
             {
                 if (MenuMisc["Steal.J.1"].Cast<CheckBox>().CurrentValue && Player.Instance.Distance(target_monster) <= Player.Instance.AttackRange && SpellManager.Q.IsReady())
                 {
