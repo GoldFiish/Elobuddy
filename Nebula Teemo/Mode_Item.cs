@@ -34,7 +34,7 @@ namespace NebulaTeemo
                         Bilgewater.Cast(Botrk_Target);
                     }
 
-                    if (BladeKing.IsReady() && Player.Instance.HealthPercent <= MenuItem["BladeKing.Use"].Cast<Slider>().CurrentValue)
+                    if (BladeKing.IsReady() && Player.Instance.HealthPercent <= MenuItem["Item.BK.Hp"].Cast<Slider>().CurrentValue)
                     {
                         BladeKing.Cast(Botrk_Target);
                     }
