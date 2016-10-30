@@ -16,7 +16,7 @@ namespace NebulaKalista
         public static float Get_Q_Damage_Float(this Obj_AI_Base target)
         {
             return Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical,
-                (new float[] { 0, 10, 70, 130, 190, 250 }[SpellManager.Q.Level] + Player.Instance.TotalAttackDamage) * 0.9f);
+                new float[] {10, 70, 130, 190, 250 }[SpellManager.Q.Level - 1] + Player.Instance.TotalAttackDamage);
         }
         
         public static List<string> UndyingBuffs = new List<string>
