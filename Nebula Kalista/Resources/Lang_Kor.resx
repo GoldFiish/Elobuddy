@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Misc_Skin_0" xml:space="preserve">
-    <value>사용안함</value>
-  </data>
-  <data name="Misc_Skin_Text" xml:space="preserve">
-    <value>스킨</value>
-  </data>
-  <data name="Misc_Skin" xml:space="preserve">
-    <value>스킨 설정</value>
-  </data>
   <data name="Misc_R_Str" xml:space="preserve">
     <value>[ R ] 설정</value>
   </data>
@@ -136,7 +127,7 @@
     <value>계약자 보호</value>
   </data>
   <data name="Misc_E_Str" xml:space="preserve">
-    <value>[ E ] 설정</value>
+    <value>[ Q ] [ E ] 설정</value>
   </data>
   <data name="Misc_E_Steal_J" xml:space="preserve">
     <value>정글 스틸</value>
@@ -156,25 +147,19 @@
   <data name="Misc_E_Death" xml:space="preserve">
     <value>죽기전에 [ E ] 사용</value>
   </data>
-  <data name="Main_Harass_Str" xml:space="preserve">
-    <value>견제 설정</value>
-  </data>
-  <data name="Main_Harass_Q" xml:space="preserve">
+  <data name="Harass_Q" xml:space="preserve">
     <value>[ Q ] 사용</value>
   </data>
-  <data name="Main_Harass_Q_Mana" xml:space="preserve">
+  <data name="Harass_Q_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ Q ] 사용</value>
   </data>
-  <data name="Main_Harass_E" xml:space="preserve">
+  <data name="Harass_E" xml:space="preserve">
     <value>[ E ] 사용</value>
   </data>
-  <data name="Main_Combo_Str" xml:space="preserve">
-    <value>콤보 설정</value>
-  </data>
-  <data name="Main_Combo_Q" xml:space="preserve">
+  <data name="Combo_Q" xml:space="preserve">
     <value>[ Q ] 사용</value>
   </data>
-  <data name="Main_Combo_E" xml:space="preserve">
+  <data name="Combo_E" xml:space="preserve">
     <value>[ E ] 사용</value>
   </data>
   <data name="Item_D_Str" xml:space="preserve">
@@ -240,46 +225,37 @@
   <data name="Intro_Str_0" xml:space="preserve">
     <value>[ Nebula ] Kalista - 6.16.0.0</value>
   </data>
-  <data name="Farm_Lane_Str" xml:space="preserve">
-    <value>라인 설정</value>
-  </data>
-  <data name="Farm_Lane_Q_Num" xml:space="preserve">
+  <data name="Lane_Q_Num" xml:space="preserve">
     <value>미니언 킬 개수가 [ n ]보다 많을 때 [ Q ] 사용</value>
   </data>
-  <data name="Farm_Lane_Q_Mana" xml:space="preserve">
+  <data name="Lane_Q_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ Q ] 사용</value>
   </data>
-  <data name="Farm_Lane_Q" xml:space="preserve">
+  <data name="Lane_Q" xml:space="preserve">
     <value>[ Q ] 사용</value>
   </data>
-  <data name="Farm_Lane_E_Num" xml:space="preserve">
+  <data name="Lane_E_Num" xml:space="preserve">
     <value>미니언 킬 개수가 [ n ] 이상일 때 [ E ] 사용</value>
   </data>
-  <data name="Farm_Lane_E_Mana" xml:space="preserve">
+  <data name="Lane_E_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ E ] 사용</value>
   </data>
-  <data name="Farm_Lane_E_Big" xml:space="preserve">
-    <value>[ E ] 사용 - [ 대포, 슈퍼 미니언 ]</value>
-  </data>
-  <data name="Farm_Lane_E_All" xml:space="preserve">
+  <data name="Lane_E_All" xml:space="preserve">
     <value>[ E ] 사용 - [ 모든 미니언 ]</value>
   </data>
-  <data name="Farm_Jungle_Str" xml:space="preserve">
-    <value>정글 설정</value>
-  </data>
-  <data name="Farm_Jungle_Q_Big" xml:space="preserve">
+  <data name="Jungle_Q_Big" xml:space="preserve">
     <value>[ Q ] 사용 - [ 대형 ]</value>
   </data>
-  <data name="Farm_Jungle_Q_All" xml:space="preserve">
+  <data name="Jungle_Q_All" xml:space="preserve">
     <value>[ Q ] 사용 - [ 대형 + 미니 ]</value>
   </data>
-  <data name="Farm_Jungle_Mana" xml:space="preserve">
+  <data name="Jungle_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ Q E ] 사용</value>
   </data>
-  <data name="Farm_Jungle_E_Big" xml:space="preserve">
+  <data name="Jungle_E_Big" xml:space="preserve">
     <value>[ E ] 사용 - [ 대형 ]</value>
   </data>
-  <data name="Farm_Jungle_E_All" xml:space="preserve">
+  <data name="Jungle_E_All" xml:space="preserve">
     <value>[ E ] 사용 - [ 대형 + 미니 ]</value>
   </data>
   <data name="Draw_Range_R" xml:space="preserve">
@@ -318,13 +294,10 @@
   <data name="Intro_Language_Select" xml:space="preserve">
     <value>언어 ( Language )</value>
   </data>
-  <data name="Main_Combo_Q_Mana" xml:space="preserve">
+  <data name="Combo_Q_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ Q ] 사용</value>
   </data>
-  <data name="Main_Combo_E_Mana" xml:space="preserve">
-    <value>보유 마나가 [ n% ] 이상일 때 [ E ] 사용</value>
-  </data>
-  <data name="Main_Combo_W" xml:space="preserve">
+  <data name="Combo_W" xml:space="preserve">
     <value>[ W ] 패시브 사용</value>
   </data>
   <data name="Misc_WallJump" xml:space="preserve">
@@ -345,28 +318,40 @@
   <data name="Draw_E_Percent4" xml:space="preserve">
     <value>사이드바</value>
   </data>
-  <data name="Main_Harass_E_Mana" xml:space="preserve">
+  <data name="Harass_E_Mana" xml:space="preserve">
     <value>보유 마나가 [ n% ] 이상일 때 [ E ] 사용</value>
   </data>
-  <data name="Main_Como_QStyle" xml:space="preserve">
+  <data name="Como_QStyle" xml:space="preserve">
     <value>[ Q ] 스타일</value>
   </data>
-  <data name="Main_Como_QStyle0" xml:space="preserve">
-    <value>선 [ Q ]</value>
+  <data name="Como_QStyle_0" xml:space="preserve">
+    <value>[ Q ] 활성화일 때</value>
   </data>
-  <data name="Main_Como_QStyle1" xml:space="preserve">
-    <value>평 ⇒ [ Q ] ⇒ [ E ]</value>
+  <data name="Como_QStyle_1" xml:space="preserve">
+    <value>[ Q ] + [ E ] 킬각일 때</value>
   </data>
-  <data name="Main_Harass_E_Stack" xml:space="preserve">
-    <value>[ E ] 스택 개수 </value>
+  <data name="Harass_E_Stack" xml:space="preserve">
+    <value>챔피언 [ E ] 스택 개수 </value>
   </data>
-  <data name="Misc_Skin_1" xml:space="preserve">
-    <value>불의 축체 칼리스타</value>
+  <data name="Como_QStyle_2" xml:space="preserve">
+    <value>[ E ] 스택이 5이상일 때</value>
   </data>
-  <data name="Misc_Skin_2" xml:space="preserve">
-    <value>챔피언십 칼리스타</value>
+  <data name="Como_QStyle_3" xml:space="preserve">
+    <value>[ E ] 실패 했을 때</value>
   </data>
-  <data name="Misc_Skin_3" xml:space="preserve">
-    <value>SKT T1 칼리스타</value>
+  <data name="Harass_E_Minion" xml:space="preserve">
+    <value>미니언 킬 개수</value>
+  </data>
+  <data name="Harass_Q_Minion" xml:space="preserve">
+    <value>미니언 킬 개수</value>
+  </data>
+  <data name="Misc_R_Balista" xml:space="preserve">
+    <value>발리스타 - 블리츠, 스카너, 탐켄치</value>
+  </data>
+  <data name="Misc_R_Balista_Dis" xml:space="preserve">
+    <value>계약자와의 최소거리</value>
+  </data>
+  <data name="Item_A_Hextech" xml:space="preserve">
+    <value>마법공학 총검</value>
   </data>
 </root>

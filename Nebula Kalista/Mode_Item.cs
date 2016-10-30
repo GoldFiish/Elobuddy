@@ -9,33 +9,51 @@ namespace NebulaKalista
         static readonly Item BladeKing = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
         static readonly Item Bilgewater = new Item((int)ItemId.Bilgewater_Cutlass, 550f);
         static readonly Item Youmuu = new Item((int)ItemId.Youmuus_Ghostblade);
+        static readonly Item Hextech = new Item((int)ItemId.Hextech_Gunblade, 700f);
         static readonly Item Quicksilver = new Item((int)ItemId.Quicksilver_Sash);
         static readonly Item Mercurial = new Item((int)ItemId.Mercurial_Scimitar);
 
         public static void Items_Use()
         {
             if (Player.Instance.CountEnemiesInRange(1500) == 0) return;
-            
+
+            //BladeKing, Bilgewater
             if (Bilgewater.IsOwned() || BladeKing.IsOwned())
             {
                 var Botrk_Target = TargetSelector.GetTarget(Player.Instance.AttackRange + Player.Instance.BoundingRadius + 65, DamageType.Physical);
 
-                if(Bilgewater.IsReady())
+                if (Botrk_Target != null)
                 {
-                    Bilgewater.Cast(Botrk_Target);
-                }
+                    if (Bilgewater.IsReady())
+                    {
+                        Bilgewater.Cast(Botrk_Target);
+                    }
 
-                if (BladeKing.IsReady() && Player.Instance.HealthPercent <= MenuItem["BladeKing.Use"].Cast<Slider>().CurrentValue)
-                {
-                    BladeKing.Cast(Botrk_Target);
+                    if (BladeKing.IsReady() && Player.Instance.HealthPercent <= MenuItem["BladeKing.Use"].Cast<Slider>().CurrentValue)
+                    {
+                        BladeKing.Cast(Botrk_Target);
+                    }
                 }
-            }        
+            }
 
-            if (Youmuu.IsOwned() && Youmuu.IsReady() && Player.Instance.CountEnemiesInRange(1500) == 1)
+            //Youmuu
+            if (Youmuu.IsOwned() && Youmuu.IsReady() && Player.Instance.CountEnemiesInRange(1500) >= 1)
             {
                 Youmuu.Cast();
             }
 
+            //Hextech
+            if (Hextech.IsOwned() && Hextech.IsReady())
+            {
+                var Hextech_Target = TargetSelector.GetTarget(700, DamageType.Magical);
+
+                if (Hextech_Target != null)
+                {
+                    Hextech.Cast(Hextech_Target);
+                }
+            }
+
+            //Quicksilver, Scimitar
             Active_Item();
         }
 

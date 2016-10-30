@@ -60,6 +60,8 @@ namespace NebulaKalista
                 {
                     var M_Ofs = Ofs_List.FirstOrDefault(x => monster.Name.Contains(x.Name));
 
+                    if (M_Ofs == null) return;
+
                     width = M_Ofs.Width;
                     height = M_Ofs.Height;
                     xOffset = M_Ofs.XOffset;
@@ -135,35 +137,34 @@ namespace NebulaKalista
             //new MonsterOffset
             //{
             //    Name = "Red", Width = 141, Height = 9, XOffset = -3, YOffset = 12 //7
-            //},           
+            //},
             //new MonsterOffset
             //{
             //    Name = "Blue", Width = 141, Height = 9, XOffset = -3, YOffset = 7
             //},
-            
             //new MonsterOffset
             //{
             //    Name = "Gromp", Width = 86, Height = 4, XOffset = 24, YOffset = 7
             //},
-            new MonsterOffset
-            { 
-                Name = "Crab", Width = 61, Height = 4, XOffset = 36, YOffset = 21
-            },
+            //new MonsterOffset
+            //{ 
+            //    Name = "Crab", Width = 61, Height = 4, XOffset = 36, YOffset = 21
+            //},
             //new MonsterOffset
             //{
             //    Name = "Krug", Width = 79, Height = 4, XOffset = 21, YOffset = 7
             //},
-           
+
             //new MonsterOffset
             //{
             //    Name = "Razorbeak", Width = 74, Height = 4, XOffset = 30, YOffset = 9
             //},
-            
+
             //new MonsterOffset
             //{
             //    Name = "Murkwolf", Width = 74, Height = 4, XOffset = 30, YOffset = 9
             //},
-               
+
         };
 
         internal class MonsterOffset

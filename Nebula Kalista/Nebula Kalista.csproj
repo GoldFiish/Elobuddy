@@ -55,6 +55,11 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
+    <Compile Include="Resources\Lang_Kor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lang_Kor.resx</DependentUpon>
+    </Compile>
     <Compile Include="SpellManager.cs" />
     <None Include="App.config" />
     <Compile Include="Mode_Always.cs" />
@@ -84,11 +89,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Lang_Kor.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Lang_Kor.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

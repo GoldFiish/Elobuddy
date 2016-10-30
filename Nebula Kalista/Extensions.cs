@@ -16,25 +16,24 @@ namespace NebulaKalista
         public static float Get_Q_Damage_Float(this Obj_AI_Base target)
         {
             return Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical,
-                new float[] {10, 70, 130, 190, 250 }[SpellManager.Q.Level - 1] + Player.Instance.TotalAttackDamage);
+                (new float[] { 0, 10, 70, 130, 190, 250 }[SpellManager.Q.Level] + Player.Instance.TotalAttackDamage) * 0.9f);
         }
         
         public static List<string> UndyingBuffs = new List<string>
         {
-            "JudicatorIntervention",
-            "UndyingRage",
-            "FerociousHowl",
-            "ChronoRevive",
-            "ChronoShift",
+            "JudicatorIntervention",    //Kayle [ R ]
+            "UndyingRage",              //Tryndamere [ R ] - "Undying Rage",
+            "Chrono Revive",
+            "Chrono Shift",             //Zilean [ R ] - "ChronoShift",    
             "lissandrarself",
-            "kindredrnodeathbuff",
+            "KindredRNoDeathBuff",      //"kindredrnodeathbuff",
             "malzaharpassiveshield",
-            "bansheesveil",
-            "SivirE",
-            "NocturneW",
-            "BlackShield"
+            "BansheesVeil",             //"bansheesveil",
+            "SivirShield",              //Sivir [ E ] - "SivirE",  
+            "ShroudofDarkness",         //Nocturne [ W ] - "NocturneW"
+            "BlackShield",
+            "zhonyasringshield"
         };
-        
         public static bool ShouldntRend(AIHeroClient target)
         {
             if (target == null || !target.IsHPBarRendered) return false;
@@ -84,10 +83,14 @@ namespace NebulaKalista
             var dmg = Get_E_Damage_Double(target);
 
             if (ObjectManager.Player.HasBuff("summonerexhaust"))
+            {
                 dmg *= 0.6f;
+            }
 
             if (target.HasBuff("FerociousHowl"))
+            {
                 dmg *= 0.3f;
+            }
 
             if (target.Name.Contains("Baron") && ObjectManager.Player.HasBuff("barontarget"))
             {

@@ -2,8 +2,8 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
-using EloBuddy.SDK.Events;
 using EloBuddy.SDK.Enumerations;
+using SharpDX;
 
 namespace NebulaKalista
 {
@@ -11,40 +11,56 @@ namespace NebulaKalista
     {
         public static void Harass()
         {
-            var Qtarget = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Physical);
+            if (Player.Instance.IsDead) return;
 
-            if (Qtarget == null) return;
-            
-            if (SpellManager.Q.IsReady() && MenuMain["Harass.Q"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuMain["Harass.Q.Mana"].Cast<Slider>().CurrentValue)
+            var Qtarget = TargetSelector.GetTarget(1350, DamageType.Physical);
+
+            //Harass Q
+            if (Qtarget != null && SpellManager.Q.IsLearned)
             {
-                if (!Player.Instance.IsDashing() && Qtarget.IsValidTarget(SpellManager.Q.Range))
+                if (SpellManager.Q.IsReady() && MenuHarass["Harass.Q"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuHarass["Harass.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
-                    var QPrediction = SpellManager.Q.GetPrediction(Qtarget);
-
-                    if (QPrediction.HitChance >= HitChance.High)
+                    if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget) <= SpellManager.Q.Range)
                     {
-                        SpellManager.Q.Cast(QPrediction.CastPosition);
+                        var QPrediction = SpellManager.Q.GetPrediction(Qtarget);
+                        var minion = EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= SpellManager.Q.Range);
+
+                        if (QPrediction.HitChance >= HitChance.High)
+                        {
+                            SpellManager.Q.Cast(QPrediction.CastPosition);
+                        }
+
+                        foreach (var m in (from m in minion
+                                           let p1 = new Geometry.Polygon.Rectangle((Vector2)Player.Instance.Position, Player.Instance.Position.Extend(m.Position, SpellManager.Q.Range), SpellManager.Q.Width)
+                                           where 
+                                           minion.Count(x => p1.IsInside(x.Position) && x.Health >= Extensions.Get_Q_Damage_Float(x)) <= 0 &&
+                                           minion.Count(x => p1.IsInside(x.Position) && x.Health <= Extensions.Get_Q_Damage_Float(x)) >= MenuHarass["Harass.Q.MCount"].Cast<Slider>().CurrentValue &&
+                                           p1.IsInside(QPrediction.CastPosition)
+                                           select m))
+                        {
+                            SpellManager.Q.Cast(QPrediction.CastPosition);
+                        }
                     }
                 }
             }
 
-            if (SpellManager.E.IsReady() && MenuMain["Harass.E"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuMain["Harass.E.Mana"].Cast<Slider>().CurrentValue)
+            //Harass E
+            if (SpellManager.E.IsLearned)
             {
-                var target = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200));
+                if (SpellManager.E.IsReady() && MenuHarass["Harass.E"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuHarass["Harass.E.Mana"].Cast<Slider>().CurrentValue)
+                {
+                    var target = TargetSelector.GetTarget(1200, DamageType.Physical);
 
-                if (target.FirstOrDefault(x => x.HasRendBuff()) == null) return;
-               
-                if (EntityManager.MinionsAndMonsters.Minions.Where(x => x.IsValidTarget(1200)).FirstOrDefault(x => x.Health <= x.Get_E_Damage_Float()) != null)
-                {
-                    if (target.FirstOrDefault(x => x.HasRendBuff()) != null)
+                    if (target != null) 
                     {
-                        SpellManager.E.Cast();
+                        if (EntityManager.MinionsAndMonsters.EnemyMinions.Count(x => x.IsValidTarget(1200) && x.Health <= Extensions.Get_E_Damage_Float(x)) >= MenuHarass["Harass.E.MCount"].Cast<Slider>().CurrentValue)
+                        {
+                            if (Player.Instance.Distance(target) > 700 && target.GetBuffCount("kalistaexpungemarker") >= MenuHarass["Harass.E.CStack"].Cast<Slider>().CurrentValue)
+                            {
+                                SpellManager.E.Cast();
+                            }
+                        }
                     }
-                }
-                
-                if (target.Where(x => x.Distance(Player.Instance.ServerPosition) > 700).FirstOrDefault(x => x.GetBuffCount("kalistaexpungemarker") >= MenuMain["Harass.E.Stack"].Cast<Slider>().CurrentValue) != null)
-                {
-                    SpellManager.E.Cast();
                 }
             }
         }   //End Harass

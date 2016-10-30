@@ -61,6 +61,87 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
+        ///   [ E ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Combo_E {
+            get {
+                return ResourceManager.GetString("Combo_E", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Combo_Q {
+            get {
+                return ResourceManager.GetString("Combo_Q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   If mana is higher than [ n% ], [ Q ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Combo_Q_Mana {
+            get {
+                return ResourceManager.GetString("Combo_Q_Mana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Focus [ W ] Passive과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Combo_W {
+            get {
+                return ResourceManager.GetString("Combo_W", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] Style과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Como_QStyle {
+            get {
+                return ResourceManager.GetString("Como_QStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   When [ Q ] activation과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Como_QStyle_0 {
+            get {
+                return ResourceManager.GetString("Como_QStyle_0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Killable [ Q ] + [ E ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Como_QStyle_1 {
+            get {
+                return ResourceManager.GetString("Como_QStyle_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   More than [ E ] 5 stack과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Como_QStyle_2 {
+            get {
+                return ResourceManager.GetString("Como_QStyle_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   When [ E ] fail 과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Como_QStyle_3 {
+            get {
+                return ResourceManager.GetString("Como_QStyle_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   [ E ] Damage Indicator - Enemy Hp bar과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Draw_E_Dmg_Champ {
@@ -178,128 +259,65 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   [ E ] Use - [ Big + Mini ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ E ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Farm_Jungle_E_All {
+        internal static string Harass_E {
             get {
-                return ResourceManager.GetString("Farm_Jungle_E_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ E ] Use - [ Big ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Farm_Jungle_E_Big {
-            get {
-                return ResourceManager.GetString("Farm_Jungle_E_Big", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   If mana is higher than [ n% ], [ Q E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Farm_Jungle_Mana {
-            get {
-                return ResourceManager.GetString("Farm_Jungle_Mana", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ Q ] Use - [ Big + Mini ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Farm_Jungle_Q_All {
-            get {
-                return ResourceManager.GetString("Farm_Jungle_Q_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ Q ] Use - [ Big ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Farm_Jungle_Q_Big {
-            get {
-                return ResourceManager.GetString("Farm_Jungle_Q_Big", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Jungle clear Setting과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Farm_Jungle_Str {
-            get {
-                return ResourceManager.GetString("Farm_Jungle_Str", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ E ] Use - [ All type minions ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Farm_Lane_E_All {
-            get {
-                return ResourceManager.GetString("Farm_Lane_E_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ E ] Use - [ Siege, Super minions ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Farm_Lane_E_Big {
-            get {
-                return ResourceManager.GetString("Farm_Lane_E_Big", resourceCulture);
+                return ResourceManager.GetString("Harass_E", resourceCulture);
             }
         }
         
         /// <summary>
         ///   If mana is higher than [ n% ], [ E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Farm_Lane_E_Mana {
+        internal static string Harass_E_Mana {
             get {
-                return ResourceManager.GetString("Farm_Lane_E_Mana", resourceCulture);
+                return ResourceManager.GetString("Harass_E_Mana", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Number of killable Minions &gt;= [ n ], [ E ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Number of killable Minions과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Farm_Lane_E_Num {
+        internal static string Harass_E_Minion {
             get {
-                return ResourceManager.GetString("Farm_Lane_E_Num", resourceCulture);
+                return ResourceManager.GetString("Harass_E_Minion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Champion [ E ] Stack count과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Harass_E_Stack {
+            get {
+                return ResourceManager.GetString("Harass_E_Stack", resourceCulture);
             }
         }
         
         /// <summary>
         ///   [ Q ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Farm_Lane_Q {
+        internal static string Harass_Q {
             get {
-                return ResourceManager.GetString("Farm_Lane_Q", resourceCulture);
+                return ResourceManager.GetString("Harass_Q", resourceCulture);
             }
         }
         
         /// <summary>
         ///   If mana is higher than [ n% ], [ Q ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Farm_Lane_Q_Mana {
+        internal static string Harass_Q_Mana {
             get {
-                return ResourceManager.GetString("Farm_Lane_Q_Mana", resourceCulture);
+                return ResourceManager.GetString("Harass_Q_Mana", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Number of killable Minions &gt; [ n ], [ Q ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Number of killable Minions과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Farm_Lane_Q_Num {
+        internal static string Harass_Q_Minion {
             get {
-                return ResourceManager.GetString("Farm_Lane_Q_Num", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Lane clear Setting과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Farm_Lane_Str {
-            get {
-                return ResourceManager.GetString("Farm_Lane_Str", resourceCulture);
+                return ResourceManager.GetString("Harass_Q_Minion", resourceCulture);
             }
         }
         
@@ -372,6 +390,15 @@ namespace NebulaKalista.Resources {
         internal static string Item_A_Blige {
             get {
                 return ResourceManager.GetString("Item_A_Blige", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Hextech Gunblade과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Item_A_Hextech {
+            get {
+                return ResourceManager.GetString("Item_A_Hextech", resourceCulture);
             }
         }
         
@@ -529,137 +556,101 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   [ E ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ E ] Use - [ Big + Mini ]과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Combo_E {
+        internal static string Jungle_E_All {
             get {
-                return ResourceManager.GetString("Main_Combo_E", resourceCulture);
+                return ResourceManager.GetString("Jungle_E_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ E ] Use - [ Big ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Jungle_E_Big {
+            get {
+                return ResourceManager.GetString("Jungle_E_Big", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   If mana is higher than [ n% ], [ Q E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Jungle_Mana {
+            get {
+                return ResourceManager.GetString("Jungle_Mana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] Use - [ Big + Mini ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Jungle_Q_All {
+            get {
+                return ResourceManager.GetString("Jungle_Q_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ Q ] Use - [ Big ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Jungle_Q_Big {
+            get {
+                return ResourceManager.GetString("Jungle_Q_Big", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [ E ] Use - [ All type minions ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Lane_E_All {
+            get {
+                return ResourceManager.GetString("Lane_E_All", resourceCulture);
             }
         }
         
         /// <summary>
         ///   If mana is higher than [ n% ], [ E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Combo_E_Mana {
+        internal static string Lane_E_Mana {
             get {
-                return ResourceManager.GetString("Main_Combo_E_Mana", resourceCulture);
+                return ResourceManager.GetString("Lane_E_Mana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Number of killable Minions &gt;= [ n ], [ E ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Lane_E_Num {
+            get {
+                return ResourceManager.GetString("Lane_E_Num", resourceCulture);
             }
         }
         
         /// <summary>
         ///   [ Q ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Combo_Q {
+        internal static string Lane_Q {
             get {
-                return ResourceManager.GetString("Main_Combo_Q", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   If mana is higher than [ n% ], [ Q ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Combo_Q_Mana {
-            get {
-                return ResourceManager.GetString("Main_Combo_Q_Mana", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Combo Setting과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Combo_Str {
-            get {
-                return ResourceManager.GetString("Main_Combo_Str", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ W ] Passive used과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Combo_W {
-            get {
-                return ResourceManager.GetString("Main_Combo_W", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ Q ] Style과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Como_QStyle {
-            get {
-                return ResourceManager.GetString("Main_Como_QStyle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   First [ Q ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Como_QStyle0 {
-            get {
-                return ResourceManager.GetString("Main_Como_QStyle0", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   AA ⇒ [ Q ] ⇒ [ E ]과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Como_QStyle1 {
-            get {
-                return ResourceManager.GetString("Main_Como_QStyle1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ E ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Harass_E {
-            get {
-                return ResourceManager.GetString("Main_Harass_E", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   If mana is higher than [ n% ], [ E ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Harass_E_Mana {
-            get {
-                return ResourceManager.GetString("Main_Harass_E_Mana", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ E ] Stack count과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Harass_E_Stack {
-            get {
-                return ResourceManager.GetString("Main_Harass_E_Stack", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   [ Q ] Use과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Harass_Q {
-            get {
-                return ResourceManager.GetString("Main_Harass_Q", resourceCulture);
+                return ResourceManager.GetString("Lane_Q", resourceCulture);
             }
         }
         
         /// <summary>
         ///   If mana is higher than [ n% ], [ Q ] is used 과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Harass_Q_Mana {
+        internal static string Lane_Q_Mana {
             get {
-                return ResourceManager.GetString("Main_Harass_Q_Mana", resourceCulture);
+                return ResourceManager.GetString("Lane_Q_Mana", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Harass Setting과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Number of killable Minions &gt; [ n ], [ Q ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Harass_Str {
+        internal static string Lane_Q_Num {
             get {
-                return ResourceManager.GetString("Main_Harass_Str", resourceCulture);
+                return ResourceManager.GetString("Lane_Q_Num", resourceCulture);
             }
         }
         
@@ -718,11 +709,29 @@ namespace NebulaKalista.Resources {
         }
         
         /// <summary>
-        ///   [ E ] Setting과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ Q ] [ E ] Setting과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Misc_E_Str {
             get {
                 return ResourceManager.GetString("Misc_E_Str", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Balista - Blitzcrank, Skarner, TahmKench과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_R_Balista {
+            get {
+                return ResourceManager.GetString("Misc_R_Balista", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Minium distance과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Misc_R_Balista_Dis {
+            get {
+                return ResourceManager.GetString("Misc_R_Balista_Dis", resourceCulture);
             }
         }
         
@@ -750,60 +759,6 @@ namespace NebulaKalista.Resources {
         internal static string Misc_R_Str {
             get {
                 return ResourceManager.GetString("Misc_R_Str", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Skin Setting과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Skin {
-            get {
-                return ResourceManager.GetString("Misc_Skin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Off과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Skin_0 {
-            get {
-                return ResourceManager.GetString("Misc_Skin_0", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Blood moon Kalista과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Skin_1 {
-            get {
-                return ResourceManager.GetString("Misc_Skin_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Championship Kalista과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Skin_2 {
-            get {
-                return ResourceManager.GetString("Misc_Skin_2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   SKT T1 Kalista과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Skin_3 {
-            get {
-                return ResourceManager.GetString("Misc_Skin_3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Skin과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Misc_Skin_Text {
-            get {
-                return ResourceManager.GetString("Misc_Skin_Text", resourceCulture);
             }
         }
         

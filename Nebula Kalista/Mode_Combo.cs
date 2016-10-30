@@ -2,7 +2,6 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
-using EloBuddy.SDK.Events;
 using EloBuddy.SDK.Enumerations;
 
 namespace NebulaKalista
@@ -11,11 +10,12 @@ namespace NebulaKalista
     {
         public static void Combo()
         {
+            if (Player.Instance.IsDead) return;
+
             var Qtarget = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Physical);
 
-            if (Qtarget == null) return;
-
-            if (MenuMain["Combo.W"].Cast<CheckBox>().CurrentValue && Player.Instance.CountEnemiesInRange(Player.Instance.AttackRange) >= 1)
+            //Combo W [ Focus W passive target ]
+            if (MenuCombo["Combo.W"].Cast<CheckBox>().CurrentValue && Player.Instance.CountEnemiesInRange(Player.Instance.AttackRange) >= 1)
             {
                 foreach (var target in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(Player.Instance.AttackRange) && x.HasBuff("kalistacoopstrikemarkally")))
                 {
@@ -23,45 +23,70 @@ namespace NebulaKalista
                 }
             }
 
-            if (MenuMain["Combo.Q"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > MenuMain["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
+            //Combo Q - Not Collision check 
+            if (Qtarget != null && SpellManager.Q.IsLearned)
             {
-                if (!Player.Instance.IsDashing() && Qtarget.IsValidTarget(SpellManager.Q.Range))
+                if (MenuCombo["Combo.Q"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > MenuCombo["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
-                    var QPrediction = SpellManager.Q.GetPrediction(Qtarget);
+                    if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget.Position) <= 1300)
+                    {                        
+                        var QPrediction = SpellManager.Q.GetPrediction(Qtarget);
 
-                    if (QPrediction.HitChance < HitChance.High)
-                    {
-                        if (MenuMain["Combo.Q.Style"].Cast<ComboBox>().SelectedIndex == 0)
+                        if (QPrediction.HitChance >= HitChance.High)
                         {
-                            SpellManager.Q.Cast(QPrediction.CastPosition);
-                        }
-                        else
-                        {
-                            if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget.Position) <= 1300 && Extensions.IsKillable_Style1(Qtarget))
+                            switch (Combo_QNum)
                             {
-                                SpellManager.Q.Cast(QPrediction.CastPosition);
-                            }                            
-                        }
-                    }
+                                case 0:     // [ Q ] activation
+                                    SpellManager.Q.Cast(QPrediction.CastPosition);
+                                    break;
 
-                    if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget.Position) <= 1300 && Player.Instance.Distance(Qtarget.Position) >= SpellManager.E.Range &&
-                         !Qtarget.HasBuffOfType(BuffType.SpellShield))
-                    {
-                        if (QPrediction.HitChancePercent >= 70)
-                        {
-                            SpellManager.Q.Cast(QPrediction.CastPosition);
+                                case 1:     // [ Q ] + [ E ] Killable
+                                    if (Extensions.UndyingBuffs.Any(buff => Qtarget.HasBuff(buff))) return;
+
+                                    if (Qtarget.TotalShieldHealth() <= Extensions.Get_Q_Damage_Float(Qtarget) + Extensions.Get_E_Damage_Float(Qtarget))
+                                    {
+                                        SpellManager.Q.Cast(QPrediction.CastPosition);
+                                    }
+                                    break;
+
+                                case 2:     // [ E ] 5 stack
+                                    if (Extensions.GetRendBuff(Qtarget).Count >= 5)
+                                    {
+                                        SpellManager.Q.Cast(QPrediction.CastPosition);
+                                    }
+                                    break;
+
+                                case 3:     // [ E ] fail
+                                    if (SpellManager.E.IsOnCooldown)
+                                    {
+                                        if (Qtarget.TotalShieldHealth() <= Extensions.Get_Q_Damage_Float(Qtarget))
+                                        {
+                                            SpellManager.Q.Cast(QPrediction.CastPosition);
+                                        }
+                                    }
+                                    break;
+                            }
+
+                            //if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget) >= SpellManager.E.Range && !Qtarget.HasBuffOfType(BuffType.SpellShield))
+                            //{
+                            //    SpellManager.Q.Cast(QPrediction.CastPosition);
+                            //}
                         }
                     }
                 }
             }
 
-            if (MenuMain["Combo.E"].Cast<CheckBox>().CurrentValue && SpellManager.E.IsReady())
+            //Combo E
+            if (SpellManager.E.IsLearned)
             {
-                if (EntityManager.Heroes.Enemies.Any(x => Extensions.IsRendKillable(x) && x.IsValidTarget(1200)))
+                if (MenuCombo["Combo.E"].Cast<CheckBox>().CurrentValue && SpellManager.E.IsReady())
                 {
-                    SpellManager.E.Cast();
+                    if (EntityManager.Heroes.Enemies.Any(x => Extensions.IsRendKillable(x) && x.IsValidTarget(1200)))
+                    {
+                        SpellManager.E.Cast();
+                    }
                 }
-            }           
+            }
         }   //End Combo
     }
 }
