@@ -15,35 +15,33 @@ namespace NebulaSkin
 
         public static void CheckUpdate()
         {
-            WebRequest Request_Ver = WebRequest.Create("https://github.com/GoldFiish/Elobuddy/blob/master/CheckVersion/SkinVersion.txt");
-            Request_Ver.Credentials = CredentialCache.DefaultCredentials;
-            WebResponse Response_Ver = Request_Ver.GetResponse();
-            Stream Stream_Ver = Response_Ver.GetResponseStream();
-            StreamReader Reader_Ver = new StreamReader(Stream_Ver);
-            GitHubVersion = Reader_Ver.ReadToEnd();
-            Reader_Ver.Close();
-            Response_Ver.Close();
-
-            GitHubVersion = Regex.Split(Regex.Split(GitHubVersion, "type-text\">")[1], "</table>")[0];
-            GitHubVersion = Regex.Replace(GitHubVersion, @"[<][a-z|A-Z|/](.|)*?[>]", "");
-
-            GitHubVersion = GitHubVersion.Trim().Replace("\t", "").Replace("\r", "").Replace("\n", "");
-            GitHubVersion = (new Regex(" +")).Replace(GitHubVersion, " ");
-
-            string[] WordList = { "," };
-            string[] NoticeList = GitHubVersion.Split(WordList, StringSplitOptions.RemoveEmptyEntries);
-
-            Console.WriteLine("Local Version : " + LocalVersion + "  /  GitHub Version : " + NoticeList[0]);
-
-            if (GitHubVersion != LocalVersion)
+            WebRequest Request_GitHubVer = WebRequest.Create("https://github.com/GoldFiish/Elobuddy/blob/master/CheckVersion/SkinVersion.txt");
+            using (var Version_Response = (HttpWebResponse)Request_GitHubVer.GetResponse())
             {
-                //Chat.Print("<font color = '#ffffff'>[ Notice ] </font><font color = '#94cdfc'>Nebula Skin has been Update </font><font color = '#ffffff'>" + NoticeList[0] + "</font>");
+                Stream Version_Stream = Version_Response.GetResponseStream();
+                StreamReader Version_Reader = new StreamReader(Version_Stream);
+                GitHubVersion = Version_Reader.ReadToEnd();
+                Version_Response.Close();
+                Version_Reader.Close();
 
-                MenuNVer = Menu.AddSubMenu("GitHub " + NoticeList[0], "Sub1");
-                MenuNVer.AddGroupLabel("Update");
-                for (int n = 1; n < NoticeList.Count(x => x.Contains("[")) + 1; n++)
+                GitHubVersion = Regex.Split(Regex.Split(GitHubVersion, "type-text\">")[1], "</table>")[0];
+                GitHubVersion = Regex.Replace(GitHubVersion, @"[<][a-z|A-Z|/](.|)*?[>]", "").Replace("\t", "").Replace("\n", "").Replace("\r", "");
+                GitHubVersion = (new Regex(" +")).Replace(GitHubVersion, " ").Trim().Replace(", ", ",");
+                
+                string[] WordList = { "," };
+                string[] NoticeList = GitHubVersion.Split(WordList, StringSplitOptions.RemoveEmptyEntries);
+
+                Console.WriteLine("Local Version : " + LocalVersion + "  /  GitHub Version : " + NoticeList[1]);
+
+                if (LocalVersion != NoticeList[1])
                 {
-                    MenuNVer.AddLabel(NoticeList[n]);
+                    Chat.Print("<font color = '#ffffff'>[ Notice ] </font><font color = '#94cdfc'>Nebula Skin has been Update </font><font color = '#ffffff'>" + NoticeList[1] + "</font>");
+                    
+                    MenuNVer = Menu.AddSubMenu(NoticeList[0], "Sub1");
+                    for (int n = 2; n < NoticeList.Count(x => x.Contains("[")) + 2; n++)
+                    {
+                        MenuNVer.AddLabel(NoticeList[n]);
+                    }
                 }
             }
         }

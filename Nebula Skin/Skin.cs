@@ -79,11 +79,11 @@ namespace NebulaSkin
             Menu.AddLabel(Res_Language.GetString("Label_Ward"));            
             Menu.AddVisualFrame(new WardPreview("Ward.Preview", System.Drawing.Color.Purple));
             Menu.Add("Ward.Skin", new Slider(Res_Language.GetString("Label_Skin"), 0, 0, 66));
-
+            
             MenuVer = Menu.AddSubMenu("Local " + CheckVersion.LocalVersion, "Sub0");
             MenuVer.AddGroupLabel(Res_Language.GetString("Label_By"));
             MenuVer.AddLabel(Res_Language.GetString("Label_NoticeThx"));
-                       
+
             CheckVersion.CheckUpdate();
 
             Player.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
