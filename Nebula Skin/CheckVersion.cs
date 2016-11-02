@@ -38,6 +38,7 @@ namespace NebulaSkin
                     Chat.Print("<font color = '#ffffff'>[ Notice ] </font><font color = '#94cdfc'>Nebula Skin has been Update </font><font color = '#ffffff'>" + NoticeList[1] + "</font>");
                     
                     MenuNVer = Menu.AddSubMenu(NoticeList[0], "Sub1");
+                    MenuNVer.AddGroupLabel(NoticeList[1]);
                     for (int n = 2; n < NoticeList.Count(x => x.Contains("[")) + 2; n++)
                     {
                         MenuNVer.AddLabel(NoticeList[n]);
