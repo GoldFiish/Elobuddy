@@ -15,7 +15,7 @@ namespace NebulaTeemo
 {
     internal class Teemo
     {
-        public static Menu Menu, MenuCombo, MenuHarass, MenuFlee, MenuLane, MenuJungle, MenuItem, MenuMisc, MenuDraw;
+        public static Menu Menu, MenuCombo, MenuHarass, MenuFlee, MenuLane, MenuJungle, MenuItem, MenuMisc, MenuDraw, MenuNVer;
 
         static ResourceManager Res_Language;
         static String[] Language_List = new String[] { "Lang_En", "Lang_Kor" };
@@ -55,8 +55,6 @@ namespace NebulaTeemo
 
             MenuHarass = Menu.AddSubMenu("- Harass", "Sub1");
             MenuHarass.AddLabel(Res_Language.GetString("Attack_Range_Exp"));
-            MenuHarass.Add("Harass.Support",    new CheckBox(Res_Language.GetString("Harass_SuppotMode"), false));
-            MenuHarass.AddSeparator();
             MenuHarass.Add("Harass.Q.Use",      new CheckBox(Res_Language.GetString("Harass_Q_Text")));
             MenuHarass.Add("Harass.Q.Mana",     new Slider(Res_Language.GetString("Harass_Q_Mana"), 65, 0, 100));
             MenuHarass.AddSeparator();
@@ -125,18 +123,10 @@ namespace NebulaTeemo
 
             MenuMisc = Menu.AddSubMenu("- Misc", "SubMenu7");
             MenuMisc.AddLabel(Res_Language.GetString("Misc_JungleSteal"));
-            MenuMisc.Add("Steal.J.0",           new CheckBox(Res_Language.GetString("Misc_JungleSteal_0")));
-            MenuMisc.Add("Steal.J.1",           new CheckBox(Res_Language.GetString("Misc_JungleSteal_1")));
+            MenuMisc.Add("Steal.J.0", new CheckBox(Res_Language.GetString("Misc_JungleSteal")));
             MenuMisc.AddSeparator();
             MenuMisc.AddLabel(Res_Language.GetString("Misc_KillSteal"));
-            MenuMisc.Add("Steal.K.0",           new CheckBox(Res_Language.GetString("Misc_KillSteal_0")));
-            MenuMisc.Add("Steal.K.1",           new CheckBox(Res_Language.GetString("Misc_KillSteal_1")));
-            MenuMisc.Add("Steal.K.2",           new CheckBox(Res_Language.GetString("Misc_KillSteal_2")));
-            MenuMisc.Add("Steal.K.3",           new CheckBox(Res_Language.GetString("Misc_KillSteal_3")));
-            MenuMisc.Add("Steal.K.4",           new CheckBox(Res_Language.GetString("Misc_KillSteal_4")));
-            MenuMisc.Add("Steal.K.5",           new CheckBox(Res_Language.GetString("Misc_KillSteal_5")));
-            MenuMisc.Add("Steal.K.6",           new CheckBox(Res_Language.GetString("Misc_KillSteal_6")));
-            MenuMisc.Add("Steal.K.7",           new CheckBox(Res_Language.GetString("Misc_KillSteal_7")));
+            MenuMisc.Add("Steal.K.0", new CheckBox(Res_Language.GetString("Misc_KillSteal")));
             MenuMisc.AddSeparator();
             MenuMisc.AddLabel(Res_Language.GetString("Misc_AutoR_Text"));
             MenuMisc.Add("Auto.R",              new CheckBox(Res_Language.GetString("Misc_AutoR")));
@@ -157,21 +147,21 @@ namespace NebulaTeemo
             foreach (var enemyR in EntityManager.Heroes.Enemies)
             {
                 MenuDraw.AddLabel(enemyR.ChampionName);
-                //MenuDraw.Add("Draw." + enemyR.ChampionName.ToLower(), new CheckBox(enemyR.ChampionName, false));
-                //MenuDraw.AddLabel(enemyR.ChampionName.Remove(1).ToLower().ToString(), -5);
                 MenuDraw.Add("Draw." + enemyR.ChampionName.ToLower() + ".Q", new CheckBox("[ Q ] - " + enemyR.Spellbook.GetSpell(SpellSlot.Q).Name, false));
                 MenuDraw.Add("Draw." + enemyR.ChampionName.ToLower() + ".W", new CheckBox("[ W ] - " + enemyR.Spellbook.GetSpell(SpellSlot.W).Name, false));
                 MenuDraw.Add("Draw." + enemyR.ChampionName.ToLower() + ".E", new CheckBox("[ E ] - " + enemyR.Spellbook.GetSpell(SpellSlot.E).Name, false));
                 MenuDraw.Add("Draw." + enemyR.ChampionName.ToLower() + ".R", new CheckBox("[ R ] - " + enemyR.Spellbook.GetSpell(SpellSlot.R).Name, false));
                 MenuDraw.AddSeparator(15);
             }
+
+            CheckVersion.CheckUpdate();
+
             Menu["Language.Select"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
             {
                 var index = vargs.NewValue;
                 File.WriteAllText(Language_Path, Language_List[index], Encoding.Default);
             };
 
-            Orbwalker.OnPreAttack += OnBeforeAttack;
             Orbwalker.OnPostAttack += OnAfterAttack;
             Obj_AI_Base.OnProcessSpellCast += Mode_Item.OnProcessSpellCast;
             Obj_AI_Base.OnBasicAttack += Mode_Item.OnBasicAttack;
@@ -221,7 +211,7 @@ namespace NebulaTeemo
 
             if (MenuDraw["Draw.Q.Big"].Cast<CheckBox>().CurrentValue)
             {
-                Circle.Draw(SpellManager.Q.IsReady() ? Color.Orange : Color.IndianRed, 450, Player.Instance.Position);                
+                Circle.Draw(SpellManager.Q.IsReady() ? Color.Orange : Color.IndianRed, 450, Player.Instance.Position);
             }
 
             if (MenuDraw["Draw.R.Range"].Cast<CheckBox>().CurrentValue)
@@ -255,28 +245,10 @@ namespace NebulaTeemo
             if (MenuDraw["Draw.Virtual"].Cast<CheckBox>().CurrentValue)
             {
                 Circle.Draw(Color.White, MenuDraw["Virtual.Range1"].Cast<Slider>().CurrentValue, Player.Instance.Position);
-                Circle.Draw(Color.White, MenuDraw["Virtual.Range2"].Cast<Slider>().CurrentValue, Player.Instance.Position);                               
+                Circle.Draw(Color.White, MenuDraw["Virtual.Range2"].Cast<Slider>().CurrentValue, Player.Instance.Position);
             }
         }
         
-        private static void OnBeforeAttack(AttackableUnit target, Orbwalker.PreAttackArgs args)
-        {
-            if (MenuHarass["Harass.Support"].Cast<CheckBox>().CurrentValue)
-            {
-                if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass))
-                {                
-                    if (args.Target.Type == GameObjectType.obj_AI_Minion)
-                    {
-                        var alliesinrange = EntityManager.Heroes.Allies.Count(x => !x.IsMe && x.Distance(Player.Instance) <= 1000);
-                        if (alliesinrange > 0)
-                        {
-                            args.Process = false;
-                        }
-                    }
-                }
-            }
-        }
-
         static void Game_OnUpdate(EventArgs args)
         {
             Mode_Steal.KillSteal();
@@ -289,7 +261,7 @@ namespace NebulaTeemo
                 Mode_Item.Items_Use();
             }
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass))
-            {
+            {           
                 Mode_Harass.Harass();
             }
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear))
@@ -301,7 +273,7 @@ namespace NebulaTeemo
                 Mode_Flee.Flee();
             }
         }
-    
+
         public static void OnAfterAttack(AttackableUnit target, EventArgs args)
         {
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo))

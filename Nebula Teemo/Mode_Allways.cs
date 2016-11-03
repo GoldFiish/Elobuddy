@@ -10,23 +10,19 @@ namespace NebulaTeemo
         public static void AutoR()
         {
             if (Player.Instance.IsDead) return;
-            if (Player.Instance.CountEnemiesInRange(1200) == 0) return;
-            
-            if (SpellManager.R.IsReady())
-            { 
-            if (MenuMisc["Auto.R"].Cast<CheckBox>().CurrentValue && Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo > 0)
-                {
-                    var Rtarget = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= SpellManager.R.Range).FirstOrDefault();
 
-                    if (Rtarget != null)
+            var Rtarget = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200) && SpellManager.R.IsInRange(x)).FirstOrDefault();
+
+            if (Rtarget != null && SpellManager.R.IsReady())
+            {
+                if (MenuMisc["Auto.R"].Cast<CheckBox>().CurrentValue && Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo > 0)
+                {
+                    if (Rtarget.HasBuff("zhonyasringshield") || Rtarget.HasBuff("Recall") || Rtarget.HasBuff("teleport") || Rtarget.HasBuff("Pantheon_GrandSkyfall_Jump") || Rtarget.HasBuff("teleport_target") ||
+                        Rtarget.HasBuff("BardRStasis") || Rtarget.HasBuffOfType(BuffType.Stun) || Rtarget.HasBuffOfType(BuffType.Snare) || Rtarget.HasBuffOfType(BuffType.Taunt) || Rtarget.HasBuffOfType(BuffType.Charm) ||
+                        Rtarget.HasBuffOfType(BuffType.Suppression) || Rtarget.HasBuffOfType(BuffType.Knockup))
                     {
-                        if (Rtarget.HasBuff("zhonyasringshield") || Rtarget.HasBuff("Recall") || Rtarget.HasBuff("teleport") || Rtarget.HasBuff("Pantheon_GrandSkyfall_Jump") || Rtarget.HasBuff("teleport_target") ||
-                            Rtarget.HasBuff("BardRStasis") || Rtarget.HasBuffOfType(BuffType.Stun) || Rtarget.HasBuffOfType(BuffType.Snare) || Rtarget.HasBuffOfType(BuffType.Taunt) || Rtarget.HasBuffOfType(BuffType.Charm) ||
-                            Rtarget.HasBuffOfType(BuffType.Suppression) || Rtarget.HasBuffOfType(BuffType.Knockup))
-                        {
-                            SpellManager.R.Cast(Rtarget.Position);
-                        }
-                    }
+                        SpellManager.R.Cast(Rtarget.Position);
+                    }                    
                 }
             }
         }  //End AutoR

@@ -691,7 +691,7 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   [ Nebula ] Teemo - 6.17.0.0 리뉴얼과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ Nebula ] Teemo - 6.21.0.1과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Text_0 {
             get {

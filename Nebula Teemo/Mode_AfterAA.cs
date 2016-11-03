@@ -11,24 +11,19 @@ namespace NebulaTeemo
         public static void AA_Combo()
         {
             if (Player.Instance.IsDead) return;
-            if (Player.Instance.CountEnemiesInRange(1200) == 0) return;
 
             var ItsEnemy = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200)).FirstOrDefault();
-            var ItsMe = EntityManager.Heroes.AllHeroes.Where(x => x.IsMe).FirstOrDefault();
 
             if (ItsEnemy != null && SpellManager.Q.IsReady())
             {
                 if (MenuCombo["Combo.Q.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuCombo["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
-                    if ((ItsEnemy.Spellbook.IsCastingSpell && ItsMe.IsTargetable) || ItsEnemy.IsAttackingPlayer)
+                    if ((ItsEnemy.Spellbook.IsCastingSpell && Player.Instance.IsTargetable) || ItsEnemy.IsAttackingPlayer)
                     {
-                        if (ItsEnemy.IsValidTarget())
+                        if (Player.Instance.Distance(ItsEnemy) <= 520)
                         {
-                            if (Player.Instance.Distance(ItsEnemy) <= 500)
-                            {
-                                SpellManager.Q.Cast(ItsEnemy);
-                                //Orbwalker.ResetAutoAttack();
-                            }
+                            SpellManager.Q.Cast(ItsEnemy);
+                            Orbwalker.ResetAutoAttack();
                         }
                     }
                 }
@@ -38,26 +33,21 @@ namespace NebulaTeemo
         public static void AA_Harass()
         {
             if (Player.Instance.IsDead) return;
-            if (Player.Instance.CountEnemiesInRange(1200) == 0) return;
 
             var ItsEnemy = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200)).FirstOrDefault();
-            var ItsMe = EntityManager.Heroes.AllHeroes.Where(x => x.IsMe).FirstOrDefault();
 
             if (ItsEnemy != null && SpellManager.Q.IsReady())
             {
                 if (MenuHarass["Harass.Q.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuHarass["Harass.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
-                    if ((ItsEnemy.Spellbook.IsCastingSpell && ItsMe.IsTargetable) || ItsEnemy.IsAttackingPlayer)
+                    if ((ItsEnemy.Spellbook.IsCastingSpell && Player.Instance.IsTargetable) || ItsEnemy.IsAttackingPlayer)
                     {
-                        if (ItsEnemy.IsValidTarget())
+                        if (Player.Instance.Distance(ItsEnemy) <= 520)
                         {
-                            if (Player.Instance.Distance(ItsEnemy) <= 500)
-                            {
-                                SpellManager.Q.Cast(ItsEnemy);
-                                //Orbwalker.ResetAutoAttack();
-                            }
+                            SpellManager.Q.Cast(ItsEnemy);
+                            Orbwalker.ResetAutoAttack();
                         }
-                    }                    
+                    }
                 }
             }
         }   //End Combo
@@ -87,18 +77,20 @@ namespace NebulaTeemo
                         {
                             if (BigMonster.HealthPercent >= 35)
                             {
+                                Player.IssueOrder(GameObjectOrder.AttackUnit, BigMonster);
                                 SpellManager.Q.Cast(BigMonster);
                                 //Orbwalker.ResetAutoAttack();
-                            }                    
+                            }
                         }
 
                         if (EpicMonster != null)
                         {
                             if (EpicMonster.HealthPercent >= 25)
                             {
+                                Player.IssueOrder(GameObjectOrder.AttackUnit, EpicMonster);
                                 SpellManager.Q.Cast(EpicMonster);
                                 //Orbwalker.ResetAutoAttack();
-                            }              
+                            }
                         }
                     }
 

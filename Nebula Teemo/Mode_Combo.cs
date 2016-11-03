@@ -11,40 +11,43 @@ namespace NebulaTeemo
         public static void Combo()
         {
             if (Player.Instance.IsDead) return;
-            if (Player.Instance.CountEnemiesInRange(1700) == 0) return;            
+            if (Player.Instance.CountEnemiesInRange(1500) == 0) return;
+
             var Qtarget = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Magical);
             var Rtarget = TargetSelector.GetTarget(SpellManager.R.Range, DamageType.Magical);
-            
-            var ItsEnemy = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1500)).FirstOrDefault();
-            //var ItsMe = EntityManager.Heroes.AllHeroes.Where(x => x.IsMe).FirstOrDefault();
 
-            if (Qtarget != null && SpellManager.Q.IsReady())
+            if (SpellManager.Q.IsReady())
             {
                 if (MenuCombo["Combo.Q.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuCombo["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
-                    if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget) > 500 && Player.Instance.Distance(Qtarget) <= 680)
+                    if (Qtarget != null)
                     {
-                        SpellManager.Q.Cast(Qtarget);
+                        if (Player.Instance.Distance(Qtarget) > 520 && Player.Instance.Distance(Qtarget) <= 680)
+                        {
+                            SpellManager.Q.Cast(Qtarget);
+                        }
                     }
                 }
             }
+            
 
-            if (ItsEnemy != null && SpellManager.W.IsReady())
+            if(EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget() && 
+            Player.Instance.Distance(x) >= MenuCombo["Combo.W.Range"].Cast<Slider>().CurrentValue &&
+            Player.Instance.Distance(x) <= 800) != null && SpellManager.W.IsReady())
             {
-                if (MenuCombo["Combo.W.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuCombo["Combo.W.Mana"].Cast<Slider>().CurrentValue &&
-                   Player.Instance.Distance(ItsEnemy) >= MenuCombo["Combo.W.Range"].Cast<Slider>().CurrentValue && Player.Instance.Distance(ItsEnemy) <= 800)
+                if(MenuCombo["Combo.W.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuCombo["Combo.W.Mana"].Cast<Slider>().CurrentValue)
                 {
                     SpellManager.W.Cast();
                 }
             }
-
+            
             if (Rtarget != null && SpellManager.R.IsReady())
             {
                 if (MenuCombo["Combo.R.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo > MenuCombo["Combo.R.Count"].Cast<Slider>().CurrentValue)
                 {
-                    if (Rtarget.IsValidTarget() && Player.Instance.Distance(Rtarget) <= SpellManager.R.Range) // SpellManager.R.Range - 150? // && !Rtarget.HasBuffOfType(BuffType.Poison))
+                    if (SpellManager.R.IsInRange(Rtarget))
                     {
-                        var RPrediction = SpellManager.R.GetPrediction(Rtarget);
+                        var RPrediction = Prediction.Position.PredictCircularMissile(Rtarget, SpellManager.R.Range, 135, 1000, 1000);
 
                         if (RPrediction.HitChance >= HitChance.High)
                         {

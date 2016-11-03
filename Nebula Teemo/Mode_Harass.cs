@@ -11,20 +11,18 @@ namespace NebulaTeemo
         public static void Harass()
         {
             if (Player.Instance.IsDead) return;
-            if (Player.Instance.CountEnemiesInRange(1700) == 0) return;
 
-            var ItsEnemy = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1500)).FirstOrDefault();
-            var ItsMe = EntityManager.Heroes.AllHeroes.Where(x => x.IsMe).FirstOrDefault();
+            var enemy = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1500)).FirstOrDefault();            
 
-            if (ItsEnemy != null)
+            if (enemy != null)
             {
                 if (SpellManager.Q.IsReady())
                 {
                     if (MenuHarass["Harass.Q.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuHarass["Harass.Q.Mana"].Cast<Slider>().CurrentValue)
                     {
-                        if (ItsEnemy.IsValidTarget() && Player.Instance.Distance(ItsEnemy) > Player.Instance.AttackRange && Player.Instance.Distance(ItsEnemy) <= SpellManager.Q.Range)
+                        if (Player.Instance.Distance(enemy) > Player.Instance.AttackRange && Player.Instance.Distance(enemy) <= SpellManager.Q.Range)
                         {
-                            SpellManager.Q.Cast(ItsEnemy);
+                            SpellManager.Q.Cast(enemy);
                         }
                     }
                 }
@@ -32,7 +30,7 @@ namespace NebulaTeemo
                 if (SpellManager.W.IsReady())
                 {
                     if (MenuHarass["Harass.W.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuHarass["Harass.W.Mana"].Cast<Slider>().CurrentValue &&
-                          Player.Instance.Distance(ItsEnemy) >= MenuHarass["Harass.W.Range"].Cast<Slider>().CurrentValue && Player.Instance.Distance(ItsEnemy) <= 800)
+                          Player.Instance.Distance(enemy) >= MenuHarass["Harass.W.Range"].Cast<Slider>().CurrentValue && Player.Instance.Distance(enemy) <= 800)
                     {
                         SpellManager.W.Cast();
                     }
@@ -44,11 +42,10 @@ namespace NebulaTeemo
                         Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo > MenuHarass["Harass.R.Count"].Cast<Slider>().CurrentValue)
                     {
                         var Rtarget = TargetSelector.GetTarget(SpellManager.R.Range, DamageType.Magical);
-                        var RCastPrediction = Prediction.Position.PredictCircularMissile(ItsEnemy, SpellManager.R.Range, 135, 1000, 1000);
-
-                        if ((ItsEnemy.Spellbook.IsCastingSpell && ItsMe.IsTargetable) || ItsEnemy.IsAttackingPlayer)
+                        var RCastPrediction = Prediction.Position.PredictCircularMissile(enemy, SpellManager.R.Range, 135, 1000, 1000);
+                        if ((enemy.Spellbook.IsCastingSpell && Player.Instance.IsTargetable) || enemy.IsAttackingPlayer)
                         {
-                            if (ItsEnemy.IsValidTarget() && Player.Instance.Distance(ItsEnemy) < SpellManager.R.Range)
+                            if (SpellManager.R.IsInRange(enemy))
                             {
                                 if (RCastPrediction.HitChance >= HitChance.High)
                                 {
@@ -57,7 +54,7 @@ namespace NebulaTeemo
                             }
                         }
 
-                        if (Player.Instance.Distance(Rtarget) < SpellManager.R.Range)
+                        if (SpellManager.R.IsInRange(Rtarget))
                         {
                             var RPrediction = Prediction.Position.PredictCircularMissile(Rtarget, SpellManager.R.Range, 135, 1000, 1000);
 

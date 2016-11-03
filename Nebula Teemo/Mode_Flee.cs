@@ -28,7 +28,7 @@ namespace NebulaTeemo
                 {
                     if (Rtarget.IsValidTarget() && Player.Instance.Distance(Rtarget) <= SpellManager.R.Range)
                     {
-                        var RPrediction = SpellManager.R.GetPrediction(Rtarget);
+                        var RPrediction = Prediction.Position.PredictCircularMissile(Rtarget, SpellManager.R.Range, 135, 1000, 1000);
 
                         if (RPrediction.HitChance >= HitChance.Medium)
                         {

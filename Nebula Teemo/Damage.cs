@@ -6,6 +6,11 @@ namespace NebulaTeemo
     {
         public static float DmgIgnite = 50 + (20 * Player.Instance.Level);
 
+        public static float Bilgewater(Obj_AI_Base target)
+        {
+            return target.CalculateDamageOnUnit(target, DamageType.Magical, 100);
+        }
+
         public static float DmgHextech(Obj_AI_Base target)
         {
             return target.CalculateDamageOnUnit(target, DamageType.Magical, 250 + (Player.Instance.TotalMagicalDamage * 0.3f));

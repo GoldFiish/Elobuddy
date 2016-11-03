@@ -11,7 +11,7 @@ namespace NebulaTeemo
         public static readonly Spell.Targeted Ignite = new Spell.Targeted(Player.Instance.GetSpellSlotFromName("summonerdot"), 600);
 
         static readonly Item BladeKing = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
-        static readonly Item Bilgewater = new Item((int)ItemId.Bilgewater_Cutlass, 550f);
+        public static readonly Item Bilgewater = new Item((int)ItemId.Bilgewater_Cutlass, 550f);
         static readonly Item Youmuu = new Item((int)ItemId.Youmuus_Ghostblade);
         public static readonly Item Hextech = new Item((int)ItemId.Hextech_Gunblade, 700f);
         static readonly Item Quicksilver = new Item((int)ItemId.Quicksilver_Sash);
@@ -59,19 +59,17 @@ namespace NebulaTeemo
             if (Ignite.Slot != SpellSlot.Unknown && Ignite.IsReady())
             {
                 var Ignite_Target = TargetSelector.GetTarget(580, DamageType.True);
-                //var Ignite_Damage = Player.Instance.GetSummonerSpellDamage(Ignite_Target, DamageLibrary.SummonerSpells.Ignite);
 
-               if (Ignite_Target != null && MenuCombo["Combo.Ignite"].Cast<CheckBox>().CurrentValue)
+                if (Ignite_Target != null && MenuCombo["Combo.Ignite"].Cast<CheckBox>().CurrentValue)
                 {
-                    if (Ignite_Target.TotalShieldHealth() <= Damage.DmgIgnite + (Damage.DmgE(Ignite_Target)))
+                    if (Ignite_Target.Health <= Damage.DmgIgnite + (Damage.DmgE(Ignite_Target)))
                     {
                         Ignite.Cast(Ignite_Target);
                     }
-                }                
+                }
             }
             Active_Item();
-        }
-       
+        }       
         
         public static void OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
