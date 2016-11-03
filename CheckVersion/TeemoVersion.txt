@@ -1,0 +1,6 @@
+New Version,
+6.21.0.1,
+[ 1 ] Remove Support mode,
+[ 2 ] Error Fix,
+[ 3 ] Add Update Menu,
+[ 4 ] More add killsteal,
