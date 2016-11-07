@@ -52,7 +52,6 @@ namespace NebulaTeemo
             }
         }   //End Combo
 
-
         public static void AA_Jungle()
         {
             if (Player.Instance.IsDead) return;
@@ -66,22 +65,39 @@ namespace NebulaTeemo
             (!x.BaseSkinName.ToLower().Contains("dragon") && !x.BaseSkinName.ToLower().Contains("herald") && !x.BaseSkinName.ToLower().Contains("baron"))).FirstOrDefault();
             var EpicMonster = JungleMonster.Where(x => x.IsValidTarget(680) && !x.Name.Contains("Mini") &&
                 (x.BaseSkinName.ToLower().Contains("dragon") || x.BaseSkinName.ToLower().Contains("herald") || x.BaseSkinName.ToLower().Contains("baron"))).FirstOrDefault();
-            
+
+            if (MiniMonster != null && MiniMonster.FirstOrDefault(m => m.Distance(Player.Instance.Position) <= Player.Instance.AttackRange) != null)
+            {
+                if (Player.Instance.HasBuff("krugstonefistcounter") && Player.Instance.GetBuffCount("krugstonefistcounter") >= 4)
+                {                    
+                    Orbwalker.ForcedTarget = BigMonster;
+                    Player.IssueOrder(GameObjectOrder.AttackUnit, BigMonster);
+                }
+                else
+                {
+                    Orbwalker.ForcedTarget = MiniMonster.FirstOrDefault();
+                    JungleMonster = MiniMonster;
+                }
+            }
+
             if (SpellManager.Q.IsReady())
             {
                 if (MenuJungle["Jungle.Q.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuJungle["Jungle.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
                     if (Player.Instance.CountEnemiesInRange(1200) == 0)
                     {
-                        if (BigMonster != null)
+                        Core.DelayAction(() =>
                         {
-                            if (BigMonster.HealthPercent >= 35)
+                            if (BigMonster != null && !BigMonster.HasBuff("Stun"))
                             {
-                                Player.IssueOrder(GameObjectOrder.AttackUnit, BigMonster);
-                                SpellManager.Q.Cast(BigMonster);
-                                //Orbwalker.ResetAutoAttack();
+                                if (BigMonster.HealthPercent >= 35)
+                                {
+                                    Player.IssueOrder(GameObjectOrder.AttackUnit, BigMonster);
+                                    SpellManager.Q.Cast(BigMonster);
+                                    //Orbwalker.ResetAutoAttack();
+                                }
                             }
-                        }
+                        }, 180);
 
                         if (EpicMonster != null)
                         {
@@ -98,28 +114,22 @@ namespace NebulaTeemo
                     {
                         if (BigMonster != null)
                         {
-                            if (BigMonster.Health <= Damage.DmgQ(BigMonster))
+                            if (BigMonster.Health <= Damage.DmgQ(BigMonster) ||
+                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster) ||
+                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Player.Instance.TotalAttackDamage ||
+                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster) + Player.Instance.TotalAttackDamage)
                             {
                                 SpellManager.Q.Cast(BigMonster);
                                 //Orbwalker.ResetAutoAttack();
-                            }
-
-                            if (BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster))
-                            {
-                                SpellManager.Q.Cast(BigMonster);
-                                //Orbwalker.ResetAutoAttack();
-                            }
+                            }                            
                         }
 
                         if (EpicMonster != null)
                         {
-                            if (EpicMonster.Health <= Damage.DmgQ(BigMonster))
-                            {
-                                SpellManager.Q.Cast(EpicMonster);
-                                //Orbwalker.ResetAutoAttack();
-                            }
-
-                            if (EpicMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(EpicMonster))
+                            if (EpicMonster.Health <= Damage.DmgQ(EpicMonster) ||
+                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Damage.DmgE(EpicMonster) ||
+                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Player.Instance.TotalAttackDamage ||
+                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Damage.DmgE(EpicMonster) + Player.Instance.TotalAttackDamage)
                             {
                                 SpellManager.Q.Cast(EpicMonster);
                                 //Orbwalker.ResetAutoAttack();
@@ -127,12 +137,6 @@ namespace NebulaTeemo
                         }
                     }
                 }
-            }
-
-            if (MiniMonster != null && MiniMonster.FirstOrDefault(m => m.Distance(Player.Instance.Position) <= Player.Instance.AttackRange) != null)
-            {
-                Orbwalker.ForcedTarget = MiniMonster.FirstOrDefault();
-                JungleMonster = MiniMonster;
             }
 
             if (SpellManager.R.IsReady())
