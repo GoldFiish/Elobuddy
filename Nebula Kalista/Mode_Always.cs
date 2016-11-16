@@ -61,12 +61,12 @@ namespace NebulaKalista
                     SpellManager.E.Cast();
                 }
 
-                if (Qtarget != null && SpellManager.Q.IsLearned && Qtarget.TotalShieldHealth() <= Extensions.Get_Q_Damage_Float(Qtarget))
+                if (Qtarget != null && SpellManager.Q.IsLearned && Qtarget.TotalShieldHealth() <= Extensions.Get_Q_Damage_Float(Qtarget) && !Qtarget.IsInvulnerable)
                 {
                     var QPrediction = SpellManager.Q.GetPrediction(Qtarget);
                     var minion = EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= SpellManager.Q.Range);
 
-                    if(QPrediction.HitChancePercent >= 50)
+                    if (QPrediction.HitChancePercent >= 50)
                     {
                         SpellManager.Q.Cast(QPrediction.CastPosition);
                     }
@@ -95,7 +95,7 @@ namespace NebulaKalista
                 {
                     var QPrediction = SpellManager.Q.GetPrediction(target);
 
-                    if (QPrediction.HitChancePercent >= 70)
+                    if (QPrediction.HitChancePercent >= 50)
                     {
                         SpellManager.Q.Cast(QPrediction.UnitPosition);
                     }

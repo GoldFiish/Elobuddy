@@ -223,7 +223,7 @@
     <value>이 Addon이 마음에 든다면, 추천 또는 기부를 부탁드립니다.</value>
   </data>
   <data name="Intro_Str_0" xml:space="preserve">
-    <value>[ Nebula ] Kalista - 6.16.0.0</value>
+    <value>[ Nebula ] Kalista - 6.22.0.0</value>
   </data>
   <data name="Lane_Q_Num" xml:space="preserve">
     <value>미니언 킬 개수가 [ n ]보다 많을 때 [ Q ] 사용</value>

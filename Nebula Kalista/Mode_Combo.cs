@@ -28,7 +28,7 @@ namespace NebulaKalista
             {
                 if (MenuCombo["Combo.Q"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > MenuCombo["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
-                    if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget.Position) <= 1300)
+                    if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget.Position) <= 1200)
                     {                        
                         var QPrediction = SpellManager.Q.GetPrediction(Qtarget);
 
@@ -67,10 +67,10 @@ namespace NebulaKalista
                                     break;
                             }
 
-                            //if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget) >= SpellManager.E.Range && !Qtarget.HasBuffOfType(BuffType.SpellShield))
-                            //{
-                            //    SpellManager.Q.Cast(QPrediction.CastPosition);
-                            //}
+                            if (Qtarget.TotalShieldHealth() <= Extensions.Get_Q_Damage_Float(Qtarget) && (!Qtarget.HasBuffOfType(BuffType.SpellShield) || !Qtarget.IsInvulnerable))
+                            {
+                                SpellManager.Q.Cast(QPrediction.CastPosition);
+                            }
                         }
                     }
                 }

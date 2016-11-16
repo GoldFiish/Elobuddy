@@ -149,10 +149,10 @@ namespace NebulaKalista
                 File.WriteAllText(Language_Path, Language_List[index], Encoding.Default);
             };
 
-            Combo_QNum = MenuCombo["Combo.Q.Style"].Cast<ComboBox>().SelectedIndex;
+            Combo_QNum = MenuCombo["Combo.Q.Style"].Cast<ComboBox>().CurrentValue;
             MenuCombo["Combo.Q.Style"].Cast<ComboBox>().OnValueChange += (sender, vargs) => { Num = vargs.NewValue; };
 
-            Num = MenuDraw["Draw.E.Percent"].Cast<ComboBox>().SelectedIndex;
+            Num = MenuDraw["Draw.E.Percent"].Cast<ComboBox>().CurrentValue;
             MenuDraw["Draw.E.Percent"].Cast<ComboBox>().OnValueChange += (sender, vargs) => { Num = vargs.NewValue; };
 
             SideBar_X = MenuDraw["Draw.Percent.X"].Cast<Slider>().CurrentValue;
