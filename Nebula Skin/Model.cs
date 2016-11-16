@@ -68,10 +68,13 @@ namespace NebulaSkin
             {
                 if (Unit.Name.Contains("Ward") && !Unit.BaseSkinName.Contains("WardCorpse") && Unit.Buffs.Where(x =>x.IsValid &&  x.Caster.IsMe) != null )
                 {
-                    Core.DelayAction(() =>
+                    if (Menu["Ward.Skin"].Cast<Slider>().CurrentValue != Menu["Ward.Skin"].Cast<Slider>().MaxValue)
                     {
-                        Unit.SetSkinId(Menu["Ward.Skin"].Cast<Slider>().CurrentValue);
-                    }, 0);
+                        Core.DelayAction(() =>
+                        {
+                            Unit.SetSkinId(Menu["Ward.Skin"].Cast<Slider>().CurrentValue);
+                        }, 0);
+                    }
                 }
 
                 if (Unit.Name.Contains("Minion") && !Unit.IsDead)

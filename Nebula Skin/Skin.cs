@@ -33,7 +33,7 @@ namespace NebulaSkin
         public static void Load()
         {
             Map = EntityManager.Turrets.Allies.FirstOrDefault().BaseSkinName;
-             
+
             Language_Set();
 
             Chat.Print("<font color = '#94cdfc'>Welcome to </font><font color = '#ffffff'>[ Nebula ] Skin</font><font color = '#94cdfc'>. Addon is ready.</font>");
@@ -78,7 +78,7 @@ namespace NebulaSkin
             Menu.AddSeparator();
             Menu.AddLabel(Res_Language.GetString("Label_Ward"));            
             Menu.AddVisualFrame(new WardPreview("Ward.Preview", System.Drawing.Color.Purple));
-            Menu.Add("Ward.Skin", new Slider(Res_Language.GetString("Label_Skin"), 0, 0, 66));
+            Menu.Add("Ward.Skin", new Slider(Res_Language.GetString("Label_Skin"), 0, 0, WardPreview.Ward_Name.Count() - 1));
             
             MenuVer = Menu.AddSubMenu("Local " + CheckVersion.LocalVersion, "Sub0");
             MenuVer.AddGroupLabel(Res_Language.GetString("Label_By"));
@@ -132,9 +132,12 @@ namespace NebulaSkin
             {
                 foreach (var DyWard in EntityManager.MinionsAndMonsters.OtherAllyMinions.Where(x => x.Name.Contains("Ward") && !x.BaseSkinName.Contains("WardCorpse") && x.Buffs.FirstOrDefault(b => b.IsValid && b.Caster.IsMe) != null))
                 {
-                    if (DyWard.SkinId != Menu["Ward.Skin"].Cast<Slider>().CurrentValue)
+                    if (vargs.NewValue != Menu["Ward.Skin"].Cast<Slider>().MaxValue)
                     {
-                        DyWard.SetSkinId(Menu["Ward.Skin"].Cast<Slider>().CurrentValue);
+                        if (DyWard.SkinId != Menu["Ward.Skin"].Cast<Slider>().CurrentValue)
+                        {
+                            DyWard.SetSkinId(Menu["Ward.Skin"].Cast<Slider>().CurrentValue);
+                        }
                     }
                 }
             };

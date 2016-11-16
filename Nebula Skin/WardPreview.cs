@@ -34,7 +34,7 @@ namespace NebulaSkin
             "S4Triumphant", "S4Victorious", "Battlecast", "NomalPoro", "AstroPoro", "GentlemanPoro", "BattlecastPoro", "DragonSlayerPoro ", "UnderworldPoro", "LunarDragon",
             "Heartseeker", "UrfTriumphant", "MotherSerpent", "SlaughterFleet", "OpticEnhancer", "Championship2015", "2015Conquering", "2015Triumphant", "2015Victorious", "Riggle",
             "TeamFire", "TeamIce", "PenguinSkier", "RisingDawn", "Harpseeker", "Hextech", "DefinitelyNotAWard", "MechaZero", "ElPoroWard", "DarkStar",
-            "HisRoyalCrabness", "PROJECT", "GAMEON", "StarGuardian", "2016Championship", "MechsvsMinions", "Vampro"
+            "HisRoyalCrabness", "PROJECT", "GAMEON", "StarGuardian", "2016Championship", "MechsvsMinions", "2016Conquering", "2016Triumphant", "2016Victorious", "Off"
         };
 
         private static WardAtlass WardAtlas { get; set; }
