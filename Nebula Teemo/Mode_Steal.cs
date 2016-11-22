@@ -21,7 +21,7 @@ namespace NebulaTeemo
                     {
                         //E || AD
                         if (target_enemy.Health <= Damage.DmgE(target_enemy) ||
-                            target_enemy.Health <= Player.Instance.TotalAttackDamage)
+                            target_enemy.Health <= Player.Instance.GetAutoAttackDamage(target_enemy))
                         {
                             Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
                         }
@@ -30,7 +30,7 @@ namespace NebulaTeemo
                         {
                             //E + Hextech || AD + Hextech
                             if (target_enemy.Health <= Damage.DmgE(target_enemy) + Damage.DmgHextech(target_enemy) ||
-                                target_enemy.Health <= Player.Instance.TotalAttackDamage + Damage.DmgHextech(target_enemy))
+                                target_enemy.Health <= Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.DmgHextech(target_enemy))
                             {
                                 Mode_Item.Hextech.Cast(target_enemy);
                                 Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
@@ -41,7 +41,7 @@ namespace NebulaTeemo
                         {
                             //E + Bilgewater || AD + Bilgewater
                             if (target_enemy.Health <= Damage.DmgE(target_enemy) + Damage.Bilgewater(target_enemy) ||
-                                target_enemy.Health <= Player.Instance.TotalAttackDamage + Damage.Bilgewater(target_enemy))
+                                target_enemy.Health <= Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.Bilgewater(target_enemy))
                             {
                                 Mode_Item.Bilgewater.Cast(target_enemy);
                                 Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
@@ -61,8 +61,8 @@ namespace NebulaTeemo
                         if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
                         {
                             if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgE(target_enemy) ||
-                            target_enemy.Health <= Damage.DmgIgnite + Player.Instance.TotalAttackDamage ||
-                            target_enemy.Health <= Damage.DmgIgnite + Damage.DmgE(target_enemy) + Player.Instance.TotalAttackDamage)
+                            target_enemy.Health <= Damage.DmgIgnite + Player.Instance.GetAutoAttackDamage(target_enemy) ||
+                            target_enemy.Health <= Damage.DmgIgnite + Damage.DmgE(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy))
                             {
                                 Mode_Item.Ignite.Cast(target_enemy);
                                 Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
@@ -82,7 +82,7 @@ namespace NebulaTeemo
                             if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
                             {
                                 if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) ||
-                                target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Player.Instance.TotalAttackDamage)
+                                target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy))
                                 {
                                     Mode_Item.Ignite.Cast(target_enemy);
                                     Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
@@ -114,7 +114,7 @@ namespace NebulaTeemo
                                 if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
                                 {
                                     if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) + Damage.DmgHextech(target_enemy) ||
-                                    target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Player.Instance.TotalAttackDamage + Damage.DmgHextech(target_enemy))
+                                    target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.DmgHextech(target_enemy))
                                     {
                                         Mode_Item.Hextech.Cast(target_enemy);
                                         Mode_Item.Ignite.Cast(target_enemy);
@@ -146,7 +146,7 @@ namespace NebulaTeemo
                             if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
                             {
                                 if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) + Damage.Bilgewater(target_enemy) ||
-                                target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Player.Instance.TotalAttackDamage + Damage.Bilgewater(target_enemy))
+                                target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.Bilgewater(target_enemy))
                                 {
                                     Mode_Item.Bilgewater.Cast(target_enemy);
                                     Mode_Item.Ignite.Cast(target_enemy);
@@ -169,7 +169,7 @@ namespace NebulaTeemo
                         if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
                         {
                             if (target_enemy.Health <= Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) ||
-                            target_enemy.Health <= Damage.DmgQ(target_enemy) + Player.Instance.TotalAttackDamage)
+                            target_enemy.Health <= Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy))
                             {
                                 SpellManager.Q.Cast(target_enemy);
                                 Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
@@ -188,7 +188,7 @@ namespace NebulaTeemo
                             if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
                             {
                                 if (target_enemy.Health <= Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) + Damage.DmgHextech(target_enemy) ||
-                                target_enemy.Health <= Damage.DmgQ(target_enemy) + Player.Instance.TotalAttackDamage + Damage.DmgHextech(target_enemy))
+                                target_enemy.Health <= Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.DmgHextech(target_enemy))
                                 {
                                     Mode_Item.Hextech.Cast(target_enemy);
                                     SpellManager.Q.Cast(target_enemy);
@@ -209,7 +209,7 @@ namespace NebulaTeemo
                             if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
                             {
                                 if (target_enemy.Health <= Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) + Damage.Bilgewater(target_enemy) ||
-                                target_enemy.Health <= Damage.DmgQ(target_enemy) + Player.Instance.TotalAttackDamage + Damage.Bilgewater(target_enemy))
+                                target_enemy.Health <= Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.Bilgewater(target_enemy))
                                 {
                                     Mode_Item.Bilgewater.Cast(target_enemy);
                                     SpellManager.Q.Cast(target_enemy);

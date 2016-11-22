@@ -3,6 +3,7 @@ using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.SDK.Enumerations;
+using EloBuddy.SDK.Events;
 
 namespace NebulaTeemo
 {
@@ -18,7 +19,7 @@ namespace NebulaTeemo
             {
                 if (MenuCombo["Combo.Q.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuCombo["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
-                    if ((ItsEnemy.Spellbook.IsCastingSpell && Player.Instance.IsTargetable) || ItsEnemy.IsAttackingPlayer)
+                    if (ItsEnemy.IsDashing() || (ItsEnemy.Spellbook.IsCastingSpell && Player.Instance.IsTargetable) || ItsEnemy.IsAttackingPlayer)
                     {
                         if (Player.Instance.Distance(ItsEnemy) <= 520)
                         {
@@ -40,7 +41,7 @@ namespace NebulaTeemo
             {
                 if (MenuHarass["Harass.Q.Use"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuHarass["Harass.Q.Mana"].Cast<Slider>().CurrentValue)
                 {
-                    if ((ItsEnemy.Spellbook.IsCastingSpell && Player.Instance.IsTargetable) || ItsEnemy.IsAttackingPlayer)
+                    if (ItsEnemy.IsDashing() || (ItsEnemy.Spellbook.IsCastingSpell && Player.Instance.IsTargetable) || ItsEnemy.IsAttackingPlayer)
                     {
                         if (Player.Instance.Distance(ItsEnemy) <= 520)
                         {
@@ -116,8 +117,8 @@ namespace NebulaTeemo
                         {
                             if (BigMonster.Health <= Damage.DmgQ(BigMonster) ||
                                 BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster) ||
-                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Player.Instance.TotalAttackDamage ||
-                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster) + Player.Instance.TotalAttackDamage)
+                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Player.Instance.GetAutoAttackDamage(BigMonster) ||
+                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster) + Player.Instance.GetAutoAttackDamage(BigMonster))
                             {
                                 SpellManager.Q.Cast(BigMonster);
                                 //Orbwalker.ResetAutoAttack();
@@ -128,8 +129,8 @@ namespace NebulaTeemo
                         {
                             if (EpicMonster.Health <= Damage.DmgQ(EpicMonster) ||
                                 EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Damage.DmgE(EpicMonster) ||
-                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Player.Instance.TotalAttackDamage ||
-                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Damage.DmgE(EpicMonster) + Player.Instance.TotalAttackDamage)
+                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Player.Instance.GetAutoAttackDamage(EpicMonster) ||
+                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Damage.DmgE(EpicMonster) + Player.Instance.GetAutoAttackDamage(EpicMonster))
                             {
                                 SpellManager.Q.Cast(EpicMonster);
                                 //Orbwalker.ResetAutoAttack();

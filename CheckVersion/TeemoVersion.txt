@@ -1,3 +1,5 @@
 New Version,
-6.21.0.2,
-[ 1 ] Improved jungle - Check Krug buff and Stack,
+6.23.0.0,
+[ 1 ] Improved Ignite,
+[ 2 ] Check Dashing event,
+[ 3 ] Fix Killsteal damage,

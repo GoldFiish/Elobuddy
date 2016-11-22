@@ -62,9 +62,22 @@ namespace NebulaTeemo
 
                 if (Ignite_Target != null && MenuCombo["Combo.Ignite"].Cast<CheckBox>().CurrentValue)
                 {
-                    if (Ignite_Target.Health <= Damage.DmgIgnite + (Damage.DmgE(Ignite_Target)))
+                    if (Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgE(Ignite_Target) ||
+                        Ignite_Target.Health <= Damage.DmgIgnite + Player.Instance.GetAutoAttackDamage(Ignite_Target) ||
+                        Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgE(Ignite_Target) + Player.Instance.GetAutoAttackDamage(Ignite_Target))
                     {
                         Ignite.Cast(Ignite_Target);
+                    }
+
+                    if (SpellManager.Q.IsReady())
+                    {
+                        if (Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgQ(Ignite_Target) ||
+                            Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgQ(Ignite_Target) + Damage.DmgE(Ignite_Target) ||
+                            Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgQ(Ignite_Target) + Player.Instance.GetAutoAttackDamage(Ignite_Target) ||
+                            Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgQ(Ignite_Target) + Damage.DmgE(Ignite_Target) + Player.Instance.GetAutoAttackDamage(Ignite_Target))
+                        {
+                            Ignite.Cast(Ignite_Target);
+                        }
                     }
                 }
             }
