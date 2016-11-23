@@ -34,6 +34,8 @@ namespace NebulaSkin
         {
             Map = EntityManager.Turrets.Allies.FirstOrDefault().BaseSkinName;
 
+            Console.WriteLine("Nebula skin state");
+
             Language_Set();
 
             Chat.Print("<font color = '#94cdfc'>Welcome to </font><font color = '#ffffff'>[ Nebula ] Skin</font><font color = '#94cdfc'>. Addon is ready.</font>");
@@ -274,7 +276,7 @@ namespace NebulaSkin
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3"));
                     }
 
-                    if (Player.Instance.ChampionName == "MissFortune" || Player.Instance.ChampionName == "Yasuo")
+                    if (Player.Instance.ChampionName == "MissFortune" || Player.Instance.ChampionName == "Yasuo" || Player.Instance.ChampionName == "Braum" || Player.Instance.ChampionName == "Poppy")
                     {
                         Menu.Add("Skin.Chroma", new ComboBox(Res_Language.GetString("Label_Chor_Name"), 0, "1", "2", "3", "4", "5"));
                     }

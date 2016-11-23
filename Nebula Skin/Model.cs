@@ -57,7 +57,8 @@ namespace NebulaSkin
             "SkarnerPassiveCrystal",
             "TaricGem",
             "TrundleWall",
-            "UdyrPhoenix", "UdyrPhoenixUlt", "UdyrTiger", "UdyrTigerUlt", "UdyrTurtle", "UdyrTurtleUlt", "UdyrUlt"
+            "UdyrPhoenix", "UdyrPhoenixUlt", "UdyrTiger", "UdyrTigerUlt", "UdyrTurtle", "UdyrTurtleUlt", "UdyrUlt",
+            "LuluBlob", "LuluCupcake", "LuluDragon", "LuluFaerie", "LuluKitty", "LuluLadybug", "LuluPig", "LuluSeal", "LuluSnowman", "LuluSquill"
         };
 
         public static void OnCreate(GameObject sender, EventArgs args)

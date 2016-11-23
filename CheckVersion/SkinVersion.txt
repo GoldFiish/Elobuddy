@@ -1,4 +1,4 @@
 New Version,
-6.22.0.0,
-[ 1 ] Add Season 6 Ranked Team Season Reward Ward Skin,
-[ 2 ] Add Ward skin off value,
+6.23.0.0,
+[ 1 ] Add Barum / Poppy Chromas,
+[ 2 ] Add Lulu Pix model,
