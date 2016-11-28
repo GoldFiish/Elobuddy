@@ -13,9 +13,9 @@ using EloBuddy.Sandbox;
 using Newtonsoft.Json;
 
 namespace NebulaSkin
-{ 
+{
     internal class Skin
-    {  
+    {
         static string DragonVersion;
         static string DragonSkin;
         public static List<DragonJson.Skin> GetSkinInfo;
@@ -25,16 +25,20 @@ namespace NebulaSkin
 
         public static Menu Menu, MenuVer, MenuNVer;
         public static string Map;
+        static AIHeroClient Enemy_Info;
+        static Obj_AI_Base Pix;
+        static int Backup_Player_SkinID;
         static ResourceManager Res_Language;
-
-        static String[] Language_List = new String[] { "en_US", "ko_KR", "ja_JP", "es_ES", "fr_FR", "de_DE", "it_IT", "pl_PL", "el_GR", "hu_HU", "cs_CZ", "ro_RO", "pt_BR", "id_ID", "ru_RU", "tr_TR"};
+       
+        static String[] Language_List = new String[] { "en_US", "ko_KR", "ja_JP", "es_ES", "fr_FR", "de_DE", "it_IT", "pl_PL", "el_GR", "hu_HU", "cs_CZ", "ro_RO", "pt_BR", "id_ID", "ru_RU", "tr_TR" };
         static string Language_Path = SandboxConfig.DataDirectory + "\\MenuSaveData\\Nebula Skin_Culture_Set.txt";
 
         public static void Load()
         {
             Map = EntityManager.Turrets.Allies.FirstOrDefault().BaseSkinName;
-
-            Console.WriteLine("Nebula skin state");
+            Enemy_Info = EntityManager.Heroes.Enemies.Where(x => x.ChampionName == "Lulu").FirstOrDefault();            
+            
+            Console.WriteLine("Nebula skin status");
 
             Language_Set();
 
@@ -44,13 +48,13 @@ namespace NebulaSkin
             Menu.AddLabel(Res_Language.GetString("Main_Text_1"));
             Menu.AddLabel(Res_Language.GetString("Main_Text_2"));
             Menu.AddSeparator();
-          
-            Menu.Add("Language.Select", new ComboBox(Res_Language.GetString("Main_Language_Select"), 0, 
+
+            Menu.Add("Language.Select", new ComboBox(Res_Language.GetString("Main_Language_Select"), 0,
                 "English", "한국어", "Japanese", "Spanish", "French", "German", "Italian", "Polish", "Greek", "Hungarian", "Czech", "Romanian", "Portuguese (Brazil)", "Indonesia", "Russian", "Turkish"));
             Menu.AddSeparator();
 
             Get_SkinInfo();
-            
+
             Menu.AddSeparator();
             if (Map.Contains("SRUAP"))
             {
@@ -58,9 +62,9 @@ namespace NebulaSkin
 
                 Menu.Add("Minions.Team", new ComboBox(Res_Language.GetString("Label_TeamColor"), 0,
                     Res_Language.GetString("Label_TeamColor_0"), Res_Language.GetString("Label_TeamColor_1")));
-                Menu.Add("Minions.Skin", new ComboBox(Res_Language.GetString("Label_Skin"), 0, 
+                Menu.Add("Minions.Skin", new ComboBox(Res_Language.GetString("Label_Skin"), 0,
                     Res_Language.GetString("Label_Minions_0"), Res_Language.GetString("Label_Minions_1"), Res_Language.GetString("Label_Minions_2"),
-                    Res_Language.GetString("Label_Minions_3"), Res_Language.GetString("Label_Minions_4"), Res_Language.GetString("Label_Minions_5")));                
+                    Res_Language.GetString("Label_Minions_3"), Res_Language.GetString("Label_Minions_4"), Res_Language.GetString("Label_Minions_5")));
             }
             else
             {
@@ -78,10 +82,10 @@ namespace NebulaSkin
             }
 
             Menu.AddSeparator();
-            Menu.AddLabel(Res_Language.GetString("Label_Ward"));            
+            Menu.AddLabel(Res_Language.GetString("Label_Ward"));
             Menu.AddVisualFrame(new WardPreview("Ward.Preview", System.Drawing.Color.Purple));
             Menu.Add("Ward.Skin", new Slider(Res_Language.GetString("Label_Skin"), 0, 0, WardPreview.Ward_Name.Count() - 1));
-            
+
             MenuVer = Menu.AddSubMenu("Local " + CheckVersion.LocalVersion, "Sub0");
             MenuVer.AddGroupLabel(Res_Language.GetString("Label_By"));
             MenuVer.AddLabel(Res_Language.GetString("Label_NoticeThx"));
@@ -89,27 +93,61 @@ namespace NebulaSkin
             CheckVersion.CheckUpdate();
 
             Player.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
+            //Backup_SkinHackID
+            Backup_Player_SkinID = Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue;
+
+            //Change My Pix after 1sec
+            Core.DelayAction(() =>
+            {
+               Pix = ObjectManager.Get<Obj_AI_Minion>().Where(m => Player.Instance.Distance(m) <= 550 && m.BaseSkinName == "LuluFaerie").FirstOrDefault();
+               if (Player.Instance.ChampionName == "Lulu")
+               {
+                   if (Pix != null)
+                   {
+                       if (Pix.SkinId != Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
+                       {
+                           Pix.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
+                       }
+                   }
+               };
+            }, 1000);
+
             Menu["Skin.Nomal"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
             {
                 if (ChromaIndex == -1)
                 {
                     Player.SetSkinId(vargs.NewValue);
+                    Backup_Player_SkinID = vargs.NewValue;
+
+                    if (Player.Instance.ChampionName == "Lulu")
+                    {
+                        if (Pix != null)
+                        {
+                            if (Pix.SkinId != vargs.NewValue)
+                            {
+                                Pix.SetSkinId(vargs.NewValue);
+                            }
+                        }
+                    }
                 }
                 else
                 {
                     if (ChromaCount == 0)
                     {
                         Player.SetSkinId(vargs.NewValue);
+                        Backup_Player_SkinID = vargs.NewValue;
                     }
                     else
                     {
-                        if(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue == ChromaStartNum)
+                        if (Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue == ChromaStartNum)
                         {
                             Player.SetSkinId(vargs.NewValue + ChromaIndex);
+                            Backup_Player_SkinID = vargs.NewValue + ChromaIndex;
                         }
                         else
                         {
                             Player.SetSkinId(vargs.NewValue);
+                            Backup_Player_SkinID = vargs.NewValue;
                         }
                     }
                 }
@@ -122,10 +160,12 @@ namespace NebulaSkin
                     if (ChromaCount == 0)
                     {
                         Player.SetSkinId(vargs.NewValue + GetSkinInfo.Last().num + 1);
+                        Backup_Player_SkinID = vargs.NewValue + GetSkinInfo.Last().num + 1;
                     }
                     else
                     {
                         Player.SetSkinId(vargs.NewValue + ChromaStartNum);
+                        Backup_Player_SkinID = vargs.NewValue + ChromaStartNum;
                     }
                 };
             }
@@ -179,7 +219,7 @@ namespace NebulaSkin
                 {
                     if (Map.Contains("SRUAP"))
                     {
-                        if(Menu["Minions.Team"].Cast<ComboBox>().CurrentValue == 0)
+                        if (Menu["Minions.Team"].Cast<ComboBox>().CurrentValue == 0)
                         {
                             if (DyMinions.SkinId != (Menu["Minions.Skin"].Cast<ComboBox>().CurrentValue * 2))
                             {
@@ -213,7 +253,88 @@ namespace NebulaSkin
                 File.WriteAllText(Language_Path, Language_List[index], Encoding.Default);
             };
 
+            //Player or Enemy is Lulu
+            if (Player.Instance.ChampionName == "Lulu" || Enemy_Info != null)
+            {
+                Game.OnUpdate += Game_OnUpdate;
+            };
+
             GameObject.OnCreate += Model.OnCreate;
+        }
+        
+        private static void Game_OnUpdate(EventArgs args)
+        {
+            //Fix Player polymorph status
+            if (Enemy_Info != null)
+            {
+                if (!Player.Instance.HasBuff("LuluWTwo"))
+                {
+                    if (Player.Instance.Model == "LuluSquill" || Player.Instance.Model == "LuluCupcake" || Player.Instance.Model == "LuluKitty" || Player.Instance.Model == "LuluDragon" ||
+                        Player.Instance.Model == "LuluSnowman" || Player.Instance.Model == "LuluSeal" || Player.Instance.Model == "LuluBlob")
+                    {
+                        Player.SetSkinId(Backup_Player_SkinID);
+                    }
+                }
+            }
+
+            //Player is Lulu, Change enemy champion model
+            if (Player.Instance.ChampionName == "Lulu")
+            {
+                foreach (var Polymorph in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1500)))
+                {
+                    if (Polymorph.HasBuff("LuluWTwo"))
+                    {
+                        //Check Player skin id, enemy champion model
+                        //Player Skin No.0
+
+                        //Player Skin No.1
+                        if (Player.Instance.SkinId == 1 && Polymorph.Model != "LuluCupcake")
+                        {
+                            Polymorph.SetModel("LuluCupcake");
+                        }
+
+                        //Player Skin No.2
+                        if (Player.Instance.SkinId == 2 && Polymorph.Model != "LuluKitty")
+                        {
+                            Polymorph.SetModel("LuluKitty");
+                        }
+
+                        //Player Skin No.3
+                        if (Player.Instance.SkinId == 3 && Polymorph.Model != "LuluDragon")
+                        {
+                            Polymorph.SetModel("LuluDragon");
+                        }
+
+                        //Player Skin No.4
+                        if (Player.Instance.SkinId == 4 && Polymorph.Model != "LuluSnowman")
+                        {
+                            Polymorph.SetModel("LuluSnowman");
+                        }
+
+                        //Player Skin No.5
+                        if (Player.Instance.SkinId == 5 && Polymorph.Model != "LuluSeal")
+                        {
+                            Polymorph.SetModel("LuluSeal");
+                        }
+
+                        //Player Skin No.6
+                        if (Player.Instance.SkinId == 6 && Polymorph.Model != "LuluBlob")
+                        {
+                            Polymorph.SetModel("LuluBlob");
+                        }
+                    }
+
+                    //Return champion model
+                    if (!Polymorph.HasBuff("LuluWTwo"))
+                    {
+                        if (Polymorph.Model == "LuluCupcake" || Polymorph.Model == "LuluKitty" || Polymorph.Model == "LuluDragon" ||
+                            Polymorph.Model == "LuluSnowman" || Polymorph.Model == "LuluSeal" || Polymorph.Model == "LuluBlob")
+                        {
+                            Polymorph.SetSkin(Polymorph.ChampionName, Polymorph.SkinId);
+                        }
+                    }
+                }
+            }
         }
 
         private static void Get_SkinInfo()

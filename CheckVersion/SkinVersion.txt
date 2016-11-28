@@ -1,4 +1,4 @@
 New Version,
-6.23.0.0,
-[ 1 ] Add Barum / Poppy Chromas,
-[ 2 ] Add Lulu Pix model,
+6.23.0.2,
+[ 1 ] Fix player polymorph status - Lulu W,
+[ 2 ] Pix and enemy polymorph model changes to the same as the Lulu skin,
