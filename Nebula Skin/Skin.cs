@@ -265,8 +265,8 @@ namespace NebulaSkin
         private static void Game_OnUpdate(EventArgs args)
         {
             //Fix Player polymorph status
-            if (Enemy_Info != null)
-            {
+            //if (Enemy_Info != null)
+            //{
                 if (!Player.Instance.HasBuff("LuluWTwo"))
                 {
                     if (Player.Instance.Model == "LuluSquill" || Player.Instance.Model == "LuluCupcake" || Player.Instance.Model == "LuluKitty" || Player.Instance.Model == "LuluDragon" ||
@@ -275,7 +275,7 @@ namespace NebulaSkin
                         Player.SetSkinId(Backup_Player_SkinID);
                     }
                 }
-            }
+            //}
 
             //Player is Lulu, Change enemy champion model
             if (Player.Instance.ChampionName == "Lulu")
