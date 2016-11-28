@@ -95,7 +95,7 @@ namespace NebulaSkin
             Player.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
             //Backup_SkinHackID
             Backup_Player_SkinID = Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue;
-
+            //Chat.Print(Backup_Player_SkinID);
             //Change My Pix after 1sec
             Core.DelayAction(() =>
             {
@@ -265,17 +265,17 @@ namespace NebulaSkin
         private static void Game_OnUpdate(EventArgs args)
         {
             //Fix Player polymorph status
-            //if (Enemy_Info != null)
-            //{
+            if (Enemy_Info != null)
+            {
                 if (!Player.Instance.HasBuff("LuluWTwo"))
                 {
                     if (Player.Instance.Model == "LuluSquill" || Player.Instance.Model == "LuluCupcake" || Player.Instance.Model == "LuluKitty" || Player.Instance.Model == "LuluDragon" ||
                         Player.Instance.Model == "LuluSnowman" || Player.Instance.Model == "LuluSeal" || Player.Instance.Model == "LuluBlob")
                     {
-                        Player.SetSkinId(Backup_Player_SkinID);
+                        Player.SetSkin(Player.Instance.ChampionName, Backup_Player_SkinID);
                     }
                 }
-            //}
+            }
 
             //Player is Lulu, Change enemy champion model
             if (Player.Instance.ChampionName == "Lulu")
