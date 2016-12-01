@@ -19,7 +19,7 @@ namespace NebulaSkin
         static string DragonVersion;
         static string DragonSkin;
         public static List<DragonJson.Skin> GetSkinInfo;
-        public static int ChromaIndex;
+        public static int ChromaTrueIndex;
         public static int ChromaCount;
         public static int ChromaStartNum;
 
@@ -95,26 +95,25 @@ namespace NebulaSkin
             Player.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
             //Backup_SkinHackID
             Backup_Player_SkinID = Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue;
-            //Chat.Print(Backup_Player_SkinID);
             //Change My Pix after 1sec
             Core.DelayAction(() =>
             {
-               Pix = ObjectManager.Get<Obj_AI_Minion>().Where(m => Player.Instance.Distance(m) <= 550 && m.BaseSkinName == "LuluFaerie").FirstOrDefault();
-               if (Player.Instance.ChampionName == "Lulu")
-               {
-                   if (Pix != null)
-                   {
-                       if (Pix.SkinId != Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
-                       {
-                           Pix.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
-                       }
-                   }
-               };
+                Pix = ObjectManager.Get<Obj_AI_Minion>().Where(m => Player.Instance.Distance(m) <= 550 && m.BaseSkinName == "LuluFaerie").FirstOrDefault();
+                if (Player.Instance.ChampionName == "Lulu")
+                {
+                    if (Pix != null)
+                    {
+                        if (Pix.SkinId != Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
+                        {
+                            Pix.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
+                        }
+                    }
+                };
             }, 1000);
 
             Menu["Skin.Nomal"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
             {
-                if (ChromaIndex == -1)
+                if (ChromaTrueIndex == -1)
                 {
                     Player.SetSkinId(vargs.NewValue);
                     Backup_Player_SkinID = vargs.NewValue;
@@ -130,7 +129,7 @@ namespace NebulaSkin
                         }
                     }
                 }
-                else
+                else 
                 {
                     if (ChromaCount == 0)
                     {
@@ -139,10 +138,10 @@ namespace NebulaSkin
                     }
                     else
                     {
-                        if (Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue == ChromaStartNum)
+                        if (Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue >= ChromaStartNum)
                         {
-                            Player.SetSkinId(vargs.NewValue + ChromaIndex);
-                            Backup_Player_SkinID = vargs.NewValue + ChromaIndex;
+                            Player.SetSkinId(vargs.NewValue + ChromaCount);
+                            Backup_Player_SkinID = vargs.NewValue + ChromaCount;
                         }
                         else
                         {
@@ -153,7 +152,7 @@ namespace NebulaSkin
                 }
             };
 
-            if (ChromaIndex != -1 && Menu["Skin.Chroma"].Cast<ComboBox>().IsVisible)
+            if (ChromaTrueIndex != -1 && Menu["Skin.Chroma"].Cast<ComboBox>().IsVisible)
             {
                 Menu["Skin.Chroma"].Cast<ComboBox>().OnValueChange += (sender, vargs) =>
                 {
@@ -367,24 +366,29 @@ namespace NebulaSkin
             var DataConvert = JsonConvert.DeserializeObject<DragonJson>(DragonSkin);
             var GetBaseName = DataConvert.data[DataConvert.data.Keys.First().ToString()].name;
             GetSkinInfo = DataConvert.data[DataConvert.data.Keys.First().ToString()].skins;
-            ChromaIndex = GetSkinInfo.FindIndex(x => x.chromas == true); //fail value -1
+            ChromaTrueIndex = GetSkinInfo.FindIndex(x => x.chromas == true); //fail value -1
           
             string[] _SkinNomal = new string[GetSkinInfo.Count];
             for (int n = 0; n < GetSkinInfo.Count; n++)
             {
                 _SkinNomal[n] = GetSkinInfo[n].name;
-                ChromaStartNum = GetSkinInfo[n].num.CompareTo(n);
+            }
 
-                if(ChromaStartNum == 1)
+            for (int k = 0; k < GetSkinInfo.Count; k++)
+            {                
+                ChromaStartNum = GetSkinInfo[k].num.CompareTo(k);
+
+                if (ChromaStartNum == 1)
                 {
-                    ChromaStartNum = n;
+                    ChromaStartNum = k;
+                    break;
                 }
             }
 
             Menu.AddLabel(Res_Language.GetString("Label_Cham_Name") + GetBaseName);
             Menu.Add("Skin.Nomal", new ComboBox(Res_Language.GetString("Label_Skin"), 0, _SkinNomal));
 
-            if(ChromaIndex > -1)
+            if(ChromaTrueIndex > -1)
             {
                 Console.WriteLine(GetBaseName + " have chroma skin");
 

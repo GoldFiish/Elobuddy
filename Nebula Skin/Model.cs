@@ -11,7 +11,7 @@ namespace NebulaSkin
         static string[] SubModel =
         {
             "AnnieTibbers",
-            "BardFollower",
+            "BardFollower", "BardHealthShrine", "BardPickup", "BardPickupNoIcon",
             "EliseSpider", "EliseSpiderling",
             "GangplankBarrel",
             "GnarBig",
@@ -120,21 +120,46 @@ namespace NebulaSkin
 
             if (model != null && SubModel.Contains(model.BaseSkinName))
             {
-                if (Player.Instance.SkinId == Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
+                if (ChromaTrueIndex == -1)
                 {
-                    if (model.SkinId != Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
+                    if (Player.Instance.SkinId == Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
                     {
-                        model.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
+                        if (model.SkinId != Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
+                        {
+                            model.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
+                        }
                     }
                 }
 
-                if (ChromaIndex != -1 && model.SkinId != ChromaIndex )
+                if (ChromaTrueIndex != -1)               
                 {
-                    if(Player.Instance.SkinId == ChromaIndex || 
+                    if (Player.Instance.SkinId == ChromaTrueIndex ||
                         Player.Instance.SkinId == Menu["Skin.Chroma"].Cast<ComboBox>().CurrentValue + ChromaStartNum ||
                         Player.Instance.SkinId == Menu["Skin.Chroma"].Cast<ComboBox>().CurrentValue + GetSkinInfo.Last().num + 1)
                     {
-                        model.SetSkinId(ChromaIndex);
+                        if (model.SkinId != ChromaTrueIndex)
+                        {
+                            model.SetSkinId(ChromaTrueIndex);
+                        }
+                    }
+                    else if (Player.Instance.SkinId < ChromaStartNum)
+                    {
+                        if (Player.Instance.SkinId == ChromaTrueIndex) return;
+
+                        if (model.SkinId != Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue)
+                        {
+                            model.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue);
+                        }
+                    }
+                    else if (Player.Instance.SkinId >= ChromaStartNum)
+                    {
+                        if (Player.Instance.SkinId == Menu["Skin.Chroma"].Cast<ComboBox>().CurrentValue + ChromaStartNum ||
+                            Player.Instance.SkinId == Menu["Skin.Chroma"].Cast<ComboBox>().CurrentValue + GetSkinInfo.Last().num + 1) return;
+
+                        if (model.SkinId != Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue + ChromaCount)
+                        {
+                            model.SetSkinId(Menu["Skin.Nomal"].Cast<ComboBox>().CurrentValue + ChromaCount);
+                        }
                     }
                 }
             }
