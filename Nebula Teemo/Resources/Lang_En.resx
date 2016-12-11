@@ -253,7 +253,7 @@
     <value>Auto [ R ] Use</value>
   </data>
   <data name="Main_Text_0" xml:space="preserve">
-    <value>[ Nebula ] Teemo - 6.21.0.1</value>
+    <value>[ Nebula ] Teemo - 6.24.0.0</value>
   </data>
   <data name="Main_Language_Select" xml:space="preserve">
     <value>Language ( 언어 )</value>
@@ -273,8 +273,8 @@
   <data name="Item_A_BK_Hp" xml:space="preserve">
     <value>If player hp is lower than [ n% ], [ Blade of the Ruined King ] is used</value>
   </data>
-  <data name="Item_D_Zhonyas_Hp" xml:space="preserve">
-    <value>If player hp is lower than [ n% ], [ Zhonya's Hourglass ] is used</value>
+  <data name="Item_D_Zhonyas_SHp" xml:space="preserve">
+    <value>If player hp is lower than [ n% ]</value>
   </data>
   <data name="Item_CastDelay" xml:space="preserve">
     <value>Quicksilver Sash, Mercurial Scimitar cast speed - [ /ms ]</value>
@@ -366,8 +366,8 @@
   <data name="Item_D_Zhonyas_R" xml:space="preserve">
     <value>Choose a dangerous [ R ]</value>
   </data>
-  <data name="Item_D_Zhonyas_Dmg" xml:space="preserve">
-    <value>Instantaneous damage &gt; [ n%], [ Zhonya's Hourglass ] is used</value>
+  <data name="Item_D_Zhonyas_SDmg" xml:space="preserve">
+    <value>Instantaneous damage &gt; [ n%]</value>
   </data>
   <data name="Misc_KillSteal_1" xml:space="preserve">
     <value>[ Ignite ] + [ Q ]</value>
@@ -416,5 +416,23 @@
   </data>
   <data name="Draw_Enemy" xml:space="preserve">
     <value>Enemy Spell range</value>
+  </data>
+  <data name="Item_D_Zhonyas_t1" xml:space="preserve">
+    <value>Auto Attack</value>
+  </data>
+  <data name="Item_D_Zhonyas_t2" xml:space="preserve">
+    <value>Spell Attack</value>
+  </data>
+  <data name="Item_D_Zhonyas_BDmg" xml:space="preserve">
+    <value>Instantaneous AA damage &gt; [ n%]</value>
+  </data>
+  <data name="Item_D_Zhonyas_BHp" xml:space="preserve">
+    <value>If player hp is lower than [ n% ]</value>
+  </data>
+  <data name="Draw_DmgPer" xml:space="preserve">
+    <value>Draw Killable %</value>
+  </data>
+  <data name="Draw_DmgPer_Text" xml:space="preserve">
+    <value>% Info : AA + Q + E + Ignite + Bilgewater + BladeKing + Hextech</value>
   </data>
 </root>

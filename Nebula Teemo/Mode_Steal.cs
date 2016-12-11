@@ -17,205 +17,33 @@ namespace NebulaTeemo
             {
                 if (MenuMisc["Steal.K.0"].Cast<CheckBox>().CurrentValue)
                 {
-                    if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
+                    if(target_enemy.Health <= Damage.DmgCalSteal(target_enemy))
                     {
-                        //E || AD
-                        if (target_enemy.Health <= Damage.DmgE(target_enemy) ||
-                            target_enemy.Health <= Player.Instance.GetAutoAttackDamage(target_enemy))
-                        {
-                            Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                        }
+                        Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
 
-                        if (Mode_Item.Hextech.IsOwned() && Mode_Item.Hextech.IsReady())
-                        {
-                            //E + Hextech || AD + Hextech
-                            if (target_enemy.Health <= Damage.DmgE(target_enemy) + Damage.DmgHextech(target_enemy) ||
-                                target_enemy.Health <= Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.DmgHextech(target_enemy))
-                            {
-                                Mode_Item.Hextech.Cast(target_enemy);
-                                Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                            }
-                        }
-
-                        if (Mode_Item.Bilgewater.IsOwned() && Mode_Item.Bilgewater.IsReady())
-                        {
-                            //E + Bilgewater || AD + Bilgewater
-                            if (target_enemy.Health <= Damage.DmgE(target_enemy) + Damage.Bilgewater(target_enemy) ||
-                                target_enemy.Health <= Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.Bilgewater(target_enemy))
-                            {
-                                Mode_Item.Bilgewater.Cast(target_enemy);
-                                Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                            }
-                        }
-                    }
-
-                    if (Mode_Item.Ignite.Slot != SpellSlot.Unknown && Mode_Item.Ignite.IsReady() && Player.Instance.Distance(target_enemy) <= 600)
-                    {
-                        //Ignite
-                        if (target_enemy.Health <= Damage.DmgIgnite)
+                        if (Mode_Item.Ignite.IsReady())
                         {
                             Mode_Item.Ignite.Cast(target_enemy);
                         }
 
-                        //Ignite + E || Ignite + AD || Ignite + E + AD
-                        if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
-                        {
-                            if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgE(target_enemy) ||
-                            target_enemy.Health <= Damage.DmgIgnite + Player.Instance.GetAutoAttackDamage(target_enemy) ||
-                            target_enemy.Health <= Damage.DmgIgnite + Damage.DmgE(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy))
-                            {
-                                Mode_Item.Ignite.Cast(target_enemy);
-                                Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                            }
-                        }
-
                         if (SpellManager.Q.IsReady())
-                        {
-                            //Ignite + Q
-                            if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy))
-                            {
-                                Mode_Item.Ignite.Cast(target_enemy);
-                                SpellManager.Q.Cast(target_enemy);
-                            }
-
-                            //Ignite + Q + E || Ignite + Q + AD
-                            if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
-                            {
-                                if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) ||
-                                target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy))
-                                {
-                                    Mode_Item.Ignite.Cast(target_enemy);
-                                    Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                                    SpellManager.Q.Cast(target_enemy);
-                                }
-                            }
-                        }
-
-                        if (Mode_Item.Hextech.IsOwned() && Mode_Item.Hextech.IsReady())
-                        {
-                            //Ignite + Hextech
-                            if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgHextech(target_enemy))
-                            {
-                                Mode_Item.Hextech.Cast(target_enemy);
-                                Mode_Item.Ignite.Cast(target_enemy);
-                            }
-
-                            if (SpellManager.Q.IsReady())
-                            {
-                                //Ignite + Q + Hextech
-                                if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Damage.DmgHextech(target_enemy))
-                                {
-                                    Mode_Item.Hextech.Cast(target_enemy);
-                                    Mode_Item.Ignite.Cast(target_enemy);
-                                    SpellManager.Q.Cast(target_enemy);
-                                }
-
-                                //Ignite + Q + E + Hextech || Ignite + Q + AD + Hextech
-                                if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
-                                {
-                                    if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) + Damage.DmgHextech(target_enemy) ||
-                                    target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.DmgHextech(target_enemy))
-                                    {
-                                        Mode_Item.Hextech.Cast(target_enemy);
-                                        Mode_Item.Ignite.Cast(target_enemy);
-                                        Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                                        SpellManager.Q.Cast(target_enemy);
-                                    }
-                                }
-                            }
-                        }
-
-                        if (Mode_Item.Bilgewater.IsOwned() && Mode_Item.Bilgewater.IsReady() && Player.Instance.Distance(target_enemy) <= 550)
-                        {
-                            //Ignite + Bilgewater
-                            if (target_enemy.Health <= Damage.DmgIgnite + Damage.Bilgewater(target_enemy))
-                            {
-                                Mode_Item.Bilgewater.Cast(target_enemy);
-                                Mode_Item.Ignite.Cast(target_enemy);
-                            }
-
-                            //Ignite + Q + Bilgewater
-                            if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Damage.Bilgewater(target_enemy))
-                            {
-                                Mode_Item.Bilgewater.Cast(target_enemy);
-                                Mode_Item.Ignite.Cast(target_enemy);
-                                SpellManager.Q.Cast(target_enemy);
-                            }
-
-                            //Ignite + Q + E + Bilgewater || Ignite + Q + AD + Bilgewater
-                            if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
-                            {
-                                if (target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) + Damage.Bilgewater(target_enemy) ||
-                                target_enemy.Health <= Damage.DmgIgnite + Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.Bilgewater(target_enemy))
-                                {
-                                    Mode_Item.Bilgewater.Cast(target_enemy);
-                                    Mode_Item.Ignite.Cast(target_enemy);
-                                    Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                                    SpellManager.Q.Cast(target_enemy);
-                                }
-                            }
-                        }
-                    }
-                    
-                    if(SpellManager.Q.IsReady())
-                    {
-                        //Q
-                        if (target_enemy.Health <= Damage.DmgQ(target_enemy))
                         {
                             SpellManager.Q.Cast(target_enemy);
                         }
 
-                        //Q + E || Q + AD
-                        if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
+                        if (Mode_Item.Bilgewater.IsReady())
                         {
-                            if (target_enemy.Health <= Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) ||
-                            target_enemy.Health <= Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy))
-                            {
-                                SpellManager.Q.Cast(target_enemy);
-                                Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                            }
+                            Mode_Item.Bilgewater.Cast(target_enemy);
                         }
 
-                        if (Mode_Item.Hextech.IsOwned() && Mode_Item.Hextech.IsReady())
+                        if (Mode_Item.BladeKing.IsReady())
                         {
-                            //Q + Hextech
-                            if (target_enemy.Health <= Damage.DmgQ(target_enemy) + Damage.DmgHextech(target_enemy))
-                            {
-                                Mode_Item.Hextech.Cast(target_enemy);
-                            }
-
-                            //Q + E + Hextech || Q + AD + Hextech
-                            if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
-                            {
-                                if (target_enemy.Health <= Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) + Damage.DmgHextech(target_enemy) ||
-                                target_enemy.Health <= Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.DmgHextech(target_enemy))
-                                {
-                                    Mode_Item.Hextech.Cast(target_enemy);
-                                    SpellManager.Q.Cast(target_enemy);
-                                    Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                                }
-                            }
+                            Mode_Item.BladeKing.Cast(target_enemy);
                         }
 
-                        if (Mode_Item.Bilgewater.IsOwned() && Mode_Item.Bilgewater.IsReady())
+                        if (Mode_Item.Hextech.IsReady())
                         {
-                            //Q + Bilgewater
-                            if (target_enemy.Health <= Damage.DmgQ(target_enemy) + Damage.Bilgewater(target_enemy))
-                            {
-                                Mode_Item.Bilgewater.Cast(target_enemy);
-                            }
-
-                            //Q + E + Bilgewater || Q + AD + Bilgewater
-                            if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
-                            {
-                                if (target_enemy.Health <= Damage.DmgQ(target_enemy) + Damage.DmgE(target_enemy) + Damage.Bilgewater(target_enemy) ||
-                                target_enemy.Health <= Damage.DmgQ(target_enemy) + Player.Instance.GetAutoAttackDamage(target_enemy) + Damage.Bilgewater(target_enemy))
-                                {
-                                    Mode_Item.Bilgewater.Cast(target_enemy);
-                                    SpellManager.Q.Cast(target_enemy);
-                                    Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                                }
-                            }
+                            Mode_Item.Hextech.Cast(target_enemy);
                         }
                     }
                 }

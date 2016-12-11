@@ -142,6 +142,24 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
+        ///   Draw Killable %과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_DmgPer {
+            get {
+                return ResourceManager.GetString("Draw_DmgPer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   % Info : AA + Q + E + Ignite + Bilgewater + BladeKing + Hextech과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Draw_DmgPer_Text {
+            get {
+                return ResourceManager.GetString("Draw_DmgPer_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Enemy Spell range과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Draw_Enemy {
@@ -502,20 +520,20 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   Instantaneous damage &gt; [ n%], [ Zhonya&apos;s Hourglass ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Instantaneous AA damage &gt; [ n%]과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Item_D_Zhonyas_Dmg {
+        internal static string Item_D_Zhonyas_BDmg {
             get {
-                return ResourceManager.GetString("Item_D_Zhonyas_Dmg", resourceCulture);
+                return ResourceManager.GetString("Item_D_Zhonyas_BDmg", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   If player hp is lower than [ n% ], [ Zhonya&apos;s Hourglass ] is used과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   If player hp is lower than [ n% ]과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Item_D_Zhonyas_Hp {
+        internal static string Item_D_Zhonyas_BHp {
             get {
-                return ResourceManager.GetString("Item_D_Zhonyas_Hp", resourceCulture);
+                return ResourceManager.GetString("Item_D_Zhonyas_BHp", resourceCulture);
             }
         }
         
@@ -525,6 +543,42 @@ namespace NebulaTeemo.Resources {
         internal static string Item_D_Zhonyas_R {
             get {
                 return ResourceManager.GetString("Item_D_Zhonyas_R", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Instantaneous damage &gt; [ n%]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Item_D_Zhonyas_SDmg {
+            get {
+                return ResourceManager.GetString("Item_D_Zhonyas_SDmg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   If player hp is lower than [ n% ]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Item_D_Zhonyas_SHp {
+            get {
+                return ResourceManager.GetString("Item_D_Zhonyas_SHp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Auto Attack과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Item_D_Zhonyas_t1 {
+            get {
+                return ResourceManager.GetString("Item_D_Zhonyas_t1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Spell Attack과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Item_D_Zhonyas_t2 {
+            get {
+                return ResourceManager.GetString("Item_D_Zhonyas_t2", resourceCulture);
             }
         }
         
@@ -691,7 +745,7 @@ namespace NebulaTeemo.Resources {
         }
         
         /// <summary>
-        ///   [ Nebula ] Teemo - 6.21.0.1과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   [ Nebula ] Teemo - 6.24.0.0과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Text_0 {
             get {

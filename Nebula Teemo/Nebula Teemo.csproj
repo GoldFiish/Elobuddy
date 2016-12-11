@@ -72,6 +72,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang_En.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Lang_Kor1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lang_Kor.resx</DependentUpon>
+    </Compile>
     <Compile Include="SpellManager.cs" />
     <Compile Include="Teemo.cs" />
     <Compile Include="Program.cs" />
@@ -80,11 +85,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Lang_Kor.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Lang_Kor.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -116,8 +116,8 @@
       <LastGenOutput>Lang_En.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lang_Kor.resx">
+      <LastGenOutput>Lang_Kor1.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lang_Kor.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

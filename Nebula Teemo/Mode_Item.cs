@@ -10,14 +10,14 @@ namespace NebulaTeemo
     {
         public static readonly Spell.Targeted Ignite = new Spell.Targeted(Player.Instance.GetSpellSlotFromName("summonerdot"), 600);
 
-        static readonly Item BladeKing = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
+        public static readonly Item BladeKing = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
         public static readonly Item Bilgewater = new Item((int)ItemId.Bilgewater_Cutlass, 550f);
         static readonly Item Youmuu = new Item((int)ItemId.Youmuus_Ghostblade);
         public static readonly Item Hextech = new Item((int)ItemId.Hextech_Gunblade, 700f);
         static readonly Item Quicksilver = new Item((int)ItemId.Quicksilver_Sash);
         static readonly Item Mercurial = new Item((int)ItemId.Mercurial_Scimitar);
         static readonly Item Zhonyas = new Item((int)ItemId.Zhonyas_Hourglass);
-
+      
         public static void Items_Use()
         {
             if (Player.Instance.IsDead) return;
@@ -62,22 +62,9 @@ namespace NebulaTeemo
 
                 if (Ignite_Target != null && MenuCombo["Combo.Ignite"].Cast<CheckBox>().CurrentValue)
                 {
-                    if (Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgE(Ignite_Target) ||
-                        Ignite_Target.Health <= Damage.DmgIgnite + Player.Instance.GetAutoAttackDamage(Ignite_Target) ||
-                        Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgE(Ignite_Target) + Player.Instance.GetAutoAttackDamage(Ignite_Target))
+                   if (Ignite_Target.Health <= Damage.DmgCal(Ignite_Target))
                     {
                         Ignite.Cast(Ignite_Target);
-                    }
-
-                    if (SpellManager.Q.IsReady())
-                    {
-                        if (Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgQ(Ignite_Target) ||
-                            Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgQ(Ignite_Target) + Damage.DmgE(Ignite_Target) ||
-                            Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgQ(Ignite_Target) + Player.Instance.GetAutoAttackDamage(Ignite_Target) ||
-                            Ignite_Target.Health <= Damage.DmgIgnite + Damage.DmgQ(Ignite_Target) + Damage.DmgE(Ignite_Target) + Player.Instance.GetAutoAttackDamage(Ignite_Target))
-                        {
-                            Ignite.Cast(Ignite_Target);
-                        }
                     }
                 }
             }
@@ -90,25 +77,55 @@ namespace NebulaTeemo
             if (!Zhonyas.IsOwned() || !Zhonyas.IsReady()) return;
             if (!(args.Target is AIHeroClient)) return;
 
-            var enemy = EntityManager.Heroes.Enemies.FirstOrDefault();
+            //var enemy = EntityManager.Heroes.Enemies.FirstOrDefault();
             var hero = sender as AIHeroClient;
             var target = (AIHeroClient)args.Target;
-            
-            if (hero.IsEnemy && (target.IsMe || target != null))
-            {
-                if (MenuItem["R." + enemy.ChampionName.ToLower()].Cast<CheckBox>().CurrentValue && args.Slot == SpellSlot.R)
+            var hitme = args.End != Vector3.Zero && args.End.Distance(Player.Instance) < 100;
+
+
+            if (hero.IsEnemy)/*&& (target.IsMe /*|| target != null*/
+            {                
+                foreach (var enemy in EntityManager.Heroes.Enemies)
                 {
-                    Zhonyas.Cast();
+                    if (MenuItem["R." + enemy.ChampionName.ToLower()].Cast<CheckBox>().CurrentValue && args.Slot == SpellSlot.R)
+                    {
+                        //케이틀린
+                        if (hero.ChampionName == "Caitlyn" && Player.Instance.IsTargetable)
+                        {
+                            var SpellDistance = hero.Distance(args.End + (args.SData.CastRadius / 2));
+                            var TravelTime = SpellDistance / args.SData.MissileSpeed;
+                            var CastDelay = TravelTime * 1000 - 250;
+
+                            Core.DelayAction(() => Zhonyas.Cast(), (int)CastDelay);
+                        }
+                        else if ((hero.ChampionName == "Zed" && Player.Instance.HasBuff("zedrdeathmark")) ||
+                                 (hero.ChampionName == "Karthus" && Player.Instance.Health <= hero.GetSpellDamage(Player.Instance, SpellSlot.R) + 150) ||
+                                 (hero.ChampionName == "Morgana" && Player.Instance.HasBuff("soulshackles")))
+                        {
+                            Core.DelayAction(() => Zhonyas.Cast(), 2500);
+                        }
+                        else if (hero.ChampionName == "Fizz" && Player.Instance.HasBuff("fizzmarinerdoombomb"))
+                        {
+                            Core.DelayAction(() => Zhonyas.Cast(), 1500);
+                        }
+                        else if(hitme)
+                        {
+                            Zhonyas.Cast();
+                        }
+                        else
+                        {
+                            Zhonyas.Cast();
+                        }
+                    }
                 }
 
-                var hitme = args.End != Vector3.Zero && args.End.Distance(Player.Instance) < 100;
-                var spelldamageme = hero.GetSpellDamage(Player.Instance, args.Slot);
-                var damagepercent = (spelldamageme / target.TotalShieldHealth()) * 100;
-                var death = damagepercent >= target.HealthPercent || spelldamageme >= target.TotalShieldHealth() || hero.GetAutoAttackDamage(Player.Instance, true) >= Player.Instance.TotalShieldHealth();
-
-                if(target.IsMe || hitme)
+                if (target.IsMe)
                 {
-                    if (target.HealthPercent <= MenuItem["Item.Zy.Hp"].Cast<Slider>().CurrentValue || death || damagepercent >= MenuItem["Item.Zy.Dmg"].Cast<Slider>().CurrentValue)
+                    var spelldamageme = hero.GetSpellDamage(Player.Instance, args.Slot);
+                    var damagepercent = (spelldamageme / target.TotalShieldHealth()) * 100;
+                    var death = damagepercent >= target.HealthPercent || spelldamageme >= target.TotalShieldHealth() || hero.GetAutoAttackDamage(Player.Instance, true) >= Player.Instance.TotalShieldHealth();
+
+                    if (target.HealthPercent <= MenuItem["Item.Zy.SHp"].Cast<Slider>().CurrentValue || death || damagepercent >= MenuItem["Item.Zy.SDmg"].Cast<Slider>().CurrentValue)
                     {
                         Zhonyas.Cast();
                     }
@@ -135,12 +152,11 @@ namespace NebulaTeemo
 
             if ((hero.IsEnemy || sender is Obj_AI_Turret) && target.IsMe)
             {
-                if (target.HealthPercent <= MenuItem["Item.Zy.Hp"].Cast<Slider>().CurrentValue || death || aaprecent >= MenuItem["Item.Zy.Dmg"].Cast<Slider>().CurrentValue)
+                if (target.HealthPercent <= MenuItem["Item.Zy.BHp"].Cast<Slider>().CurrentValue || death || aaprecent >= MenuItem["Item.Zy.BDmg"].Cast<Slider>().CurrentValue)
                 {
                     Zhonyas.Cast();
                 }
             }
-            
         }
 
         private static void Active_Item()

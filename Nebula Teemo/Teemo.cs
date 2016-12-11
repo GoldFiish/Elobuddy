@@ -15,6 +15,8 @@ namespace NebulaTeemo
 {
     internal class Teemo
     {
+        static SharpDX.Direct3D9.Font MainFont = new SharpDX.Direct3D9.Font(Drawing.Direct3DDevice, new System.Drawing.Font("Tahoma", 12, System.Drawing.FontStyle.Bold));
+
         public static Menu Menu, MenuCombo, MenuHarass, MenuFlee, MenuLane, MenuJungle, MenuItem, MenuMisc, MenuDraw, MenuNVer;
 
         static ResourceManager Res_Language;
@@ -112,8 +114,14 @@ namespace NebulaTeemo
             MenuItem.AddSeparator(10);
             MenuItem.AddLabel(Res_Language.GetString("Item_D_Zhonyas_Text") + " " + Res_Language.GetString("Item_Exp_1"));
             MenuItem.Add("Item.Zy",             new CheckBox(Res_Language.GetString("Item_D_Zhonyas_Text")));
-            MenuItem.Add("Item.Zy.Hp",          new Slider(Res_Language.GetString("Item_D_Zhonyas_Hp"), 35, 0, 100));
-            MenuItem.Add("Item.Zy.Dmg",         new Slider(Res_Language.GetString("Item_D_Zhonyas_Dmg"), 50, 0, 100));
+            MenuItem.AddLabel(Res_Language.GetString("Item_D_Zhonyas_t1"));
+            MenuItem.Add("Item.Zy.BHp", new Slider(Res_Language.GetString("Item_D_Zhonyas_BHp"), 35, 0, 100));
+            MenuItem.Add("Item.Zy.BDmg", new Slider(Res_Language.GetString("Item_D_Zhonyas_BDmg"), 50, 0, 100));
+            MenuItem.AddSeparator(10);
+            MenuItem.AddLabel(Res_Language.GetString("Item_D_Zhonyas_t2"));
+            MenuItem.Add("Item.Zy.SHp",         new Slider(Res_Language.GetString("Item_D_Zhonyas_SHp"), 35, 0, 100));
+            MenuItem.Add("Item.Zy.SDmg",        new Slider(Res_Language.GetString("Item_D_Zhonyas_SDmg"), 50, 0, 100));
+            
             MenuItem.AddSeparator(10);
             MenuItem.AddLabel(Res_Language.GetString("Item_D_Zhonyas_R"));
             foreach (var enemyR in EntityManager.Heroes.Enemies)
@@ -136,11 +144,13 @@ namespace NebulaTeemo
             MenuDraw.Add("Draw.Q.Range",        new CheckBox(Res_Language.GetString("Draw_Q")));
             MenuDraw.Add("Draw.Q.Big",          new CheckBox(Res_Language.GetString("Draw_LaneQ")));
             MenuDraw.Add("Draw.R.Range",        new CheckBox(Res_Language.GetString("Draw_R")));
+            MenuDraw.Add("Draw.ComboCal",       new CheckBox(Res_Language.GetString("Draw_DmgPer")));
+            MenuDraw.AddLabel(Res_Language.GetString("Draw_DmgPer_Text"));
             MenuDraw.AddSeparator(20);
             
-            MenuDraw.Add("Draw.Virtual", new CheckBox(Res_Language.GetString("Draw_Virtual"), false));
-            MenuDraw.Add("Virtual.Range1", new Slider(Res_Language.GetString("Draw_Virtual_Min"), 250, 0, 900));
-            MenuDraw.Add("Virtual.Range2", new Slider(Res_Language.GetString("Draw_Virtual_Max"), 900, 0, 900));
+            MenuDraw.Add("Draw.Virtual",        new CheckBox(Res_Language.GetString("Draw_Virtual"), false));
+            MenuDraw.Add("Virtual.Range1",      new Slider(Res_Language.GetString("Draw_Virtual_Min"), 250, 0, 900));
+            MenuDraw.Add("Virtual.Range2",      new Slider(Res_Language.GetString("Draw_Virtual_Max"), 900, 0, 900));
             MenuDraw.AddSeparator(20);
 
             MenuDraw.AddLabel(Res_Language.GetString("Draw_Enemy"));
@@ -218,6 +228,22 @@ namespace NebulaTeemo
             {                
                 Circle.Draw(SpellManager.R.IsReady() ? Color.DeepSkyBlue : Color.IndianRed, SpellManager.R.Range, Player.Instance.Position);
             }
+
+            if (MenuDraw["Draw.ComboCal"].Cast<CheckBox>().CurrentValue)
+            {
+                foreach (var enemy in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(2000) && x.IsHPBarRendered))
+                {
+                    //var dmg = Damage.DmgCalSteal(enemy);
+                    //var Damage_Per = (Damage / enemy.TotalShieldHealth()) * 100;
+                    var Damage_Per = (int)((Damage.DmgCalSteal(enemy) / enemy.TotalShieldHealth()) * 100);
+
+                    if (Damage_Per > 0)
+                    {
+                        MainFont.DrawText(null, enemy.TotalShieldHealth() <= Damage_Per ? "Killable" : Damage_Per + "%", (int)enemy.HPBarPosition.X + 40, (int)enemy.HPBarPosition.Y - 45, Damage_Per > enemy.TotalShieldHealth() ? Color.Yellow : Color.White);
+                    }
+                }
+            }
+
 
             foreach (var hero in EntityManager.Heroes.Enemies.Where(x => x.IsValid && !x.IsDead && Player.Instance.Distance(x) < 2000))
             {
