@@ -11,7 +11,7 @@ namespace NebulaTeemo
         {
             if (Player.Instance.IsDead) return;
 
-            var Rtarget = EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(1200) && SpellManager.R.IsInRange(x)).FirstOrDefault();
+            var Rtarget = TargetSelector.GetTarget(SpellManager.R.Range, DamageType.Magical);
 
             if (Rtarget != null && SpellManager.R.IsReady())
             {

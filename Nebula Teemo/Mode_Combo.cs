@@ -28,8 +28,7 @@ namespace NebulaTeemo
                         }
                     }
                 }
-            }
-            
+            }            
 
             if(EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget() && 
             Player.Instance.Distance(x) >= MenuCombo["Combo.W.Range"].Cast<Slider>().CurrentValue &&

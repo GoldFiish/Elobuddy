@@ -1,4 +1,4 @@
 New Version,
-6.24.0.1,
-[ 1 ] Fix 2th Zhonyas,
-[ 2 ] Fix Harass mode crash,
+6.24.0.2,
+[ 1 ] Fix Sometime auto moving,
+[ 2 ] Change Auto R target,

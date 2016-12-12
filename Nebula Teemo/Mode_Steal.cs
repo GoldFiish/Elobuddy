@@ -19,7 +19,10 @@ namespace NebulaTeemo
                 {
                     if(target_enemy.Health <= Damage.DmgCalSteal(target_enemy))
                     {
-                        Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
+                        if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
+                        {
+                            Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
+                        }
 
                         if (Mode_Item.Ignite.IsReady())
                         {
