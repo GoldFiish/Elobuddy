@@ -115,8 +115,8 @@ namespace NebulaTeemo
             MenuItem.AddLabel(Res_Language.GetString("Item_D_Zhonyas_Text") + " " + Res_Language.GetString("Item_Exp_1"));
             MenuItem.Add("Item.Zy",             new CheckBox(Res_Language.GetString("Item_D_Zhonyas_Text")));
             MenuItem.AddLabel(Res_Language.GetString("Item_D_Zhonyas_t1"));
-            MenuItem.Add("Item.Zy.BHp", new Slider(Res_Language.GetString("Item_D_Zhonyas_BHp"), 35, 0, 100));
-            MenuItem.Add("Item.Zy.BDmg", new Slider(Res_Language.GetString("Item_D_Zhonyas_BDmg"), 50, 0, 100));
+            MenuItem.Add("Item.Zy.BHp",         new Slider(Res_Language.GetString("Item_D_Zhonyas_BHp"), 35, 0, 100));
+            MenuItem.Add("Item.Zy.BDmg",        new Slider(Res_Language.GetString("Item_D_Zhonyas_BDmg"), 50, 0, 100));
             MenuItem.AddSeparator(10);
             MenuItem.AddLabel(Res_Language.GetString("Item_D_Zhonyas_t2"));
             MenuItem.Add("Item.Zy.SHp",         new Slider(Res_Language.GetString("Item_D_Zhonyas_SHp"), 35, 0, 100));
@@ -173,6 +173,7 @@ namespace NebulaTeemo
             };
 
             Orbwalker.OnPostAttack += OnAfterAttack;
+            Game.OnUpdate += Mode_Item.UltBuffUpdate;
             Obj_AI_Base.OnProcessSpellCast += Mode_Item.OnProcessSpellCast;
             Obj_AI_Base.OnBasicAttack += Mode_Item.OnBasicAttack;
             Game.OnUpdate += Game_OnUpdate;
@@ -233,8 +234,6 @@ namespace NebulaTeemo
             {
                 foreach (var enemy in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(2000) && x.IsHPBarRendered))
                 {
-                    //var dmg = Damage.DmgCalSteal(enemy);
-                    //var Damage_Per = (Damage / enemy.TotalShieldHealth()) * 100;
                     var Damage_Per = (int)((Damage.DmgCalSteal(enemy) / enemy.TotalShieldHealth()) * 100);
 
                     if (Damage_Per > 0)

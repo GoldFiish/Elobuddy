@@ -1,7 +1,15 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text;
+using System.Resources;
 using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Rendering;
+using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
+using EloBuddy.Sandbox;
 using SharpDX;
 
 namespace NebulaTeemo
@@ -17,12 +25,12 @@ namespace NebulaTeemo
         static readonly Item Quicksilver = new Item((int)ItemId.Quicksilver_Sash);
         static readonly Item Mercurial = new Item((int)ItemId.Mercurial_Scimitar);
         static readonly Item Zhonyas = new Item((int)ItemId.Zhonyas_Hourglass);
-      
+
         public static void Items_Use()
         {
             if (Player.Instance.IsDead) return;
             if (Player.Instance.CountEnemiesInRange(1500) == 0) return;
-                    
+
             if (Bilgewater.IsOwned() || BladeKing.IsOwned())
             {
                 var Botrk_Target = TargetSelector.GetTarget(550, DamageType.Physical);
@@ -62,72 +70,85 @@ namespace NebulaTeemo
 
                 if (Ignite_Target != null && MenuCombo["Combo.Ignite"].Cast<CheckBox>().CurrentValue)
                 {
-                   if (Ignite_Target.Health <= Damage.DmgCal(Ignite_Target))
+                    if (Ignite_Target.Health <= Damage.DmgCal(Ignite_Target))
                     {
                         Ignite.Cast(Ignite_Target);
                     }
                 }
             }
             Active_Item();
-        }       
-        
+        }
+
+        public static void UltBuffUpdate(EventArgs args)
+        {
+            if (Player.Instance.IsDead) return;
+            if (MenuItem["Item.Zy"].Cast<CheckBox>().CurrentValue == false) return;
+            if (!Zhonyas.IsOwned() || !Zhonyas.IsReady()) return;
+
+            foreach (var enemy in EntityManager.Heroes.Enemies)
+            {
+                if (enemy.ChampionName == "Caitlyn" && Player.Instance.HasBuff("caitlynaceinthehole"))
+                {
+                    var TravelTime = Player.Instance.Distance(enemy.Position) / 3200;
+                    var CastDelay = (TravelTime * 1000) + 900;
+
+                    Core.DelayAction(() => Zhonyas.Cast(), (int)CastDelay);
+                }
+                else if (Player.Instance.HasBuff("zedrdeathmark") || Player.Instance.HasBuff("SoulShackles"))
+                {
+                    Core.DelayAction(() => Zhonyas.Cast(), 2500);
+                }
+                else if (enemy.ChampionName == "Karthus" && Player.Instance.HasBuff("karthusfallenonetarget"))
+                {
+                    if (Player.Instance.Health <= enemy.GetSpellDamage(Player.Instance, SpellSlot.R) + 150 ||
+                        (Player.Instance.CountEnemiesInRange(1200) >= 1 && Player.Instance.Health <= enemy.GetSpellDamage(Player.Instance, SpellSlot.R) + (Player.Instance.Health / 2)))
+                    {
+                        Core.DelayAction(() => Zhonyas.Cast(), 2500);
+                    }
+                }
+                else if (Player.Instance.HasBuff("fizzmarinerdoombomb"))
+                {
+                    Core.DelayAction(() => Zhonyas.Cast(), 1500);
+                }
+            }
+        }
+
         public static void OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             if (Player.Instance.IsDead) return;
+            if (MenuItem["Item.Zy"].Cast<CheckBox>().CurrentValue == false) return;
             if (!Zhonyas.IsOwned() || !Zhonyas.IsReady()) return;
             if (!(args.Target is AIHeroClient)) return;
 
-            //var enemy = EntityManager.Heroes.Enemies.FirstOrDefault();
             var hero = sender as AIHeroClient;
-            var target = (AIHeroClient)args.Target;
-            var hitme = args.End != Vector3.Zero && args.End.Distance(Player.Instance) < 100;
 
+            if (hero.IsEnemy)
+            {
+                var hitme = Player.Instance.Distance(args.End + (args.SData.CastRadius / 2)) < 100;
 
-            if (hero.IsEnemy)/*&& (target.IsMe /*|| target != null*/
-            {                
-                foreach (var enemy in EntityManager.Heroes.Enemies)
+                if (MenuItem["R." + hero.ChampionName.ToLower()].Cast<CheckBox>().CurrentValue && args.Slot == SpellSlot.R)
                 {
-                    if (MenuItem["R." + enemy.ChampionName.ToLower()].Cast<CheckBox>().CurrentValue && args.Slot == SpellSlot.R)
+                    if ((hero.ChampionName != "Caitlyn" || hero.ChampionName != "Zed" || hero.ChampionName != "Karthus" || hero.ChampionName != "Morgana" || hero.ChampionName != "Fizz") && args.Slot == SpellSlot.R)
                     {
-                        //케이틀린
-                        if (hero.ChampionName == "Caitlyn" && Player.Instance.IsTargetable)
+                        if (hitme)
                         {
-                            var SpellDistance = hero.Distance(args.End + (args.SData.CastRadius / 2));
-                            var TravelTime = SpellDistance / args.SData.MissileSpeed;
-                            var CastDelay = TravelTime * 1000 - 250;
-
-                            Core.DelayAction(() => Zhonyas.Cast(), (int)CastDelay);
-                        }
-                        else if ((hero.ChampionName == "Zed" && Player.Instance.HasBuff("zedrdeathmark")) ||
-                                 (hero.ChampionName == "Karthus" && Player.Instance.Health <= hero.GetSpellDamage(Player.Instance, SpellSlot.R) + 150) ||
-                                 (hero.ChampionName == "Morgana" && Player.Instance.HasBuff("soulshackles")))
-                        {
-                            Core.DelayAction(() => Zhonyas.Cast(), 2500);
-                        }
-                        else if (hero.ChampionName == "Fizz" && Player.Instance.HasBuff("fizzmarinerdoombomb"))
-                        {
-                            Core.DelayAction(() => Zhonyas.Cast(), 1500);
-                        }
-                        else if(hitme)
-                        {
-                            Zhonyas.Cast();
-                        }
-                        else
-                        {
-                            Zhonyas.Cast();
+                            Core.DelayAction(() => Zhonyas.Cast(), (int)args.SData.SpellCastTime + 150);
                         }
                     }
                 }
 
-                if (target.IsMe)
+                if (args.Target.IsMe || hitme)
                 {
                     var spelldamageme = hero.GetSpellDamage(Player.Instance, args.Slot);
-                    var damagepercent = (spelldamageme / target.TotalShieldHealth()) * 100;
-                    var death = damagepercent >= target.HealthPercent || spelldamageme >= target.TotalShieldHealth() || hero.GetAutoAttackDamage(Player.Instance, true) >= Player.Instance.TotalShieldHealth();
+                    var damagepercent = (spelldamageme / Player.Instance.TotalShieldHealth()) * 100;
+                    var death = damagepercent >= Player.Instance.HealthPercent || spelldamageme >= Player.Instance.TotalShieldHealth() || hero.GetAutoAttackDamage(Player.Instance, true) >= Player.Instance.TotalShieldHealth();
 
-                    if (target.HealthPercent <= MenuItem["Item.Zy.SHp"].Cast<Slider>().CurrentValue || death || damagepercent >= MenuItem["Item.Zy.SDmg"].Cast<Slider>().CurrentValue)
+                    if (Player.Instance.HealthPercent <= MenuItem["Item.Zy.SHp"].Cast<Slider>().CurrentValue || death || damagepercent >= MenuItem["Item.Zy.SDmg"].Cast<Slider>().CurrentValue)
                     {
-                        Zhonyas.Cast();
+                        if ((hero.ChampionName != "Caitlyn" || hero.ChampionName != "Zed" || hero.ChampionName != "Karthus" || hero.ChampionName != "Morgana" || hero.ChampionName != "Fizz") && args.Slot == SpellSlot.R)
+                        {
+                            Core.DelayAction(() => Zhonyas.Cast(), (int)args.SData.SpellCastTime + 150);
+                        }
                     }
                 }
             }
@@ -136,8 +157,9 @@ namespace NebulaTeemo
         public static void OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             if (Player.Instance.IsDead) return;
+            if (MenuItem["Item.Zy"].Cast<CheckBox>().CurrentValue == false) return;
             if (!Zhonyas.IsOwned() || !Zhonyas.IsReady()) return;
-            if (!(args.Target is AIHeroClient) ) return;
+            if (!(args.Target is AIHeroClient)) return;
 
             var hero = sender as AIHeroClient;
             var target = (AIHeroClient)args.Target;
@@ -147,14 +169,14 @@ namespace NebulaTeemo
                 return;
             }
 
-            var aaprecent = (sender.GetAutoAttackDamage(target, true) / target.TotalShieldHealth()) * 100;
-            var death = sender.GetAutoAttackDamage(target, true) >= target.TotalShieldHealth() || aaprecent >= target.HealthPercent;
+            var aaprecent = (sender.GetAutoAttackDamage(Player.Instance, true) / Player.Instance.TotalShieldHealth()) * 100;
+            var death = sender.GetAutoAttackDamage(Player.Instance, true) >= Player.Instance.TotalShieldHealth() || aaprecent >= Player.Instance.HealthPercent;
 
             if ((hero.IsEnemy || sender is Obj_AI_Turret) && target.IsMe)
             {
-                if (target.HealthPercent <= MenuItem["Item.Zy.BHp"].Cast<Slider>().CurrentValue || death || aaprecent >= MenuItem["Item.Zy.BDmg"].Cast<Slider>().CurrentValue)
+                if (Player.Instance.HealthPercent <= MenuItem["Item.Zy.BHp"].Cast<Slider>().CurrentValue || death || aaprecent >= MenuItem["Item.Zy.BDmg"].Cast<Slider>().CurrentValue)
                 {
-                    Zhonyas.Cast();
+                    Core.DelayAction(() => Zhonyas.Cast(), (int)args.SData.MissileSpeed + 100);
                 }
             }
         }

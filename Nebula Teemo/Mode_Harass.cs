@@ -43,24 +43,26 @@ namespace NebulaTeemo
                     {
                         var Rtarget = TargetSelector.GetTarget(SpellManager.R.Range, DamageType.Magical);
                         var RCastPrediction = Prediction.Position.PredictCircularMissile(enemy, SpellManager.R.Range, 135, 1000, 1000);
-                        if ((enemy.Spellbook.IsCastingSpell && Player.Instance.IsTargetable) || enemy.IsAttackingPlayer)
+
+                        if (Rtarget != null)
                         {
-                            if (SpellManager.R.IsInRange(enemy))
+                            if ((enemy.Spellbook.IsCastingSpell && Player.Instance.IsTargetable) || enemy.IsAttackingPlayer)
+                            {
+                                if (SpellManager.R.IsInRange(enemy))
+                                {
+                                    if (RCastPrediction.HitChance >= HitChance.High)
+                                    {
+                                        SpellManager.R.Cast(RCastPrediction.CastPosition);
+                                    }
+                                }
+                            }
+
+                            if (SpellManager.R.IsInRange(Rtarget))
                             {
                                 if (RCastPrediction.HitChance >= HitChance.High)
                                 {
                                     SpellManager.R.Cast(RCastPrediction.CastPosition);
                                 }
-                            }
-                        }
-
-                        if (SpellManager.R.IsInRange(Rtarget))
-                        {
-                            var RPrediction = Prediction.Position.PredictCircularMissile(Rtarget, SpellManager.R.Range, 135, 1000, 1000);
-
-                            if (RPrediction.HitChance >= HitChance.High)
-                            {
-                                SpellManager.R.Cast(RPrediction.CastPosition);
                             }
                         }
                     }
