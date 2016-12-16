@@ -1,3 +1,4 @@
 New Version,
-6.24.0.0,
-[ 1 ] Nasus Beta,
+6.24.0.2,
+[ 1 ] Code change,
+[ 2 ] Add menu and function,

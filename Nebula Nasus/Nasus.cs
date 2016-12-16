@@ -17,16 +17,6 @@ namespace NebulaNasus
 
         static SharpDX.Direct3D9.Font MainFont = new SharpDX.Direct3D9.Font(Drawing.Direct3DDevice, new System.Drawing.Font("Tahoma", 11, System.Drawing.FontStyle.Bold));
         
-        public static bool Status_CheckBox(Menu sub, string str)
-        {
-            return sub[str].Cast<CheckBox>().CurrentValue;
-        }
-
-        public static int Status_Slider(Menu sub, string str)
-        {
-            return sub[str].Cast<Slider>().CurrentValue;
-        }
-
         public static void Load()
         {
             Chat.Print("<font color = '#20b2aa'>Welcome to </font><font color = '#ffffff'>[ Nebula ] " + Player.Instance.ChampionName + "</font><font color = '#20b2aa'>. Addon is ready.</font>");
@@ -94,7 +84,8 @@ namespace NebulaNasus
             M_Clear.AddGroupLabel(language.Dictionary[EnumContext.JungleClear]);
             M_Clear.Add("Jungle_Q",         new CheckBox(language.Dictionary[EnumContext.SpellQ]));
             M_Clear.Add("Jungle_Q_Mana",    new Slider(language.Dictionary[EnumContext.ManaStatus1] + "[ {0}% ]" + language.Dictionary[EnumContext.ManaStatus2], 25));
-            M_Clear.Add("Jungle_E",         new CheckBox(language.Dictionary[EnumContext.SpellE]));            
+            M_Clear.Add("Jungle_E",         new CheckBox(language.Dictionary[EnumContext.SpellE]));
+            M_Clear.Add("Jungle_E_Hit",     new Slider(language.Dictionary[EnumContext.JungleHitNum1] + "[ {0} ]" + language.Dictionary[EnumContext.JungleHitNum2], 2, 0, 5));
             M_Clear.Add("Jungle_E_Mana",    new Slider(language.Dictionary[EnumContext.ManaStatus1] + "[ {0}% ]" + language.Dictionary[EnumContext.ManaStatus2], 75));
             //===================================================================================================================================================================//
             //===================================================================================================================================================================//
@@ -127,7 +118,10 @@ namespace NebulaNasus
             //===================================================================================================================================================================//
             M_Misc = Menu.AddSubMenu(language.Dictionary[EnumContext.Msic]);
             M_Misc.Add("Misc_Ignite",   new CheckBox(language.Dictionary[EnumContext.AutoIgnite]));
+            M_Misc.AddSeparator(10);
             M_Misc.Add("Misc_KillSt",   new CheckBox(language.Dictionary[EnumContext.KillSteal]));
+            M_Misc.Add("Misc_KillStE",  new ComboBox(language.Dictionary[EnumContext.KillOption], 0, language.Dictionary[EnumContext.KillText1], language.Dictionary[EnumContext.KillText2]));
+            M_Misc.AddSeparator(10);
             M_Misc.Add("Misc_JungleSt", new CheckBox(language.Dictionary[EnumContext.JungleSteal]));
             //===================================================================================================================================================================//
             //===================================================================================================================================================================//
@@ -142,6 +136,16 @@ namespace NebulaNasus
 
             Game.OnUpdate += Game_OnUpdate;
             Drawing.OnDraw += Drawing_OnDraw;
+        }
+
+        public static bool Status_CheckBox(Menu sub, string str)
+        {
+            return sub[str].Cast<CheckBox>().CurrentValue;
+        }
+
+        public static int Status_Slider(Menu sub, string str)
+        {
+            return sub[str].Cast<Slider>().CurrentValue;
         }
 
         private static void Drawing_OnDraw(EventArgs args)

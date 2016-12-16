@@ -9,24 +9,26 @@ namespace NebulaNasus.Modes
         public static void Lane()
         {
             if (Player.Instance.IsDead) return;
-
-            var minions = EntityManager.MinionsAndMonsters.EnemyMinions.Where(m => m.IsValidTarget(850));           
-
-            foreach (var target in minions)
+            
+            if (Status_CheckBox(M_Clear, "Lane_Q"))
             {
-                if (Status_CheckBox(M_Clear, "Lane_Q") && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > Status_Slider(M_Clear, "Lane_Q_Mana"))
-                {
-                    if (target.Health <= Damage.DmgQ(target) && SpellManager.Q.IsInRange(target))
-                    {
-                        SpellManager.Q.Cast(target);
-                    }
-                }
+                var minion = EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.IsValidTarget(SpellManager.Q.Range)).OrderBy(x => x.Health).FirstOrDefault();
 
-                if (Status_CheckBox(M_Clear, "Lane_E") && SpellManager.E.IsReady() && SpellManager.E.IsInRange(target) && Player.Instance.ManaPercent > Status_Slider(M_Clear, "Lane_E_Mana"))
+                if (SpellManager.Q.IsReady() && minion != null && minion.Health <= Damage.DmgQ(minion))
                 {
-                    if(Player.Instance.CountEnemiesInRange(1800) == 0)
+                    SpellManager.Q.Cast(minion);
+                }
+            }
+
+            if (Status_CheckBox(M_Clear, "Lane_E") && SpellManager.E.IsReady() && Player.Instance.ManaPercent > Status_Slider(M_Clear, "Lane_E_Mana"))
+            {
+                if (Player.Instance.CountEnemiesInRange(1800) == 0)
+                {
+                    var HitLocation = EntityManager.MinionsAndMonsters.GetCircularFarmLocation(EntityManager.MinionsAndMonsters.EnemyMinions.Where(m => m.IsValidTarget(650)), 380, 650);
+
+                    if (HitLocation.HitNumber >= 3)
                     {
-                        SpellManager.E.Cast(target);
+                        SpellManager.E.Cast(HitLocation.CastPosition);
                     }
                 }
             }

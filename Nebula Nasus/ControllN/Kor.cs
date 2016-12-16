@@ -14,11 +14,13 @@
             Dictionary.Add(EnumContext.Text_2,          "기부하신 금액은 애드온 제작에 사용됩니다. 감사합니다.");
             Dictionary.Add(EnumContext.Combo,           "콤보");
             Dictionary.Add(EnumContext.ComboWDis1,       "적이 ");
-            Dictionary.Add(EnumContext.ComboWDis2,       " 거리 안에 있을때");
+            Dictionary.Add(EnumContext.ComboWDis2,       " 거리 안에 있을 때");
             Dictionary.Add(EnumContext.Harass,          "견제");
             Dictionary.Add(EnumContext.Flee,            "도망");
             Dictionary.Add(EnumContext.LaneClear,       "라인");
             Dictionary.Add(EnumContext.JungleClear,     "정글");
+            Dictionary.Add(EnumContext.JungleHitNum1,   "몬스터 개수가 ");
+            Dictionary.Add(EnumContext.JungleHitNum2,   " 이상일때");
             Dictionary.Add(EnumContext.sModeCombo,      "콤보 모드에서 작동");
             Dictionary.Add(EnumContext.sYoummu,         "요우무의 유령검 사용");
             Dictionary.Add(EnumContext.sBK,             "빌지워터 및 몰왕 사용");
@@ -42,6 +44,9 @@
             Dictionary.Add(EnumContext.sRedemption,     "구원 사용");                        
             Dictionary.Add(EnumContext.AutoIgnite,      "자동 점화 사용");
             Dictionary.Add(EnumContext.KillSteal,       "킬 스틸 사용");
+            Dictionary.Add(EnumContext.KillOption,      "킬 스틸 E 설정");
+            Dictionary.Add(EnumContext.KillText1,       "E 범위 이하일 때");
+            Dictionary.Add(EnumContext.KillText2,       "Q 범위 이상일 때");
             Dictionary.Add(EnumContext.JungleSteal,     "정글 스틸 사용");
             Dictionary.Add(EnumContext.DrawQ,           "Q 범위");
             Dictionary.Add(EnumContext.DrawW,           "W 범위");
@@ -55,7 +60,7 @@
             Dictionary.Add(EnumContext.ManaStatus1,     "보유한 마나가 ");
             Dictionary.Add(EnumContext.ManaStatus2,     " 이상일 때");
             Dictionary.Add(EnumContext.MyHp1,           "사용자의 체력이 ");
-            Dictionary.Add(EnumContext.MyHp2,           " 이하일때");
+            Dictionary.Add(EnumContext.MyHp2,           " 이하일 때");
         }
     }
 }

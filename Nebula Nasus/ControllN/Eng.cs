@@ -19,6 +19,8 @@
             Dictionary.Add(EnumContext.Flee,            "Flee");
             Dictionary.Add(EnumContext.LaneClear,       "Lane clear");
             Dictionary.Add(EnumContext.JungleClear,     "Jungle clear");
+            Dictionary.Add(EnumContext.JungleHitNum1,   "If monster can hit number is more than ");
+            Dictionary.Add(EnumContext.JungleHitNum2,   "");
             Dictionary.Add(EnumContext.sModeCombo,      "Only combo mode");
             Dictionary.Add(EnumContext.sYoummu,         "[ Yoummu ] Use");
             Dictionary.Add(EnumContext.sBK,             "[ Bilgewater / Blade king ] Use");
@@ -40,9 +42,12 @@
             Dictionary.Add(EnumContext.sSnare,          "Snare");
             Dictionary.Add(EnumContext.sAlways,         "Always working");
             Dictionary.Add(EnumContext.sRedemption,     "[ Redemption ] Use");            
-            Dictionary.Add(EnumContext.AutoIgnite,      "Auto [ Ignite ] Use");
-            Dictionary.Add(EnumContext.KillSteal,       "Auto [ Killsteal ] Use");
-            Dictionary.Add(EnumContext.JungleSteal,     "Auto [ Jungle steal ] Use");
+            Dictionary.Add(EnumContext.AutoIgnite,      "[ Ignite ] Use");
+            Dictionary.Add(EnumContext.KillSteal,       "Killsteal Use");
+            Dictionary.Add(EnumContext.KillOption,      "Killsteal [ E ] Option");
+            Dictionary.Add(EnumContext.KillText1,       "Inside [ E ] range");
+            Dictionary.Add(EnumContext.KillText2,       "Out of [ Q ] range");
+            Dictionary.Add(EnumContext.JungleSteal,     "Jungle steal Use");
             Dictionary.Add(EnumContext.DrawQ,           "[ Q ] range");
             Dictionary.Add(EnumContext.DrawW,           "[ W ] range");
             Dictionary.Add(EnumContext.DrawE,           "[ E ] range");

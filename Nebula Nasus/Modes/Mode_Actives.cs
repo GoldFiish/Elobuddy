@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Menu.Values;
 
 namespace NebulaNasus.Modes
 {
@@ -11,73 +12,82 @@ namespace NebulaNasus.Modes
         {
             if (Player.Instance.IsDead) return;
 
-            var target = TargetSelector.GetTarget(850, DamageType.True);
-            var Jmonster = EntityManager.MinionsAndMonsters.Monsters.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= 850 && !x.Name.Contains("Mini") &&
-               (x.BaseSkinName.ToLower().Contains("dragon") || x.BaseSkinName.ToLower().Contains("herald") || x.BaseSkinName.ToLower().Contains("baron"))).FirstOrDefault();
-
-            if (target != null)
+            if (Player.Instance.GetSpellSlotFromName("summonerdot") != SpellSlot.Unknown && Status_CheckBox(M_Misc, "Misc_Ignite"))
             {
-                if (Player.Instance.GetSpellSlotFromName("summonerdot") != SpellSlot.Unknown)
+                var Ignite_target = TargetSelector.GetTarget(600, DamageType.True);
+
+                if (Ignite_target != null && SpellManager.Ignite.IsReady())
                 {
-                    if (!Status_CheckBox(M_Misc, "Misc_Ignite") || !SpellManager.Ignite.IsReady()) return;
-
-                    var Ignite_Damage = Damage.DmgIgnite(target);
-
-                    if (SpellManager.Ignite.IsInRange(target))
+                    if (Player.Instance.Distance(Ignite_target) <= 220 && Ignite_target .Health <= Damage.DmgCla(Ignite_target))
                     {
-                        if (target.Health <= Ignite_Damage + Player.Instance.GetAutoAttackDamage(target) ||
-                            target.Health <= Ignite_Damage + Damage.DmgQ(target) + Player.Instance.GetAutoAttackDamage(target))
+                        SpellManager.Ignite.Cast(Ignite_target);
+                    }
+                    else if (Player.Instance.Distance(Ignite_target) > 220 && SpellManager.Ignite.IsInRange(Ignite_target))
+                    {
+                        if(Ignite_target.Health <= Damage.DmgIgnite(Ignite_target) + Damage.DmgE(Ignite_target))
                         {
-                            SpellManager.Ignite.Cast(target);
-                        }
-
-                        if (SpellManager.E.IsReady() && target.Health <= Ignite_Damage + Damage.DmgQ(target) + Damage.DmgE(target) + Player.Instance.GetAutoAttackDamage(target))
-                        {
-                            SpellManager.Ignite.Cast(target);
+                            SpellManager.Ignite.Cast(Ignite_target);
                         }
                     }
                 }
+            }
 
-                if (Status_CheckBox(M_Misc, "Misc_KillSt"))
+            if (Status_CheckBox(M_Misc, "Misc_KillSt"))
+            {
+                var KStarget = TargetSelector.GetTarget(850, DamageType.Mixed);
+
+                if (KStarget != null)
                 {
-                    if (SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(target))
+                    if (SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(KStarget))
                     {
-                        if (target.TotalShieldHealth() <= Damage.DmgQ(target))
+                        if (KStarget.TotalShieldHealth() <= Damage.DmgQ(KStarget))
                         {
-                            SpellManager.Q.Cast(target);
+                            SpellManager.Q.Cast(KStarget);
                         }
                     }
 
-                    if (SpellManager.E.IsReady() && SpellManager.E.IsInRange(target))
+                    if (SpellManager.E.IsReady() && SpellManager.E.IsInRange(KStarget))
                     {
-                        var Epredicticon = SpellManager.E.GetPrediction(target);
+                        var Epredicticon = SpellManager.E.GetPrediction(KStarget);
 
-                        if (target.TotalShieldHealth() <= Player.Instance.GetSpellDamage(target, SpellSlot.E))
+                        if (KStarget.TotalShieldHealth() <= Damage.DmgQ(KStarget) && Epredicticon.HitChancePercent >= 50)
                         {
-                            if (Epredicticon.HitChancePercent >= 50)
+                            switch (M_Misc["Misc_KillStE"].Cast<ComboBox>().CurrentValue)
                             {
-                                SpellManager.E.Cast(Epredicticon.CastPosition);
+                                case 0:
+                                    SpellManager.E.Cast(Epredicticon.CastPosition);
+                                    break;
+
+                                case 1:
+                                    if (Player.Instance.Distance(KStarget) > 220)
+                                    {
+                                        SpellManager.E.Cast(Epredicticon.CastPosition);
+                                    }
+                                    break;
                             }
                         }
                     }
                 }
             }
 
-            if (Jmonster != null && target != null && Status_CheckBox(M_Misc, "Misc_JungleSt"))
+            if (Status_CheckBox(M_Misc, "Misc_JungleSt"))
             {
-                if (SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(Jmonster))
-                {
-                    if (Jmonster.Health <= Damage.DmgQ(Jmonster))
-                    {
-                        SpellManager.Q.Cast(Jmonster);
-                    }
-                }
+                var Jmonster = EntityManager.MinionsAndMonsters.Monsters.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= 850 && !x.Name.Contains("Mini") &&
+                 (x.BaseSkinName.ToLower().Contains("dragon") || x.BaseSkinName.ToLower().Contains("herald") || x.BaseSkinName.ToLower().Contains("baron"))).FirstOrDefault();
 
-                if (SpellManager.E.IsReady() && SpellManager.E.IsInRange(Jmonster))
+                if (Jmonster != null)
                 {
-                    if (Jmonster.Distance(target) <= 550)
+                    if (SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(Jmonster))
                     {
-                        if (Jmonster.Health <= Player.Instance.GetSpellDamage(target, SpellSlot.E))
+                        if (Jmonster.Health <= Damage.DmgQ(Jmonster))
+                        {
+                            SpellManager.Q.Cast(Jmonster);
+                        }
+                    }
+
+                    if (SpellManager.E.IsReady() && SpellManager.E.IsInRange(Jmonster) && Player.Instance.CountAlliesInRange(1200) >= 1)
+                    {
+                        if (Jmonster.Health <= Damage.DmgE(Jmonster))
                         {
                             SpellManager.E.Cast(Jmonster);
                         }

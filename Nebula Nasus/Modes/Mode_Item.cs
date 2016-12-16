@@ -1,18 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Enumerations;
-using EloBuddy.SDK.Events;
-using EloBuddy.SDK.Menu;
-using EloBuddy.SDK.Menu.Values;
-using EloBuddy.SDK.Rendering;
 
 namespace NebulaNasus.Modes
 {
     internal class Mode_Item : Nasus
     {
-
         public static readonly Item Bilgewater  = new Item((int)ItemId.Bilgewater_Cutlass, 550f);
         public static readonly Item BladeKing   = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
         public static readonly Item Youmuu      = new Item((int)ItemId.Youmuus_Ghostblade);
@@ -34,14 +27,9 @@ namespace NebulaNasus.Modes
 
                 if (Botrk_Target != null)
                 {
-                    if (Bilgewater.IsReady())
+                    if (Bilgewater.IsReady() || (BladeKing.IsReady() && Player.Instance.HealthPercent <= Status_Slider(M_Item, "Item.BK.Hp")))
                     {
                         Bilgewater.Cast(Botrk_Target);
-                    }
-
-                    if (BladeKing.IsReady() && Player.Instance.HealthPercent <= Status_Slider(M_Item, "Item.BK.Hp"))
-                    {
-                        BladeKing.Cast(Botrk_Target);
                     }
                 }
             }            
@@ -61,51 +49,30 @@ namespace NebulaNasus.Modes
 
                 if (Redemption_Target == null) return;
 
-                if (Player.Instance.Distance(Redemption_Target) <= 850)
+                var ipRedemption = Prediction.Position.PredictCircularMissile(Player.Instance, 5500, 275, 2500, 3200);
+                
+                if (Redemption_Target.IsAttackingPlayer)
                 {
-                    if (Redemption_Target.IsAttackingPlayer && Player.Instance.HealthPercent <= Status_Slider(M_Item, "Item.Redemption.MyHp"))
+                    if (Player.Instance.HealthPercent <= Status_Slider(M_Item, "Item.Redemption.MyHp"))
                     {
-                        var ipRedemption = Prediction.Position.PredictCircularMissile(Player.Instance, 5500, 275, 2500, 3200); //범위 540
-
                         if (ipRedemption.HitChancePercent >= 50)
                         {
                             Redemption.Cast(ipRedemption.CastPosition);
                         }
-                    }
-                }
-                else if(Redemption_Target.Health <= Damage.DmgRedemption(Redemption_Target))
-                {
-                    var ieRedemption = Prediction.Position.PredictCircularMissile(Redemption_Target, 5500, 275, 2500, 3200);
-
-                    if (ieRedemption.HitChancePercent >= 50)
-                    {
-                        Redemption.Cast(ieRedemption.CastPosition);
                     }
                 }
 
                 foreach (var team in EntityManager.Heroes.Allies.Where(x => x.IsValidTarget(5500) && !x.IsMe))
                 {
-                    if ((team.CountAlliesInRange(550) >= 2 && team.HealthPercent <= 55) )
+                    if (team.CountAlliesInRange(550) >= 2 && (Redemption_Target.HealthPercent <= 50 || team.HealthPercent <= 55))
                     {
-                        var ipRedemption = Prediction.Position.PredictCircularMissile(team, 5500, 275, 2500, 3200);
-
                         if (ipRedemption.HitChancePercent >= 50)
                         {
                             Redemption.Cast(ipRedemption.CastPosition);
                         }
                     }
-                    else if (team.CountAlliesInRange(350) >= 2 && Redemption_Target.HealthPercent <= 50)
-                    {
-                        var ieRedemption = Prediction.Position.PredictCircularMissile(Redemption_Target, 5500, 275, 2500, 3200);
-
-                        if (ieRedemption.HitChancePercent >= 50)
-                        {
-                            Redemption.Cast(ieRedemption.CastPosition);
-                        }
-                    }
                 }
             }
-
         }
 
         private static void Active_Item()

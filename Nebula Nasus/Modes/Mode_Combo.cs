@@ -2,8 +2,6 @@
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
 
-
-
 namespace NebulaNasus.Modes
 {
     class Mode_Combo : Nasus
@@ -16,7 +14,6 @@ namespace NebulaNasus.Modes
 
             if (target != null)
             {
-                //선w
                 if (Status_CheckBox(M_Main, "Combo_W") && SpellManager.W.IsReady() && SpellManager.W.IsInRange(target))
                 {
                     if (Player.Instance.Distance(target) <= Status_Slider(M_Main, "Combo_W_Dis"))
@@ -56,17 +53,17 @@ namespace NebulaNasus.Modes
 
                 if (Status_CheckBox(M_Main, "Combo_Q") && SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(target))
                 {
-                    var Damage_Per = (int)((Damage.DmgQ(target) / target.TotalShieldHealth()) * 100);
-
-                    if (target.IsInvulnerable || target.HasUndyingBuff() || target.IsZombie) return;
-
-                    if (target.TotalShieldHealth() <= Player.Instance.GetSpellDamage(target, SpellSlot.Q) || Damage_Per >= 100)
+                    if (!target.IsInvulnerable || !target.HasUndyingBuff() || !target.IsZombie)
                     {
-                        SpellManager.Q.Cast(target);
-                    }
-                    else if (Damage_Per <= 80 )
-                    {
-                        SpellManager.Q.Cast(target);
+                        if (target.TotalShieldHealth() <= Damage.DmgQ(target))
+                        {
+                            SpellManager.Q.Cast(target);
+                        }
+                        else if (target.Health >
+                                (Player.Instance.Spellbook.GetSpell(SpellSlot.Q).Cooldown / Player.Instance.AttackDelay) * Player.Instance.GetAutoAttackDamage(target))
+                        {
+                            SpellManager.Q.Cast(target);
+                        }
                     }
                 }
 

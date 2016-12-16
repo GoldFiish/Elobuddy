@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EloBuddy;
+﻿using EloBuddy;
 using EloBuddy.SDK;
 using NebulaNasus.Modes;
 
@@ -13,7 +8,7 @@ namespace NebulaNasus
     {
         public static float DmgIgnite(Obj_AI_Base target)
         {
-            return target.CalculateDamageOnUnit(target, DamageType.True, 50 + 20 * ObjectManager.Player.Level - (target.HPRegenRate / 5 * 3));
+            return target.CalculateDamageOnUnit(target, DamageType.True, 50 + 20 * Player.Instance.Level - (target.HPRegenRate / 5 * 3));
         }
         public static float DmgRedemption(Obj_AI_Base target)
         {
@@ -23,15 +18,23 @@ namespace NebulaNasus
         public static float DmgQ(Obj_AI_Base target)
         {
             float damage = 0;
+            float Bdamage = 0;
 
             if (Mode_Item.TriniForce.IsOwned() && Player.HasBuff("sheen"))
             {
-                damage = Player.Instance.BaseAttackDamage * 2;
+                Bdamage = Player.Instance.BaseAttackDamage * 2;
             }
             else if ((Mode_Item.Sheen.IsOwned() && Player.HasBuff("sheen")) ||
                      (Mode_Item.IceGauntlet.IsOwned() && Player.HasBuff("itemfrozenfist")))
             {
-                damage = Player.Instance.BaseAttackDamage;
+                Bdamage = Player.Instance.BaseAttackDamage;
+            }
+
+            if (SpellManager.Q.IsReady())
+            {
+                damage += Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical,
+                            (new float[] { 0, 30, 50, 70, 90, 110 }[SpellManager.Q.Level] + Player.Instance.FlatPhysicalDamageMod +
+                                Player.Instance.GetBuffCount("NasusQStacks")) + Bdamage) + Player.Instance.GetAutoAttackDamage(target);
             }
 
             if (target.BaseSkinName == "Moredkaiser") { damage -= target.Mana; }
@@ -44,10 +47,7 @@ namespace NebulaNasus
 
             if (target.HasBuff("BlitzcrankManaBarrierCD") && target.HasBuff("ManaBarrier")) { damage -= target.Mana / 2f; }
 
-            return
-                Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical,
-                    (new float[] { 0, 30, 50, 70, 90, 110 }[SpellManager.Q.Level] + Player.Instance.FlatPhysicalDamageMod +
-                     Player.Instance.GetBuffCount("NasusQStacks")) + damage) + Player.Instance.GetAutoAttackDamage(target);
+            return damage;
         }
 
         public static float DmgE(Obj_AI_Base target)
@@ -59,15 +59,16 @@ namespace NebulaNasus
         public static float DmgCla(Obj_AI_Base target)
         {
             var damage = 0f;
+            var Bdamage = 0f;
 
             if (Mode_Item.TriniForce.IsOwned() && Player.HasBuff("sheen"))
             {
-                damage = Player.Instance.BaseAttackDamage * 2;
+                Bdamage = Player.Instance.BaseAttackDamage * 2;
             }
             else if ((Mode_Item.Sheen.IsOwned() && Player.HasBuff("sheen")) ||
                      (Mode_Item.IceGauntlet.IsOwned() && Player.HasBuff("itemfrozenfist")))
             {
-                damage = Player.Instance.BaseAttackDamage;
+                Bdamage = Player.Instance.BaseAttackDamage;
             }
 
             if (Player.Instance.GetSpellSlotFromName("summonerdot") != SpellSlot.Unknown && SpellManager.Ignite.IsReady())
@@ -89,7 +90,7 @@ namespace NebulaNasus
             {
                 damage += Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical,
                             (new float[] { 0, 30, 50, 70, 90, 110 }[SpellManager.Q.Level] + Player.Instance.FlatPhysicalDamageMod +
-                                Player.Instance.GetBuffCount("NasusQStacks")) + damage) + Player.Instance.GetAutoAttackDamage(target);
+                                Player.Instance.GetBuffCount("NasusQStacks")) + Bdamage) + Player.Instance.GetAutoAttackDamage(target);
             }
 
             if (SpellManager.E.IsReady())
@@ -99,7 +100,7 @@ namespace NebulaNasus
 
             if (target.BaseSkinName == "Moredkaiser") { damage -= target.Mana; }
 
-            if (ObjectManager.Player.HasBuff("SummonerExhaust")) { damage = damage * 0.6f; }
+            if (Player.Instance.HasBuff("SummonerExhaust")) { damage = damage * 0.6f; }
 
             if (target.HasBuff("GarenW")) { damage = damage * 0.7f; }
 
@@ -107,7 +108,7 @@ namespace NebulaNasus
 
             if (target.HasBuff("BlitzcrankManaBarrierCD") && target.HasBuff("ManaBarrier")) { damage -= target.Mana / 2f; }
 
-            return ObjectManager.Player.GetAutoAttackDamage(target) + damage;
+            return Player.Instance.GetAutoAttackDamage(target) + damage;
         }
     }
 }
