@@ -60,7 +60,7 @@ namespace NebulaSoraka
             M_Main.Add("Harass_E_Mana",     new Slider(language.Dictionary[EnumContext.ManaStatus1] + "[ {0}% ]" + language.Dictionary[EnumContext.ManaStatus2], 80));
             M_Main.AddSeparator(20);
             M_Main.AddGroupLabel(language.Dictionary[EnumContext.Flee]);
-            M_Main.Add("Flee_Q",            new CheckBox(language.Dictionary[EnumContext.SpellW]));
+            M_Main.Add("Flee_Q",            new CheckBox(language.Dictionary[EnumContext.SpellQ]));
             M_Main.Add("Flee_E",            new CheckBox(language.Dictionary[EnumContext.SpellE]));
             //===================================================================================================================================================================//
             //===================================================================================================================================================================//

@@ -12,7 +12,7 @@ namespace NebulaSoraka.Modes
 
             if (target != null)
             {
-                if (Status_CheckBox(M_Main, "Flee_W") && SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(target))
+                if (Status_CheckBox(M_Main, "Flee_Q") && SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(target))
                 {
                     var Qprediction = SpellManager.Q.GetPrediction(target);
 
