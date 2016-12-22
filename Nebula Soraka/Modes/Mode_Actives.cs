@@ -32,23 +32,32 @@ namespace NebulaSoraka.Modes
             {
                 if (Status_CheckBox(M_Misc, "Misc_KillSt"))
                 {
-                    if (SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(target))
+                    if (!target.IsInvulnerable || !target.HasUndyingBuff())
                     {
-                        var Qpredicticon = SpellManager.E.GetPrediction(target);
-
-                        if (target.TotalShieldHealth() <= Damage.DmgQ(target) && Qpredicticon.HitChancePercent >= 50)
+                        if (target.TotalShieldHealth() <= Player.Instance.GetAutoAttackDamage(target, true) && Player.Instance.Distance(target) <= Player.Instance.AttackRange)
                         {
-                            SpellManager.Q.Cast(Qpredicticon.CastPosition);
+                            Player.IssueOrder(GameObjectOrder.AttackTo, target);
                         }
-                    }
 
-                    if (SpellManager.E.IsReady() && SpellManager.E.IsInRange(target))
-                    {
-                        var Epredicticon = SpellManager.E.GetPrediction(target);
 
-                        if (target.TotalShieldHealth() <= Damage.DmgQ(target) && Epredicticon.HitChancePercent >= 50)
+                        if (SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(target))
                         {
-                            SpellManager.E.Cast(Epredicticon.CastPosition);
+                            var Qpredicticon = SpellManager.Q.GetPrediction(target);
+
+                            if (target.TotalShieldHealth() <= Damage.DmgQ(target) && Qpredicticon.HitChancePercent >= 50)
+                            {
+                                SpellManager.Q.Cast(Qpredicticon.CastPosition);
+                            }
+                        }
+
+                        if (SpellManager.E.IsReady() && SpellManager.E.IsInRange(target))
+                        {
+                            var Epredicticon = SpellManager.E.GetPrediction(target);
+
+                            if (target.TotalShieldHealth() <= Damage.DmgE(target) && Epredicticon.HitChancePercent >= 50)
+                            {
+                                SpellManager.E.Cast(Epredicticon.CastPosition);
+                            }
                         }
                     }
                 }
@@ -70,7 +79,7 @@ namespace NebulaSoraka.Modes
             if (Status_CheckBox(M_Auto, "Auto_W") && SpellManager.W.IsReady() && Player.Instance.HealthPercent > Status_Slider(M_Auto, "Auto_W_MyHp"))
             {
                 var team = ObjectManager.Get<AIHeroClient>().Where(x => x.IsAlly && x.IsValidTarget(SpellManager.W.Range + 100) && !x.IsMe &&
-                                                                    x.HealthPercent <= Status_Slider(M_Auto, "Auto_W_TeamHp") && !x.IsRecalling() && !x.IsInShopRange());
+                                                                    x.HealthPercent <= Status_Slider(M_Auto, "Auto_W_TeamHp") && !x.IsRecalling() && !x.IsInShopRange() && Status_CheckBox(M_Auto, "Auto_W_" + x.ChampionName));
                 if (team != null)
                 {
                     switch (Status_ComboBox(M_Auto, "Auto_W_Target"))
@@ -90,7 +99,10 @@ namespace NebulaSoraka.Modes
 
                     if (Wtarget != null && SpellManager.W.IsInRange(Wtarget) && !Player.Instance.IsRecalling())
                     {
-                        SpellManager.W.Cast(Wtarget);
+                        if (Status_CheckBox(M_Auto, "Auto_W_" + Wtarget.ChampionName))
+                        {
+                            SpellManager.W.Cast(Wtarget);
+                        }
                     }
                 }
             }

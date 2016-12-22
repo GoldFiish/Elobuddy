@@ -9,6 +9,7 @@ namespace NebulaSoraka.Modes
     {
         public static readonly Item Bilgewater  = new Item((int)ItemId.Bilgewater_Cutlass, 550f);
         public static readonly Item BladeKing   = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
+        public static readonly Item Hextech     = new Item((int)ItemId.Hextech_Gunblade, 700f);
         public static readonly Item Sheen       = new Item((int)ItemId.Sheen);              //광휘의 검
         public static readonly Item IceGauntlet = new Item((int)ItemId.Iceborn_Gauntlet);   //얼어붙은 건틀릿
         public static readonly Item TriniForce  = new Item((int)ItemId.Trinity_Force);      //삼위일체   
@@ -31,6 +32,16 @@ namespace NebulaSoraka.Modes
                     {
                         Bilgewater.Cast(Botrk_Target);
                     }
+                }
+            }
+
+            if (Hextech.IsOwned() && Hextech.IsReady())
+            {
+                var Hextech_Target = TargetSelector.GetTarget(700, DamageType.Magical);
+
+                if (Hextech_Target != null)
+                {
+                    Hextech.Cast(Hextech_Target);
                 }
             }
 

@@ -8,7 +8,7 @@ namespace NebulaSoraka.Modes
     {
         public static PredictionResult GetQPrediction(AIHeroClient target)
         {
-            float divider = target.Position.Distance(Player.Instance.Position) / SpellManager.Q.Range;
+            float divider = Player.Instance.Distance(target) / SpellManager.Q.Range;
             SpellManager.Q.CastDelay = (int)(0.2f + 0.8f * divider);
             var prediction = SpellManager.Q.GetPrediction(target);
             return prediction;

@@ -24,9 +24,16 @@ namespace NebulaSoraka.Modes
 
             if (Status_CheckBox(M_Clear, "Jungle_Q") && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > Status_Slider(M_Clear, "Jungle_Q_Mana"))
             {
-                foreach (var target in EntityManager.MinionsAndMonsters.Monsters.Where(x => x.IsValidTarget(800)).OrderBy(x => x.Health))
+                var target = monster.OrderBy(x => x.Health).FirstOrDefault();
+
+                if ( target != null)
                 {
-                    SpellManager.Q.Cast(target);
+                    var Qprediction = SpellManager.Q.GetPrediction(target);
+
+                    if (Qprediction.HitChancePercent >= 80)
+                    {
+                        SpellManager.Q.Cast(Qprediction.CastPosition);
+                    }
                 }
             }
         }   //End Static Jungle

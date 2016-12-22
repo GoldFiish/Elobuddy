@@ -57,6 +57,11 @@ namespace NebulaSoraka
                 damage += Player.Instance.GetItemDamage(target, ItemId.Blade_of_the_Ruined_King);
             }
 
+            if (Mode_Item.Hextech.IsOwned() && Mode_Item.Hextech.IsReady())
+            {
+                damage += Player.Instance.GetItemDamage(target, ItemId.Hextech_Gunblade);
+            }
+
             if (SpellManager.Q.IsReady())
             {
                 damage += Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical,

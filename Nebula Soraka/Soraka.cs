@@ -105,6 +105,10 @@ namespace NebulaSoraka
             M_Auto.AddSeparator(10);
             M_Auto.Add("Auto_W",            new CheckBox(language.Dictionary[EnumContext.SpellW]));
             M_Auto.Add("Auto_W_Target",     new ComboBox(language.Dictionary[EnumContext.AutoWOp], 0, language.Dictionary[EnumContext.AutoWOp1], language.Dictionary[EnumContext.AutoWOp2], language.Dictionary[EnumContext.AutoWOp3]));
+            foreach (var MyTeam in EntityManager.Heroes.Allies.Where(x => !x.IsMe))
+            {
+                M_Auto.Add("Auto_W_" + MyTeam.ChampionName, new CheckBox(MyTeam.ChampionName));
+            }
             M_Auto.Add("Auto_W_MyHp",       new Slider(language.Dictionary[EnumContext.AutoWMyHp1] + "[ {0}% ]" + language.Dictionary[EnumContext.AutoWMyHp2], 50));
             M_Auto.Add("Auto_W_TeamHp",     new Slider(language.Dictionary[EnumContext.TeamHp1] + "[ {0}% ]" + language.Dictionary[EnumContext.TeamHp2], 65));
             M_Auto.AddSeparator(10);
