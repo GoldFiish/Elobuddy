@@ -40,6 +40,9 @@
             Dictionary.Add(EnumContext.sSolariAMyHp1,   "순간 데미지가 ");
             Dictionary.Add(EnumContext.sSolariAMyHp2,   " 이상일 때");
             Dictionary.Add(EnumContext.sRedemption,     "구원 사용");
+            Dictionary.Add(EnumContext.AutoQMode,       "우선 순위");
+            Dictionary.Add(EnumContext.AutoQModeOp1,    "서포트");
+            Dictionary.Add(EnumContext.AutoQModeOp2,    "킬 스틸");
             Dictionary.Add(EnumContext.AutoQHit,        "정확도");
             Dictionary.Add(EnumContext.AutoWMyHp1,      "사용자의 체력이 ");
             Dictionary.Add(EnumContext.AutoWMyHp2,      " 이상일 때");

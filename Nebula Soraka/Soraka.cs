@@ -100,6 +100,7 @@ namespace NebulaSoraka
             //===================================================================================================================================================================//
             M_Auto = Menu.AddSubMenu(language.Dictionary[EnumContext.Auto]);
             M_Auto.Add("Auto_Q",            new CheckBox(language.Dictionary[EnumContext.SpellQ]));
+            M_Auto.Add("Auto_Q_Mode",       new ComboBox(language.Dictionary[EnumContext.AutoQMode], 0, language.Dictionary[EnumContext.AutoQModeOp1], language.Dictionary[EnumContext.AutoQModeOp2]));
             M_Auto.Add("Auto_Q_Hit",        new Slider(language.Dictionary[EnumContext.AutoQHit], 65));
             M_Auto.Add("Auto_Q_Mana",       new Slider(language.Dictionary[EnumContext.ManaStatus1] + "[ {0}% ]" + language.Dictionary[EnumContext.ManaStatus2], 55));
             M_Auto.AddSeparator(10);

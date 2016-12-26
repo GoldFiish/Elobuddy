@@ -70,10 +70,21 @@ namespace NebulaSoraka.Modes
 
                         if (prediction.HitChancePercent >= Status_Slider(M_Auto, "Auto_Q_Hit"))
                         {
-                            SpellManager.Q.Cast(prediction.CastPosition);
-                        }
+                            switch (Status_ComboBox(M_Auto, "Auto_Q_Mode"))
+                            {
+                                case 0:
+                                    SpellManager.Q.Cast(prediction.CastPosition);
+                                    break;
+                                case 1:
+                                    if (target.Health >= ((Player.Instance.Spellbook.GetSpell(SpellSlot.Q).Cooldown / Player.Instance.AttackDelay) * Player.Instance.GetAutoAttackDamage(target)) + Damage.DmgQ(target))
+                                    {
+                                        SpellManager.Q.Cast(prediction.CastPosition);
+                                    }                                       
+                                    break;                               
+                            }                           
+                        }                  
                     }
-                }                                
+                }
             }
 
             if (Status_CheckBox(M_Auto, "Auto_W") && SpellManager.W.IsReady() && Player.Instance.HealthPercent > Status_Slider(M_Auto, "Auto_W_MyHp"))

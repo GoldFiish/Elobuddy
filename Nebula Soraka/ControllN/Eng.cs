@@ -39,7 +39,10 @@
             Dictionary.Add(EnumContext.sSolari,         "[ Iron Solari ] Use");
             Dictionary.Add(EnumContext.sSolariAMyHp1,   "If short time damage is lower than ");
             Dictionary.Add(EnumContext.sSolariAMyHp2,   "");
-            Dictionary.Add(EnumContext.sRedemption,     "[ Redemption ] Use"); 
+            Dictionary.Add(EnumContext.sRedemption,     "[ Redemption ] Use");
+            Dictionary.Add(EnumContext.AutoQMode,       "Top priority");
+            Dictionary.Add(EnumContext.AutoQModeOp1,    "Support");
+            Dictionary.Add(EnumContext.AutoQModeOp2,    "Kill steal");
             Dictionary.Add(EnumContext.AutoQHit,        "Hit Percent");
             Dictionary.Add(EnumContext.AutoWMyHp1,      "If player Hp is more than ");
             Dictionary.Add(EnumContext.AutoWMyHp2,      "");
