@@ -17,36 +17,39 @@ namespace NebulaTeemo
             {
                 if (MenuMisc["Steal.K.0"].Cast<CheckBox>().CurrentValue)
                 {
-                    if(target_enemy.Health <= Damage.DmgCalSteal(target_enemy))
+                    if (!target_enemy.IsInvulnerable && !target_enemy.HasUndyingBuff() && !target_enemy.IsZombie)
                     {
-                        if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
+                        if (target_enemy.Health <= Damage.DmgCalSteal(target_enemy))
                         {
-                            Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
-                        }
+                            if (Player.Instance.Distance(target_enemy) <= Player.Instance.AttackRange)
+                            {
+                                Player.IssueOrder(GameObjectOrder.AttackTo, target_enemy);
+                            }
 
-                        if (Mode_Item.Ignite.IsReady())
-                        {
-                            Mode_Item.Ignite.Cast(target_enemy);
-                        }
+                            if (Mode_Item.Ignite.IsReady())
+                            {
+                                Mode_Item.Ignite.Cast(target_enemy);
+                            }
 
-                        if (SpellManager.Q.IsReady())
-                        {
-                            SpellManager.Q.Cast(target_enemy);
-                        }
+                            if (SpellManager.Q.IsReady())
+                            {
+                                SpellManager.Q.Cast(target_enemy);
+                            }
 
-                        if (Mode_Item.Bilgewater.IsReady())
-                        {
-                            Mode_Item.Bilgewater.Cast(target_enemy);
-                        }
+                            if (Mode_Item.Bilgewater.IsReady())
+                            {
+                                Mode_Item.Bilgewater.Cast(target_enemy);
+                            }
 
-                        if (Mode_Item.BladeKing.IsReady())
-                        {
-                            Mode_Item.BladeKing.Cast(target_enemy);
-                        }
+                            if (Mode_Item.BladeKing.IsReady())
+                            {
+                                Mode_Item.BladeKing.Cast(target_enemy);
+                            }
 
-                        if (Mode_Item.Hextech.IsReady())
-                        {
-                            Mode_Item.Hextech.Cast(target_enemy);
+                            if (Mode_Item.Hextech.IsReady())
+                            {
+                                Mode_Item.Hextech.Cast(target_enemy);
+                            }
                         }
                     }
                 }

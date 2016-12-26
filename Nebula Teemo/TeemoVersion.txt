@@ -1,0 +1,3 @@
+New Version,
+6.24.0.5,
+[ 1 ] Item and Killsteal check enmey status (Undying Buff / Zombie),

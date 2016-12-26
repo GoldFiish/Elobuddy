@@ -115,10 +115,7 @@ namespace NebulaTeemo
                     {
                         if (BigMonster != null)
                         {
-                            if (BigMonster.Health <= Damage.DmgQ(BigMonster) ||
-                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster) ||
-                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Player.Instance.GetAutoAttackDamage(BigMonster) ||
-                                BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster) + Player.Instance.GetAutoAttackDamage(BigMonster))
+                            if (BigMonster.Health <= Damage.DmgQ(BigMonster) + Damage.DmgE(BigMonster) + Player.Instance.GetAutoAttackDamage(BigMonster))
                             {
                                 SpellManager.Q.Cast(BigMonster);
                                 //Orbwalker.ResetAutoAttack();
@@ -127,10 +124,7 @@ namespace NebulaTeemo
 
                         if (EpicMonster != null)
                         {
-                            if (EpicMonster.Health <= Damage.DmgQ(EpicMonster) ||
-                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Damage.DmgE(EpicMonster) ||
-                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Player.Instance.GetAutoAttackDamage(EpicMonster) ||
-                                EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Damage.DmgE(EpicMonster) + Player.Instance.GetAutoAttackDamage(EpicMonster))
+                            if (EpicMonster.Health <= Damage.DmgQ(EpicMonster) + Damage.DmgE(EpicMonster) + Player.Instance.GetAutoAttackDamage(EpicMonster))
                             {
                                 SpellManager.Q.Cast(EpicMonster);
                                 //Orbwalker.ResetAutoAttack();

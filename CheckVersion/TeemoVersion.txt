@@ -1,4 +1,3 @@
 New Version,
-6.24.0.2,
-[ 1 ] Fix Sometime auto moving,
-[ 2 ] Change Auto R target,
+6.24.0.5,
+[ 1 ] Item and Killsteal check enemy status (Undying Buff / Zombie),

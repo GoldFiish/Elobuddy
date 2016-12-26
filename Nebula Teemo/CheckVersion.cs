@@ -15,7 +15,7 @@ namespace NebulaTeemo
 
         public static void CheckUpdate()
         {
-            WebRequest Request_GitHubVer = WebRequest.Create("https://github.com/GoldFiish/Elobuddy/blob/master/CheckVersion/TeemoVersion.txt");
+            WebRequest Request_GitHubVer = WebRequest.Create("https://github.com/GoldFiish/Elobuddy/blob/master/Nebula%20Teemo/TeemoVersion.txt");
             using (var Version_Response = (HttpWebResponse)Request_GitHubVer.GetResponse())
             {
                 Stream Version_Stream = Version_Response.GetResponseStream();

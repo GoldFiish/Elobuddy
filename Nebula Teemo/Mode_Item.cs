@@ -35,7 +35,7 @@ namespace NebulaTeemo
             {
                 var Botrk_Target = TargetSelector.GetTarget(550, DamageType.Physical);
 
-                if (Botrk_Target != null)
+                if (Botrk_Target != null && !Botrk_Target.IsInvulnerable && !Botrk_Target.HasUndyingBuff() && !Botrk_Target.IsZombie)
                 {
                     if (Bilgewater.IsReady())
                     {
@@ -53,7 +53,7 @@ namespace NebulaTeemo
             {
                 var Hextech_Target = TargetSelector.GetTarget(700, DamageType.Magical);
 
-                if (Hextech_Target != null)
+                if (Hextech_Target != null && !Hextech_Target.IsInvulnerable && !Hextech_Target.HasUndyingBuff() && !Hextech_Target.IsZombie)
                 {
                     Hextech.Cast(Hextech_Target);
                 }
