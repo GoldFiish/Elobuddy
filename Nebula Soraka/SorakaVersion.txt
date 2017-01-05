@@ -1,4 +1,4 @@
 ﻿New Version,
-6.24.0.2,
-[ 1 ] Auto Q - Add two option,
+6.24.0.3,
+[ 1 ] Auto W - Add KeyBind. KeyBind Mode is dont check Mana status,
 [ Todo ] Improved - Line clear,

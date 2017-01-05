@@ -6,6 +6,14 @@ namespace NebulaSoraka.Modes
 {
     class Mode_Jungle : Soraka
     {
+        public static PredictionResult GetQPrediction(Obj_AI_Base target)
+        {
+            float divider = Player.Instance.Distance(target) / SpellManager.Q.Range;
+            SpellManager.Q.CastDelay = (int)(0.2f + 0.8f * divider);
+            var prediction = SpellManager.Q.GetPrediction(target);
+            return prediction;
+        }
+
         public static void Jungle()
         {
             if (Player.Instance.IsDead) return;
@@ -28,7 +36,7 @@ namespace NebulaSoraka.Modes
 
                 if ( target != null)
                 {
-                    var Qprediction = SpellManager.Q.GetPrediction(target);
+                    var Qprediction = GetQPrediction(target);
 
                     if (Qprediction.HitChancePercent >= 80)
                     {

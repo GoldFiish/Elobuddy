@@ -25,7 +25,7 @@ namespace NebulaSoraka
 
             Menu = MainMenu.AddMenu("[ Nebula ] Soraka", "By.Natrium");           
             Menu.Add("Language.Select", new ComboBox("Language / 언어", 0, "English", "한국어"));
-            Menu.AddVisualFrame(new VsFrame("Ward.Preview", System.Drawing.Color.Purple));
+            Menu.AddVisualFrame(new VsFrame("Img_Lux", System.Drawing.Color.Purple));
 
             Controller language;
 
@@ -105,6 +105,7 @@ namespace NebulaSoraka
             M_Auto.Add("Auto_Q_Mana",       new Slider(language.Dictionary[EnumContext.ManaStatus1] + "[ {0}% ]" + language.Dictionary[EnumContext.ManaStatus2], 55));
             M_Auto.AddSeparator(10);
             M_Auto.Add("Auto_W",            new CheckBox(language.Dictionary[EnumContext.SpellW]));
+            M_Auto.Add("Auto_W_Semi",       new KeyBind(language.Dictionary[EnumContext.AutoWSemi], false, KeyBind.BindTypes.HoldActive,'W'));
             M_Auto.Add("Auto_W_Target",     new ComboBox(language.Dictionary[EnumContext.AutoWOp], 0, language.Dictionary[EnumContext.AutoWOp1], language.Dictionary[EnumContext.AutoWOp2], language.Dictionary[EnumContext.AutoWOp3]));
             foreach (var MyTeam in EntityManager.Heroes.Allies.Where(x => !x.IsMe))
             {
@@ -167,6 +168,11 @@ namespace NebulaSoraka
             return sub[str].Cast<ComboBox>().CurrentValue;
         }
 
+        public static bool Status_KeyBind(Menu sub, string str)
+        {
+            return sub[str].Cast<KeyBind>().CurrentValue;
+        }
+
         private static void Drawing_OnDraw(EventArgs args)
         {
             if (Status_CheckBox(M_Draw, "Draw_Q") && SpellManager.Q.IsLearned)
@@ -227,40 +233,42 @@ namespace NebulaSoraka
             {
                 if(Status_CheckBox(M_Misc, "Misc_Int_Q") && Player.Instance.Distance(args.Sender) <= SpellManager.Q.Range && SpellManager.Q.IsReady())
                 {
-                     switch (Status_ComboBox(M_Misc, "Misc_Int_Q_Lv"))
+                    var SelectQLevel = args.DangerLevel;
+                        
+                        switch (Status_ComboBox(M_Misc, "Misc_Int_Q_Lv"))
                         {
                             case 0:
-                                if (args.DangerLevel == DangerLevel.Medium)
-                                {
-                                    SpellManager.Q.Cast(sender.Position);
-                                }
+                            SelectQLevel = DangerLevel.Medium;
                                 break;
                             case 1:
-                                 if (args.DangerLevel == DangerLevel.High)
-                                {
-                                    SpellManager.Q.Cast(sender.Position);
-                                }
+                            SelectQLevel = DangerLevel.High;                         
                                 break;
                         }
+
+                    if(args.DangerLevel == SelectQLevel)
+                    {
+                        SpellManager.Q.Cast(sender.Position);
+                    }
                 }
 
                 if(Status_CheckBox(M_Misc, "Misc_Int_E") && Player.Instance.Distance(args.Sender) <= SpellManager.E.Range && SpellManager.E.IsReady())
                 {
+                    var SelectELevel = args.DangerLevel;
+
                     switch (Status_ComboBox(M_Misc, "Misc_Int_E_Lv"))
-                        {
-                            case 0:
-                                if (args.DangerLevel == DangerLevel.Medium)
-                                {
-                                    SpellManager.E.Cast(sender.Position);
-                                }
-                                break;
-                            case 1:
-                                 if (args.DangerLevel == DangerLevel.High)
-                                {
-                                   SpellManager.E.Cast(sender.Position);
-                                }
-                                break;
-                        }
+                    {
+                        case 0:
+                            SelectELevel = DangerLevel.Medium;
+                            break;
+                        case 1:
+                            SelectELevel = DangerLevel.High;
+                            break;
+                    }
+
+                    if (args.DangerLevel == SelectELevel)
+                    {
+                        SpellManager.E.Cast(sender.Position);
+                    }
                 }
             }
         }

@@ -39,7 +39,6 @@ namespace NebulaSoraka.Modes
                             Player.IssueOrder(GameObjectOrder.AttackTo, target);
                         }
 
-
                         if (SpellManager.Q.IsReady() && SpellManager.Q.IsInRange(target))
                         {
                             var Qpredicticon = SpellManager.Q.GetPrediction(target);
@@ -79,15 +78,15 @@ namespace NebulaSoraka.Modes
                                     if (target.Health >= ((Player.Instance.Spellbook.GetSpell(SpellSlot.Q).Cooldown / Player.Instance.AttackDelay) * Player.Instance.GetAutoAttackDamage(target)) + Damage.DmgQ(target))
                                     {
                                         SpellManager.Q.Cast(prediction.CastPosition);
-                                    }                                       
-                                    break;                               
-                            }                           
-                        }                  
+                                    }
+                                    break;
+                            }
+                        }
                     }
                 }
             }
 
-            if (Status_CheckBox(M_Auto, "Auto_W") && SpellManager.W.IsReady() && Player.Instance.HealthPercent > Status_Slider(M_Auto, "Auto_W_MyHp"))
+            if ((Status_CheckBox(M_Auto, "Auto_W") && SpellManager.W.IsReady() && Player.Instance.HealthPercent > Status_Slider(M_Auto, "Auto_W_MyHp")) || Status_KeyBind(M_Auto, "Auto_W_Semi"))
             {
                 var team = ObjectManager.Get<AIHeroClient>().Where(x => x.IsAlly && x.IsValidTarget(SpellManager.W.Range + 100) && !x.IsMe &&
                                                                     x.HealthPercent <= Status_Slider(M_Auto, "Auto_W_TeamHp") && !x.IsRecalling() && !x.IsInShopRange() && Status_CheckBox(M_Auto, "Auto_W_" + x.ChampionName));
@@ -122,7 +121,7 @@ namespace NebulaSoraka.Modes
             {
                 foreach (var Rtarget in EntityManager.Heroes.Allies.Where(x => x.IsValidTarget() && x.IsHPBarRendered && !x.IsRecalling() && !x.IsInShopRange()))
                 {
-                    if (Rtarget.CountEnemiesInRange(450) >= 1 && Rtarget.HealthPercent < Status_Slider(M_Auto, "Auto_R_TeamHp"))
+                    if (Rtarget.CountEnemiesInRange(550) >= 1 && Rtarget.HealthPercent < Status_Slider(M_Auto, "Auto_R_TeamHp"))
                     {
                         SpellManager.R.Cast();
                     }

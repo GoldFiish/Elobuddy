@@ -52,6 +52,7 @@ namespace NebulaSoraka.ControllN
         AutoQModeOp1,
         AutoQModeOp2,
         AutoQHit,
+        AutoWSemi,
         AutoWMyHp1,
         AutoWMyHp2,
         AutoWOp,

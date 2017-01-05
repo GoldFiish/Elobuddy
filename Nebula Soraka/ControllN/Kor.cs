@@ -44,6 +44,7 @@
             Dictionary.Add(EnumContext.AutoQModeOp1,    "서포트");
             Dictionary.Add(EnumContext.AutoQModeOp2,    "킬 스틸");
             Dictionary.Add(EnumContext.AutoQHit,        "정확도");
+            Dictionary.Add(EnumContext.AutoWSemi,       "반 자동 [ W ] - 마나 체크 안함");
             Dictionary.Add(EnumContext.AutoWMyHp1,      "사용자의 체력이 ");
             Dictionary.Add(EnumContext.AutoWMyHp2,      " 이상일 때");
             Dictionary.Add(EnumContext.AutoWOp,         "[ W ] 우선 순위");

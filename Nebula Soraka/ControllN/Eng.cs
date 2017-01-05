@@ -44,6 +44,7 @@
             Dictionary.Add(EnumContext.AutoQModeOp1,    "Support");
             Dictionary.Add(EnumContext.AutoQModeOp2,    "Kill steal");
             Dictionary.Add(EnumContext.AutoQHit,        "Hit Percent");
+            Dictionary.Add(EnumContext.AutoWSemi,       "Semi [ W ] - Dnot check Mana status");
             Dictionary.Add(EnumContext.AutoWMyHp1,      "If player Hp is more than ");
             Dictionary.Add(EnumContext.AutoWMyHp2,      "");
             Dictionary.Add(EnumContext.AutoWOp,         "[ W ] Selecter");
