@@ -1,0 +1,4 @@
+New Version,
+6.24.0.0,
+[ 1 ] Change Code,
+[ 2 ] Delete Damage Indicator,

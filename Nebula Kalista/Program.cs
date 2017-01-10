@@ -1,4 +1,11 @@
-﻿using System;
+﻿//======================================================================================//
+//======================================================================================//
+//                                       Kalista                                        //
+//                                    By goldfinsh                                      //
+//======================================================================================//
+//======================================================================================//
+using System;
+using EloBuddy;
 using EloBuddy.SDK.Events;
 
 namespace NebulaKalista
@@ -12,6 +19,8 @@ namespace NebulaKalista
        
         static void LoadingComplete(EventArgs args)
         {
+            if (Player.Instance.ChampionName != "Kalista") return;
+
             Kalista.Load();
         }        
     }

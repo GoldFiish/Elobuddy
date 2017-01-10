@@ -1,10 +1,9 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Menu.Values;
 using EloBuddy.SDK.Enumerations;
 
-namespace NebulaKalista
+namespace NebulaKalista.Modes
 {
     internal class Mode_Combo : Kalista 
     {
@@ -13,20 +12,18 @@ namespace NebulaKalista
             if (Player.Instance.IsDead) return;
 
             var Qtarget = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Physical);
-
-            //Combo W [ Focus W passive target ]
-            if (MenuCombo["Combo.W"].Cast<CheckBox>().CurrentValue && Player.Instance.CountEnemiesInRange(Player.Instance.AttackRange) >= 1)
+           
+            if (Status_CheckBox(MenuCombo, "Combo_W") && Player.Instance.CountEnemyChampionsInRange(Player.Instance.AttackRange) >= 1)
             {
                 foreach (var target in EntityManager.Heroes.Enemies.Where(x => x.IsValidTarget(Player.Instance.AttackRange) && x.HasBuff("kalistacoopstrikemarkally")))
                 {
                     Player.IssueOrder(GameObjectOrder.AttackTo, target);
                 }
             }
-
-            //Combo Q - Not Collision check 
+            
             if (Qtarget != null && SpellManager.Q.IsLearned)
             {
-                if (MenuCombo["Combo.Q"].Cast<CheckBox>().CurrentValue && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > MenuCombo["Combo.Q.Mana"].Cast<Slider>().CurrentValue)
+                if (Status_CheckBox(MenuCombo, "Combo_Q") && SpellManager.Q.IsReady() && Player.Instance.ManaPercent > Status_Slider(MenuCombo, "Combo_Q_Mana"))
                 {
                     if (Qtarget.IsValidTarget() && Player.Instance.Distance(Qtarget.Position) <= 1200)
                     {                        
@@ -34,21 +31,21 @@ namespace NebulaKalista
 
                         if (QPrediction.HitChance >= HitChance.High)
                         {
-                            switch (Combo_QNum)
+                            switch (Status_ComboBox(MenuCombo, "Combo_Q_Style"))
                             {
                                 case 0:     // [ Q ] activation
                                     SpellManager.Q.Cast(QPrediction.CastPosition);
                                     break;
 
-                                case 1:     // [ Q ] + [ E ] Killable
-                                    if (Extensions.UndyingBuffs.Any(buff => Qtarget.HasBuff(buff))) return;
-
-                                    if (Qtarget.TotalShieldHealth() <= Extensions.Get_Q_Damage_Float(Qtarget) + Extensions.Get_E_Damage_Float(Qtarget))
+                                case 1:     // [ Q ] + [ E ] Killable                                    
+                                    if (!Qtarget.HasUndyingBuff() || !Qtarget.IsInvulnerable || !Qtarget.HasBuffOfType(BuffType.SpellShield))
                                     {
-                                        SpellManager.Q.Cast(QPrediction.CastPosition);
+                                        if (Qtarget.TotalShieldHealth() <= Extensions.IsQEKillable(Qtarget))
+                                        {
+                                            SpellManager.Q.Cast(QPrediction.CastPosition);
+                                        }
                                     }
                                     break;
-
                                 case 2:     // [ E ] 5 stack
                                     if (Extensions.GetRendBuff(Qtarget).Count >= 5)
                                     {
@@ -57,7 +54,7 @@ namespace NebulaKalista
                                     break;
 
                                 case 3:     // [ E ] fail
-                                    if (SpellManager.E.IsOnCooldown)
+                                    if (!SpellManager.E.IsReady() && (!Qtarget.HasUndyingBuff() || !Qtarget.IsInvulnerable || !Qtarget.HasBuffOfType(BuffType.SpellShield)))
                                     {
                                         if (Qtarget.TotalShieldHealth() <= Extensions.Get_Q_Damage_Float(Qtarget))
                                         {
@@ -66,20 +63,14 @@ namespace NebulaKalista
                                     }
                                     break;
                             }
-
-                            if (Qtarget.TotalShieldHealth() <= Extensions.Get_Q_Damage_Float(Qtarget) && (!Qtarget.HasBuffOfType(BuffType.SpellShield) || !Qtarget.IsInvulnerable))
-                            {
-                                SpellManager.Q.Cast(QPrediction.CastPosition);
-                            }
                         }
                     }
                 }
             }
-
-            //Combo E
+            
             if (SpellManager.E.IsLearned)
             {
-                if (MenuCombo["Combo.E"].Cast<CheckBox>().CurrentValue && SpellManager.E.IsReady())
+                if (Status_CheckBox(MenuCombo, "Combo_E") && SpellManager.E.IsReady())
                 {
                     if (EntityManager.Heroes.Enemies.Any(x => Extensions.IsRendKillable(x) && x.IsValidTarget(1200)))
                     {

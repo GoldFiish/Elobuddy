@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Menu.Values;
 using System.Collections.Generic;
 
 namespace NebulaKalista
@@ -12,13 +11,17 @@ namespace NebulaKalista
         private static readonly float[] RawRendDamageMultiplier = { 0.6f, 0.6f, 0.6f, 0.6f, 0.6f };
         private static readonly float[] RawRendDamagePerSpear = { 10, 14, 19, 25, 32 };
         private static readonly float[] RawRendDamagePerSpearMultiplier = { 0.2f, 0.225f, 0.25f, 0.275f, 0.3f };
-
+        
         public static float Get_Q_Damage_Float(this Obj_AI_Base target)
         {
-            return Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical,
-                new float[] {10, 70, 130, 190, 250 }[SpellManager.Q.Level - 1] + Player.Instance.TotalAttackDamage);
+            if (SpellManager.Q.IsReady())
+            {
+                return Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical,
+                    new float[] { 10, 70, 130, 190, 250 }[SpellManager.Q.Level - 1] + Player.Instance.TotalAttackDamage);
+            }
+            return 0;
         }
-        
+
         public static List<string> UndyingBuffs = new List<string>
         {
             "JudicatorIntervention",    //Kayle [ R ]
@@ -37,15 +40,15 @@ namespace NebulaKalista
         public static bool ShouldntRend(AIHeroClient target)
         {
             if (target == null || !target.IsHPBarRendered) return false;
-           
+
             if (UndyingBuffs.Any(buff => target.HasBuff(buff))) return true;
-           
+
             if (target.CharData.BaseSkinName == "Blitzcrank" && !target.HasBuff("BlitzcrankManaBarrierCD")
                 && !target.HasBuff("ManaBarrier"))
             {
                 return true;
             }
-                       
+
             return target.HasBuffOfType(BuffType.SpellShield) || target.HasBuffOfType(BuffType.SpellImmunity);
         }
 
@@ -64,11 +67,6 @@ namespace NebulaKalista
             return target.Health + target.AllShield;
         }
 
-        public static double GetHealth_Style1(this Obj_AI_Base target)
-        {
-            return target.TotalShieldHealth() - Get_Q_Damage_Float(target);
-        }
-
         public static bool IsRendKillable(this Obj_AI_Base target)
         {
             if (target == null) { return false; }
@@ -77,12 +75,22 @@ namespace NebulaKalista
             {
                 if (ShouldntRend((AIHeroClient)target)) return false;
             }
-       
+
             var totalHealth = GetTotalHealthWithShieldsApplied(target);
 
             var dmg = Get_E_Damage_Double(target);
 
-            if (ObjectManager.Player.HasBuff("summonerexhaust"))
+            if (target.BaseSkinName == "Moredkaiser")
+            {
+                dmg -= target.Mana;
+            }
+
+            if (target.HasBuff("GarenW"))
+            {
+                dmg *= 0.7f;
+            }
+
+            if (Player.Instance.HasBuff("summonerexhaust"))
             {
                 dmg *= 0.6f;
             }
@@ -92,57 +100,82 @@ namespace NebulaKalista
                 dmg *= 0.3f;
             }
 
-            if (target.Name.Contains("Baron") && ObjectManager.Player.HasBuff("barontarget"))
+            if (target.Name.Contains("Baron") && Player.Instance.HasBuff("barontarget"))
             {
                 dmg *= 0.5f;
             }
-            
-            if (target.Name.Contains("Dragon") && ObjectManager.Player.HasBuff("s5test_dragonslayerbuff"))
+
+            if (target.Name.Contains("Dragon") && Player.Instance.HasBuff("s5test_dragonslayerbuff"))
             {
-                dmg *= (1f - (0.075f * ObjectManager.Player.GetBuffCount("s5test_dragonslayerbuff")));
+                dmg *= (1f - (0.075f * Player.Instance.GetBuffCount("s5test_dragonslayerbuff")));
             }
-            return dmg > totalHealth;    
+            return dmg > totalHealth;
         }
 
-        public static bool IsKillable_Style1(this Obj_AI_Base target)
+        public static float IsQEKillable(Obj_AI_Base target)
         {
-            if (target == null) { return false; }
-            if (!HasRendBuff(target)) { return false; }
-            if (target is AIHeroClient && target.Health > 1)
+            var dmg = 0f;
+
+            if (SpellManager.E.IsReady())
             {
-                if (ShouldntRend((AIHeroClient)target)) return false;
+                dmg = (float)Get_E_Damage_Double(target);
             }
 
-            var totalHealth = GetHealth_Style1(target);
-            var dmg = Get_E_Damage_Style1(target);
+            if (SpellManager.Q.IsReady())
+            {
+                dmg += Get_Q_Damage_Float(target);
+            }
 
-            if (ObjectManager.Player.HasBuff("summonerexhaust"))
+            if (target.BaseSkinName == "Moredkaiser")
+            {
+                dmg -= target.Mana;
+            }
+
+            if (target.HasBuff("BlitzcrankManaBarrierCD") && target.HasBuff("ManaBarrier"))
+            {
+                dmg -= target.Mana / 2f;
+            }
+
+            if (target.HasBuff("GarenW"))
+            {
+                dmg *= 0.7f;
+            }
+
+            if (Player.Instance.HasBuff("summonerexhaust"))
+            {
                 dmg *= 0.6f;
+            }
 
             if (target.HasBuff("FerociousHowl"))
+            {
                 dmg *= 0.3f;
+            }
 
-            return (float)dmg > totalHealth;
+            if (target.Name.Contains("Baron") && Player.Instance.HasBuff("barontarget"))
+            {
+                dmg *= 0.5f;
+            }
+
+            if (target.Name.Contains("Dragon") && Player.Instance.HasBuff("s5test_dragonslayerbuff"))
+            {
+                dmg *= (1f - (0.075f * Player.Instance.GetBuffCount("s5test_dragonslayerbuff")));
+            }
+            return dmg;
         }
 
         public static float Get_E_Damage_Float(this Obj_AI_Base target)
         {
-            return (float)Get_E_Damage(target, -1);
-        }
-
-        public static double Get_E_Damage_Style1(this Obj_AI_Base target)
-        {
-            return Get_E_Damage(target, +1) + (Kalista.MenuMisc["E.Dmage"].Cast<CheckBox>().CurrentValue ? Kalista.MenuMisc["E.Dmage.Value"].Cast<Slider>().CurrentValue : 0);
+            return (float)Get_E_Damage(target, -1) + (Kalista.Status_CheckBox(Kalista.MenuMisc, "E_Dmage") ? Kalista.Status_Slider(Kalista.MenuMisc, "E_Dmage_Value") : 0);
         }
 
         public static double Get_E_Damage_Double(this Obj_AI_Base target)
         {
-            return Get_E_Damage(target, -1) + (Kalista.MenuMisc["E.Dmage"].Cast<CheckBox>().CurrentValue ? Kalista.MenuMisc["E.Dmage.Value"].Cast<Slider>().CurrentValue : 0);
+            return Get_E_Damage(target, -1) + (Kalista.Status_CheckBox(Kalista.MenuMisc, "E_Dmage") ? Kalista.Status_Slider(Kalista.MenuMisc, "E_Dmage_Value") : 0);
         }
-             
+
         public static double Get_E_Damage(this Obj_AI_Base target, int customStacks = -1, BuffInstance rendBuff = null)
         {
-            return ObjectManager.Player.CalculateDamageOnUnit(target, DamageType.Physical, GetRawRendDamage(target, customStacks, rendBuff));
+            return Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical, GetRawRendDamage(target, customStacks, rendBuff));
         }
 
         public static float GetRawRendDamage(Obj_AI_Base target, int customStacks = -1, BuffInstance rendBuff = null)
@@ -153,7 +186,7 @@ namespace NebulaKalista
             {
                 var index = SpellManager.E.Level - 1;
                 return RawRendDamage[index] + stacks * RawRendDamagePerSpear[index] +
-                       ObjectManager.Player.TotalAttackDamage * (RawRendDamageMultiplier[index] + stacks * RawRendDamagePerSpearMultiplier[index]);
+                       Player.Instance.TotalAttackDamage * (RawRendDamageMultiplier[index] + stacks * RawRendDamagePerSpearMultiplier[index]);
             }
             return 0;
         }

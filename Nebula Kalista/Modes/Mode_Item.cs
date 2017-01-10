@@ -2,7 +2,7 @@
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
 
-namespace NebulaKalista
+namespace NebulaKalista.Modes
 {
     internal class Mode_Item : Kalista
     {
@@ -15,7 +15,7 @@ namespace NebulaKalista
 
         public static void Items_Use()
         {
-            if (Player.Instance.CountEnemiesInRange(1500) == 0) return;
+            if (Player.Instance.IsDead) return;
 
             //BladeKing, Bilgewater
             if (Bilgewater.IsOwned() || BladeKing.IsOwned())
@@ -37,7 +37,7 @@ namespace NebulaKalista
             }
 
             //Youmuu
-            if (Youmuu.IsOwned() && Youmuu.IsReady() && Player.Instance.CountEnemiesInRange(1500) >= 1)
+            if (Youmuu.IsOwned() && Youmuu.IsReady() && Player.Instance.CountEnemyChampionsInRange(1500) >= 1)
             {
                 Youmuu.Cast();
             }

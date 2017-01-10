@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Menu.Values;
 
-namespace NebulaKalista
+namespace NebulaKalista.Modes
 {
    internal class Mode_Lane : Kalista 
     {
@@ -11,19 +10,19 @@ namespace NebulaKalista
         {
             if (Player.Instance.IsDead) return;
            
-            var minion = EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= 1500);
+            var minion = EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.IsValidTarget() && Player.Instance.Distance(x) <= 1250);
 
             if (minion != null)
             {
                 //Lnae Q
-                if (MenuLane["Lane.Q"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuLane["Lane.Q.Mana"].Cast<Slider>().CurrentValue && SpellManager.Q.IsReady())
+                if (Status_CheckBox(MenuLane, "Lane_Q") && Player.Instance.ManaPercent > Status_Slider(MenuLane, "Lane_Q_Mana") && SpellManager.Q.IsReady())
                 {
                     foreach (var target in minion.Where(x => x.Health <= Extensions.Get_Q_Damage_Float(x)))
                     {
                         var Qtarget = SpellManager.Q.GetPrediction(target);
                         var Qtarget_num = Qtarget.GetCollisionObjects<Obj_AI_Minion>().Count(x => x.Health <= Extensions.Get_Q_Damage_Float(x));
 
-                        if (Qtarget_num >= MenuLane["Lane.Q.Num"].Cast<Slider>().CurrentValue)
+                        if (Qtarget_num >= Status_Slider(MenuLane, "Lane_Q_Num"))
                         {
                             SpellManager.Q.Cast(Qtarget.CastPosition);
                         }
@@ -38,11 +37,11 @@ namespace NebulaKalista
                 }
 
                 //Lnae E_All Minions
-                if (MenuLane["Lane.E.All"].Cast<CheckBox>().CurrentValue && Player.Instance.ManaPercent > MenuLane["Lane.E.Mana"].Cast<Slider>().CurrentValue && SpellManager.E.IsReady())
+                if (Status_CheckBox(MenuLane, "Lane_E_All") && Player.Instance.ManaPercent > Status_Slider(MenuLane, "Lane_E_Mana") && SpellManager.E.IsReady())
                 {
                     var minion_num = minion.Count(x => x.IsValidTarget(SpellManager.E.Range) && x.Health <= x.Get_E_Damage_Double());
 
-                    if (minion_num >= MenuLane["Lane.E.Num"].Cast<Slider>().CurrentValue)
+                    if (minion_num >= Status_Slider(MenuLane, "Lane_E_Num"))
                     {
                         SpellManager.E.Cast();
                     }

@@ -63,9 +63,9 @@ namespace NebulaKalista.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        public static System.Drawing.Bitmap KalistaLogo {
+        public static System.Drawing.Bitmap Img_Kalista {
             get {
-                object obj = ResourceManager.GetObject("KalistaLogo", resourceCulture);
+                object obj = ResourceManager.GetObject("Img_Kalista", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
